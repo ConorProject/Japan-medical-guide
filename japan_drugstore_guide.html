@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japan Drugstore Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .nav-tabs {
+            display: flex;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 0;
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: #666;
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .nav-tab:hover:not(.active) {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .tab-content {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 0 0 20px 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .search-section {
+            margin-bottom: 30px;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 50px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-btn {
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .category-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .category-btn {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .product-japanese {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        .product-category {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .product-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .product-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .detail-item {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+
+        .detail-value {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .equivalent-info {
+            background: linear-gradient(135deg, #e8f4fd, #f0f8ff);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #b3d9ff;
+        }
+
+        .equivalent-info h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .equivalent-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .equivalent-list li {
+            color: #555;
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .equivalent-list li::before {
+            content: "🔄";
+            position: absolute;
+            left: 0;
+        }
+
+        .usage-tips {
+            background: linear-gradient(135deg, #e8f5e8, #f0f8ff);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border: 1px solid #d4edda;
+        }
+
+        .usage-tips h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .tip-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tip-list li {
+            color: #555;
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .tip-list li::before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+        }
+
+        .warning-section {
+            background: linear-gradient(135deg, #ffe6e6, #fff0f0);
+            border: 2px solid #ff9999;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .warning-section h3 {
+            color: #cc0000;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .prohibited-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .prohibited-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #cc0000;
+        }
+
+        .prohibited-item h4 {
+            color: #cc0000;
+            margin-bottom: 8px;
+        }
+
+        .permission-info {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border: 2px solid #ffc107;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .permission-info h3 {
+            color: #856404;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #666;
+            font-size: 1.2rem;
+            margin-top: 50px;
+            padding: 40px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .products-grid,
+            .prohibited-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-bar {
+                flex-direction: column;
+            }
+            
+            .product-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 Japan Medical Guide</h1>
+            <p>Your complete guide to Japanese pharmacies, medications & regulations</p>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-tab="products">🛒 Find Products</button>
+            <button class="nav-tab" data-tab="equivalents">🔄 Drug Equivalents</button>
+            <button class="nav-tab" data-tab="symptoms">🩺 Symptom Search</button>
+            <button class="nav-tab" data-tab="regulations">⚠️ Import Rules</button>
+        </div>
+
+        <!-- Products Tab -->
+        <div class="tab-content" id="products-tab">
+            <div class="search-section">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Search for products, brands, or Japanese names..." id="searchInput">
+                </div>
+                
+                <div class="category-filter" id="categoryFilter">
+                    <button class="category-btn active" data-category="all">All Products</button>
+                    <button class="category-btn" data-category="skincare">Skincare</button>
+                    <button class="category-btn" data-category="medicine">Medicine</button>
+                    <button class="category-btn" data-category="beauty">Beauty</button>
+                    <button class="category-btn" data-category="supplements">Supplements</button>
+                    <button class="category-btn" data-category="hygiene">Hygiene</button>
+                </div>
+            </div>
+
+            <div class="products-grid" id="productsGrid"></div>
+            <div class="no-results" id="noResults" style="display: none;">
+                No products found matching your search criteria.
+            </div>
+        </div>
+
+        <!-- Equivalents Tab -->
+        <div class="tab-content hidden" id="equivalents-tab">
+            <div class="search-section">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Enter drug name (e.g., Tylenol, Advil, Benadryl)..." id="equivalentSearch">
+                    <button class="search-btn" onclick="searchEquivalents()">Find Japanese Equivalent</button>
+                </div>
+            </div>
+            <div class="products-grid" id="equivalentsGrid"></div>
+            <div class="no-results" id="noEquivalents" style="display: none;">
+                No Japanese equivalents found. Try searching by active ingredient or generic name.
+            </div>
+        </div>
+
+        <!-- Symptoms Tab -->
+        <div class="tab-content hidden" id="symptoms-tab">
+            <div class="search-section">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Describe your symptoms (e.g., headache, sore throat, stomach pain)..." id="symptomSearch">
+                    <button class="search-btn" onclick="searchSymptoms()">Find Treatments</button>
+                </div>
+            </div>
+            <div class="products-grid" id="symptomsGrid"></div>
+            <div class="no-results" id="noSymptoms" style="display: none;">
+                No treatments found for those symptoms. Try different keywords or consult a pharmacist.
+            </div>
+        </div>
+
+        <!-- Regulations Tab -->
+        <div class="tab-content hidden" id="regulations-tab">
+            <div class="warning-section">
+                <h3>🚫 Prohibited Medications</h3>
+                <p style="margin-bottom: 20px; color: #666;">These medications are strictly prohibited from entering Japan and can result in arrest:</p>
+                
+                <div class="prohibited-list">
+                    <div class="prohibited-item">
+                        <h4>Stimulants & ADHD Medications</h4>
+                        <p>Adderall, Ritalin, Vyvanse, Dexedrine, and any amphetamine-based medications</p>
+                    </div>
+                    <div class="prohibited-item">
+                        <h4>Pseudoephedrine</h4>
+                        <p>Sudafed, Actifed, and cold medicines containing pseudoephedrine</p>
+                    </div>
+                    <div class="prohibited-item">
+                        <h4>Codeine</h4>
+                        <p>Tylenol with Codeine, prescription cough syrups, and codeine-based painkillers</p>
+                    </div>
+                    <div class="prohibited-item">
+                        <h4>Cannabis Products</h4>
+                        <p>CBD oil, medical marijuana, and any cannabis-derived products (even legal ones)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="permission-info">
+                <h3>📋 Medications Requiring Permission</h3>
+                <p style="margin-bottom: 20px; color: #666;">These require advance approval from Japanese authorities:</p>
+                
+                <div class="prohibited-list">
+                    <div class="prohibited-item" style="border-left-color: #ffc107;">
+                        <h4>Opioid Painkillers</h4>
+                        <p>Morphine, Oxycodone, Fentanyl patches - requires Narcotics Import Certificate</p>
+                    </div>
+                    <div class="prohibited-item" style="border-left-color: #ffc107;">
+                        <h4>Insulin & Diabetes Medications</h4>
+                        <p>More than 1 month supply requires Import Certificate for Personal Use</p>
+                    </div>
+                    <div class="prohibited-item" style="border-left-color: #ffc107;">
+                        <h4>Psychotropic Medications</h4>
+                        <p>Antidepressants, antipsychotics in quantities over 1 month supply</p>
+                    </div>
+                    <div class="prohibited-item" style="border-left-color: #ffc107;">
+                        <h4>Heart & Blood Pressure Medications</h4>
+                        <p>Large quantities may require documentation</p>
+                    </div>
+                </div>
+
+                <div style="background: white; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <h4 style="color: #856404; margin-bottom: 15px;">📞 How to Get Permission</h4>
+                    <div style="color: #666; line-height: 1.6;">
+                        <p><strong>For Narcotics:</strong> Contact the Regional Bureau of Health and Welfare at your entry point in Japan, at least 2 weeks before travel.</p>
+                        <p><strong>For Other Medications:</strong> Apply for "Import Certificate for Personal Use" through the Pharmaceuticals and Medical Devices Agency (PMDA).</p>
+                        <p><strong>Required Documents:</strong> Doctor's prescription, medical certificate explaining need, copy of passport.</p>
+                        <p><strong>Processing Time:</strong> 2-4 weeks. Apply well in advance of travel.</p>
+                        <p><strong>Emergency Contact:</strong> Contact the Japanese Embassy/Consulate in your country for urgent cases.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            {
+                name: "Melano CC Intensive Anti-Spot Essence",
+                japanese: "メラノCC 薬用しみ集中対策美容液",
+                category: "skincare",
+                description: "A powerful vitamin C serum that targets dark spots and prevents new ones from forming. Very popular among tourists.",
+                price: "¥1,200-1,500",
+                brand: "Rohto Mentholatum",
+                usage: "Apply 2-3 drops after cleansing, morning and night",
+                symptoms: ["dark spots", "acne scars", "uneven skin tone"],
+                equivalents: ["Vitamin C serum", "anti-aging serum"],
+                tips: [
+                    "Use sunscreen during the day when using this product",
+                    "Start with once daily to test sensitivity",
+                    "Available at most drugstores like Matsumoto Kiyoshi"
+                ]
+            },
+            {
+                name: "EVE A Tablets (Ibuprofen)",
+                japanese: "イブA錠",
+                category: "medicine",
+                description: "Fast-acting pain reliever containing ibuprofen. Effective for headaches, menstrual pain, and fever.",
+                price: "¥600-900",
+                brand: "SS Pharmaceutical",
+                usage: "Take 2 tablets with water, up to 3 times daily",
+                symptoms: ["headache", "menstrual pain", "fever", "muscle pain", "toothache"],
+                equivalents: ["Advil", "Motrin", "Nurofen", "ibuprofen"],
+                tips: [
+                    "Take with food to prevent stomach upset",
+                    "Do not exceed 6 tablets per day",
+                    "Available without prescription"
+                ]
+            },
+            {
+                name: "Salonpas Pain Relief Patches",
+                japanese: "サロンパス",
+                category: "medicine",
+                description: "Topical pain relief patches for muscle aches, joint pain, and minor sprains. A Japanese pharmacy staple.",
+                price: "¥500-800",
+                brand: "Hisamitsu",
+                usage: "Apply to clean, dry skin over affected area",
+                symptoms: ["muscle pain", "joint pain", "back pain", "shoulder pain", "sprains"],
+                equivalents: ["Bengay patches", "Aspercreme patches", "IcyHot patches"],
+                tips: [
+                    "Remove after 12 hours maximum",
+                    "Do not use on broken or irritated skin",
+                    "Available in different sizes and strengths"
+                ]
+            },
+            {
+                name: "Bufferin Premium (Acetaminophen + Aspirin)",
+                japanese: "バファリンプレミアム",
+                category: "medicine",
+                description: "Fast-acting headache and fever reducer with stomach protection. Trusted Japanese pain relief brand.",
+                price: "¥800-1,200",
+                brand: "Lion",
+                usage: "Take 1-2 tablets with water as needed",
+                symptoms: ["headache", "fever", "cold symptoms", "muscle pain"],
+                equivalents: ["Tylenol", "Excedrin", "Panadol", "acetaminophen", "aspirin"],
+                tips: [
+                    "Take with food to prevent stomach upset",
+                    "Do not exceed recommended dosage",
+                    "Contains aspirin - check for allergies"
+                ]
+            },
+            {
+                name: "Pabron Gold A (Cold Medicine)",
+                japanese: "パブロンゴールドA",
+                category: "medicine",
+                description: "Comprehensive cold and flu relief medicine. Contains multiple active ingredients for various symptoms.",
+                price: "¥1,200-1,800",
+                brand: "Taisho Pharmaceutical",
+                usage: "Take 3 tablets 3 times daily after meals",
+                symptoms: ["cold", "flu", "runny nose", "cough", "sore throat", "fever", "congestion"],
+                equivalents: ["DayQuil", "NyQuil", "Sudafed", "cold medicine"],
+                tips: [
+                    "May cause drowsiness",
+                    "Do not take with alcohol",
+                    "Consult pharmacist about drug interactions"
+                ]
+            },
+            {
+                name: "Rokid Stomach Medicine",
+                japanese: "ロキッド胃腸薬",
+                category: "medicine",
+                description: "Antacid and digestive aid for stomach upset, heartburn, and indigestion.",
+                price: "¥800-1,200",
+                brand: "Daiichi Sankyo",
+                usage: "Take 1-2 tablets after meals or when symptoms occur",
+                symptoms: ["stomach pain", "heartburn", "indigestion", "nausea", "bloating"],
+                equivalents: ["Tums", "Pepto-Bismol", "Mylanta", "Gaviscon", "antacid"],
+                tips: [
+                    "Take 30 minutes after meals for best effect",
+                    "Avoid spicy foods while taking",
+                    "Suitable for travel-related stomach issues"
+                ]
+            },
+            {
+                name: "Kobayashi Throat Spray",
+                japanese: "小林製薬 のどスプレー",
+                category: "medicine",
+                description: "Antiseptic throat spray for sore throat relief. Convenient for travel and seasonal discomfort.",
+                price: "¥800-1,200",
+                brand: "Kobayashi",
+                usage: "Spray 2-3 times directly to throat as needed",
+                symptoms: ["sore throat", "throat irritation", "cough", "throat dryness"],
+                equivalents: ["Chloraseptic", "throat spray", "Tylenol sore throat"],
+                tips: [
+                    "Do not eat or drink for 30 minutes after use",
+                    "Use up to 6 times daily",
+                    "Available in mint and mild flavors"
+                ]
+            },
+            {
+                name: "Rohto Lycee Eye Drops",
+                japanese: "ロート リセ",
+                category: "medicine",
+                description: "Cooling eye drops for tired, red eyes. Especially helpful for screen fatigue and dry air.",
+                price: "¥400-600",
+                brand: "Rohto",
+                usage: "1-2 drops in each eye up to 6 times daily",
+                symptoms: ["dry eyes", "red eyes", "eye strain", "tired eyes", "itchy eyes"],
+                equivalents: ["Visine", "Clear Eyes", "Refresh", "artificial tears"],
+                tips: [
+                    "Do not touch dropper to eye",
+                    "Replace cap immediately after use",
+                    "Different formulations for contact lens wearers"
+                ]
+            },
+            {
+                name: "Hada Labo Gokujyun Hyaluronic Lotion",
+                japanese: "肌ラボ 極潤ヒアルロン液",
+                category: "skincare",
+                description: "Ultra-hydrating toner with multiple types of hyaluronic acid. Excellent for dry skin and popular worldwide.",
+                price: "¥600-900",
+                brand: "Rohto",
+                usage: "Apply to clean face, pat gently until absorbed",
+                symptoms: ["dry skin", "dehydrated skin", "rough skin"],
+                equivalents: ["hyaluronic acid serum", "hydrating toner"],
+                tips: [
+                    "Use on damp skin for better absorption",
+                    "Layer under moisturizer for extra hydration",
+                    "Light version available for oily skin"
+                ]
+            },
+            {
+                name: "Biore Aqua Rich Watery Essence Sunscreen",
+                japanese: "ビオレ アクアリッチ ウォータリーエッセンス",
+                category: "skincare",
+                description: "Lightweight, non-greasy SPF 50+ sunscreen that works well under makeup. Perfect for daily use.",
+                price: "¥700-1,000",
+                brand: "Kao Biore",
+                usage: "Apply generously 15 minutes before sun exposure",
+                symptoms: ["sun protection", "UV protection"],
+                equivalents: ["sunscreen SPF 50", "UV protection"],
+                tips: [
+                    "Reapply every 2 hours when outdoors",
+                    "Water and sweat resistant",
+                    "Suitable for face and body"
+                ]
+            }
+        ];
+
+        const drugEquivalents = [
+            {
+                western: ["Tylenol", "acetaminophen", "paracetamol"],
+                japanese: "Bufferin Premium (バファリンプレミアム) or Calonal (カロナール)",
+                notes: "Acetaminophen is widely available in Japan under various brand names."
+            },
+            {
+                western: ["Advil", "Motrin", "ibuprofen", "Nurofen"],
+                japanese: "EVE A (イブA錠) or Loxonin S (ロキソニンS)",
+                notes: "EVE contains ibuprofen. Loxonin (loxoprofen) is a Japanese-specific NSAID."
+            },
+            {
+                western: ["Benadryl", "diphenhydramine", "antihistamine"],
+                japanese: "Restamin (レスタミン) or Allegra FX (アレグラFX)",
+                notes: "Allegra (fexofenadine) is available OTC. Diphenhydramine is prescription-only."
+            },
+            {
+                western: ["Sudafed", "pseudoephedrine"],
+                japanese: "❌ PROHIBITED - Use Pabron Gold A (パブロンゴールドA) instead",
+                notes: "Pseudoephedrine is illegal in Japan. Use alternative decongestants."
+            },
+            {
+                western: ["Pepto-Bismol", "bismuth subsalicylate"],
+                japanese: "Rokid (ロキッド胃腸薬) or Seirogan (正露丸)",
+                notes: "Different active ingredients but similar effects for stomach issues."
+            },
+            {
+                western: ["Tums", "Mylanta", "antacid"],
+                japanese: "Rokid (ロキッド胃腸薬) or Gascon (ガスコン)",
+                notes: "Various antacids available with similar effectiveness."
+            },
+            {
+                western: ["DayQuil", "NyQuil", "cold medicine"],
+                japanese: "Pabron Gold A (パブロンゴールドA) or Lulu (ルル)",
+                notes: "Multi-symptom cold medicines are common in Japan."
+            },
+            {
+                western: ["Claritin", "loratadine"],
+                japanese: "Claritin EX (クラリチンEX) or Allegra FX (アレグラFX)",
+                notes: "Claritin is available OTC in Japan under the same brand."
+            },
+            {
+                western: ["Visine", "Clear Eyes", "eye drops"],
+                japanese: "Rohto Lycee (ロート リセ) or Sante (サンテ)",
+                notes: "Many varieties of eye drops available for different purposes."
+            },
+            {
+                western: ["Aspirin"],
+                japanese: "Bufferin A (バファリンA) or Aspirin (アスピリン)",
+                notes: "Aspirin is readily available under various brand names."
+            }
+        ];
+
+        let filteredProducts = [...products];
+        let activeCategory = 'all';
+        let activeTab = 'products';
+
+        function renderProducts(container = 'productsGrid', productList = filteredProducts) {
+            const grid = document.getElementById(container);
+            const noResults = document.getElementById(container === 'productsGrid' ? 'noResults' : 
+                                                   container === 'equivalentsGrid' ? 'noEquivalents' : 'noSymptoms');
+            
+            if (productList.length === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            grid.style.display = 'grid';
+            noResults.style.display = 'none';
+            
+            grid.innerHTML = productList.map(product => `
+                <div class="product-card">
+                    <div class="product-header">
+                        <div>
+                            <div class="product-name">${product.name}</div>
+                            <div class="product-japanese">${product.japanese}</div>
+                        </div>
+                        <div class="product-category">${product.category}</div>
+                    </div>
+                    
+                    <div class="product-description">${product.description}</div>
+                    
+                    ${product.equivalents ? `
+                        <div class="equivalent-info">
+                            <h4>🔄 Western Equivalents</h4>
+                            <ul class="equivalent-list">
+                                ${product.equivalents.map(eq => `<li>${eq}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+                    
+                    <div class="product-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Price Range</div>
+                            <div class="detail-value">${product.price}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Brand</div>
+                            <div class="detail-value">${product.brand}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Usage</div>
+                            <div class="detail-value">${product.usage}</div>
+                        </div>
+                        ${product.symptoms ? `
+                            <div class="detail-item">
+                                <div class="detail-label">Treats</div>
+                                <div class="detail-value">${product.symptoms.slice(0, 3).join(', ')}</div>
+                            </div>
+                        ` : ''}
+                    </div>
+                    
+                    <div class="usage-tips">
+                        <h4>💡 Traveler Tips</h4>
+                        <ul class="tip-list">
+                            ${product.tips.map(tip => `<li>${tip}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderEquivalents(results) {
+            const grid = document.getElementById('equivalentsGrid');
+            const noResults = document.getElementById('noEquivalents');
+            
+            if (results.length === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            grid.style.display = 'grid';
+            noResults.style.display = 'none';
+            
+            grid.innerHTML = results.map(result => `
+                <div class="product-card">
+                    <div class="product-header">
+                        <div>
+                            <div class="product-name">Japanese Equivalent</div>
+                            <div class="product-japanese">${result.japanese}</div>
+                        </div>
+                        <div class="product-category">equivalent</div>
+                    </div>
+                    
+                    <div class="product-description">
+                        <strong>Western Drug:</strong> ${result.western.join(', ')}<br>
+                        <strong>Japanese Alternative:</strong> ${result.japanese}
+                    </div>
+                    
+                    <div class="usage-tips">
+                        <h4>💡 Important Notes</h4>
+                        <ul class="tip-list">
+                            <li>${result.notes}</li>
+                            <li>Always check with pharmacist about dosage differences</li>
+                            <li>Show this information to pharmacy staff</li>
+                        </ul>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterProducts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            
+            filteredProducts = products.filter(product => {
+                const matchesCategory = activeCategory === 'all' || product.category === activeCategory;
+                const matchesSearch = searchTerm === '' || 
+                    product.name.toLowerCase().includes(searchTerm) ||
+                    product.japanese.includes(searchTerm) ||
+                    product.description.toLowerCase().includes(searchTerm) ||
+                    product.brand.toLowerCase().includes(searchTerm) ||
+                    product.category.toLowerCase().includes(searchTerm) ||
+                    (product.equivalents && product.equivalents.some(eq => eq.toLowerCase().includes(searchTerm))) ||
+                    (product.symptoms && product.symptoms.some(symptom => symptom.toLowerCase().includes(searchTerm)));
+                
+                return matchesCategory && matchesSearch;
+            });
+            
+            renderProducts();
+        }
+
+        function searchEquivalents() {
+            const searchTerm = document.getElementById('equivalentSearch').value.toLowerCase();
+            
+            if (!searchTerm) {
+                document.getElementById('equivalentsGrid').style.display = 'none';
+                document.getElementById('noEquivalents').style.display = 'none';
+                return;
+            }
+            
+            const results = drugEquivalents.filter(equiv => 
+                equiv.western.some(western => western.toLowerCase().includes(searchTerm))
+            );
+            
+            renderEquivalents(results);
+        }
+
+        function searchSymptoms() {
+            const searchTerm = document.getElementById('symptomSearch').value.toLowerCase();
+            
+            if (!searchTerm) {
+                document.getElementById('symptomsGrid').style.display = 'none';
+                document.getElementById('noSymptoms').style.display = 'none';
+                return;
+            }
+            
+            const results = products.filter(product => 
+                product.symptoms && product.symptoms.some(symptom => 
+                    symptom.toLowerCase().includes(searchTerm) || 
+                    searchTerm.includes(symptom.toLowerCase())
+                )
+            );
+            
+            renderProducts('symptomsGrid', results);
+        }
+
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
+            document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab
+            document.getElementById(tabName + '-tab').classList.remove('hidden');
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            
+            activeTab = tabName;
+        }
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', filterProducts);
+        document.getElementById('equivalentSearch').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') searchEquivalents();
+        });
+        document.getElementById('symptomSearch').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') searchSymptoms();
+        });
+
+        document.getElementById('categoryFilter').addEventListener('click', (e) => {
+            if (e.target.classList.contains('category-btn')) {
+                // Update active button
+                document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                
+                // Update active category
+                activeCategory = e.target.dataset.category;
+                filterProducts();
+            }
+        });
+
+        // Tab switching
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                switchTab(tab.dataset.tab);
+            });
+        });
+
+        // Initial render
+        renderProducts();
+    </script>
+</body>
+</html>
