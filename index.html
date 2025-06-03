@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Japan Medical Guide - Medications, Import Rules & Pharmacy Guide</title>
     <meta name="description" content="Complete guide to bringing medications to Japan. Check import restrictions, find pharmacy products, and navigate customs regulations. Updated 2025.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tilda+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,7 +16,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Tilda Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 17px;
             line-height: 1.7;
             font-weight: 400;
@@ -72,7 +75,7 @@
             background: none;
             border: none;
             cursor: pointer;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Tilda Sans', 'Segoe UI', sans-serif;
             font-size: 16px;
             font-weight: 500;
             letter-spacing: 0.02em;
@@ -111,7 +114,7 @@
 
         .search-input {
             flex: 1;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Tilda Sans', 'Segoe UI', sans-serif;
             padding: 15px 20px;
             border: 2px solid #e1e5e9;
             border-radius: 50px;
@@ -128,7 +131,7 @@
         }
 
         .search-btn {
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Tilda Sans', 'Segoe UI', sans-serif;
             padding: 15px 30px;
             background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
@@ -154,7 +157,7 @@
         }
 
         .category-btn {
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Tilda Sans', 'Segoe UI', sans-serif;
             padding: 10px 20px;
             border: 2px solid #667eea;
             background: white;
@@ -1142,3 +1145,804 @@
                 description: "Cooling eye drops popular with gamers and office workers. Intense minty sensation.",
                 usage: "1-2 drops per eye, up to 6 times daily. Very strong cooling effect!",
                 keywords: ["eye drops", "sante", "cooling", "tired eyes", "目薬"]
+            },
+            {
+                name: "Biore UV Aqua Rich Watery Essence",
+                japanese: "ビオレ UV アクアリッチ ウォータリーエッセンス",
+                category: "skincare",
+                price: "¥800-1,000",
+                locations: "Drugstores, supermarkets",
+                description: "Lightweight SPF50+ PA++++ sunscreen. Feels like water, no white cast.",
+                usage: "Apply generously 15 minutes before sun exposure. Reapply every 2 hours.",
+                keywords: ["sunscreen", "biore", "spf", "uv", "日焼け止め"]
+            },
+            {
+                name: "Salonpas Pain Relief Patches",
+                japanese: "サロンパス",
+                category: "medicine",
+                price: "¥800-1,200",
+                locations: "All pharmacies, some convenience stores",
+                description: "Adhesive patches for muscle and joint pain. Contains methyl salicylate and menthol.",
+                usage: "Apply to clean, dry skin. Leave on for up to 8 hours. Max 4 patches per day.",
+                keywords: ["pain relief", "patches", "salonpas", "muscle pain", "湿布"]
+            },
+            {
+                name: "KATE Eyebrow Products",
+                japanese: "ケイト アイブロウ",
+                category: "beauty",
+                price: "¥1,000-1,500",
+                locations: "Drugstores with cosmetics sections",
+                description: "Japan's #1 eyebrow brand. 3D Eyebrow Color and Designing Eyebrow are bestsellers.",
+                usage: "Use powder for natural look, pencil for definition. Set with mascara.",
+                keywords: ["eyebrow", "kate", "makeup", "brow", "眉"]
+            },
+            {
+                name: "DHC Lip Cream",
+                japanese: "DHC 薬用リップクリーム",
+                category: "skincare",
+                price: "¥700-800",
+                locations: "Convenience stores, drugstores",
+                description: "Moisturizing lip balm with olive oil and vitamin E. Cult favorite.",
+                usage: "Apply as needed. Great under lipstick or overnight treatment.",
+                keywords: ["lip balm", "dhc", "lip cream", "リップ"]
+            },
+            {
+                name: "Kracie Naive Shampoo",
+                japanese: "クラシエ ナイーブ",
+                category: "hygiene",
+                price: "¥500-700",
+                locations: "Supermarkets, drugstores",
+                description: "Gentle shampoo with plant extracts. Peach and grape scents are popular.",
+                usage: "Lather and rinse. Follow with matching conditioner.",
+                keywords: ["shampoo", "naive", "hair", "シャンプー"]
+            },
+            {
+                name: "Canmake Cream Cheek",
+                japanese: "キャンメイク クリームチーク",
+                category: "beauty",
+                price: "¥600-700",
+                locations: "Drugstores, Don Quijote",
+                description: "Affordable cream blush that blends seamlessly. Gives natural flushed look.",
+                usage: "Tap onto cheeks with fingers and blend outward.",
+                keywords: ["blush", "canmake", "cream cheek", "チーク", "makeup"]
+            },
+            {
+                name: "Oronine H Ointment",
+                japanese: "オロナインH軟膏",
+                category: "medicine",
+                price: "¥600-1,000",
+                locations: "All pharmacies",
+                description: "Antiseptic ointment for cuts, acne, dry skin. Japan's household staple since 1953.",
+                usage: "Apply thin layer to affected area 2-3 times daily.",
+                keywords: ["ointment", "oronine", "antiseptic", "cuts", "acne", "軟膏"]
+            }
+        ];
+
+        // Drug equivalents database
+        const drugEquivalents = [
+            {
+                westernName: "Tylenol",
+                genericName: "Acetaminophen/Paracetamol",
+                japaneseEquivalents: [
+                    {name: "Eve (イブ)", description: "Various formulations with acetaminophen"},
+                    {name: "Bufferin (バファリン)", description: "Some versions contain acetaminophen"},
+                    {name: "Norshin (ノーシン)", description: "Pure acetaminophen option available"}
+                ],
+                notes: "Acetaminophen is カロナール (karonāru) in Japanese. Available OTC.",
+                importInfo: "Can bring up to 2 months supply without special permission."
+            },
+            {
+                westernName: "Advil/Motrin",
+                genericName: "Ibuprofen",
+                japaneseEquivalents: [
+                    {name: "Eve Quick (イブクイック)", description: "Fast-acting ibuprofen"},
+                    {name: "Ringl (リングル)", description: "Pure ibuprofen tablets"},
+                    {name: "Fedes (フェデス)", description: "Ibuprofen with stomach protection"}
+                ],
+                notes: "Ibuprofen (イブプロフェン) widely available. Max OTC dose is 150mg.",
+                importInfo: "Can bring up to 2 months supply without special permission."
+            },
+            {
+                westernName: "Benadryl",
+                genericName: "Diphenhydramine",
+                japaneseEquivalents: [
+                    {name: "Restamin (レスタミン)", description: "Same active ingredient"},
+                    {name: "Drewell (ドリエル)", description: "Sleep aid version"}
+                ],
+                notes: "Often marketed as sleep aid in Japan rather than allergy medicine.",
+                importInfo: "No restrictions on reasonable amounts."
+            },
+            {
+                westernName: "Sudafed",
+                genericName: "Pseudoephedrine",
+                japaneseEquivalents: [
+                    {name: "PROHIBITED", description: "Pseudoephedrine is banned in Japan"},
+                    {name: "Alternative: Pabron (パブロン)", description: "Uses different decongestants"},
+                    {name: "Alternative: Benza Block (ベンザブロック)", description: "Non-pseudoephedrine formula"}
+                ],
+                notes: "⚠️ Pseudoephedrine is ILLEGAL in Japan. Use phenylephrine alternatives.",
+                importInfo: "PROHIBITED - Will be confiscated at customs. Bring alternatives."
+            },
+            {
+                westernName: "Adderall",
+                genericName: "Amphetamine",
+                japaneseEquivalents: [
+                    {name: "PROHIBITED", description: "Amphetamines are illegal in Japan"},
+                    {name: "No equivalent", description: "Amphetamine-based drugs banned"}
+                ],
+                notes: "⚠️ ILLEGAL in Japan. Possession can lead to arrest and imprisonment.",
+                importInfo: "ABSOLUTELY PROHIBITED - No exceptions. Consider Concerta/Strattera with permit."
+            }
+        ];
+
+        // Symptom treatments database
+        const symptomTreatments = [
+            {
+                symptom: "Headache",
+                keywords: ["headache", "migraine", "head pain", "頭痛"],
+                treatments: [
+                    {
+                        name: "Eve A (イブA)",
+                        description: "Popular headache medicine with ibuprofen and caffeine",
+                        dosage: "2 tablets up to 3 times daily",
+                        price: "¥800-1,200"
+                    },
+                    {
+                        name: "Bufferin Premium (バファリンプレミアム)",
+                        description: "Fast-acting with stomach protection",
+                        dosage: "2 tablets up to 3 times daily",
+                        price: "¥1,000-1,500"
+                    }
+                ]
+            },
+            {
+                symptom: "Cold/Flu",
+                keywords: ["cold", "flu", "cough", "fever", "風邪", "インフルエンザ"],
+                treatments: [
+                    {
+                        name: "Pabron Gold A (パブロンゴールドA)",
+                        description: "Comprehensive cold medicine - no pseudoephedrine",
+                        dosage: "Follow package instructions",
+                        price: "¥1,500-2,000"
+                    },
+                    {
+                        name: "Lulu Attack EX (ルルアタックEX)",
+                        description: "Strong formula for severe symptoms",
+                        dosage: "3 tablets, 3 times daily",
+                        price: "¥1,200-1,800"
+                    }
+                ]
+            },
+            {
+                symptom: "Stomach Pain/Indigestion",
+                keywords: ["stomach", "indigestion", "nausea", "胃痛", "消化不良"],
+                treatments: [
+                    {
+                        name: "Ohta's Isan (太田胃散)",
+                        description: "Traditional antacid powder, very effective",
+                        dosage: "1 packet after meals",
+                        price: "¥800-1,200"
+                    },
+                    {
+                        name: "Gaster 10 (ガスター10)",
+                        description: "H2 blocker for acid reflux",
+                        dosage: "1 tablet up to 2 times daily",
+                        price: "¥1,000-1,500"
+                    }
+                ]
+            }
+        ];
+
+        // Import restrictions database
+        const importRestrictions = [
+            // PROHIBITED - Amphetamines
+            {
+                name: "Adderall",
+                genericName: "amphetamine/dextroamphetamine",
+                alternateNames: ["Adderall XR", "Mydayis"],
+                status: "prohibited",
+                category: "Amphetamine Stimulants",
+                reason: "Contains amphetamine - classified as illegal stimulant in Japan",
+                consequences: "Arrest and detention (18+ days documented cases)",
+                alternatives: ["Vyvanse (with permit)", "Concerta (with permit)", "Strattera (available in Japan)"],
+                searchTerms: ["adderall", "amphetamine", "dextroamphetamine", "adhd"]
+            },
+            {
+                name: "Dexedrine",
+                genericName: "dextroamphetamine",
+                alternateNames: ["Dextrostat", "ProCentra"],
+                status: "prohibited",
+                category: "Amphetamine Stimulants",
+                reason: "Contains amphetamine - classified as illegal stimulant",
+                consequences: "Criminal charges, detention, deportation",
+                alternatives: ["Vyvanse (with permit)", "Concerta (with permit)"],
+                searchTerms: ["dexedrine", "dextroamphetamine", "adhd"]
+            },
+            
+            // PROHIBITED - Pseudoephedrine
+            {
+                name: "Sudafed",
+                genericName: "pseudoephedrine",
+                alternateNames: ["Sudafed PE", "Sudafed 12 Hour", "Sudafed 24 Hour"],
+                status: "prohibited",
+                category: "Decongestants",
+                reason: "Contains pseudoephedrine - banned substance",
+                consequences: "Confiscation at customs, possible detention",
+                alternatives: ["Pabron Gold A", "Benza Block", "Japanese phenylephrine products"],
+                searchTerms: ["sudafed", "pseudoephedrine", "cold", "decongestant", "sinus"]
+            },
+            {
+                name: "DayQuil/NyQuil",
+                genericName: "acetaminophen/dextromethorphan/pseudoephedrine",
+                alternateNames: ["DayQuil Severe", "NyQuil Severe"],
+                status: "prohibited",
+                category: "Cold Medicine",
+                reason: "Many formulations contain pseudoephedrine",
+                consequences: "Confiscation at customs",
+                alternatives: ["Pabron series", "Benza Block", "Lulu Attack"],
+                searchTerms: ["dayquil", "nyquil", "cold", "flu", "pseudoephedrine"]
+            },
+            
+            // REQUIRES PERMIT - ADHD Medications
+            {
+                name: "Vyvanse",
+                genericName: "lisdexamfetamine",
+                alternateNames: ["Elvanse", "Tyvense"],
+                status: "permit-required",
+                category: "ADHD Medication",
+                permitType: "Stimulants' Raw Materials",
+                maxQuantity: "30 days supply",
+                applicationTime: "4-6 weeks recommended (minimum 14 days)",
+                requiredDocs: ["Medical certificate", "Prescription", "Import application"],
+                processingBureau: "Regional Health Bureau based on entry airport",
+                searchTerms: ["vyvanse", "lisdexamfetamine", "adhd", "elvanse"]
+            },
+            {
+                name: "Concerta",
+                genericName: "methylphenidate",
+                alternateNames: ["Ritalin LA", "Metadate CD"],
+                status: "permit-required",
+                category: "ADHD Medication",
+                permitType: "Psychotropic Drug",
+                maxQuantity: "30 days supply",
+                applicationTime: "4-6 weeks recommended",
+                requiredDocs: ["Medical certificate", "Prescription", "Import application"],
+                processingBureau: "Regional Health Bureau",
+                searchTerms: ["concerta", "methylphenidate", "ritalin", "adhd"]
+            },
+            
+            // REQUIRES PERMIT - Opioids
+            {
+                name: "OxyContin",
+                genericName: "oxycodone",
+                alternateNames: ["Percocet", "Roxicodone", "Endocet"],
+                status: "permit-required",
+                category: "Opioid Painkiller",
+                permitType: "Narcotics Import Certificate",
+                maxQuantity: "30 days supply",
+                applicationTime: "4-6 weeks required",
+                requiredDocs: ["Narcotics application", "Medical certificate", "Prescription", "Dosage schedule"],
+                processingBureau: "Narcotics Control Department",
+                searchTerms: ["oxycontin", "oxycodone", "percocet", "pain", "opioid"]
+            },
+            {
+                name: "Morphine",
+                genericName: "morphine sulfate",
+                alternateNames: ["MS Contin", "Kadian", "Avinza"],
+                status: "permit-required",
+                category: "Opioid Painkiller",
+                permitType: "Narcotics Import Certificate",
+                maxQuantity: "30 days supply",
+                applicationTime: "4-6 weeks required",
+                requiredDocs: ["Narcotics application", "Medical certificate", "Prescription"],
+                processingBureau: "Narcotics Control Department",
+                searchTerms: ["morphine", "ms contin", "pain", "opioid", "cancer"]
+            },
+            
+            // ALLOWED WITH CONDITIONS
+            {
+                name: "Tylenol",
+                genericName: "acetaminophen/paracetamol",
+                alternateNames: ["Panadol", "Excedrin (without caffeine)"],
+                status: "allowed",
+                category: "Pain Relief",
+                maxQuantity: "2 months supply",
+                conditions: "Keep in original packaging",
+                notes: "Widely available in Japan as 'Eve' or 'Bufferin'",
+                searchTerms: ["tylenol", "acetaminophen", "paracetamol", "pain", "fever"]
+            },
+            {
+                name: "Advil",
+                genericName: "ibuprofen",
+                alternateNames: ["Motrin", "Nurofen"],
+                status: "allowed",
+                category: "Pain Relief",
+                maxQuantity: "2 months supply",
+                conditions: "Keep in original packaging",
+                notes: "Available in Japan as 'Eve Quick' or 'Ringl'",
+                searchTerms: ["advil", "ibuprofen", "motrin", "pain", "inflammation"]
+            },
+            {
+                name: "Insulin",
+                genericName: "insulin",
+                alternateNames: ["Humalog", "Novolog", "Lantus", "Levemir"],
+                status: "allowed",
+                category: "Diabetes Medication",
+                maxQuantity: "30 days supply without permit",
+                conditions: "Carry doctor's letter, keep refrigerated if required",
+                notes: "Syringes/pens allowed with insulin",
+                permitRequired: "Required if bringing more than 30 days supply",
+                searchTerms: ["insulin", "diabetes", "humalog", "novolog", "lantus", "injection"]
+            },
+            
+            // CONTROLLED BUT ALLOWED
+            {
+                name: "Xanax",
+                genericName: "alprazolam",
+                alternateNames: ["Niravam"],
+                status: "controlled-allowed",
+                category: "Benzodiazepine",
+                maxQuantity: "30 days supply (1.2g total)",
+                conditions: "Must declare at customs, keep prescription",
+                notes: "Highly controlled - expect scrutiny",
+                searchTerms: ["xanax", "alprazolam", "anxiety", "benzodiazepine"]
+            },
+            {
+                name: "Valium",
+                genericName: "diazepam",
+                alternateNames: ["Diastat"],
+                status: "controlled-allowed",
+                category: "Benzodiazepine",
+                maxQuantity: "30 days supply",
+                conditions: "Must declare at customs",
+                notes: "Keep in original container with prescription",
+                searchTerms: ["valium", "diazepam", "anxiety", "benzodiazepine"]
+            },
+            
+            // PROHIBITED - Cannabis/CBD
+            {
+                name: "CBD Oil",
+                genericName: "cannabidiol",
+                alternateNames: ["Hemp oil", "Cannabis oil", "Medical marijuana"],
+                status: "prohibited",
+                category: "Cannabis Products",
+                reason: "All cannabis derivatives illegal - zero tolerance",
+                consequences: "Arrest, prosecution, deportation",
+                alternatives: ["None - seek alternative treatments in Japan"],
+                searchTerms: ["cbd", "cannabidiol", "hemp", "cannabis", "marijuana", "epilepsy"]
+            },
+            {
+                name: "Marinol",
+                genericName: "dronabinol",
+                alternateNames: ["Syndros"],
+                status: "prohibited",
+                category: "Cannabis Products",
+                reason: "Synthetic THC - classified as cannabis",
+                consequences: "Criminal charges",
+                alternatives: ["Consult Japanese doctor for alternatives"],
+                searchTerms: ["marinol", "dronabinol", "thc", "nausea", "appetite"]
+            },
+            
+            // Common queries
+            {
+                name: "Birth Control Pills",
+                genericName: "various oral contraceptives",
+                alternateNames: ["The Pill", "Yaz", "Ortho Tri-Cyclen"],
+                status: "allowed",
+                category: "Contraceptives",
+                maxQuantity: "1 year supply",
+                conditions: "Keep in original packaging with prescription",
+                notes: "Available in Japan but expensive",
+                searchTerms: ["birth control", "contraceptive", "pill", "yaz", "ortho"]
+            },
+            {
+                name: "Strattera",
+                genericName: "atomoxetine",
+                alternateNames: [],
+                status: "allowed",
+                category: "ADHD Medication",
+                maxQuantity: "30 days supply",
+                conditions: "Non-stimulant ADHD medication",
+                notes: "Available by prescription in Japan",
+                searchTerms: ["strattera", "atomoxetine", "adhd", "non-stimulant"]
+            }
+        ];
+
+        // Tab switching functionality
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Show corresponding content
+                const tabName = this.getAttribute('data-tab');
+                document.getElementById(tabName + '-tab').classList.remove('hidden');
+                
+                // Initialize import restrictions grid if regulations tab
+                if (tabName === 'regulations' && document.getElementById('restrictionsGrid')) {
+                    displayAllCategories(document.getElementById('restrictionsGrid'));
+                }
+            });
+        });
+
+        // Category filter functionality
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                filterProducts(this.getAttribute('data-category'));
+            });
+        });
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function() {
+            searchProducts(this.value);
+        });
+
+        // Product search and display functions
+        function searchProducts(query) {
+            const filtered = products.filter(product => {
+                const searchText = query.toLowerCase();
+                return product.name.toLowerCase().includes(searchText) ||
+                       product.japanese.includes(searchText) ||
+                       product.description.toLowerCase().includes(searchText) ||
+                       product.keywords.some(keyword => keyword.includes(searchText));
+            });
+            
+            displayProducts(filtered);
+        }
+
+        function filterProducts(category) {
+            const filtered = category === 'all' ? products : products.filter(p => p.category === category);
+            displayProducts(filtered);
+        }
+
+        function displayProducts(productsToShow) {
+            const grid = document.getElementById('productsGrid');
+            const noResults = document.getElementById('noResults');
+            
+            if (productsToShow.length === 0) {
+                grid.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            noResults.style.display = 'none';
+            grid.innerHTML = productsToShow.map(product => `
+                <div class="product-card">
+                    <div class="product-header">
+                        <div>
+                            <h3 class="product-name">${product.name}</h3>
+                            <p class="product-japanese">${product.japanese}</p>
+                        </div>
+                        <span class="product-category">${product.category}</span>
+                    </div>
+                    <p class="product-description">${product.description}</p>
+                    <div class="product-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Price Range</div>
+                            <div class="detail-value">${product.price}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Where to Find</div>
+                            <div class="detail-value">${product.locations}</div>
+                        </div>
+                    </div>
+                    <div class="usage-tips">
+                        <h4>How to Use</h4>
+                        <p>${product.usage}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Equivalents search functionality
+        function searchEquivalents() {
+            const query = document.getElementById('equivalentSearch').value.toLowerCase();
+            const grid = document.getElementById('equivalentsGrid');
+            const noResults = document.getElementById('noEquivalents');
+            
+            if (!query) {
+                grid.innerHTML = '';
+                noResults.style.display = 'none';
+                return;
+            }
+            
+            const results = drugEquivalents.filter(drug => 
+                drug.westernName.toLowerCase().includes(query) ||
+                drug.genericName.toLowerCase().includes(query)
+            );
+            
+            if (results.length === 0) {
+                grid.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            noResults.style.display = 'none';
+            grid.innerHTML = results.map(drug => `
+                <div class="product-card">
+                    <div class="product-header">
+                        <div>
+                            <h3 class="product-name">${drug.westernName}</h3>
+                            <p class="product-japanese">${drug.genericName}</p>
+                        </div>
+                    </div>
+                    <div class="equivalent-info">
+                        <h4>Japanese Equivalents:</h4>
+                        <ul class="equivalent-list">
+                            ${drug.japaneseEquivalents.map(eq => 
+                                `<li><strong>${eq.name}</strong> - ${eq.description}</li>`
+                            ).join('')}
+                        </ul>
+                    </div>
+                    <div class="usage-tips">
+                        <h4>Important Notes</h4>
+                        <p>${drug.notes}</p>
+                        <p style="margin-top: 10px;"><strong>Import Info:</strong> ${drug.importInfo}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Symptoms search functionality
+        function searchSymptoms() {
+            const query = document.getElementById('symptomSearch').value.toLowerCase();
+            const grid = document.getElementById('symptomsGrid');
+            const noResults = document.getElementById('noSymptoms');
+            
+            if (!query) {
+                grid.innerHTML = '';
+                noResults.style.display = 'none';
+                return;
+            }
+            
+            const results = symptomTreatments.filter(treatment =>
+                treatment.keywords.some(keyword => keyword.includes(query))
+            );
+            
+            if (results.length === 0) {
+                grid.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            noResults.style.display = 'none';
+            grid.innerHTML = results.map(treatment => `
+                <div class="product-card">
+                    <h3 class="product-name">Treatments for ${treatment.symptom}</h3>
+                    ${treatment.treatments.map(med => `
+                        <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                            <h4 style="color: #2c3e50; margin-bottom: 10px;">${med.name}</h4>
+                            <p style="margin-bottom: 10px;">${med.description}</p>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <div>
+                                    <strong>Dosage:</strong> ${med.dosage}
+                                </div>
+                                <div>
+                                    <strong>Price:</strong> ${med.price}
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `).join('');
+        }
+
+        // Search function for import restrictions
+        function searchImportRestrictions() {
+            const searchTerm = document.getElementById('restrictionSearch').value.toLowerCase().trim();
+            const resultsGrid = document.getElementById('restrictionsGrid');
+            const noResults = document.getElementById('noRestrictions');
+            
+            if (!searchTerm) {
+                displayAllCategories(resultsGrid);
+                noResults.style.display = 'none';
+                return;
+            }
+            
+            // Search through medications
+            const results = importRestrictions.filter(med => {
+                return med.searchTerms.some(term => term.includes(searchTerm)) ||
+                       med.name.toLowerCase().includes(searchTerm) ||
+                       med.genericName.toLowerCase().includes(searchTerm) ||
+                       med.alternateNames.some(alt => alt.toLowerCase().includes(searchTerm));
+            });
+            
+            if (results.length === 0) {
+                resultsGrid.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            noResults.style.display = 'none';
+            displayRestrictionResults(results, resultsGrid);
+        }
+
+        // Display search results
+        function displayRestrictionResults(results, container) {
+            container.innerHTML = results.map(med => {
+                let statusIcon, statusColor, statusBg;
+                
+                switch(med.status) {
+                    case 'prohibited':
+                        statusIcon = '❌';
+                        statusColor = '#dc3545';
+                        statusBg = '#f8d7da';
+                        break;
+                    case 'permit-required':
+                        statusIcon = '⚠️';
+                        statusColor = '#856404';
+                        statusBg = '#fff3cd';
+                        break;
+                    case 'allowed':
+                        statusIcon = '✅';
+                        statusColor = '#155724';
+                        statusBg = '#d4edda';
+                        break;
+                    case 'controlled-allowed':
+                        statusIcon = '🔶';
+                        statusColor = '#0c5460';
+                        statusBg = '#d1ecf1';
+                        break;
+                }
+                
+                return `
+                    <div class="restriction-card" style="background: ${statusBg}; border: 2px solid ${statusColor}; border-radius: 15px; padding: 25px; margin-bottom: 20px;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                            <div>
+                                <h3 style="color: ${statusColor}; margin: 0; font-size: 1.5rem;">
+                                    ${statusIcon} ${med.name}
+                                </h3>
+                                <p style="color: #666; margin: 5px 0;">
+                                    <em>${med.genericName}</em>
+                                    ${med.alternateNames.length > 0 ? `<br>Also known as: ${med.alternateNames.join(', ')}` : ''}
+                                </p>
+                            </div>
+                            <div style="background: ${statusColor}; color: white; padding: 8px 15px; border-radius: 20px; font-weight: 600;">
+                                ${med.status.replace('-', ' ').toUpperCase()}
+                            </div>
+                        </div>
+                        
+                        ${med.status === 'prohibited' ? `
+                            <div style="background: white; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+                                <h4 style="color: ${statusColor}; margin-bottom: 8px;">⛔ Why Prohibited:</h4>
+                                <p style="margin: 0;">${med.reason}</p>
+                                <p style="color: #dc3545; font-weight: 600; margin-top: 10px;">
+                                    Consequences: ${med.consequences}
+                                </p>
+                            </div>
+                            ${med.alternatives.length > 0 ? `
+                                <div style="background: white; padding: 15px; border-radius: 10px;">
+                                    <h4 style="color: #28a745; margin-bottom: 8px;">✅ Legal Alternatives:</h4>
+                                    <ul style="margin: 0; padding-left: 20px;">
+                                        ${med.alternatives.map(alt => `<li>${alt}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            ` : ''}
+                        ` : ''}
+                        
+                        ${med.status === 'permit-required' ? `
+                            <div style="background: white; padding: 20px; border-radius: 10px;">
+                                <h4 style="color: ${statusColor}; margin-bottom: 15px;">📋 Permit Requirements:</h4>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                                    <div>
+                                        <strong>Permit Type:</strong><br>${med.permitType}
+                                    </div>
+                                    <div>
+                                        <strong>Max Quantity:</strong><br>${med.maxQuantity}
+                                    </div>
+                                    <div>
+                                        <strong>Apply When:</strong><br>${med.applicationTime}
+                                    </div>
+                                </div>
+                                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e9ecef;">
+                                    <strong>Required Documents:</strong>
+                                    <ul style="margin: 5px 0 0 20px;">
+                                        ${med.requiredDocs.map(doc => `<li>${doc}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                        ` : ''}
+                        
+                        ${(med.status === 'allowed' || med.status === 'controlled-allowed') ? `
+                            <div style="background: white; padding: 15px; border-radius: 10px;">
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                                    <div>
+                                        <strong>Max Quantity:</strong><br>${med.maxQuantity}
+                                    </div>
+                                    <div>
+                                        <strong>Conditions:</strong><br>${med.conditions}
+                                    </div>
+                                </div>
+                                ${med.notes ? `
+                                    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e9ecef;">
+                                        <strong>Note:</strong> ${med.notes}
+                                    </div>
+                                ` : ''}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Display all categories when no search term
+        function displayAllCategories(container) {
+            const categories = {
+                prohibited: importRestrictions.filter(m => m.status === 'prohibited'),
+                permitRequired: importRestrictions.filter(m => m.status === 'permit-required'),
+                allowed: importRestrictions.filter(m => m.status === 'allowed' || m.status === 'controlled-allowed')
+            };
+            
+            container.innerHTML = `
+                <div style="background: #f8d7da; border: 2px solid #dc3545; border-radius: 15px; padding: 20px; margin-bottom: 20px;">
+                    <h3 style="color: #dc3545;">❌ Prohibited Medications (${categories.prohibited.length})</h3>
+                    <p style="color: #721c24;">Cannot enter Japan under any circumstances</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
+                        ${categories.prohibited.map(m => `
+                            <button onclick="searchSpecificMed('${m.name}')" 
+                                    style="background: white; border: 1px solid #dc3545; color: #dc3545; 
+                                           padding: 8px 15px; border-radius: 20px; cursor: pointer;
+                                           transition: all 0.3s;">
+                                ${m.name}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div style="background: #fff3cd; border: 2px solid #856404; border-radius: 15px; padding: 20px; margin-bottom: 20px;">
+                    <h3 style="color: #856404;">⚠️ Permit Required (${categories.permitRequired.length})</h3>
+                    <p style="color: #856404;">Allowed with advance permission (4-6 weeks recommended)</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
+                        ${categories.permitRequired.map(m => `
+                            <button onclick="searchSpecificMed('${m.name}')" 
+                                    style="background: white; border: 1px solid #856404; color: #856404; 
+                                           padding: 8px 15px; border-radius: 20px; cursor: pointer;
+                                           transition: all 0.3s;">
+                                ${m.name}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div style="background: #d4edda; border: 2px solid #155724; border-radius: 15px; padding: 20px;">
+                    <h3 style="color: #155724;">✅ Allowed Medications (${categories.allowed.length})</h3>
+                    <p style="color: #155724;">Can bring with conditions (typically 1-2 month supply)</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
+                        ${categories.allowed.map(m => `
+                            <button onclick="searchSpecificMed('${m.name}')" 
+                                    style="background: white; border: 1px solid #155724; color: #155724; 
+                                           padding: 8px 15px; border-radius: 20px; cursor: pointer;
+                                           transition: all 0.3s;">
+                                ${m.name}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Search for specific medication
+        function searchSpecificMed(medName) {
+            document.getElementById('restrictionSearch').value = medName;
+            searchImportRestrictions();
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Display all products initially
+            displayProducts(products);
+            
+            // Initialize restriction categories if on regulations tab
+            if (document.getElementById('restrictionsGrid')) {
+                displayAllCategories(document.getElementById('restrictionsGrid'));
+            }
+        });
+    </script>
+</body>
+</html>
