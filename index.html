@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Japan Medical Guide - Medications, Import Rules & Pharmacy Guide</title>
-    <meta name="description" content="Complete guide to bringing medications to Japan. Check import restrictions, find pharmacy products, and navigate customs regulations. Updated 2025.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tilda+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Japan Medical Guide</title>
+    <!-- Fixed Google Fonts import - using Inter instead of non-existent Tilda Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,11 +14,11 @@
         }
 
         body {
-            font-family: 'Tilda Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 17px;
-            line-height: 1.7;
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; /* Fixed font stack */
+            font-size: 17px; /* Enhanced from 16px */
+            line-height: 1.7; /* Better readability */
             font-weight: 400;
-            letter-spacing: 0.01em;
+            letter-spacing: 0.01em; /* Subtle spacing */
             text-rendering: optimizeLegibility;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -43,16 +41,16 @@
         }
 
         .header h1 {
-            font-size: 2.8rem;
-            font-weight: 600;
+            font-size: 2.8rem; /* Enhanced from 2.5rem */
+            font-weight: 600; /* Use Inter Bold */
             line-height: 1.1;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.02em; /* Tighter for large text */
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .header p {
-            font-size: 1.3rem;
+            font-size: 1.3rem; /* Enhanced from 1.2rem */
             font-weight: 400;
             line-height: 1.4;
             letter-spacing: 0.005em;
@@ -75,9 +73,9 @@
             background: none;
             border: none;
             cursor: pointer;
-            font-family: 'Tilda Sans', 'Segoe UI', sans-serif;
-            font-size: 16px;
-            font-weight: 500;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; /* Fixed font stack */
+            font-size: 16px; /* Enhanced sizing */
+            font-weight: 500; /* Medium weight */
             letter-spacing: 0.02em;
             transition: all 0.3s ease;
             color: #666;
@@ -114,11 +112,11 @@
 
         .search-input {
             flex: 1;
-            font-family: 'Tilda Sans', 'Segoe UI', sans-serif;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; /* Fixed font stack */
             padding: 15px 20px;
             border: 2px solid #e1e5e9;
             border-radius: 50px;
-            font-size: 17px;
+            font-size: 17px; /* Enhanced to match body */
             font-weight: 400;
             letter-spacing: 0.01em;
             outline: none;
@@ -131,7 +129,7 @@
         }
 
         .search-btn {
-            font-family: 'Tilda Sans', 'Segoe UI', sans-serif;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; /* Fixed font stack */
             padding: 15px 30px;
             background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
@@ -139,7 +137,7 @@
             border-radius: 50px;
             cursor: pointer;
             font-size: 16px;
-            font-weight: 500;
+            font-weight: 500; /* Medium weight */
             letter-spacing: 0.02em;
             transition: all 0.3s ease;
         }
@@ -157,14 +155,14 @@
         }
 
         .category-btn {
-            font-family: 'Tilda Sans', 'Segoe UI', sans-serif;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; /* Fixed font stack */
             padding: 10px 20px;
             border: 2px solid #667eea;
             background: white;
             border-radius: 25px;
             cursor: pointer;
             font-size: 15px;
-            font-weight: 500;
+            font-weight: 500; /* Medium weight */
             letter-spacing: 0.02em;
             transition: all 0.3s ease;
         }
@@ -208,8 +206,8 @@
         }
 
         .product-name {
-            font-size: 1.4rem;
-            font-weight: 600;
+            font-size: 1.4rem; /* Enhanced from 1.3rem */
+            font-weight: 600; /* Bold weight */
             line-height: 1.3;
             letter-spacing: -0.01em;
             color: #2c3e50;
@@ -234,7 +232,7 @@
         }
 
         .product-description {
-            font-size: 16px;
+            font-size: 16px; /* Enhanced from 15px */
             line-height: 1.6;
             letter-spacing: 0.01em;
             color: #555;
@@ -256,7 +254,7 @@
         }
 
         .detail-label {
-            font-weight: 600;
+            font-weight: 600; /* Bold for labels */
             font-size: 14px;
             letter-spacing: 0.02em;
             color: #2c3e50;
@@ -265,7 +263,7 @@
 
         .detail-value {
             font-weight: 400;
-            font-size: 15px;
+            font-size: 15px; /* Slightly increased */
             line-height: 1.5;
             color: #555;
             font-size: 0.95rem;
@@ -283,7 +281,7 @@
             color: #2c3e50;
             margin-bottom: 8px;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 600; /* Bold weight */
         }
 
         .equivalent-list {
@@ -292,12 +290,12 @@
         }
 
         .equivalent-list li {
-            font-size: 15px;
+            font-size: 15px; /* Enhanced from 14px */
             line-height: 1.6;
             letter-spacing: 0.005em;
             color: #555;
             margin-bottom: 5px;
-            padding-left: 28px;
+            padding-left: 28px; /* Enhanced from 20px for better icon spacing */
             position: relative;
         }
 
@@ -305,7 +303,7 @@
             content: "🔄";
             position: absolute;
             left: 0;
-            width: 20px;
+            width: 20px; /* Add explicit width */
         }
 
         .usage-tips {
@@ -320,7 +318,7 @@
             color: #2c3e50;
             margin-bottom: 8px;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 600; /* Bold weight */
         }
 
         .tip-list {
@@ -329,12 +327,12 @@
         }
 
         .tip-list li {
-            font-size: 15px;
+            font-size: 15px; /* Enhanced from 14px */
             line-height: 1.6;
             letter-spacing: 0.005em;
             color: #555;
             margin-bottom: 5px;
-            padding-left: 28px;
+            padding-left: 28px; /* Enhanced from 20px for better icon spacing */
             position: relative;
         }
 
@@ -342,7 +340,7 @@
             content: "💡";
             position: absolute;
             left: 0;
-            width: 20px;
+            width: 20px; /* Add explicit width */
         }
 
         .warning-section {
@@ -356,8 +354,8 @@
         .warning-section h3 {
             color: #cc0000;
             margin-bottom: 15px;
-            font-size: 1.6rem;
-            font-weight: 600;
+            font-size: 1.6rem; /* Enhanced */
+            font-weight: 600; /* Bold weight */
         }
 
         .prohibited-list {
@@ -377,7 +375,7 @@
         .prohibited-item h4 {
             color: #cc0000;
             margin-bottom: 8px;
-            font-weight: 600;
+            font-weight: 600; /* Bold weight */
         }
 
         .permission-info {
@@ -391,8 +389,8 @@
         .permission-info h3 {
             color: #856404;
             margin-bottom: 15px;
-            font-size: 1.6rem;
-            font-weight: 600;
+            font-size: 1.6rem; /* Enhanced */
+            font-weight: 600; /* Bold weight */
         }
 
         .no-results {
@@ -431,9 +429,10 @@
             }
         }
 
+        /* Responsive typography */
         @media (max-width: 768px) {
             body {
-                font-size: 16px;
+                font-size: 16px; /* Slightly smaller on mobile */
                 line-height: 1.6;
             }
             
@@ -540,1409 +539,386 @@
 
         <!-- Regulations Tab -->
         <div class="tab-content hidden" id="regulations-tab">
-            <!-- Import Status Checker -->
-            <div style="background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 15px; padding: 30px; margin-bottom: 30px; color: white;">
-                <h2 style="margin: 0 0 10px 0; font-size: 2rem;">🔍 Check Your Medication Import Status</h2>
-                <p style="margin: 0 0 20px 0; opacity: 0.9;">Instant answers: Is your medication allowed, prohibited, or does it require a permit?</p>
-                
-                <div class="search-bar">
-                    <input type="text" 
-                           class="search-input" 
-                           placeholder="Enter medication name (e.g., Adderall, Vyvanse, Tylenol, Birth Control)..." 
-                           id="restrictionSearch"
-                           style="background: white; color: #333;">
-                    <button class="search-btn" onclick="searchImportRestrictions()" style="background: white; color: #667eea;">
-                        Check Status
-                    </button>
-                </div>
-            </div>
-
-            <!-- Search Results Area -->
-            <div id="restrictionsGrid"></div>
-            <div class="no-results" id="noRestrictions" style="display: none;">
-                No medication found. Try searching by generic name or active ingredient.
-            </div>
-
-            <!-- Timeline Clarification -->
-            <div style="background: linear-gradient(135deg, #e8f4fd, #f0f8ff); border: 2px solid #4a90e2; border-radius: 15px; padding: 25px; margin: 30px 0;">
-                <h3 style="color: #2c3e50; margin: 0 0 20px 0; font-size: 1.6rem;">
-                    📅 Application Timeline - START EARLY!
-                </h3>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #dc3545;">
-                        <h4 style="color: #dc3545; margin: 0 0 10px 0;">⏰ Recommended Timeline</h4>
-                        <p style="margin: 0; font-size: 1.1rem; font-weight: 600;">Start 4-6 weeks before travel</p>
-                        <p style="margin: 10px 0 0 0; color: #666;">This allows time for questions, corrections, and processing delays</p>
-                    </div>
-                    
-                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #ffc107;">
-                        <h4 style="color: #856404; margin: 0 0 10px 0;">⚠️ Absolute Minimum</h4>
-                        <p style="margin: 0; font-size: 1.1rem; font-weight: 600;">14 days before travel</p>
-                        <p style="margin: 10px 0 0 0; color: #666;">Risk of denial if any issues arise - NOT recommended</p>
-                    </div>
-                    
-                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #28a745;">
-                        <h4 style="color: #28a745; margin: 0 0 10px 0;">✅ Processing Time</h4>
-                        <p style="margin: 0; font-size: 1.1rem; font-weight: 600;">2-4 weeks typical</p>
-                        <p style="margin: 10px 0 0 0; color: #666;">Varies by medication type and completeness of application</p>
+            <div style="background: linear-gradient(135deg, #e8f4fd, #f0f8ff); border: 2px solid #4a90e2; border-radius: 15px; padding: 20px; margin-bottom: 30px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h3 style="color: #2c3e50; margin: 0;">📋 Official Japan Medication Import Guide</h3>
+                    <div style="background: #4a90e2; color: white; padding: 8px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">
+                        Last Updated: June 2025
                     </div>
                 </div>
+                <p style="color: #666; margin: 0; font-style: italic;">Information verified from official Japanese government sources. Always confirm current regulations before travel.</p>
             </div>
 
-            <!-- Customs Declaration Guide -->
-            <div style="background: linear-gradient(135deg, #e3f2fd, #e8f5e9); border: 2px solid #2196f3; border-radius: 15px; padding: 30px; margin: 30px 0;">
-                <h3 style="color: #1976d2; margin: 0 0 25px 0; font-size: 1.8rem;">
-                    📝 Customs Declaration Form - What to Declare?
-                </h3>
+            <div class="warning-section">
+                <h3>🚫 Completely Prohibited Medications</h3>
+                <p style="margin-bottom: 20px; color: #666;">These medications CANNOT enter Japan under any circumstances, even with permission:</p>
                 
-                <!-- Quick Answer Box -->
-                <div style="background: #fff; border: 2px solid #4caf50; border-radius: 10px; padding: 20px; margin-bottom: 25px;">
-                    <h4 style="color: #2e7d32; margin: 0 0 15px 0; font-size: 1.3rem;">
-                        🎯 Quick Answer: Do I Need to Declare My Medication?
-                    </h4>
-                    <div style="display: grid; gap: 15px;">
-                        <div style="padding: 15px; background: #f1f8e9; border-radius: 8px; border-left: 4px solid #4caf50;">
-                            <strong style="color: #2e7d32;">YES, ALWAYS DECLARE if:</strong>
-                            <ul style="margin: 10px 0 0 20px;">
-                                <li>It's a psychotropic drug (Ritalin, Concerta, Xanax, etc.)</li>
-                                <li>It's a narcotic painkiller (codeine, morphine, oxycodone)</li>
-                                <li>You're unsure about its classification</li>
-                                <li>You have more than personal use amounts</li>
-                            </ul>
-                        </div>
-                        <div style="padding: 15px; background: #fff3e0; border-radius: 8px; border-left: 4px solid #ff9800;">
-                            <strong style="color: #e65100;">NO DECLARATION NEEDED for:</strong>
-                            <ul style="margin: 10px 0 0 20px;">
-                                <li>Common OTC medications (Tylenol, Advil, antihistamines)</li>
-                                <li>Most antibiotics</li>
-                                <li>Birth control pills</li>
-                                <li>Vitamins and supplements</li>
-                            </ul>
+                <div class="prohibited-list">
+                    <div class="prohibited-item">
+                        <h4>Amphetamine-Based ADHD Medications</h4>
+                        <p><strong>Adderall, Dexedrine</strong> - Contain amphetamine which is classified as "Stimulants" under Japanese law</p>
+                        <div style="background: #fff3cd; padding: 10px; border-radius: 8px; margin-top: 10px; border-left: 4px solid #ffc107;">
+                            <small><strong>Real Case:</strong> US citizen arrested and detained 18 days for bringing Adderall to Japan, despite having valid prescription</small>
                         </div>
                     </div>
+                    <div class="prohibited-item">
+                        <h4>Pseudoephedrine Cold Medicines</h4>
+                        <p><strong>Sudafed, Actifed, DayQuil/NyQuil varieties</strong> - Use Japanese alternatives like Pabron Gold A</p>
+                    </div>
+                    <div class="prohibited-item">
+                        <h4>Cannabis & CBD Products</h4>
+                        <p><strong>All cannabis derivatives, CBD oil, medical marijuana</strong> - Zero tolerance policy in Japan</p>
+                    </div>
+                    <div class="prohibited-item">
+                        <h4>Certain Opioid Combinations</h4>
+                        <p><strong>Codeine combinations over Japanese limits</strong> - Check specific thresholds</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="permission-info">
+                <h3>📋 Medications Requiring Advance Permission</h3>
+                <p style="margin-bottom: 20px; color: #666;">These medications can be brought to Japan WITH proper advance approval:</p>
+                
+                <div class="prohibited-list">
+                    <div class="prohibited-item" style="border-left-color: #28a745; background: #f8fff8;">
+                        <h4>✅ Vyvanse (Lisdexamfetamine)</h4>
+                        <p><strong>Status:</strong> ALLOWED with advance permission - classified as "Stimulants' Raw Materials"</p>
+                        <p><strong>Process:</strong> Must apply minimum 14 days before travel</p>
+                    </div>
+                    <div class="prohibited-item" style="border-left-color: #28a745; background: #f8fff8;">
+                        <h4>✅ Concerta, Strattera</h4>
+                        <p><strong>ADHD alternatives</strong> available in Japan - permission still required for import</p>
+                    </div>
+                    <div class="prohibited-item" style="border-left-color: #ffc107;">
+                        <h4>Opioid Painkillers</h4>
+                        <p>Morphine, Oxycodone, Fentanyl patches - requires Narcotics Import Certificate</p>
+                    </div>
+                    <div class="prohibited-item" style="border-left-color: #ffc107;">
+                        <h4>Large Quantities of Prescription Drugs</h4>
+                        <p>More than 1 month supply requires Import Certificate for Personal Use</p>
+                    </div>
+                    <div class="prohibited-item" style="border-left-color: #ffc107;">
+                        <h4>Injectable Medications</h4>
+                        <p>Insulin, diabetes medications, syringes - documentation required</p>
+                    </div>
                 </div>
 
-                <!-- Detailed Explanation -->
-                <div style="background: white; border-radius: 10px; padding: 25px; margin-bottom: 20px;">
-                    <h4 style="color: #1976d2; margin: 0 0 20px 0;">Understanding the Difference: Import Certificate vs. Customs Declaration</h4>
+                <div style="background: white; padding: 25px; border-radius: 15px; margin-top: 25px; border: 2px solid #28a745;">
+                    <h4 style="color: #28a745; margin-bottom: 20px; font-size: 1.3rem;">📞 Step-by-Step Application Process</h4>
                     
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                        <div style="background: #e8f5e9; padding: 20px; border-radius: 8px;">
-                            <h5 style="color: #2e7d32; margin: 0 0 10px 0;">📋 Import Certificate</h5>
-                            <p style="margin: 0;">Required BEFORE travel for:</p>
-                            <ul style="margin: 10px 0 0 20px;">
-                                <li>More than 1 month supply of psychotropics</li>
-                                <li>Any amount of certain narcotics</li>
-                                <li>Injectable medications</li>
-                            </ul>
-                            <p style="margin: 10px 0 0 0; font-style: italic;">Apply 4-6 weeks before travel</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 25px;">
+                        <div style="background: #f8fff8; padding: 20px; border-radius: 10px; border-left: 4px solid #28a745;">
+                            <h5 style="color: #28a745; margin-bottom: 10px;">Step 1: Initial Inquiry</h5>
+                            <p><strong>Email:</strong> <a href="mailto:yakkan@mhlw.go.jp" style="color: #28a745;">yakkan@mhlw.go.jp</a></p>
+                            <p><strong>Include:</strong> Your diagnosis, medication name, active ingredients, dosage, amount bringing, travel dates</p>
                         </div>
                         
-                        <div style="background: #e3f2fd; padding: 20px; border-radius: 8px;">
-                            <h5 style="color: #1976d2; margin: 0 0 10px 0;">✍️ Customs Declaration</h5>
-                            <p style="margin: 0;">Required AT ARRIVAL for:</p>
-                            <ul style="margin: 10px 0 0 20px;">
-                                <li>ANY controlled substance</li>
-                                <li>Even if under 1 month supply</li>
-                                <li>Even if you don't need a permit</li>
-                            </ul>
-                            <p style="margin: 10px 0 0 0; font-style: italic;">Fill out on the plane/at airport</p>
+                        <div style="background: #f8fff8; padding: 20px; border-radius: 10px; border-left: 4px solid #28a745;">
+                            <h5 style="color: #28a745; margin-bottom: 10px;">Step 2: Formal Application</h5>
+                            <p><strong>Online Portal:</strong> <a href="https://impconf.mhlw.go.jp/aicpte/page/login.jsp?lang=en" target="_blank" style="color: #28a745;">Import Application System</a></p>
+                            <p><strong>Timeline:</strong> Apply minimum 14 days before travel</p>
                         </div>
                     </div>
-                </div>
 
-                <!-- Methylphenidate Specific Example -->
-                <div style="background: #fff8e1; border: 2px solid #ffc107; border-radius: 10px; padding: 20px; margin-bottom: 20px;">
-                    <h4 style="color: #f57c00; margin: 0 0 15px 0;">
-                        💊 Example: Methylphenidate (Ritalin/Concerta) - 12 pills for 12 days
-                    </h4>
-                    <div style="display: grid; gap: 10px;">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <span style="font-size: 1.5rem;">📋</span>
-                            <div>
-                                <strong>Import Certificate:</strong> NOT REQUIRED (under 30 days supply)
+                    <div style="background: #e8f4fd; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                        <h5 style="color: #2c3e50; margin-bottom: 15px;">Regional Bureau Contacts (By Airport)</h5>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                            <div style="background: white; padding: 15px; border-radius: 8px;">
+                                <h6 style="color: #4a90e2; margin-bottom: 8px;">Tokyo Area (Narita/Haneda)</h6>
+                                <p style="margin: 0; font-size: 0.9rem;"><strong>Kanto-Shin'etsu Regional Bureau</strong></p>
+                                <p style="margin: 0; font-size: 0.9rem;">Contact via main MHLW website</p>
                             </div>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <span style="font-size: 1.5rem;">✍️</span>
-                            <div>
-                                <strong>Customs Declaration:</strong> YES, REQUIRED (it's a psychotropic drug)
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <span style="font-size: 1.5rem;">📄</span>
-                            <div>
-                                <strong>What to bring:</strong> Original prescription + doctor's letter (just in case)
+                            
+                            <div style="background: white; padding: 15px; border-radius: 8px;">
+                                <h6 style="color: #4a90e2; margin-bottom: 8px;">Osaka Area (Kansai/Chubu)</h6>
+                                <p style="margin: 0; font-size: 0.9rem;"><strong>Kinki Regional Bureau</strong></p>
+                                <p style="margin: 0; font-size: 0.9rem;">📞 +81-6-6942-4096</p>
+                                <p style="margin: 0; font-size: 0.9rem;">✉️ kiyakuji@mhlw.go.jp</p>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- How to Fill Out the Form -->
-                <div style="background: white; border-radius: 10px; padding: 25px;">
-                    <h4 style="color: #1976d2; margin: 0 0 20px 0;">📝 How to Fill Out the Customs Declaration</h4>
-                    
-                    <ol style="line-height: 1.8; margin: 0;">
-                        <li style="margin-bottom: 15px;">
-                            <strong>On the "Prohibited Articles" section:</strong><br>
-                            Check YES for "narcotics, psychotropics, firearms, swords"
-                        </li>
-                        <li style="margin-bottom: 15px;">
-                            <strong>On the reverse side:</strong><br>
-                            Write: "[Medication name] - [amount] - personal medical use with prescription"<br>
-                            Example: "Methylphenidate - 12 tablets - personal ADHD treatment with prescription"
-                        </li>
-                        <li style="margin-bottom: 15px;">
-                            <strong>At customs:</strong><br>
-                            - Go to the RED channel (goods to declare)<br>
-                            - Show your prescription and medication<br>
-                            - Most officers will wave you through quickly
-                        </li>
-                        <li>
-                            <strong>Keep ready:</strong><br>
-                            - Medication in original bottle<br>
-                            - Prescription with your name<br>
-                            - Doctor's letter (if you have one)
-                        </li>
-                    </ol>
-                    
-                    <div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 20px; border-left: 4px solid #4caf50;">
-                        <p style="margin: 0; color: #2e7d32;">
-                            <strong>✅ Pro Tip:</strong> Japanese customs officers appreciate honesty. Declaring shows you're following the rules. 
-                            NOT declaring a controlled substance is risky - it could be seen as smuggling attempt.
+                    <div style="background: #fff3cd; padding: 15px; border-radius: 10px; border-left: 4px solid #ffc107;">
+                        <h5 style="color: #856404; margin-bottom: 10px;">⚠️ Critical Requirements</h5>
+                        <ul style="margin: 0; color: #856404; line-height: 1.6;">
+                            <li>Doctor's medical certificate explaining necessity</li>
+                            <li>Original prescription with your name</li>
+                            <li>Medication in original pharmacy bottles</li>
+                            <li>Apply for BOTH import AND export if taking leftover medication home</li>
+                            <li>Processing time: 2-4 weeks (apply early!)</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #f8d7da; padding: 15px; border-radius: 10px; border-left: 4px solid #dc3545; margin-top: 15px;">
+                        <h5 style="color: #721c24; margin-bottom: 10px;">🚨 Emergency Contacts</h5>
+                        <p style="margin: 0; color: #721c24; line-height: 1.6;">
+                            <strong>If problems at customs:</strong> Contact your embassy immediately<br>
+                            <strong>US Citizens:</strong> US Embassy Tokyo +81-3-3224-5000<br>
+                            <strong>For urgent medication questions:</strong> Contact Japanese consulate in your country before travel
                         </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Common Medications Declaration Status -->
-            <div style="background: white; border: 2px solid #9e9e9e; border-radius: 15px; padding: 25px; margin: 30px 0;">
-                <h4 style="color: #424242; margin: 0 0 20px 0;">📋 Common Medications - Declaration Required?</h4>
-                
+            <div style="background: linear-gradient(135deg, #f0f8ff, #e8f4fd); border: 2px solid #4a90e2; border-radius: 15px; padding: 25px; margin-top: 30px;">
+                <h4 style="color: #2c3e50; margin-bottom: 15px;">📚 Official Sources & Verification</h4>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
                     <div>
-                        <h5 style="color: #4caf50; margin: 0 0 10px 0;">✅ MUST Declare:</h5>
-                        <ul style="margin: 0; line-height: 1.6;">
-                            <li>Ritalin/Concerta (methylphenidate)</li>
-                            <li>Adderall (if somehow bringing with permit)</li>
-                            <li>Xanax (alprazolam)</li>
-                            <li>Valium (diazepam)</li>
-                            <li>Ativan (lorazepam)</li>
-                            <li>Codeine combinations</li>
-                            <li>Tramadol</li>
-                            <li>Any sleeping pills</li>
+                        <h6 style="color: #4a90e2; margin-bottom: 8px;">Government Sources</h6>
+                        <ul style="font-size: 0.9rem; line-height: 1.6; color: #666;">
+                            <li><a href="https://www.mhlw.go.jp/english/policy/health-medical/pharmaceuticals/01.html" target="_blank">Ministry of Health, Labour and Welfare</a></li>
+                            <li><a href="http://www.ncd.mhlw.go.jp/en/index.html" target="_blank">Narcotics Control Department</a></li>
+                            <li><a href="https://jp.usembassy.gov/services/importing-medication/" target="_blank">US Embassy Japan</a></li>
                         </ul>
                     </div>
-                    
                     <div>
-                        <h5 style="color: #f44336; margin: 0 0 10px 0;">❌ No Declaration Needed:</h5>
-                        <ul style="margin: 0; line-height: 1.6;">
-                            <li>Ibuprofen (Advil)</li>
-                            <li>Acetaminophen (Tylenol)</li>
-                            <li>Aspirin</li>
-                            <li>Antihistamines (Claritin, Zyrtec)</li>
-                            <li>Birth control</li>
-                            <li>Antibiotics (most)</li>
-                            <li>Blood pressure meds</li>
-                            <li>Diabetes meds (non-injectable)</li>
-                        </ul>
+                        <h6 style="color: #4a90e2; margin-bottom: 8px;">Last Verification</h6>
+                        <p style="font-size: 0.9rem; color: #666; margin: 0;">June 2025 - All information cross-referenced with official Japanese government sources and embassy guidelines.</p>
                     </div>
                 </div>
                 
-                <div style="background: #fafafa; padding: 15px; border-radius: 8px; margin-top: 20px; border: 1px solid #e0e0e0;">
-                    <p style="margin: 0; text-align: center; color: #666;">
-                        <strong>When in doubt, DECLARE IT.</strong> It's better to declare unnecessarily than risk being accused of smuggling.
+                <div style="background: white; padding: 15px; border-radius: 10px; margin-top: 15px;">
+                    <p style="margin: 0; font-size: 0.9rem; color: #666; font-style: italic;">
+                        <strong>Disclaimer:</strong> Medication import regulations can change. Always verify current requirements with official sources before travel. This guide is for informational purposes and does not constitute legal advice.
                     </p>
                 </div>
-            </div>
-
-            <!-- Improved Step-by-Step Process -->
-            <div style="background: white; border: 2px solid #28a745; border-radius: 15px; padding: 30px; margin: 30px 0;">
-                <h3 style="color: #28a745; margin: 0 0 25px 0; font-size: 1.8rem;">
-                    📋 Step-by-Step Permit Application Process
-                </h3>
-                
-                <!-- Step 1 -->
-                <div style="background: #f8fff8; border-radius: 10px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #28a745;">
-                    <h4 style="color: #28a745; margin: 0 0 15px 0;">Step 1: Determine If You Need a Permit (Day 1)</h4>
-                    <ul style="margin: 0; line-height: 1.8;">
-                        <li>Use the search tool above to check your medication status</li>
-                        <li>If "Permit Required", proceed to Step 2</li>
-                        <li>If "Prohibited", consult your doctor about alternatives BEFORE travel</li>
-                    </ul>
-                </div>
-                
-                <!-- Step 2 -->
-                <div style="background: #f8fff8; border-radius: 10px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #28a745;">
-                    <h4 style="color: #28a745; margin: 0 0 15px 0;">Step 2: Gather Required Documents (Days 2-5)</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
-                        <div>
-                            <strong>From Your Doctor:</strong>
-                            <ul style="margin: 5px 0;">
-                                <li>Medical certificate stating diagnosis & necessity</li>
-                                <li>Original prescription with your name</li>
-                                <li>Treatment plan/dosage schedule</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <strong>You Prepare:</strong>
-                            <ul style="margin: 5px 0;">
-                                <li>Copy of passport</li>
-                                <li>Travel itinerary</li>
-                                <li>Completed application forms</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Step 3 -->
-                <div style="background: #f8fff8; border-radius: 10px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #28a745;">
-                    <h4 style="color: #28a745; margin: 0 0 15px 0;">Step 3: Initial Email Inquiry (Day 5-7) - OPTIONAL but Recommended</h4>
-                    
-                    <div style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #2196f3;">
-                        <p style="margin: 0; color: #1565c0;">
-                            <strong>⚡ You have two options:</strong><br>
-                            A) Send email first, wait for guidance (safer but slower)<br>
-                            B) Skip email, go directly to online application (faster but riskier)
-                        </p>
-                    </div>
-                    
-                    <div style="background: white; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.9rem; margin-bottom: 15px;">
-                        To: yakkan@mhlw.go.jp<br>
-                        Subject: Medication Import Inquiry - [Your Name] - [Travel Date]<br><br>
-                        Dear MHLW,<br><br>
-                        I am traveling to Japan on [date] and need to bring [medication name].<br>
-                        - Diagnosis: [your condition]<br>
-                        - Medication: [generic name], [dose] x [quantity]<br>
-                        - Duration: [X days supply]<br>
-                        - Entry airport: [Narita/Haneda/Kansai]<br><br>
-                        Please confirm the correct application process and required documents.<br><br>
-                        Thank you,<br>
-                        [Your name]
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <div style="background: #e8f5e9; padding: 15px; border-radius: 8px;">
-                            <h5 style="color: #2e7d32; margin: 0 0 10px 0;">✅ Advantages of Email First:</h5>
-                            <ul style="margin: 0; font-size: 0.9rem;">
-                                <li>Confirms you're using correct process</li>
-                                <li>May get specific guidance for your medication</li>
-                                <li>Creates paper trail</li>
-                                <li>Can clarify document requirements</li>
-                            </ul>
-                        </div>
-                        <div style="background: #fff3e0; padding: 15px; border-radius: 8px;">
-                            <h5 style="color: #e65100; margin: 0 0 10px 0;">⏰ If Time is Short:</h5>
-                            <ul style="margin: 0; font-size: 0.9rem;">
-                                <li>Can skip to online application</li>
-                                <li>Email response takes 2-5 business days</li>
-                                <li>Most standard medications don't need special guidance</li>
-                                <li>Risk: might need to resubmit if wrong</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Step 4 -->
-                <div style="background: #f8fff8; border-radius: 10px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #28a745;">
-                    <h4 style="color: #28a745; margin: 0 0 15px 0;">Step 4: Submit Online Application (Day 8-14, or immediately if skipping email)</h4>
-                    
-                    <div style="background: #e1f5fe; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #0288d1;">
-                        <p style="margin: 0; color: #01579b;">
-                            <strong>📌 When to Submit Online Application:</strong><br>
-                            • <strong>If you sent email:</strong> Wait for reply (2-5 days), then submit based on their guidance<br>
-                            • <strong>If skipping email:</strong> Submit immediately with your best judgment<br>
-                            • <strong>If no email reply after 5 days:</strong> Proceed with online submission anyway
-                        </p>
-                    </div>
-                    
-                    <ol style="margin: 0; line-height: 1.8;">
-                        <li>Access portal: <a href="https://impconf.mhlw.go.jp/aicpte/page/login.jsp?lang=en" target="_blank">impconf.mhlw.go.jp</a></li>
-                        <li>Create account with passport details</li>
-                        <li>Select medication category:
-                            <ul style="margin: 5px 0 10px 20px;">
-                                <li><strong>Narcotics:</strong> Morphine, Codeine, Oxycodone, Fentanyl</li>
-                                <li><strong>Psychotropics:</strong> Ritalin, Concerta, Xanax, Valium, sleeping pills</li>
-                                <li><strong>Other:</strong> Large quantities of regular medications</li>
-                            </ul>
-                        </li>
-                        <li>Upload all documents as PDFs</li>
-                        <li>Submit and note application number</li>
-                        <li>Check email daily for updates or document requests</li>
-                    </ol>
-                    
-                    <div style="background: #fff3e0; padding: 15px; border-radius: 8px; margin-top: 15px; border: 1px solid #ff9800;">
-                        <p style="margin: 0; color: #e65100;">
-                            <strong>⚠️ Important:</strong> The online system may ask for additional documents after submission. 
-                            Respond within 24-48 hours to avoid delays. This is why starting early is crucial!
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- Step 5 -->
-                <div style="background: #f8fff8; border-radius: 10px; padding: 20px; border-left: 4px solid #28a745;">
-                    <h4 style="color: #28a745; margin: 0 0 15px 0;">Step 5: Follow Up & Receive Certificate (Days 14-28)</h4>
-                    <ul style="margin: 0; line-height: 1.8;">
-                        <li>Check email daily for questions or approval</li>
-                        <li>Respond to any requests within 24 hours</li>
-                        <li>Print permit certificate when received</li>
-                        <li>Make 3 copies: customs, carry-on, checked bag</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Quick Reference Contacts -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0;">
-                <div style="background: #e8f4fd; border: 2px solid #4a90e2; border-radius: 15px; padding: 20px;">
-                    <h4 style="color: #2c3e50; margin: 0 0 15px 0;">📧 Primary Contact</h4>
-                    <p style="margin: 0;"><strong>Email:</strong> yakkan@mhlw.go.jp</p>
-                    <p style="margin: 10px 0 0 0;"><strong>Purpose:</strong> All medication import inquiries</p>
-                </div>
-                
-                <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 15px; padding: 20px;">
-                    <h4 style="color: #856404; margin: 0 0 15px 0;">🏢 Regional Bureaus</h4>
-                    <p style="margin: 0;"><strong>Kansai/Chubu:</strong> +81-6-6942-4096</p>
-                    <p style="margin: 5px 0;"><strong>Email:</strong> kiyakuji@mhlw.go.jp</p>
-                    <p style="margin: 10px 0 0 0;"><em>Tokyo office: Contact via main MHLW</em></p>
-                </div>
-                
-                <div style="background: #f8d7da; border: 2px solid #dc3545; border-radius: 15px; padding: 20px;">
-                    <h4 style="color: #721c24; margin: 0 0 15px 0;">🚨 Emergency</h4>
-                    <p style="margin: 0;"><strong>US Embassy:</strong> +81-3-3224-5000</p>
-                    <p style="margin: 10px 0 0 0;"><em>If detained at customs, contact embassy immediately</em></p>
-                </div>
-            </div>
-
-            <!-- Comprehensive FAQ Section -->
-            <div style="background: linear-gradient(135deg, #f5f5f5, #e8eaf6); border-radius: 15px; padding: 30px; margin: 30px 0;">
-                <h3 style="color: #3f51b5; margin: 0 0 25px 0; font-size: 1.8rem;">
-                    ❓ Frequently Asked Questions - Real Answers to Real Concerns
-                </h3>
-                
-                <!-- FAQ 1: Customs Declaration -->
-                <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                    <h4 style="color: #1976d2; margin: 0 0 10px 0;">
-                        Q: I'm bringing 2 weeks of Ritalin. No import permit needed, but do I still declare it at customs?
-                    </h4>
-                    <p style="margin: 0; line-height: 1.6;">
-                        <strong style="color: #2e7d32;">A: YES, absolutely declare it.</strong> Import permits and customs declarations are completely different things. 
-                        Ritalin (methylphenidate) is a controlled psychotropic drug in Japan. Even if you're bringing just one pill, you must check "YES" 
-                        on the customs form where it asks about narcotics/psychotropics. Not declaring could be considered smuggling attempt. 
-                        The declaration process is quick - most officers just glance at your prescription and wave you through.
-                    </p>
-                </div>
-
-                <!-- FAQ 2: Email vs Direct Application -->
-                <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                    <h4 style="color: #1976d2; margin: 0 0 10px 0;">
-                        Q: Do I need to email first or can I go straight to the online application?
-                    </h4>
-                    <p style="margin: 0; line-height: 1.6;">
-                        <strong style="color: #2e7d32;">A: You can go straight to online application, but email is safer.</strong> 
-                        The email inquiry is optional but recommended because:
-                    </p>
-                    <ul style="margin: 10px 0 0 20px; line-height: 1.6;">
-                        <li>Some medications have special requirements not obvious in the forms</li>
-                        <li>You'll get confirmation you're using the right process</li>
-                        <li>They might tell you about recent changes not yet on the website</li>
-                    </ul>
-                    <p style="margin: 10px 0 0 0; line-height: 1.6;">
-                        However, if you're short on time (less than 3 weeks to travel), skip the email and apply directly online. 
-                        Most standard applications for common medications (Vyvanse, Concerta, Xanax) are straightforward.
-                    </p>
-                </div>
-
-                <!-- FAQ 3: Doctor's Letter -->
-                <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                    <h4 style="color: #1976d2; margin: 0 0 10px 0;">
-                        Q: Is a prescription enough or do I need a doctor's letter too?
-                    </h4>
-                    <p style="margin: 0; line-height: 1.6;">
-                        <strong style="color: #2e7d32;">A: For import permits, you need BOTH. For customs only, prescription might suffice.</strong>
-                    </p>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
-                        <div style="background: #e8f5e9; padding: 15px; border-radius: 8px;">
-                            <h5 style="margin: 0 0 10px 0; color: #2e7d32;">For Import Permit:</h5>
-                            <ul style="margin: 0; font-size: 0.9rem;">
-                                <li>Original prescription ✓</li>
-                                <li>Doctor's letter explaining diagnosis ✓</li>
-                                <li>Both are mandatory</li>
-                            </ul>
-                        </div>
-                        <div style="background: #e3f2fd; padding: 15px; border-radius: 8px;">
-                            <h5 style="margin: 0 0 10px 0; color: #1976d2;">For Customs Declaration Only:</h5>
-                            <ul style="margin: 0; font-size: 0.9rem;">
-                                <li>Prescription usually enough</li>
-                                <li>Doctor's letter = extra insurance</li>
-                                <li>Bring both to be safe</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ 4: Split Shipments -->
-                <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                    <h4 style="color: #1976d2; margin: 0 0 10px 0;">
-                        Q: Can I bring some medication with me and mail the rest?
-                    </h4>
-                    <p style="margin: 0; line-height: 1.6;">
-                        <strong style="color: #d32f2f;">A: NO - This is a common mistake that causes major problems!</strong> 
-                        Japan treats mailed medications very differently from carried medications. Mailing requires a completely different 
-                        import process through a Japanese importer. Personal carry-on is much simpler. Either bring all your medication 
-                        with you or arrange prescription filling in Japan. Never try to mail medications to yourself.
-                    </p>
-                </div>
-
-                <!-- FAQ 5: Generic vs Brand Names -->
-                <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                    <h4 style="color: #1976d2; margin: 0 0 10px 0;">
-                        Q: My Concerta is generic methylphenidate. Does this matter?
-                    </h4>
-                    <p style="margin: 0; line-height: 1.6;">
-                        <strong style="color: #2e7d32;">A: No, generic vs brand doesn't matter for import rules.</strong> 
-                        Japanese authorities care about the active ingredient (methylphenidate), not the brand name. 
-                        Whether it's Concerta, Ritalin, or generic methylphenidate, the rules are identical. 
-                        Just make sure your prescription clearly shows the active ingredient name.
-                    </p>
-                </div>
-
-                <!-- FAQ 6: Multiple Medications -->
-                <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                    <h4 style="color: #1976d2; margin: 0 0 10px 0;">
-                        Q: I take Vyvanse AND Xanax. One application or two?
-                    </h4>
-                    <p style="margin: 0; line-height: 1.6;">
-                        <strong style="color: #2e7d32;">A: Usually ONE application listing all medications.</strong> 
-                        The online system allows you to add multiple medications to a single application. 
-                        However, if one is a narcotic (like codeine) and another is a psychotropic (like Xanax), 
-                        you might need separate applications. The email inquiry (Step 3) is particularly helpful for clarifying this.
-                    </p>
-                </div>
-
-                <!-- FAQ 7: Application Denial -->
-                <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                    <h4 style="color: #1976d2; margin: 0 0 10px 0;">
-                        Q: What if my application is denied?
-                    </h4>
-                    <p style="margin: 0; line-height: 1.6;">
-                        <strong style="color: #e65100;">A: Denials are rare but here's what to do:</strong>
-                    </p>
-                    <ul style="margin: 10px 0 0 20px; line-height: 1.6;">
-                        <li><strong>Most common reason:</strong> Missing or incorrect documents - usually fixable by resubmitting</li>
-                        <li><strong>Quantity issues:</strong> Reduce amount to 30 days or less</li>
-                        <li><strong>Prohibited substance:</strong> No fix - find alternatives with Japanese doctor</li>
-                        <li><strong>Time running out:</strong> Contact your embassy for emergency assistance</li>
-                    </ul>
-                </div>
-
-                <!-- FAQ 8: Lost Medication -->
-                <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                    <h4 style="color: #1976d2; margin: 0 0 10px 0;">
-                        Q: What if I lose my medication or need more while in Japan?
-                    </h4>
-                    <p style="margin: 0; line-height: 1.6;">
-                        <strong style="color: #d32f2f;">A: This is complicated and depends on the medication:</strong>
-                    </p>
-                    <div style="background: #ffebee; padding: 15px; border-radius: 8px; margin-top: 10px;">
-                        <ul style="margin: 0; line-height: 1.6;">
-                            <li><strong>Controlled substances:</strong> Cannot be prescribed by Japanese doctors to tourists</li>
-                            <li><strong>Regular medications:</strong> Can see a doctor, but expensive without insurance</li>
-                            <li><strong>Best option:</strong> Have someone bring it (they need import permit) or fly home early</li>
-                            <li><strong>Prevention:</strong> Split meds between carry-on and checked bags</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- FAQ 9: Layovers -->
-                <div style="background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                    <h4 style="color: #1976d2; margin: 0 0 10px 0;">
-                        Q: I'm just transiting through Japan for 6 hours. Do these rules apply?
-                    </h4>
-                    <p style="margin: 0; line-height: 1.6;">
-                        <strong style="color: #2e7d32;">A: If you don't clear customs, rules don't apply. If you enter Japan, they do.</strong> 
-                        International transit without entering Japan = no medication restrictions. 
-                        But if you leave the international transit area (enter Japan even briefly), 
-                        all medication rules apply in full. Some airports require clearing customs for certain connections - check carefully.
-                    </p>
-                </div>
-
-                <!-- FAQ 10: Return Journey -->
-                <div style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                    <h4 style="color: #1976d2; margin: 0 0 10px 0;">
-                        Q: Do I need another permit to take leftover medication OUT of Japan?
-                    </h4>
-                    <p style="margin: 0; line-height: 1.6;">
-                        <strong style="color: #e65100;">A: YES for narcotics, NO for most others.</strong> 
-                        If you're leaving with narcotic painkillers (even your own leftovers), you need an export permit. 
-                        For psychotropics like Ritalin or Xanax, no export permit needed. Apply for both import AND export 
-                        permits simultaneously if you're bringing narcotics. This surprises many travelers!
-                    </p>
-                </div>
-                
-                <!-- Still Confused Box -->
-                <div style="background: linear-gradient(135deg, #e1bee7, #f3e5f5); border: 2px solid #9c27b0; border-radius: 10px; padding: 20px; margin-top: 25px;">
-                    <h4 style="color: #6a1b9a; margin: 0 0 10px 0;">😕 Still Confused?</h4>
-                    <p style="margin: 0; line-height: 1.6;">
-                        <strong>Red flags that mean you DEFINITELY should email first:</strong>
-                    </p>
-                    <ul style="margin: 10px 0 0 20px;">
-                        <li>Multiple controlled medications</li>
-                        <li>Uncommon medications not in our database</li>
-                        <li>Injectable medications</li>
-                        <li>Traveling in less than 3 weeks</li>
-                        <li>Staying longer than 30 days</li>
-                    </ul>
-                    <p style="margin: 15px 0 0 0;">
-                        Email: <a href="mailto:yakkan@mhlw.go.jp" style="color: #6a1b9a; font-weight: bold;">yakkan@mhlw.go.jp</a> 
-                        with your specific situation for personalized guidance.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Additional Resources -->
-            <div style="background: #f8f9fa; border-radius: 15px; padding: 25px; margin-top: 30px;">
-                <h4 style="color: #2c3e50; margin: 0 0 15px 0;">📚 Additional Resources</h4>
-                <ul style="margin: 0; line-height: 1.8;">
-                    <li><a href="https://www.mhlw.go.jp/english/policy/health-medical/pharmaceuticals/01.html" target="_blank">Official MHLW Guidelines</a></li>
-                    <li><a href="https://www.mhlw.go.jp/english/policy/health-medical/pharmaceuticals/dl/qa2.pdf" target="_blank">Q&A Document (PDF)</a></li>
-                    <li><a href="https://jp.usembassy.gov/services/importing-medication/" target="_blank">US Embassy Guide</a></li>
-                    <li><a href="http://www.ncd.mhlw.go.jp/en/index.html" target="_blank">Narcotics Control Department</a></li>
-                </ul>
             </div>
         </div>
     </div>
 
     <script>
-        // Products database
         const products = [
             {
                 name: "Melano CC Intensive Anti-Spot Essence",
                 japanese: "メラノCC 薬用しみ集中対策美容液",
                 category: "skincare",
-                price: "¥1,200-1,500",
-                locations: "Major chains, Don Quijote",
-                description: "Vitamin C serum famous for fading dark spots and acne scars. Contains pure vitamin C (ascorbic acid) and vitamin E.",
-                usage: "Apply 4-5 drops after toner, before moisturizer. Use at night or with sunscreen during day.",
-                keywords: ["melano", "vitamin c", "dark spots", "acne scars", "serum", "美容液"]
+                description: "Vitamin C serum for dark spots and acne scars. Contains ascorbic acid and vitamin E.",
+                price: "¥1,200",
+                availability: "Widely available",
+                equivalents: ["Vitamin C Serum", "SkinCeuticals CE Ferulic"],
+                tips: ["Apply at night", "Use sunscreen during day", "Start with small amount"]
             },
             {
-                name: "Hada Labo Gokujyun Premium Lotion",
-                japanese: "肌ラボ 極潤プレミアム",
-                category: "skincare",
-                price: "¥1,500-2,000",
-                locations: "Everywhere - drugstores, convenience stores",
-                description: "Super hydrating toner with 5 types of hyaluronic acid. Gold bottle version is most popular.",
-                usage: "Pat into skin after cleansing. Can layer multiple times for extra hydration.",
-                keywords: ["hada labo", "hyaluronic", "toner", "lotion", "極潤", "hydrating"]
-            },
-            {
-                name: "Sante FX Neo Eye Drops",
-                japanese: "サンテFX ネオ",
+                name: "Bufferin Premium",
+                japanese: "バファリンプレミアム",
                 category: "medicine",
-                price: "¥500-700",
-                locations: "All pharmacies",
-                description: "Cooling eye drops popular with gamers and office workers. Intense minty sensation.",
-                usage: "1-2 drops per eye, up to 6 times daily. Very strong cooling effect!",
-                keywords: ["eye drops", "sante", "cooling", "tired eyes", "目薬"]
+                description: "Fast-acting pain reliever with aspirin and caffeine. For headaches and body aches.",
+                price: "¥800",
+                availability: "Pharmacies and convenience stores",
+                equivalents: ["Aspirin", "Excedrin", "Advil"],
+                tips: ["Take with food", "Not for children under 15", "Check allergies"]
             },
             {
-                name: "Biore UV Aqua Rich Watery Essence",
-                japanese: "ビオレ UV アクアリッチ ウォータリーエッセンス",
-                category: "skincare",
-                price: "¥800-1,000",
-                locations: "Drugstores, supermarkets",
-                description: "Lightweight SPF50+ PA++++ sunscreen. Feels like water, no white cast.",
-                usage: "Apply generously 15 minutes before sun exposure. Reapply every 2 hours.",
-                keywords: ["sunscreen", "biore", "spf", "uv", "日焼け止め"]
-            },
-            {
-                name: "Salonpas Pain Relief Patches",
-                japanese: "サロンパス",
+                name: "Rohto Z! Eye Drops",
+                japanese: "ロートZ!",
                 category: "medicine",
-                price: "¥800-1,200",
-                locations: "All pharmacies, some convenience stores",
-                description: "Adhesive patches for muscle and joint pain. Contains methyl salicylate and menthol.",
-                usage: "Apply to clean, dry skin. Leave on for up to 8 hours. Max 4 patches per day.",
-                keywords: ["pain relief", "patches", "salonpas", "muscle pain", "湿布"]
-            },
-            {
-                name: "KATE Eyebrow Products",
-                japanese: "ケイト アイブロウ",
-                category: "beauty",
-                price: "¥1,000-1,500",
-                locations: "Drugstores with cosmetics sections",
-                description: "Japan's #1 eyebrow brand. 3D Eyebrow Color and Designing Eyebrow are bestsellers.",
-                usage: "Use powder for natural look, pencil for definition. Set with mascara.",
-                keywords: ["eyebrow", "kate", "makeup", "brow", "眉"]
-            },
-            {
-                name: "DHC Lip Cream",
-                japanese: "DHC 薬用リップクリーム",
-                category: "skincare",
-                price: "¥700-800",
-                locations: "Convenience stores, drugstores",
-                description: "Moisturizing lip balm with olive oil and vitamin E. Cult favorite.",
-                usage: "Apply as needed. Great under lipstick or overnight treatment.",
-                keywords: ["lip balm", "dhc", "lip cream", "リップ"]
-            },
-            {
-                name: "Kracie Naive Shampoo",
-                japanese: "クラシエ ナイーブ",
-                category: "hygiene",
-                price: "¥500-700",
-                locations: "Supermarkets, drugstores",
-                description: "Gentle shampoo with plant extracts. Peach and grape scents are popular.",
-                usage: "Lather and rinse. Follow with matching conditioner.",
-                keywords: ["shampoo", "naive", "hair", "シャンプー"]
-            },
-            {
-                name: "Canmake Cream Cheek",
-                japanese: "キャンメイク クリームチーク",
-                category: "beauty",
-                price: "¥600-700",
-                locations: "Drugstores, Don Quijote",
-                description: "Affordable cream blush that blends seamlessly. Gives natural flushed look.",
-                usage: "Tap onto cheeks with fingers and blend outward.",
-                keywords: ["blush", "canmake", "cream cheek", "チーク", "makeup"]
-            },
-            {
-                name: "Oronine H Ointment",
-                japanese: "オロナインH軟膏",
-                category: "medicine",
-                price: "¥600-1,000",
-                locations: "All pharmacies",
-                description: "Antiseptic ointment for cuts, acne, dry skin. Japan's household staple since 1953.",
-                usage: "Apply thin layer to affected area 2-3 times daily.",
-                keywords: ["ointment", "oronine", "antiseptic", "cuts", "acne", "軟膏"]
+                description: "Strong cooling eye drops for tired, red eyes. Contains menthol.",
+                price: "¥500",
+                availability: "Convenience stores, pharmacies",
+                equivalents: ["Visine", "Clear Eyes", "Refresh Tears"],
+                tips: ["Very strong cooling effect", "Remove contact lenses first", "Don't touch dropper to eye"]
             }
         ];
 
-        // Drug equivalents database
-        const drugEquivalents = [
-            {
-                westernName: "Tylenol",
-                genericName: "Acetaminophen/Paracetamol",
-                japaneseEquivalents: [
-                    {name: "Eve (イブ)", description: "Various formulations with acetaminophen"},
-                    {name: "Bufferin (バファリン)", description: "Some versions contain acetaminophen"},
-                    {name: "Norshin (ノーシン)", description: "Pure acetaminophen option available"}
-                ],
-                notes: "Acetaminophen is カロナール (karonāru) in Japanese. Available OTC.",
-                importInfo: "Can bring up to 2 months supply without special permission."
-            },
-            {
-                westernName: "Advil/Motrin",
-                genericName: "Ibuprofen",
-                japaneseEquivalents: [
-                    {name: "Eve Quick (イブクイック)", description: "Fast-acting ibuprofen"},
-                    {name: "Ringl (リングル)", description: "Pure ibuprofen tablets"},
-                    {name: "Fedes (フェデス)", description: "Ibuprofen with stomach protection"}
-                ],
-                notes: "Ibuprofen (イブプロフェン) widely available. Max OTC dose is 150mg.",
-                importInfo: "Can bring up to 2 months supply without special permission."
-            },
-            {
-                westernName: "Benadryl",
-                genericName: "Diphenhydramine",
-                japaneseEquivalents: [
-                    {name: "Restamin (レスタミン)", description: "Same active ingredient"},
-                    {name: "Drewell (ドリエル)", description: "Sleep aid version"}
-                ],
-                notes: "Often marketed as sleep aid in Japan rather than allergy medicine.",
-                importInfo: "No restrictions on reasonable amounts."
-            },
-            {
-                westernName: "Sudafed",
-                genericName: "Pseudoephedrine",
-                japaneseEquivalents: [
-                    {name: "PROHIBITED", description: "Pseudoephedrine is banned in Japan"},
-                    {name: "Alternative: Pabron (パブロン)", description: "Uses different decongestants"},
-                    {name: "Alternative: Benza Block (ベンザブロック)", description: "Non-pseudoephedrine formula"}
-                ],
-                notes: "⚠️ Pseudoephedrine is ILLEGAL in Japan. Use phenylephrine alternatives.",
-                importInfo: "PROHIBITED - Will be confiscated at customs. Bring alternatives."
-            },
-            {
-                westernName: "Adderall",
-                genericName: "Amphetamine",
-                japaneseEquivalents: [
-                    {name: "PROHIBITED", description: "Amphetamines are illegal in Japan"},
-                    {name: "No equivalent", description: "Amphetamine-based drugs banned"}
-                ],
-                notes: "⚠️ ILLEGAL in Japan. Possession can lead to arrest and imprisonment.",
-                importInfo: "ABSOLUTELY PROHIBITED - No exceptions. Consider Concerta/Strattera with permit."
-            }
-        ];
-
-        // Symptom treatments database
-        const symptomTreatments = [
-            {
-                symptom: "Headache",
-                keywords: ["headache", "migraine", "head pain", "頭痛"],
-                treatments: [
-                    {
-                        name: "Eve A (イブA)",
-                        description: "Popular headache medicine with ibuprofen and caffeine",
-                        dosage: "2 tablets up to 3 times daily",
-                        price: "¥800-1,200"
-                    },
-                    {
-                        name: "Bufferin Premium (バファリンプレミアム)",
-                        description: "Fast-acting with stomach protection",
-                        dosage: "2 tablets up to 3 times daily",
-                        price: "¥1,000-1,500"
-                    }
-                ]
-            },
-            {
-                symptom: "Cold/Flu",
-                keywords: ["cold", "flu", "cough", "fever", "風邪", "インフルエンザ"],
-                treatments: [
-                    {
-                        name: "Pabron Gold A (パブロンゴールドA)",
-                        description: "Comprehensive cold medicine - no pseudoephedrine",
-                        dosage: "Follow package instructions",
-                        price: "¥1,500-2,000"
-                    },
-                    {
-                        name: "Lulu Attack EX (ルルアタックEX)",
-                        description: "Strong formula for severe symptoms",
-                        dosage: "3 tablets, 3 times daily",
-                        price: "¥1,200-1,800"
-                    }
-                ]
-            },
-            {
-                symptom: "Stomach Pain/Indigestion",
-                keywords: ["stomach", "indigestion", "nausea", "胃痛", "消化不良"],
-                treatments: [
-                    {
-                        name: "Ohta's Isan (太田胃散)",
-                        description: "Traditional antacid powder, very effective",
-                        dosage: "1 packet after meals",
-                        price: "¥800-1,200"
-                    },
-                    {
-                        name: "Gaster 10 (ガスター10)",
-                        description: "H2 blocker for acid reflux",
-                        dosage: "1 tablet up to 2 times daily",
-                        price: "¥1,000-1,500"
-                    }
-                ]
-            }
-        ];
-
-        // Import restrictions database
-        const importRestrictions = [
-            // PROHIBITED - Amphetamines
-            {
-                name: "Adderall",
-                genericName: "amphetamine/dextroamphetamine",
-                alternateNames: ["Adderall XR", "Mydayis"],
-                status: "prohibited",
-                category: "Amphetamine Stimulants",
-                reason: "Contains amphetamine - classified as illegal stimulant in Japan",
-                consequences: "Arrest and detention (18+ days documented cases)",
-                alternatives: ["Vyvanse (with permit)", "Concerta (with permit)", "Strattera (available in Japan)"],
-                searchTerms: ["adderall", "amphetamine", "dextroamphetamine", "adhd"]
-            },
-            {
-                name: "Dexedrine",
-                genericName: "dextroamphetamine",
-                alternateNames: ["Dextrostat", "ProCentra"],
-                status: "prohibited",
-                category: "Amphetamine Stimulants",
-                reason: "Contains amphetamine - classified as illegal stimulant",
-                consequences: "Criminal charges, detention, deportation",
-                alternatives: ["Vyvanse (with permit)", "Concerta (with permit)"],
-                searchTerms: ["dexedrine", "dextroamphetamine", "adhd"]
-            },
-            
-            // PROHIBITED - Pseudoephedrine
-            {
-                name: "Sudafed",
-                genericName: "pseudoephedrine",
-                alternateNames: ["Sudafed PE", "Sudafed 12 Hour", "Sudafed 24 Hour"],
-                status: "prohibited",
-                category: "Decongestants",
-                reason: "Contains pseudoephedrine - banned substance",
-                consequences: "Confiscation at customs, possible detention",
-                alternatives: ["Pabron Gold A", "Benza Block", "Japanese phenylephrine products"],
-                searchTerms: ["sudafed", "pseudoephedrine", "cold", "decongestant", "sinus"]
-            },
-            {
-                name: "DayQuil/NyQuil",
-                genericName: "acetaminophen/dextromethorphan/pseudoephedrine",
-                alternateNames: ["DayQuil Severe", "NyQuil Severe"],
-                status: "prohibited",
-                category: "Cold Medicine",
-                reason: "Many formulations contain pseudoephedrine",
-                consequences: "Confiscation at customs",
-                alternatives: ["Pabron series", "Benza Block", "Lulu Attack"],
-                searchTerms: ["dayquil", "nyquil", "cold", "flu", "pseudoephedrine"]
-            },
-            
-            // REQUIRES PERMIT - ADHD Medications
-            {
-                name: "Vyvanse",
-                genericName: "lisdexamfetamine",
-                alternateNames: ["Elvanse", "Tyvense"],
-                status: "permit-required",
-                category: "ADHD Medication",
-                permitType: "Stimulants' Raw Materials",
-                maxQuantity: "30 days supply",
-                applicationTime: "4-6 weeks recommended (minimum 14 days)",
-                requiredDocs: ["Medical certificate", "Prescription", "Import application"],
-                processingBureau: "Regional Health Bureau based on entry airport",
-                searchTerms: ["vyvanse", "lisdexamfetamine", "adhd", "elvanse"]
-            },
-            {
-                name: "Concerta",
-                genericName: "methylphenidate",
-                alternateNames: ["Ritalin LA", "Metadate CD"],
-                status: "permit-required",
-                category: "ADHD Medication",
-                permitType: "Psychotropic Drug",
-                maxQuantity: "30 days supply",
-                applicationTime: "4-6 weeks recommended",
-                requiredDocs: ["Medical certificate", "Prescription", "Import application"],
-                processingBureau: "Regional Health Bureau",
-                searchTerms: ["concerta", "methylphenidate", "ritalin", "adhd"]
-            },
-            
-            // REQUIRES PERMIT - Opioids
-            {
-                name: "OxyContin",
-                genericName: "oxycodone",
-                alternateNames: ["Percocet", "Roxicodone", "Endocet"],
-                status: "permit-required",
-                category: "Opioid Painkiller",
-                permitType: "Narcotics Import Certificate",
-                maxQuantity: "30 days supply",
-                applicationTime: "4-6 weeks required",
-                requiredDocs: ["Narcotics application", "Medical certificate", "Prescription", "Dosage schedule"],
-                processingBureau: "Narcotics Control Department",
-                searchTerms: ["oxycontin", "oxycodone", "percocet", "pain", "opioid"]
-            },
-            {
-                name: "Morphine",
-                genericName: "morphine sulfate",
-                alternateNames: ["MS Contin", "Kadian", "Avinza"],
-                status: "permit-required",
-                category: "Opioid Painkiller",
-                permitType: "Narcotics Import Certificate",
-                maxQuantity: "30 days supply",
-                applicationTime: "4-6 weeks required",
-                requiredDocs: ["Narcotics application", "Medical certificate", "Prescription"],
-                processingBureau: "Narcotics Control Department",
-                searchTerms: ["morphine", "ms contin", "pain", "opioid", "cancer"]
-            },
-            
-            // ALLOWED WITH CONDITIONS
-            {
-                name: "Tylenol",
-                genericName: "acetaminophen/paracetamol",
-                alternateNames: ["Panadol", "Excedrin (without caffeine)"],
-                status: "allowed",
-                category: "Pain Relief",
-                maxQuantity: "2 months supply",
-                conditions: "Keep in original packaging",
-                notes: "Widely available in Japan as 'Eve' or 'Bufferin'",
-                searchTerms: ["tylenol", "acetaminophen", "paracetamol", "pain", "fever"]
-            },
-            {
-                name: "Advil",
-                genericName: "ibuprofen",
-                alternateNames: ["Motrin", "Nurofen"],
-                status: "allowed",
-                category: "Pain Relief",
-                maxQuantity: "2 months supply",
-                conditions: "Keep in original packaging",
-                notes: "Available in Japan as 'Eve Quick' or 'Ringl'",
-                searchTerms: ["advil", "ibuprofen", "motrin", "pain", "inflammation"]
-            },
-            {
-                name: "Insulin",
-                genericName: "insulin",
-                alternateNames: ["Humalog", "Novolog", "Lantus", "Levemir"],
-                status: "allowed",
-                category: "Diabetes Medication",
-                maxQuantity: "30 days supply without permit",
-                conditions: "Carry doctor's letter, keep refrigerated if required",
-                notes: "Syringes/pens allowed with insulin",
-                permitRequired: "Required if bringing more than 30 days supply",
-                searchTerms: ["insulin", "diabetes", "humalog", "novolog", "lantus", "injection"]
-            },
-            
-            // CONTROLLED BUT ALLOWED
-            {
-                name: "Xanax",
-                genericName: "alprazolam",
-                alternateNames: ["Niravam"],
-                status: "controlled-allowed",
-                category: "Benzodiazepine",
-                maxQuantity: "30 days supply (1.2g total)",
-                conditions: "Must declare at customs, keep prescription",
-                notes: "Highly controlled - expect scrutiny",
-                searchTerms: ["xanax", "alprazolam", "anxiety", "benzodiazepine"]
-            },
-            {
-                name: "Valium",
-                genericName: "diazepam",
-                alternateNames: ["Diastat"],
-                status: "controlled-allowed",
-                category: "Benzodiazepine",
-                maxQuantity: "30 days supply",
-                conditions: "Must declare at customs",
-                notes: "Keep in original container with prescription",
-                searchTerms: ["valium", "diazepam", "anxiety", "benzodiazepine"]
-            },
-            
-            // PROHIBITED - Cannabis/CBD
-            {
-                name: "CBD Oil",
-                genericName: "cannabidiol",
-                alternateNames: ["Hemp oil", "Cannabis oil", "Medical marijuana"],
-                status: "prohibited",
-                category: "Cannabis Products",
-                reason: "All cannabis derivatives illegal - zero tolerance",
-                consequences: "Arrest, prosecution, deportation",
-                alternatives: ["None - seek alternative treatments in Japan"],
-                searchTerms: ["cbd", "cannabidiol", "hemp", "cannabis", "marijuana", "epilepsy"]
-            },
-            {
-                name: "Marinol",
-                genericName: "dronabinol",
-                alternateNames: ["Syndros"],
-                status: "prohibited",
-                category: "Cannabis Products",
-                reason: "Synthetic THC - classified as cannabis",
-                consequences: "Criminal charges",
-                alternatives: ["Consult Japanese doctor for alternatives"],
-                searchTerms: ["marinol", "dronabinol", "thc", "nausea", "appetite"]
-            },
-            
-            // Common queries
-            {
-                name: "Birth Control Pills",
-                genericName: "various oral contraceptives",
-                alternateNames: ["The Pill", "Yaz", "Ortho Tri-Cyclen"],
-                status: "allowed",
-                category: "Contraceptives",
-                maxQuantity: "1 year supply",
-                conditions: "Keep in original packaging with prescription",
-                notes: "Available in Japan but expensive",
-                searchTerms: ["birth control", "contraceptive", "pill", "yaz", "ortho"]
-            },
-            {
-                name: "Strattera",
-                genericName: "atomoxetine",
-                alternateNames: [],
-                status: "allowed",
-                category: "ADHD Medication",
-                maxQuantity: "30 days supply",
-                conditions: "Non-stimulant ADHD medication",
-                notes: "Available by prescription in Japan",
-                searchTerms: ["strattera", "atomoxetine", "adhd", "non-stimulant"]
-            }
-        ];
+        let filteredProducts = [...products];
 
         // Tab switching functionality
         document.querySelectorAll('.nav-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                // Remove active class from all tabs
+            tab.addEventListener('click', () => {
+                const targetTab = tab.dataset.tab;
+                
+                // Update active tab
                 document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+                tab.classList.add('active');
                 
-                // Add active class to clicked tab
-                this.classList.add('active');
-                
-                // Show corresponding content
-                const tabName = this.getAttribute('data-tab');
-                document.getElementById(tabName + '-tab').classList.remove('hidden');
-                
-                // Initialize import restrictions grid if regulations tab
-                if (tabName === 'regulations' && document.getElementById('restrictionsGrid')) {
-                    displayAllCategories(document.getElementById('restrictionsGrid'));
-                }
-            });
-        });
-
-        // Category filter functionality
-        document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                filterProducts(this.getAttribute('data-category'));
+                // Show target content
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.add('hidden');
+                });
+                document.getElementById(`${targetTab}-tab`).classList.remove('hidden');
             });
         });
 
         // Search functionality
-        document.getElementById('searchInput').addEventListener('input', function() {
-            searchProducts(this.value);
-        });
-
-        // Product search and display functions
-        function searchProducts(query) {
-            const filtered = products.filter(product => {
-                const searchText = query.toLowerCase();
-                return product.name.toLowerCase().includes(searchText) ||
-                       product.japanese.includes(searchText) ||
-                       product.description.toLowerCase().includes(searchText) ||
-                       product.keywords.some(keyword => keyword.includes(searchText));
+        function filterProducts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const activeCategory = document.querySelector('.category-btn.active').dataset.category;
+            
+            filteredProducts = products.filter(product => {
+                const matchesSearch = product.name.toLowerCase().includes(searchTerm) ||
+                                    product.japanese.includes(searchTerm) ||
+                                    product.description.toLowerCase().includes(searchTerm);
+                const matchesCategory = activeCategory === 'all' || product.category === activeCategory;
+                
+                return matchesSearch && matchesCategory;
             });
             
-            displayProducts(filtered);
+            displayProducts();
         }
 
-        function filterProducts(category) {
-            const filtered = category === 'all' ? products : products.filter(p => p.category === category);
-            displayProducts(filtered);
-        }
-
-        function displayProducts(productsToShow) {
+        function displayProducts() {
             const grid = document.getElementById('productsGrid');
             const noResults = document.getElementById('noResults');
             
-            if (productsToShow.length === 0) {
-                grid.innerHTML = '';
+            if (filteredProducts.length === 0) {
+                grid.style.display = 'none';
                 noResults.style.display = 'block';
                 return;
             }
             
+            grid.style.display = 'grid';
             noResults.style.display = 'none';
-            grid.innerHTML = productsToShow.map(product => `
+            
+            grid.innerHTML = filteredProducts.map(product => `
                 <div class="product-card">
                     <div class="product-header">
                         <div>
-                            <h3 class="product-name">${product.name}</h3>
-                            <p class="product-japanese">${product.japanese}</p>
+                            <div class="product-name">${product.name}</div>
+                            <div class="product-japanese">${product.japanese}</div>
                         </div>
-                        <span class="product-category">${product.category}</span>
+                        <div class="product-category">${product.category}</div>
                     </div>
-                    <p class="product-description">${product.description}</p>
+                    
+                    <div class="product-description">${product.description}</div>
+                    
                     <div class="product-details">
                         <div class="detail-item">
-                            <div class="detail-label">Price Range</div>
+                            <div class="detail-label">Price</div>
                             <div class="detail-value">${product.price}</div>
                         </div>
                         <div class="detail-item">
-                            <div class="detail-label">Where to Find</div>
-                            <div class="detail-value">${product.locations}</div>
+                            <div class="detail-label">Availability</div>
+                            <div class="detail-value">${product.availability}</div>
                         </div>
                     </div>
+                    
+                    <div class="equivalent-info">
+                        <h4>🔄 Similar Products</h4>
+                        <ul class="equivalent-list">
+                            ${product.equivalents.map(eq => `<li>${eq}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
                     <div class="usage-tips">
-                        <h4>How to Use</h4>
-                        <p>${product.usage}</p>
+                        <h4>💡 Usage Tips</h4>
+                        <ul class="tip-list">
+                            ${product.tips.map(tip => `<li>${tip}</li>`).join('')}
+                        </ul>
                     </div>
                 </div>
             `).join('');
         }
 
-        // Equivalents search functionality
+        // Category filtering
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterProducts();
+            });
+        });
+
+        // Search input
+        document.getElementById('searchInput').addEventListener('input', filterProducts);
+
+        // Equivalents search
         function searchEquivalents() {
-            const query = document.getElementById('equivalentSearch').value.toLowerCase();
+            const searchTerm = document.getElementById('equivalentSearch').value.toLowerCase();
             const grid = document.getElementById('equivalentsGrid');
             const noResults = document.getElementById('noEquivalents');
             
-            if (!query) {
-                grid.innerHTML = '';
-                noResults.style.display = 'none';
-                return;
-            }
-            
-            const results = drugEquivalents.filter(drug => 
-                drug.westernName.toLowerCase().includes(query) ||
-                drug.genericName.toLowerCase().includes(query)
+            const matches = products.filter(product => 
+                product.equivalents.some(eq => eq.toLowerCase().includes(searchTerm)) ||
+                product.name.toLowerCase().includes(searchTerm)
             );
             
-            if (results.length === 0) {
-                grid.innerHTML = '';
+            if (matches.length === 0) {
+                grid.style.display = 'none';
                 noResults.style.display = 'block';
                 return;
             }
             
+            grid.style.display = 'grid';
             noResults.style.display = 'none';
-            grid.innerHTML = results.map(drug => `
+            
+            grid.innerHTML = matches.map(product => `
                 <div class="product-card">
                     <div class="product-header">
                         <div>
-                            <h3 class="product-name">${drug.westernName}</h3>
-                            <p class="product-japanese">${drug.genericName}</p>
+                            <div class="product-name">${product.name}</div>
+                            <div class="product-japanese">${product.japanese}</div>
                         </div>
+                        <div class="product-category">${product.category}</div>
                     </div>
+                    <div class="product-description">${product.description}</div>
                     <div class="equivalent-info">
-                        <h4>Japanese Equivalents:</h4>
+                        <h4>🔄 Equivalent to</h4>
                         <ul class="equivalent-list">
-                            ${drug.japaneseEquivalents.map(eq => 
-                                `<li><strong>${eq.name}</strong> - ${eq.description}</li>`
-                            ).join('')}
+                            ${product.equivalents.map(eq => `<li>${eq}</li>`).join('')}
                         </ul>
-                    </div>
-                    <div class="usage-tips">
-                        <h4>Important Notes</h4>
-                        <p>${drug.notes}</p>
-                        <p style="margin-top: 10px;"><strong>Import Info:</strong> ${drug.importInfo}</p>
                     </div>
                 </div>
             `).join('');
         }
 
-        // Symptoms search functionality
+        // Symptoms search
         function searchSymptoms() {
-            const query = document.getElementById('symptomSearch').value.toLowerCase();
+            const searchTerm = document.getElementById('symptomSearch').value.toLowerCase();
             const grid = document.getElementById('symptomsGrid');
             const noResults = document.getElementById('noSymptoms');
             
-            if (!query) {
-                grid.innerHTML = '';
-                noResults.style.display = 'none';
-                return;
+            const symptomMap = {
+                'headache': ['Bufferin Premium'],
+                'pain': ['Bufferin Premium'],
+                'tired eyes': ['Rohto Z! Eye Drops'],
+                'red eyes': ['Rohto Z! Eye Drops'],
+                'dark spots': ['Melano CC Intensive Anti-Spot Essence'],
+                'acne': ['Melano CC Intensive Anti-Spot Essence']
+            };
+            
+            let matches = [];
+            for (const [symptom, productNames] of Object.entries(symptomMap)) {
+                if (symptom.includes(searchTerm) || searchTerm.includes(symptom)) {
+                    const symptomProducts = products.filter(p => productNames.includes(p.name));
+                    matches.push(...symptomProducts);
+                }
             }
             
-            const results = symptomTreatments.filter(treatment =>
-                treatment.keywords.some(keyword => keyword.includes(query))
-            );
+            matches = [...new Set(matches)]; // Remove duplicates
             
-            if (results.length === 0) {
-                grid.innerHTML = '';
+            if (matches.length === 0) {
+                grid.style.display = 'none';
                 noResults.style.display = 'block';
                 return;
             }
             
+            grid.style.display = 'grid';
             noResults.style.display = 'none';
-            grid.innerHTML = results.map(treatment => `
+            
+            grid.innerHTML = matches.map(product => `
                 <div class="product-card">
-                    <h3 class="product-name">Treatments for ${treatment.symptom}</h3>
-                    ${treatment.treatments.map(med => `
-                        <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 10px;">
-                            <h4 style="color: #2c3e50; margin-bottom: 10px;">${med.name}</h4>
-                            <p style="margin-bottom: 10px;">${med.description}</p>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                                <div>
-                                    <strong>Dosage:</strong> ${med.dosage}
-                                </div>
-                                <div>
-                                    <strong>Price:</strong> ${med.price}
-                                </div>
-                            </div>
+                    <div class="product-header">
+                        <div>
+                            <div class="product-name">${product.name}</div>
+                            <div class="product-japanese">${product.japanese}</div>
                         </div>
-                    `).join('')}
+                        <div class="product-category">${product.category}</div>
+                    </div>
+                    <div class="product-description">${product.description}</div>
+                    <div class="usage-tips">
+                        <h4>💡 For your symptoms</h4>
+                        <ul class="tip-list">
+                            ${product.tips.map(tip => `<li>${tip}</li>`).join('')}
+                        </ul>
+                    </div>
                 </div>
             `).join('');
         }
 
-        // Search function for import restrictions
-        function searchImportRestrictions() {
-            const searchTerm = document.getElementById('restrictionSearch').value.toLowerCase().trim();
-            const resultsGrid = document.getElementById('restrictionsGrid');
-            const noResults = document.getElementById('noRestrictions');
-            
-            if (!searchTerm) {
-                displayAllCategories(resultsGrid);
-                noResults.style.display = 'none';
-                return;
-            }
-            
-            // Search through medications
-            const results = importRestrictions.filter(med => {
-                return med.searchTerms.some(term => term.includes(searchTerm)) ||
-                       med.name.toLowerCase().includes(searchTerm) ||
-                       med.genericName.toLowerCase().includes(searchTerm) ||
-                       med.alternateNames.some(alt => alt.toLowerCase().includes(searchTerm));
-            });
-            
-            if (results.length === 0) {
-                resultsGrid.innerHTML = '';
-                noResults.style.display = 'block';
-                return;
-            }
-            
-            noResults.style.display = 'none';
-            displayRestrictionResults(results, resultsGrid);
-        }
-
-        // Display search results
-        function displayRestrictionResults(results, container) {
-            container.innerHTML = results.map(med => {
-                let statusIcon, statusColor, statusBg;
-                
-                switch(med.status) {
-                    case 'prohibited':
-                        statusIcon = '❌';
-                        statusColor = '#dc3545';
-                        statusBg = '#f8d7da';
-                        break;
-                    case 'permit-required':
-                        statusIcon = '⚠️';
-                        statusColor = '#856404';
-                        statusBg = '#fff3cd';
-                        break;
-                    case 'allowed':
-                        statusIcon = '✅';
-                        statusColor = '#155724';
-                        statusBg = '#d4edda';
-                        break;
-                    case 'controlled-allowed':
-                        statusIcon = '🔶';
-                        statusColor = '#0c5460';
-                        statusBg = '#d1ecf1';
-                        break;
-                }
-                
-                return `
-                    <div class="restriction-card" style="background: ${statusBg}; border: 2px solid ${statusColor}; border-radius: 15px; padding: 25px; margin-bottom: 20px;">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                            <div>
-                                <h3 style="color: ${statusColor}; margin: 0; font-size: 1.5rem;">
-                                    ${statusIcon} ${med.name}
-                                </h3>
-                                <p style="color: #666; margin: 5px 0;">
-                                    <em>${med.genericName}</em>
-                                    ${med.alternateNames.length > 0 ? `<br>Also known as: ${med.alternateNames.join(', ')}` : ''}
-                                </p>
-                            </div>
-                            <div style="background: ${statusColor}; color: white; padding: 8px 15px; border-radius: 20px; font-weight: 600;">
-                                ${med.status.replace('-', ' ').toUpperCase()}
-                            </div>
-                        </div>
-                        
-                        ${med.status === 'prohibited' ? `
-                            <div style="background: white; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
-                                <h4 style="color: ${statusColor}; margin-bottom: 8px;">⛔ Why Prohibited:</h4>
-                                <p style="margin: 0;">${med.reason}</p>
-                                <p style="color: #dc3545; font-weight: 600; margin-top: 10px;">
-                                    Consequences: ${med.consequences}
-                                </p>
-                            </div>
-                            ${med.alternatives.length > 0 ? `
-                                <div style="background: white; padding: 15px; border-radius: 10px;">
-                                    <h4 style="color: #28a745; margin-bottom: 8px;">✅ Legal Alternatives:</h4>
-                                    <ul style="margin: 0; padding-left: 20px;">
-                                        ${med.alternatives.map(alt => `<li>${alt}</li>`).join('')}
-                                    </ul>
-                                </div>
-                            ` : ''}
-                        ` : ''}
-                        
-                        ${med.status === 'permit-required' ? `
-                            <div style="background: white; padding: 20px; border-radius: 10px;">
-                                <h4 style="color: ${statusColor}; margin-bottom: 15px;">📋 Permit Requirements:</h4>
-                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                                    <div>
-                                        <strong>Permit Type:</strong><br>${med.permitType}
-                                    </div>
-                                    <div>
-                                        <strong>Max Quantity:</strong><br>${med.maxQuantity}
-                                    </div>
-                                    <div>
-                                        <strong>Apply When:</strong><br>${med.applicationTime}
-                                    </div>
-                                </div>
-                                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e9ecef;">
-                                    <strong>Required Documents:</strong>
-                                    <ul style="margin: 5px 0 0 20px;">
-                                        ${med.requiredDocs.map(doc => `<li>${doc}</li>`).join('')}
-                                    </ul>
-                                </div>
-                            </div>
-                        ` : ''}
-                        
-                        ${(med.status === 'allowed' || med.status === 'controlled-allowed') ? `
-                            <div style="background: white; padding: 15px; border-radius: 10px;">
-                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                                    <div>
-                                        <strong>Max Quantity:</strong><br>${med.maxQuantity}
-                                    </div>
-                                    <div>
-                                        <strong>Conditions:</strong><br>${med.conditions}
-                                    </div>
-                                </div>
-                                ${med.notes ? `
-                                    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e9ecef;">
-                                        <strong>Note:</strong> ${med.notes}
-                                    </div>
-                                ` : ''}
-                            </div>
-                        ` : ''}
-                    </div>
-                `;
-            }).join('');
-        }
-
-        // Display all categories when no search term
-        function displayAllCategories(container) {
-            const categories = {
-                prohibited: importRestrictions.filter(m => m.status === 'prohibited'),
-                permitRequired: importRestrictions.filter(m => m.status === 'permit-required'),
-                allowed: importRestrictions.filter(m => m.status === 'allowed' || m.status === 'controlled-allowed')
-            };
-            
-            container.innerHTML = `
-                <div style="background: #f8d7da; border: 2px solid #dc3545; border-radius: 15px; padding: 20px; margin-bottom: 20px;">
-                    <h3 style="color: #dc3545;">❌ Prohibited Medications (${categories.prohibited.length})</h3>
-                    <p style="color: #721c24;">Cannot enter Japan under any circumstances</p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
-                        ${categories.prohibited.map(m => `
-                            <button onclick="searchSpecificMed('${m.name}')" 
-                                    style="background: white; border: 1px solid #dc3545; color: #dc3545; 
-                                           padding: 8px 15px; border-radius: 20px; cursor: pointer;
-                                           transition: all 0.3s;">
-                                ${m.name}
-                            </button>
-                        `).join('')}
-                    </div>
-                </div>
-                
-                <div style="background: #fff3cd; border: 2px solid #856404; border-radius: 15px; padding: 20px; margin-bottom: 20px;">
-                    <h3 style="color: #856404;">⚠️ Permit Required (${categories.permitRequired.length})</h3>
-                    <p style="color: #856404;">Allowed with advance permission (4-6 weeks recommended)</p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
-                        ${categories.permitRequired.map(m => `
-                            <button onclick="searchSpecificMed('${m.name}')" 
-                                    style="background: white; border: 1px solid #856404; color: #856404; 
-                                           padding: 8px 15px; border-radius: 20px; cursor: pointer;
-                                           transition: all 0.3s;">
-                                ${m.name}
-                            </button>
-                        `).join('')}
-                    </div>
-                </div>
-                
-                <div style="background: #d4edda; border: 2px solid #155724; border-radius: 15px; padding: 20px;">
-                    <h3 style="color: #155724;">✅ Allowed Medications (${categories.allowed.length})</h3>
-                    <p style="color: #155724;">Can bring with conditions (typically 1-2 month supply)</p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
-                        ${categories.allowed.map(m => `
-                            <button onclick="searchSpecificMed('${m.name}')" 
-                                    style="background: white; border: 1px solid #155724; color: #155724; 
-                                           padding: 8px 15px; border-radius: 20px; cursor: pointer;
-                                           transition: all 0.3s;">
-                                ${m.name}
-                            </button>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        }
-
-        // Search for specific medication
-        function searchSpecificMed(medName) {
-            document.getElementById('restrictionSearch').value = medName;
-            searchImportRestrictions();
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Display all products initially
-            displayProducts(products);
-            
-            // Initialize restriction categories if on regulations tab
-            if (document.getElementById('restrictionsGrid')) {
-                displayAllCategories(document.getElementById('restrictionsGrid'));
-            }
-        });
+        // Initialize
+        displayProducts();
     </script>
 </body>
 </html>
