@@ -1952,112 +1952,117 @@
 
     // Display search results
     function displayRestrictionResults(results, container) {
-        container.innerHTML = results.map(med => {
-            let statusIcon, statusColor, statusBg;
-            
-            switch(med.status) {
-                case 'prohibited':
-                    statusIcon = '❌';
-                    statusColor = '#dc3545';
-                    statusBg = '#f8d7da';
-                    break;
-                case 'permit-required':
-                    statusIcon = '⚠️';
-                    statusColor = '#856404';
-                    statusBg = '#fff3cd';
-                    break;
-                case 'allowed':
-                    statusIcon = '✅';
-                    statusColor = '#155724';
-                    statusBg = '#d4edda';
-                    break;
-                case 'controlled-allowed':
-                    statusIcon = '🔶';
-                    statusColor = '#0c5460';
-                    statusBg = '#d1ecf1';
-                    break;
-            }
-            
-            return `
-                <div class="restriction-card" style="background: ${statusBg}; border: 2px solid ${statusColor}; border-radius: 15px; padding: 25px; margin-bottom: 20px;">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                        <div>
-                            <h3 style="color: ${statusColor}; margin: 0; font-size: 1.5rem;">
-                                ${statusIcon} ${med.name}
-                            </h3>
-                            <p style="color: #666; margin: 5px 0;">
-                                <em>${med.genericName}</em>
-                                ${med.alternateNames.length > 0 ? `<br>Also known as: ${med.alternateNames.join(', ')}` : ''}
-                            </p>
+    container.innerHTML = results.map(med => {
+        let statusIcon, statusColor, statusBg;
+        
+        switch(med.status) {
+            case 'prohibited':
+                statusIcon = '❌';
+                statusColor = '#dc3545';
+                statusBg = '#f8d7da';
+                break;
+            case 'permit-required':
+                statusIcon = '⚠️';
+                statusColor = '#856404';
+                statusBg = '#fff3cd';
+                break;
+            case 'allowed':
+                statusIcon = '✅';
+                statusColor = '#155724';
+                statusBg = '#d4edda';
+                break;
+            case 'controlled-allowed':
+                statusIcon = '🔶';
+                statusColor = '#0c5460';
+                statusBg = '#d1ecf1';
+                break;
+        }
+        
+        return `
+            <div class="restriction-card" style="background: ${statusBg}; border: 2px solid ${statusColor}; border-radius: 15px; padding: 25px; margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                    <div>
+                        <h3 style="color: ${statusColor}; margin: 0; font-size: 1.5rem;">
+                            ${statusIcon} ${med.name}
+                        </h3>
+                        <p style="color: #666; margin: 5px 0;">
+                            <em>${med.genericName}</em>
+                            ${med.alternateNames.length > 0 ? `<br>Also known as: ${med.alternateNames.join(', ')}` : ''}
+                        </p>
+                    </div>
+                    <div style="background: ${statusColor}; color: white; padding: 8px 15px; border-radius: 20px; font-weight: 600;">
+                        ${med.status.replace('-', ' ').toUpperCase()}
+                    </div>
+                </div>
+                
+                ${med.status === 'prohibited' ? `
+                    <div style="background: white; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+                        <h4 style="color: ${statusColor}; margin-bottom: 8px;">⛔ Why Prohibited:</h4>
+                        <p style="margin: 0;">${med.reason}</p>
+                        <p style="color: #dc3545; font-weight: 600; margin-top: 10px;">
+                            Consequences: ${med.consequences}
+                        </p>
+                    </div>
+                    ${med.alternatives.length > 0 ? `
+                        <div style="background: white; padding: 15px; border-radius: 10px;">
+                            <h4 style="color: #28a745; margin-bottom: 8px;">✅ Legal Alternatives:</h4>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                ${med.alternatives.map(alt => `<li>${alt}</li>`).join('')}
+                            </ul>
                         </div>
-                        <div style="background: ${statusColor}; color: white; padding: 8px 15px; border-radius: 20px; font-weight: 600;">
-                            ${med.status.replace('-', ' ').toUpperCase()}
+                    ` : ''}
+                ` : ''}
+                
+                ${med.status === 'permit-required' ? `
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h4 style="color: ${statusColor}; margin-bottom: 15px;">📋 Permit Requirements:</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                            <div>
+                                <strong>Permit Type:</strong><br>${med.permitType}
+                            </div>
+                            <div>
+                                <strong>Max Quantity:</strong><br>${med.maxQuantity}
+                            </div>
+                            <div>
+                                <strong>Apply When:</strong><br>${med.applicationTime}
+                            </div>
+                        </div>
+                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e9ecef;">
+                            <strong>Required Documents:</strong>
+                            <ul style="margin: 5px 0 0 20px;">
+                                ${med.requiredDocs.map(doc => `<li>${doc}</li>`).join('')}
+                            </ul>
                         </div>
                     </div>
-                    
-                    ${med.status === 'prohibited' ? `
-                        <div style="background: white; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
-                            <h4 style="color: ${statusColor}; margin-bottom: 8px;">⛔ Why Prohibited:</h4>
-                            <p style="margin: 0;">${med.reason}</p>
-                            <p style="color: #dc3545; font-weight: 600; margin-top: 10px;">
-                                Consequences: ${med.consequences}
-                            </p>
+                ` : ''}
+                
+                ${(med.status === 'allowed' || med.status === 'controlled-allowed') ? `
+                    <div style="background: white; padding: 15px; border-radius: 10px;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                            <div>
+                                <strong>Max Quantity:</strong><br>${med.maxQuantity}
+                            </div>
+                            <div>
+                                <strong>Conditions:</strong><br>${med.conditions}
+                            </div>
                         </div>
-                        ${med.alternatives.length > 0 ? `
-                            <div style="background: white; padding: 15px; border-radius: 10px;">
-                                <h4 style="color: #28a745; margin-bottom: 8px;">✅ Legal Alternatives:</h4>
-                                <ul style="margin: 0; padding-left: 20px;">
-                                    ${med.alternatives.map(alt => `<li>${alt}</li>`).join('')}
-                                </ul>
+                        ${med.permitRequired ? `
+                            <div style="margin-top: 15px; padding: 15px; background: #e8f5e9; border-radius: 8px; border-left: 4px solid #28a745;">
+                                <strong style="color: #2e7d32;">📋 Import Permit Required?</strong><br>
+                                <span style="color: #2e7d32;">${med.permitRequired}</span>
                             </div>
                         ` : ''}
-                    ` : ''}
-                    
-                    ${med.status === 'permit-required' ? `
-                        <div style="background: white; padding: 20px; border-radius: 10px;">
-                            <h4 style="color: ${statusColor}; margin-bottom: 15px;">📋 Permit Requirements:</h4>
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                                <div>
-                                    <strong>Permit Type:</strong><br>${med.permitType}
-                                </div>
-                                <div>
-                                    <strong>Max Quantity:</strong><br>${med.maxQuantity}
-                                </div>
-                                <div>
-                                    <strong>Apply When:</strong><br>${med.applicationTime}
-                                </div>
-                            </div>
+                        ${med.notes ? `
                             <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e9ecef;">
-                                <strong>Required Documents:</strong>
-                                <ul style="margin: 5px 0 0 20px;">
-                                    ${med.requiredDocs.map(doc => `<li>${doc}</li>`).join('')}
-                                </ul>
+                                <strong>Note:</strong> ${med.notes}
                             </div>
-                        </div>
-                    ` : ''}
-                    
-                    ${(med.status === 'allowed' || med.status === 'controlled-allowed') ? `
-                        <div style="background: white; padding: 15px; border-radius: 10px;">
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                                <div>
-                                    <strong>Max Quantity:</strong><br>${med.maxQuantity}
-                                </div>
-                                <div>
-                                    <strong>Conditions:</strong><br>${med.conditions}
-                                </div>
-                            </div>
-                            ${med.notes ? `
-                                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e9ecef;">
-                                    <strong>Note:</strong> ${med.notes}
-                                </div>
-                            ` : ''}
-                        </div>
-                    ` : ''}
-                </div>
-            `;
-        }).join('');
-    }
-
+                        ` : ''}
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    }).join('');
+}
     // Display all categories when no search term
     function displayAllCategories(container) {
         const categories = {
