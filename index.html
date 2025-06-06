@@ -1649,28 +1649,42 @@
         },
         
         // CONTROLLED BUT ALLOWED
-        {
-            name: "Xanax",
-            genericName: "alprazolam",
-            alternateNames: ["Niravam"],
-            status: "controlled-allowed",
-            category: "Benzodiazepine",
-            maxQuantity: "30 days supply (1.2g total)",
-            conditions: "Must declare at customs, keep prescription",
-            notes: "Highly controlled - expect scrutiny",
-            searchTerms: ["xanax", "alprazolam", "anxiety", "benzodiazepine"]
-        },
-        {
-            name: "Valium",
-            genericName: "diazepam",
-            alternateNames: ["Diastat"],
-            status: "controlled-allowed",
-            category: "Benzodiazepine",
-            maxQuantity: "30 days supply",
-            conditions: "Must declare at customs",
-            notes: "Keep in original container with prescription",
-            searchTerms: ["valium", "diazepam", "anxiety", "benzodiazepine"]
-        },
+{
+name: “Xanax”,
+genericName: “alprazolam”,
+alternateNames: [“Niravam”],
+status: “controlled-allowed”,
+category: “Benzodiazepine”,
+maxQuantity: “30 days supply (1.2g total)”,
+conditions: “Must declare at customs, keep prescription”,
+notes: “Highly controlled - expect scrutiny”,
+permitRequired: “Not required for standard quantities (under 30 days supply)”,
+searchTerms: [“xanax”, “alprazolam”, “anxiety”, “benzodiazepine”]
+},
+{
+name: “Valium”,
+genericName: “diazepam”,
+alternateNames: [“Diastat”],
+status: “controlled-allowed”,
+category: “Benzodiazepine”,
+maxQuantity: “30 days supply”,
+conditions: “Must declare at customs”,
+notes: “Keep in original container with prescription”,
+permitRequired: “Not required for standard quantities (under 30 days supply)”,
+searchTerms: [“valium”, “diazepam”, “anxiety”, “benzodiazepine”]
+},
+{
+name: “EpiPen”,
+genericName: “epinephrine auto-injector”,
+alternateNames: [“Auvi-Q”, “Jext”, “Emerade”, “epinephrine pen”],
+status: “controlled-allowed”,
+category: “Emergency Medication”,
+maxQuantity: “1 month supply (typically 4 units)”,
+conditions: “Must declare at customs, keep in original packaging”,
+notes: “Widely recognized by customs officers. Available in Japan for ¥7,800-12,000”,
+permitRequired: “Not required for standard quantities (under 1 month supply)”,
+searchTerms: [“epipen”, “epinephrine”, “allergy”, “anaphylaxis”, “emergency”, “auto-injector”]
+},
         
         // PROHIBITED - Cannabis/CBD
         {
