@@ -1675,8 +1675,8 @@
             category: "Benzodiazepine",
             maxQuantity: "30 days supply",
             conditions: "Must declare at customs",
-            notes: "Keep in original container with prescription",
-            permitRequired: "Not required for standard quantities (under 30 days supply)",
+            notes: "1.2g threshold (240 tablets of 5mg = 8 months supply). Keep in original container with prescription",
+            permitRequired: "No permit needed for under 1.2g total (approx 240 tablets of 5mg)",
             searchTerms: ["valium", "diazepam", "anxiety", "benzodiazepine"]
         },
         {
@@ -1690,6 +1690,35 @@
             notes: "Widely recognized by customs officers. Available in Japan for ¥7,800-12,000",
             permitRequired: "Not required for standard quantities (under 1 month supply)",
             searchTerms: ["epipen", "epinephrine", "allergy", "anaphylaxis", "emergency", "auto-injector"]
+        },
+        {
+            name: "Clonazepam",
+            genericName: "clonazepam",
+            alternateNames: ["Klonopin", "Rivotril"],
+            status: "permit-required",
+            category: "Benzodiazepine",
+            permitType: "Psychotropic Drug Import Certificate",
+            maxQuantity: "Any quantity requires permit",
+            applicationTime: "4-6 weeks recommended (minimum 14 days)",
+            requiredDocs: ["Medical certificate with specific diagnosis", "Prescription", "Doctor's letter explaining medical necessity", "Import application"],
+            processingBureau: "Regional Health Bureau based on entry airport",
+            permitRequired: "Import certificate required for ANY quantity",
+            searchTerms: ["clonazepam", "klonopin", "rivotril", "anxiety", "seizure", "benzodiazepine"]
+        },
+        {
+            name: "Clonazepam (Small Amounts)",
+            genericName: "clonazepam",
+            alternateNames: ["Klonopin under 30 days", "Rivotril personal use"],
+            status: "permit-required",
+            category: "Benzodiazepine",
+            permitType: "Psychotropic Drug Import Certificate", 
+            maxQuantity: "No quantity exemption - permit always required",
+            applicationTime: "4-6 weeks recommended",
+            requiredDocs: ["Medical certificate", "Prescription", "Doctor's letter", "Import application"],
+            processingBureau: "Regional Health Bureau",
+            notes: "Unlike other benzodiazepines, clonazepam requires permits regardless of quantity or duration",
+            permitRequired: "Import certificate required - no quantity threshold exemption",
+            searchTerms: ["clonazepam small amount", "clonazepam personal use", "klonopin travel", "clonazepam permit"]
         },
         
         // PROHIBITED - Cannabis/CBD
