@@ -2055,6 +2055,11 @@
                                 ${med.requiredDocs.map(doc => `<li>${doc}</li>`).join('')}
                             </ul>
                         </div>
+                        ${med.notes ? `
+                            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e9ecef;">
+                                <strong>Important Note:</strong> ${med.notes}
+                            </div>
+                        ` : ''}
                     </div>
                 ` : ''}
                 
