@@ -1545,6 +1545,18 @@
             permitRequired: "Cannot obtain permit - medication not approved in Japan",
             searchTerms: ["prozac", "fluoxetine", "antidepressant", "ssri", "depression"]
         },
+        {
+            name: "Tylenol PM / Advil PM",
+            genericName: "acetaminophen/ibuprofen + diphenhydramine",
+            alternateNames: ["ZzzQuil", "PM medications", "Nighttime pain relief"],
+            status: "prohibited",
+            category: "Sleep Aids",
+            reason: "Contains 25mg diphenhydramine - exceeds Japan's 10mg limit per dose",
+            consequences: "Confiscation at customs",
+            alternatives: ["Japanese sleep aids (Doriel, Dreamin Aid)", "Separate pain relief + approved sleep aid"],
+            permitRequired: "Prohibited - cannot obtain permit",
+            searchTerms: ["tylenol pm", "advil pm", "zzzquil", "pm", "nighttime", "sleep", "diphenhydramine"]
+        },
         
         // PROHIBITED - Pseudoephedrine
         {
@@ -1628,6 +1640,48 @@
             notes: "Requires import certificate due to amphetamine-like chemical structure. Available through permit process.",
             permitRequired: "Import certificate required for ANY quantity due to chemical structure",
             searchTerms: ["wellbutrin", "bupropion", "zyban", "antidepressant", "depression", "smoking cessation"]
+        },
+        {
+            name: "Ambien",
+            genericName: "zolpidem",
+            alternateNames: ["Ambien CR", "Edluar", "Zolpimist"],
+            status: "permit-required",
+            category: "Sleep Aids",
+            permitType: "Psychotropic Drug Import Certificate",
+            maxQuantity: "Any quantity requires permit",
+            applicationTime: "2-3 weeks minimum advance notice",
+            requiredDocs: ["Medical certificate", "Prescription", "Import application"],
+            notes: "Classified as psychotropic requiring advance permission from Regional Bureau of Health and Welfare.",
+            permitRequired: "Import certificate required for ANY quantity",
+            searchTerms: ["ambien", "zolpidem", "sleep", "insomnia", "sleeping pill"]
+        },
+        {
+            name: "Lunesta",
+            genericName: "eszopiclone",
+            alternateNames: [],
+            status: "permit-required",
+            category: "Sleep Aids",
+            permitType: "Psychotropic Drug Import Certificate", 
+            maxQuantity: "Any quantity requires permit",
+            applicationTime: "2-3 weeks minimum advance notice",
+            requiredDocs: ["Medical certificate", "Prescription", "Import application"],
+            notes: "Classified as psychotropic requiring advance permission from Regional Bureau of Health and Welfare.",
+            permitRequired: "Import certificate required for ANY quantity",
+            searchTerms: ["lunesta", "eszopiclone", "sleep", "insomnia", "sleeping pill"]
+        },
+        {
+            name: "Melatonin",
+            genericName: "melatonin",
+            alternateNames: ["Melatonin supplements"],
+            status: "permit-required",
+            category: "Sleep Aids",
+            permitType: "Import Certificate (Yunyu Kakunin-sho)",
+            maxQuantity: "Personal use amounts",
+            applicationTime: "2-3 weeks minimum advance notice",
+            requiredDocs: ["Import application", "Product documentation"],
+            notes: "Prescription-only in Japan despite being OTC in US. Most international melatonin supplements exceed Japan's 1-3mg prescription doses.",
+            permitRequired: "Import certificate required - classified as prescription medication in Japan",
+            searchTerms: ["melatonin", "sleep", "jet lag", "insomnia", "supplement"]
         },
         {
             name: "CBD Oil",
@@ -1734,6 +1788,30 @@
             permitRequired: "Not required for 1 month supply. Yunyu Kakunin-sho required for larger quantities",
             searchTerms: ["zoloft", "lexapro", "sertraline", "escitalopram", "cipralex", "antidepressant", "ssri", "depression", "paxil", "cymbalta"]
         },
+        {
+            name: "Trazodone",
+            genericName: "trazodone",
+            alternateNames: ["Desyrel"],
+            status: "controlled-allowed",
+            category: "Sleep Aids",
+            maxQuantity: "1 month supply",
+            conditions: "Keep in original prescription bottle, carry prescription and doctor's letter",
+            notes: "Not controlled in Japan - allows up to 1-month supply with proper documentation. Often prescribed off-label for sleep.",
+            permitRequired: "Not required for 1 month supply. Yunyu Kakunin-sho required for larger quantities",
+            searchTerms: ["trazodone", "desyrel", "sleep", "insomnia", "depression", "antidepressant"]
+        },
+        {
+            name: "Allergy Medications",
+            genericName: "antihistamines, nasal sprays, allergy treatments",
+            alternateNames: ["Claritin", "Zyrtec", "Allegra", "Flonase", "Nasonex", "Benadryl"],
+            status: "controlled-allowed",
+            category: "Allergy Treatment",
+            maxQuantity: "1 month supply for prescription, 2 months for OTC medications",
+            conditions: "Must declare prescription allergy medications at customs. Standard Benadryl (25mg) exceeds Japan's 10mg diphenhydramine limit.",
+            notes: "Claritin, Zyrtec, Allegra widely available in Japan. Pseudoephedrine products (Sudafed) absolutely prohibited. EpiPens permitted with documentation.",
+            permitRequired: "Not required for standard quantities. Import certificate needed for larger supplies",
+            searchTerms: ["allergy", "antihistamine", "claritin", "zyrtec", "allegra", "benadryl", "flonase", "nasonex", "hay fever", "seasonal allergies", "epipen"]
+        },
         
         // ALLOWED - Simple medications
         {
@@ -1795,6 +1873,30 @@
             notes: "Monthly mail delivery option for long-term stays. Japanese options limited (¥2,000-3,500/month, no insurance coverage). Mini-pills not available in Japan.",
             permitRequired: "Not required for 1 month supply. Yunyu Kakunin-sho required for larger quantities (apply 2-3 weeks advance)",
             searchTerms: ["birth control", "contraceptive", "pill", "yaz", "ortho", "yasmin", "oral contraceptive", "hormone", "estrogen", "progestin", "mini pill"]
+        },
+        {
+            name: "Testosterone",
+            genericName: "testosterone (injections, gels, patches)",
+            alternateNames: ["Testosterone cypionate", "Testosterone enanthate", "AndroGel", "Testim", "Testosterone patches"],
+            status: "allowed",
+            category: "Hormone Replacement",
+            maxQuantity: "1 month supply",
+            conditions: "Pre-filled syringes or self-injection kits preferred over vials. Keep in original packaging with prescription.",
+            notes: "Available in Japan as Enarmon Depot (injections) or Glowmin (OTC ointment). Traditional vials with separate syringes may require additional documentation.",
+            permitRequired: "Not required for 1 month supply. Yunyu Kakunin-sho required for larger quantities (apply 2-3 weeks advance)",
+            searchTerms: ["testosterone", "trt", "hormone replacement", "androgel", "testosterone cypionate", "testosterone enanthate", "hypogonadism", "low t"]
+        },
+        {
+            name: "Diabetes Medications",
+            genericName: "insulin, metformin, oral diabetes medications",
+            alternateNames: ["Insulin", "Metformin", "Lantus", "Humalog", "Novolog", "Levemir", "Glucophage"],
+            status: "allowed",
+            category: "Diabetes Medication",
+            maxQuantity: "1 month supply for prescription medications, 2 months for test strips/supplies",
+            conditions: "Must declare all prescription diabetes medications at customs. Pre-filled syringes preferred over vials.",
+            notes: "Glucose meters (1 unit), test strips (2 month supply) follow medical device rules. All major insulin types available in Japan.",
+            permitRequired: "Not required for 1 month supply. Yunyu Kakunin-sho required for larger quantities",
+            searchTerms: ["diabetes", "insulin", "metformin", "blood sugar", "glucose", "lantus", "humalog", "diabetic", "blood glucose", "test strips"]
         }
     ];
     
