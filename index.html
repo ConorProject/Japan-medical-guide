@@ -2113,125 +2113,347 @@
         noResults.style.display = 'none';
         displayRestrictionResults(results, resultsGrid);
     }
-
-    // Display search results
+    // Enhanced display function implementing "Handy Guide on Top, Encyclopedia Underneath"
     function displayRestrictionResults(results, container) {
-    container.innerHTML = results.map(med => {
-        let statusIcon, statusColor, statusBg;
-        
-        switch(med.status) {
-            case 'prohibited':
-                statusIcon = '❌';
-                statusColor = '#dc3545';
-                statusBg = '#f8d7da';
-                break;
-            case 'permit-required':
-                statusIcon = '⚠️';
-                statusColor = '#856404';
-                statusBg = '#fff3cd';
-                break;
-            case 'allowed':
-                statusIcon = '✅';
-                statusColor = '#155724';
-                statusBg = '#d4edda';
-                break;
-            case 'controlled-allowed':
-                statusIcon = '🔶';
-                statusColor = '#0c5460';
-                statusBg = '#d1ecf1';
-                break;
-        }
-        
-        return `
-            <div class="restriction-card" style="background: ${statusBg}; border: 2px solid ${statusColor}; border-radius: 15px; padding: 25px; margin-bottom: 20px;">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
-                    <div>
-                        <h3 style="color: ${statusColor}; margin: 0; font-size: 1.5rem;">
-                            ${statusIcon} ${med.name}
-                        </h3>
-                        <p style="color: #666; margin: 5px 0;">
-                            <em>${med.genericName}</em>
-                            ${med.alternateNames.length > 0 ? `<br>Also known as: ${med.alternateNames.join(', ')}` : ''}
-                        </p>
+        container.innerHTML = results.map(med => {
+            // Determine status styling
+            let statusIcon, statusClass;
+            switch(med.status) {
+                case 'prohibited':
+                    statusIcon = '❌';
+                    statusClass = 'prohibited';
+                    break;
+                case 'permit-required':
+                    statusIcon = '⚠️';
+                    statusClass = 'permit-required';
+                    break;
+                case 'controlled-allowed':
+                    statusIcon = '🔶';
+                    statusClass = 'controlled-allowed';
+                    break;
+                case 'allowed':
+                    statusIcon = '✅';
+                    statusClass = 'allowed';
+                    break;
+                default:
+                    statusIcon = '❓';
+                    statusClass = 'unknown';
+            }
+
+            const cardId = `med-${med.name.replace(/\s+/g, '-').toLowerCase()}`;
+
+            return `
+                <div class="medication-card status-${med.status}">
+                    <!-- HANDY GUIDE LAYER - TOP -->
+                    <div class="handy-guide">
+                        <div class="guide-header">
+                            <div class="medication-title">
+                                <h2 class="medication-name">${med.name}</h2>
+                                <div class="medication-generic">${med.genericName}</div>
+                                ${med.usedFor ? `<div class="medication-used-for">Used for: ${med.usedFor}</div>` : ''}
+                            </div>
+                            <div class="status-badge ${statusClass}">
+                                ${statusIcon} ${med.status.replace('-', ' ').toUpperCase()}
+                            </div>
+                        </div>
+
+                        <!-- Critical Action Box -->
+                        <div class="critical-action">
+                            <div class="action-title">
+                                🎯 What You Need to Do
+                            </div>
+                            <div class="action-steps">
+                                ${generateCriticalAction(med)}
+                            </div>
+                        </div>
+
+                        <!-- Quick Facts Grid -->
+                        <div class="quick-facts">
+                            ${generateQuickFacts(med)}
+                        </div>
+
+                        <!-- Critical Warnings -->
+                        ${med.criticalWarnings && med.criticalWarnings.length > 0 ? `
+                            <div class="critical-warning">
+                                <div class="warning-title">
+                                    🚨 Critical Warning
+                                </div>
+                                <div class="warning-text">
+                                    ${med.criticalWarnings[0]}
+                                </div>
+                            </div>
+                        ` : ''}
+
+                        <!-- Toggle to Encyclopedia -->
+                        <button class="encyclopedia-toggle" onclick="toggleEncyclopedia('${cardId}')">
+                            📚 View Complete Details & Expert Commentary
+                        </button>
                     </div>
-                    <div style="background: ${statusColor}; color: white; padding: 8px 15px; border-radius: 20px; font-weight: 600;">
-                        ${med.status.replace('-', ' ').toUpperCase()}
+
+                    <!-- ENCYCLOPEDIA LAYER - UNDERNEATH -->
+                    <div class="encyclopedia" id="${cardId}-encyclopedia">
+                        <div class="encyclopedia-header">
+                            📚 Complete ${med.name} Import Guide
+                        </div>
+
+                        <!-- Complete Information Chart -->
+                        <div class="info-chart">
+                            ${generateCompleteChart(med)}
+                        </div>
+
+                        <!-- Expert Commentary -->
+                        ${med.commentary ? `
+                            <div class="commentary-section">
+                                <div class="commentary-header">
+                                    💡 Expert Commentary & Practical Insights
+                                </div>
+                                <div class="commentary-grid">
+                                    ${generateCommentary(med.commentary)}
+                                </div>
+                            </div>
+                        ` : ''}
+
+                        <!-- Japan Availability Details -->
+                        ${med.availableInJapan ? `
+                            <div class="chart-section">
+                                <h4>🇯🇵 Available in Japan</h4>
+                                <div class="chart-grid">
+                                    <div class="chart-item">
+                                        <div class="chart-label">Status</div>
+                                        <div class="chart-value">${med.availableInJapan.status}</div>
+                                    </div>
+                                    ${med.availableInJapan.costEstimate ? `
+                                        <div class="chart-item">
+                                            <div class="chart-label">Cost Estimate</div>
+                                            <div class="chart-value">${med.availableInJapan.costEstimate}</div>
+                                        </div>
+                                    ` : ''}
+                                    ${med.availableInJapan.prescriptionRequired ? `
+                                        <div class="chart-item">
+                                            <div class="chart-label">Prescription Required</div>
+                                            <div class="chart-value">${med.availableInJapan.prescriptionRequired}</div>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                                ${med.availableInJapan.alternatives && med.availableInJapan.alternatives.length > 0 ? `
+                                    <div style="margin-top: 15px;">
+                                        <strong>Local Alternatives:</strong> ${med.availableInJapan.alternatives.join(', ')}
+                                    </div>
+                                ` : ''}
+                            </div>
+                        ` : ''}
+
+                        <button class="encyclopedia-toggle" onclick="toggleEncyclopedia('${cardId}')" style="margin-top: 20px;">
+                            ↑ Hide Complete Details
+                        </button>
                     </div>
                 </div>
-                
-                ${med.status === 'prohibited' ? `
-                    <div style="background: white; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
-                        <h4 style="color: ${statusColor}; margin-bottom: 8px;">⛔ Why Prohibited:</h4>
-                        <p style="margin: 0;">${med.reason}</p>
-                        <p style="color: #dc3545; font-weight: 600; margin-top: 10px;">
-                            Consequences: ${med.consequences}
-                        </p>
+            `;
+        }).join('');
+    }
+
+    // Generate critical action based on status
+    function generateCriticalAction(med) {
+        switch(med.status) {
+            case 'prohibited':
+                return `
+                    <div class="step-item">
+                        <div class="step-number">❌</div>
+                        <div class="step-content">
+                            <strong>DO NOT BRING:</strong> This medication is illegal in Japan. 
+                            ${med.alternatives && med.alternatives.length > 0 ? 
+                                `Consider alternatives: ${med.alternatives[0]}` : 
+                                'Consult your doctor about legal alternatives before travel.'
+                            }
+                        </div>
                     </div>
-                    ${med.alternatives.length > 0 ? `
-                        <div style="background: white; padding: 15px; border-radius: 10px;">
-                            <h4 style="color: #28a745; margin-bottom: 8px;">✅ Legal Alternatives:</h4>
-                            <ul style="margin: 0; padding-left: 20px;">
-                                ${med.alternatives.map(alt => `<li>${alt}</li>`).join('')}
-                            </ul>
+                `;
+            
+            case 'permit-required':
+                return `
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">Apply for import permit ${med.applicationTimeline || med.applicationTime || '4-6 weeks before travel'}</div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">At airport: Red Channel, present permit + prescription</div>
+                    </div>
+                `;
+            
+            case 'controlled-allowed':
+                return `
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">Pack in original containers with prescription</div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">At airport: ${med.customsDeclaration === 'YES' ? 'Red Channel - declare at customs' : 'Green Channel - no declaration needed'}</div>
+                    </div>
+                `;
+            
+            default:
+                return `
+                    <div class="step-item">
+                        <div class="step-number">✓</div>
+                        <div class="step-content">
+                            Keep in original packaging with prescription. 
+                            ${med.customsDeclaration === 'YES' ? 'Declare at customs if asked.' : 'No special procedures required.'}
+                        </div>
+                    </div>
+                `;
+        }
+    }
+
+    // Generate quick facts grid
+    function generateQuickFacts(med) {
+        let facts = [];
+        
+        if (med.maxQuantity) {
+            facts.push(`
+                <div class="fact-item">
+                    <div class="fact-label">Max Quantity</div>
+                    <div class="fact-value">${med.maxQuantity}</div>
+                </div>
+            `);
+        }
+        
+        if (med.customsDeclaration) {
+            facts.push(`
+                <div class="fact-item">
+                    <div class="fact-label">Customs Declaration</div>
+                    <div class="fact-value">${med.customsDeclaration}</div>
+                </div>
+            `);
+        }
+        
+        if (med.channelRequired) {
+            facts.push(`
+                <div class="fact-item">
+                    <div class="fact-label">Airport Channel</div>
+                    <div class="fact-value">${med.channelRequired}</div>
+                </div>
+            `);
+        }
+        
+        if (med.availableInJapan && med.availableInJapan.costEstimate) {
+            facts.push(`
+                <div class="fact-item">
+                    <div class="fact-label">Cost in Japan</div>
+                    <div class="fact-value">${med.availableInJapan.costEstimate}</div>
+                </div>
+            `);
+        }
+        
+        return facts.join('');
+    }
+
+    // Generate complete chart
+    function generateCompleteChart(med) {
+        return `
+            <div class="chart-section">
+                <h4>📋 Import Requirements</h4>
+                <div class="chart-grid">
+                    ${med.maxQuantity ? `
+                        <div class="chart-item">
+                            <div class="chart-label">Max Quantity</div>
+                            <div class="chart-value">${med.maxQuantity}</div>
                         </div>
                     ` : ''}
-                ` : ''}
-                
-                ${med.status === 'permit-required' ? `
-                    <div style="background: white; padding: 20px; border-radius: 10px;">
-                        <h4 style="color: ${statusColor}; margin-bottom: 15px;">📋 Permit Requirements:</h4>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                            <div>
-                                <strong>Permit Type:</strong><br>${med.permitType}
-                            </div>
-                            <div>
-                                <strong>Max Quantity:</strong><br>${med.maxQuantity}
-                            </div>
-                            <div>
-                                <strong>Apply When:</strong><br>${med.applicationTime}
-                            </div>
+                    ${med.permitRequired ? `
+                        <div class="chart-item">
+                            <div class="chart-label">Import Permit</div>
+                            <div class="chart-value">${med.permitRequired}</div>
                         </div>
-                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e9ecef;">
-                            <strong>Required Documents:</strong>
-                            <ul style="margin: 5px 0 0 20px;">
-                                ${med.requiredDocs.map(doc => `<li>${doc}</li>`).join('')}
-                            </ul>
+                    ` : ''}
+                    ${med.packagingRequirements ? `
+                        <div class="chart-item">
+                            <div class="chart-label">Packaging</div>
+                            <div class="chart-value">${med.packagingRequirements}</div>
                         </div>
-                        ${med.notes ? `
-                            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e9ecef;">
-                                <strong>Important Note:</strong> ${med.notes}
-                            </div>
-                        ` : ''}
-                    </div>
-                ` : ''}
-                
-                ${(med.status === 'allowed' || med.status === 'controlled-allowed') ? `
-                    <div style="background: white; padding: 15px; border-radius: 10px;">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                            <div>
-                                <strong>Max Quantity:</strong><br>${med.maxQuantity}
-                            </div>
-                            <div>
-                                <strong>Conditions:</strong><br>${med.conditions}
-                            </div>
+                    ` : ''}
+                    ${med.documentationIfAsked ? `
+                        <div class="chart-item">
+                            <div class="chart-label">Documentation</div>
+                            <div class="chart-value">${med.documentationIfAsked.join(', ')}</div>
                         </div>
-                        ${med.permitRequired ? `
-                            <div style="margin-top: 15px; padding: 15px; background: #e8f5e9; border-radius: 8px; border-left: 4px solid #28a745;">
-                                <strong style="color: #2e7d32;">📋 Import Permit Required?</strong><br>
-                                <span style="color: #2e7d32;">${med.permitRequired}</span>
-                            </div>
-                        ` : ''}
-                        ${med.notes ? `
-                            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e9ecef;">
-                                <strong>Note:</strong> ${med.notes}
-                            </div>
-                        ` : ''}
-                    </div>
-                ` : ''}
+                    ` : ''}
+                </div>
             </div>
+
+            ${med.consequences ? `
+                <div class="chart-section">
+                    <h4>⚠️ Consequences if Wrong</h4>
+                    <div class="chart-value">${med.consequences}</div>
+                </div>
+            ` : ''}
         `;
-    }).join('');
-}
+    }
+
+    // Generate commentary
+    function generateCommentary(commentary) {
+        let items = [];
+        
+        if (commentary.practicalTips) {
+            items.push(`
+                <div class="commentary-item">
+                    <h5>🎯 Practical Tips</h5>
+                    <p>${commentary.practicalTips}</p>
+                </div>
+            `);
+        }
+        
+        if (commentary.commonMistakes) {
+            items.push(`
+                <div class="commentary-item">
+                    <h5>❌ Common Mistakes</h5>
+                    <p>${commentary.commonMistakes}</p>
+                </div>
+            `);
+        }
+        
+        if (commentary.proTips) {
+            items.push(`
+                <div class="commentary-item">
+                    <h5>✨ Pro Tips</h5>
+                    <p>${commentary.proTips}</p>
+                </div>
+            `);
+        }
+        
+        if (commentary.warningFlags) {
+            items.push(`
+                <div class="commentary-item">
+                    <h5>🚩 Warning Flags</h5>
+                    <p>${commentary.warningFlags}</p>
+                </div>
+            `);
+        }
+        
+        return items.join('');
+    }
+
+    // Toggle encyclopedia section
+    function toggleEncyclopedia(cardId) {
+        const encyclopedia = document.getElementById(`${cardId}-encyclopedia`);
+        const button = event.target;
+        
+        if (encyclopedia.classList.contains('expanded')) {
+            encyclopedia.classList.remove('expanded');
+            button.textContent = '📚 View Complete Details & Expert Commentary';
+        } else {
+            encyclopedia.classList.add('expanded');
+            button.textContent = '↑ Hide Complete Details';
+            
+            // Smooth scroll to encyclopedia
+            encyclopedia.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }
+    }
+    
     // Display all categories when no search term
     function displayAllCategories(container) {
         const categories = {
