@@ -378,6 +378,196 @@
     content: "⚖️";
     font-size: 18px;
 }
+/* ===== ENHANCED PROFESSIONAL MEDICATION DISPLAY STYLING ===== */
+
+/* Enhanced numbered circles for steps - from demos */
+.steps-container {
+    counter-reset: customs-counter;
+}
+
+.step-item {
+    counter-increment: customs-counter;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    border-left: 4px solid #1976d2;
+}
+
+.step-number {
+    background: #1976d2;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-right: 20px;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+}
+
+.step-number::before {
+    content: counter(customs-counter);
+}
+
+/* Enhanced medication result cards from demos */
+.medication-result {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+.medication-header {
+    padding: 25px 25px 15px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-bottom: 1px solid #dee2e6;
+}
+
+.medication-name-enhanced {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+.medication-generic {
+    font-size: 1.1rem;
+    color: #6c757d;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+/* Enhanced status badges */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.status-prohibited {
+    background: linear-gradient(135deg, #ffe6e6, #ffcccc);
+    color: #c62828;
+    border: 2px solid #ffaaaa;
+}
+
+.status-permit-required {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    color: #856404;
+    border: 2px solid #f39c12;
+}
+
+.status-allowed {
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    color: #2e7d32;
+    border: 2px solid #81c784;
+}
+
+/* Enhanced content sections */
+.medication-content {
+    padding: 25px;
+}
+
+.action-section {
+    background: linear-gradient(135deg, #fff8e1, #ffecb3);
+    border: 2px solid #ffb74d;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.action-section h4 {
+    color: #e65100;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Enhanced step styling within medication cards */
+.medication-steps {
+    margin-top: 20px;
+}
+
+.medication-step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #1976d2;
+}
+
+.medication-step-number {
+    background: #1976d2;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-right: 15px;
+    flex-shrink: 0;
+    font-size: 1rem;
+    box-shadow: 0 3px 8px rgba(25, 118, 210, 0.3);
+}
+
+.medication-step-content {
+    flex: 1;
+    padding-top: 4px;
+}
+
+.medication-step-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #1976d2;
+    margin-bottom: 8px;
+}
+
+.enhanced-list {
+    list-style: none;
+    padding: 0;
+}
+
+.enhanced-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 3px solid #1976d2;
+}
+
+.enhanced-list li::before {
+    content: "•";
+    color: #1976d2;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 12px;
+    margin-top: 2px;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
