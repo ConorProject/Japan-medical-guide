@@ -2120,100 +2120,154 @@
 
     // Enhanced display function implementing "Handy Guide on Top, Encyclopedia Underneath"
     function displayRestrictionResults(results, container) {
-        container.innerHTML = results.map(med => {
-            // Determine status styling
-            let statusIcon, statusClass;
-            switch(med.status) {
-                case 'prohibited':
-                    statusIcon = '❌';
-                    statusClass = 'prohibited';
-                    break;
-                case 'permit-required':
-                    statusIcon = '⚠️';
-                    statusClass = 'permit-required';
-                    break;
-                case 'controlled-allowed':
-                    statusIcon = '🔶';
-                    statusClass = 'controlled-allowed';
-                    break;
-                case 'allowed':
-                    statusIcon = '✅';
-                    statusClass = 'allowed';
-                    break;
-                default:
-                    statusIcon = '❓';
-                    statusClass = 'unknown';
-            }
+    container.innerHTML = results.map(med => {
+        // Determine status styling
+        let statusIcon, statusClass;
+        switch(med.status) {
+            case 'prohibited':
+                statusIcon = '❌';
+                statusClass = 'prohibited';
+                break;
+            case 'permit-required':
+                statusIcon = '⚠️';
+                statusClass = 'permit-required';
+                break;
+            case 'controlled-allowed':
+                statusIcon = '🔶';
+                statusClass = 'controlled-allowed';
+                break;
+            case 'allowed':
+                statusIcon = '✅';
+                statusClass = 'allowed';
+                break;
+            default:
+                statusIcon = '❓';
+                statusClass = 'unknown';
+        }
 
-            const cardId = `med-${med.name.replace(/\s+/g, '-').toLowerCase()}`;
+        const cardId = `med-${med.name.replace(/\s+/g, '-').toLowerCase()}`;
 
-            return `
-                <div class="medication-card status-${med.status}">
-                    <!-- HANDY GUIDE LAYER - TOP -->
-                    <div class="handy-guide">
-                        <div class="guide-header">
-                            <div class="medication-title">
-                                <h2 class="medication-name">${med.name}</h2>
-                                <div class="medication-generic">${med.genericName}</div>
-                                ${med.usedFor ? `<div class="medication-used-for">Used for: ${med.usedFor}</div>` : ''}
-                            </div>
-                            <div class="status-badge ${statusClass}">
-                                ${statusIcon} ${med.status.replace('-', ' ').toUpperCase()}
-                            </div>
+        return `
+            <div class="medication-card status-${med.status}">
+                <!-- HANDY GUIDE LAYER - TOP -->
+                <div class="handy-guide">
+                    <div class="guide-header">
+                        <div class="medication-title">
+                            <h2 class="medication-name">${med.name}</h2>
+                            <div class="medication-generic">${med.genericName}</div>
+                            ${med.usedFor ? `<div class="medication-used-for">Used for: ${med.usedFor}</div>` : ''}
                         </div>
-
-                        <!-- Critical Action Box -->
-                        <div class="critical-action">
-                            <div class="action-title">
-                                🎯 What You Need to Do
-                            </div>
-                            <div class="action-steps">
-                                ${generateCriticalAction(med)}
-                            </div>
+                        <div class="status-badge ${statusClass}">
+                            ${statusIcon} ${med.status.replace('-', ' ').toUpperCase()}
                         </div>
-
-                        <!-- Quick Facts Grid -->
-                        <div class="quick-facts">
-                            ${generateQuickFacts(med)}
-                        </div>
-
-                        <!-- Critical Warnings -->
-                        ${med.criticalWarnings && med.criticalWarnings.length > 0 ? `
-                            <div class="critical-warning">
-                                <div class="warning-title">
-                                    🚨 Critical Warning
-                                </div>
-                                <div class="warning-text">
-                                    ${med.criticalWarnings[0]}
-                                </div>
-                            </div>
-                        ` : ''}
-
-                        <!-- Toggle to Encyclopedia -->
-                        <button class="encyclopedia-toggle" onclick="toggleEncyclopedia('${cardId}')">
-                            📚 View Complete Details & Expert Commentary
-                        </button>
                     </div>
 
-                    <!-- ENCYCLOPEDIA LAYER - UNDERNEATH -->
-                    <div class="encyclopedia" id="${cardId}-encyclopedia">
-                        <div class="encyclopedia-header">
-                            📚 Complete ${med.name} Import Guide
-                        </div>
+                    <!-- Story Hook (if available) -->
+                    ${generateStoryHook(med)}
 
-                        <!-- Complete Information Chart -->
-                        <div class="info-chart">
-                            ${generateCompleteChart(med)}
+                    <!-- Critical Action Box -->
+                    <div class="critical-action">
+                        <div class="action-title">
+                            🎯 What You Need to Do
                         </div>
-
-                        <button class="encyclopedia-toggle" onclick="toggleEncyclopedia('${cardId}')" style="margin-top: 20px;">
-                            ↑ Hide Complete Details
-                        </button>
+                        <div class="action-steps">
+                            ${generateCriticalAction(med)}
+                        </div>
                     </div>
+
+                    <!-- Quick Facts Grid -->
+                    <div class="quick-facts">
+                        ${generateQuickFacts(med)}
+                    </div>
+
+                    <!-- Critical Warnings -->
+                    ${med.criticalWarnings && med.criticalWarnings.length > 0 ? `
+                        <div class="critical-warning">
+                            <div class="warning-title">
+                                🚨 Critical Warning
+                            </div>
+                            <div class="warning-text">
+                                ${med.criticalWarnings[0]}
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <!-- Toggle to Encyclopedia -->
+                    <button class="encyclopedia-toggle" onclick="toggleEncyclopedia('${cardId}')">
+                        📚 View Complete Details & Expert Commentary
+                    </button>
                 </div>
-            `;
-        }).join('');
-    }
+
+                <!-- ENCYCLOPEDIA LAYER - UNDERNEATH -->
+                <div class="encyclopedia" id="${cardId}-encyclopedia">
+                    <div class="encyclopedia-header">
+                        📚 Complete ${med.name} Import Guide
+                    </div>
+
+                    <!-- Unique Story Section (if available) -->
+                    ${generateUniqueStory(med)}
+
+                    <!-- Complete Information Chart -->
+                    <div class="info-chart">
+                        ${generateCompleteChart(med)}
+                    </div>
+
+                    <!-- Expert Commentary -->
+                    ${med.commentary ? `
+                        <div class="commentary-section">
+                            <div class="commentary-header">
+                                💡 Expert Commentary & Practical Insights
+                            </div>
+                            <div class="commentary-grid">
+                                ${generateCommentary(med.commentary)}
+                            </div>
+                        </div>
+                    ` : ''}
+
+                    <!-- Cultural Context (if available) -->
+                    ${generateCulturalContext(med)}
+
+                    <!-- Japan Availability Details -->
+                    ${med.availableInJapan ? `
+                        <div class="chart-section">
+                            <h4>🇯🇵 Available in Japan</h4>
+                            <div class="chart-grid">
+                                <div class="chart-item">
+                                    <div class="chart-label">Status</div>
+                                    <div class="chart-value">${med.availableInJapan.status}</div>
+                                </div>
+                                ${med.availableInJapan.costEstimate ? `
+                                    <div class="chart-item">
+                                        <div class="chart-label">Cost Estimate</div>
+                                        <div class="chart-value">${med.availableInJapan.costEstimate}</div>
+                                    </div>
+                                ` : ''}
+                                ${med.availableInJapan.prescriptionRequired ? `
+                                    <div class="chart-item">
+                                        <div class="chart-label">Prescription Required</div>
+                                        <div class="chart-value">${med.availableInJapan.prescriptionRequired}</div>
+                                    </div>
+                                ` : ''}
+                            </div>
+                            ${med.availableInJapan.alternatives && med.availableInJapan.alternatives.length > 0 ? `
+                                <div style="margin-top: 15px;">
+                                    <strong>Local Alternatives:</strong> ${med.availableInJapan.alternatives.join(', ')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    ` : ''}
+
+                    <!-- Research Quality Indicators (if available) -->
+                    ${generateResearchQuality(med)}
+
+                    <button class="encyclopedia-toggle" onclick="toggleEncyclopedia('${cardId}')" style="margin-top: 20px;">
+                        ↑ Hide Complete Details
+                    </button>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
 
     // Generate critical action based on status
     function generateCriticalAction(med) {
@@ -2421,6 +2475,143 @@
             displayAllCategories(document.getElementById('restrictionsGrid'));
         }
     });
+    // Generate story hook for handy guide layer
+function generateStoryHook(med) {
+    const storyHook = (med.commentary && med.commentary.storyHook) || med.uniqueStory;
+    
+    if (!storyHook) return '';
+    
+    return `
+        <div class="story-hook">
+            <div class="hook-icon">💡</div>
+            <div class="hook-text">${storyHook}</div>
+        </div>
+    `;
+}
+
+// Generate unique story section for encyclopedia layer
+function generateUniqueStory(med) {
+    if (!med.uniqueStory && !med.surpriseFactor) return '';
+    
+    return `
+        <div class="unique-story-section">
+            <h4>🎯 The Surprising Truth</h4>
+            ${med.uniqueStory ? `
+                <div class="unique-story">
+                    ${med.uniqueStory}
+                </div>
+            ` : ''}
+            ${med.surpriseFactor ? `
+                <div class="surprise-factor">
+                    <strong>What makes this surprising:</strong> ${med.surpriseFactor}
+                </div>
+            ` : ''}
+            ${med.commonMisconception ? `
+                <div class="common-misconception">
+                    <strong>Common misconception:</strong> ${med.commonMisconception}
+                </div>
+            ` : ''}
+        </div>
+    `;
+}
+
+// Generate cultural context section
+function generateCulturalContext(med) {
+    if (!med.culturalContext) return '';
+    
+    return `
+        <div class="cultural-context-section">
+            <h4>🇯🇵 Cultural & Historical Context</h4>
+            <div class="cultural-context">
+                ${med.culturalContext}
+            </div>
+        </div>
+    `;
+}
+
+// Generate research quality indicators
+function generateResearchQuality(med) {
+    if (!med.lastVerified && !med.evidenceQuality) return '';
+    
+    return `
+        <div class="research-quality">
+            <h4>🔍 Research Quality</h4>
+            <div class="quality-grid">
+                ${med.evidenceQuality ? `
+                    <div class="quality-item">
+                        <div class="quality-label">Evidence Quality</div>
+                        <div class="quality-value">${med.evidenceQuality}</div>
+                    </div>
+                ` : ''}
+                ${med.lastVerified ? `
+                    <div class="quality-item">
+                        <div class="quality-label">Last Verified</div>
+                        <div class="quality-value">${med.lastVerified}</div>
+                    </div>
+                ` : ''}
+                ${med.contradictionsFound ? `
+                    <div class="quality-item">
+                        <div class="quality-label">Source Consistency</div>
+                        <div class="quality-value">${med.contradictionsFound}</div>
+                    </div>
+                ` : ''}
+            </div>
+        </div>
+    `;
+}
+
+// Enhanced commentary generation with real-world insights
+function generateCommentary(commentary) {
+    let items = [];
+    
+    if (commentary.practicalTips) {
+        items.push(`
+            <div class="commentary-item">
+                <h5>🎯 Practical Tips</h5>
+                <p>${commentary.practicalTips}</p>
+            </div>
+        `);
+    }
+    
+    if (commentary.commonMistakes) {
+        items.push(`
+            <div class="commentary-item">
+                <h5>❌ Common Mistakes</h5>
+                <p>${commentary.commonMistakes}</p>
+            </div>
+        `);
+    }
+    
+    // NEW: Real-world insights
+    if (commentary.realWorldInsights) {
+        items.push(`
+            <div class="commentary-item">
+                <h5>🌍 Real-World Insights</h5>
+                <p>${commentary.realWorldInsights}</p>
+            </div>
+        `);
+    }
+    
+    if (commentary.proTips) {
+        items.push(`
+            <div class="commentary-item">
+                <h5>✨ Pro Tips</h5>
+                <p>${commentary.proTips}</p>
+            </div>
+        `);
+    }
+    
+    if (commentary.warningFlags) {
+        items.push(`
+            <div class="commentary-item">
+                <h5>🚩 Warning Flags</h5>
+                <p>${commentary.warningFlags}</p>
+            </div>
+        `);
+    }
+    
+    return items.join('');
+}
 </script>
 
 </body>
