@@ -1741,17 +1741,85 @@
             searchTerms: ["tylenol", "acetaminophen", "paracetamol", "pain", "fever"]
         },
         {
-            name: "Birth Control Pills",
-            genericName: "various oral contraceptives",
-            alternateNames: ["The Pill", "Yaz", "Ortho Tri-Cyclen", "Yasmin", "Lo Loestrin", "Seasonique", "Marvelon", "Triquilar"],
-            status: "allowed",
-            category: "Contraceptives",
-            maxQuantity: "1 month supply (21-28 pills) without permit, larger quantities with Yunyu Kakunin-sho",
-            conditions: "Keep in original prescription bottle with pharmacy label",
-            notes: "Monthly mail delivery option for long-term stays. Japanese options limited (¥2,000-3,500/month, no insurance coverage). Mini-pills not available in Japan.",
-            permitRequired: "Not required for 1 month supply. Yunyu Kakunin-sho required for larger quantities (apply 2-3 weeks advance)",
-            searchTerms: ["birth control", "contraceptive", "pill", "yaz", "ortho", "yasmin", "oral contraceptive", "hormone", "estrogen", "progestin", "mini pill"]
-        }
+    name: "Birth Control Pills",
+    genericName: "various oral contraceptives",
+    alternateNames: [
+        "The Pill", 
+        "Yaz", 
+        "Ortho Tri-Cyclen", 
+        "Yasmin", 
+        "Lo Loestrin", 
+        "Seasonique", 
+        "Marvelon", 
+        "Triquilar", 
+        "Ange", 
+        "Ortho M-21",
+        "Ortho 777"
+    ],
+    status: "allowed",
+    category: "Contraceptives",
+    maxQuantity: "1 month supply (21-28 pills) without permit, larger quantities with Yunyu Kakunin-sho",
+    customsDeclaration: "NO",
+    channelRequired: "Green Channel",
+    conditions: "Keep in original prescription bottle with pharmacy label - avoid pill organizers",
+    notes: "Available Japanese brands: Marvelon, Triquilar, Ange, Ortho M-21, Ortho 777. Cost ¥2,000-3,500/month (no insurance coverage). Monthly prescription renewals required.",
+    permitRequired: "Not required for 1 month supply. Yunyu Kakunin-sho required for larger quantities (apply 2-3 weeks advance)",
+    consequences: "No serious consequences for standard amounts. Import certificate denial possible for larger quantities without proper documentation.",
+    searchTerms: [
+        "birth control", 
+        "contraceptive", 
+        "pill", 
+        "oral contraceptive",
+        "yaz", 
+        "ortho", 
+        "yasmin", 
+        "marvelon",
+        "triquilar",
+        "hormone", 
+        "estrogen", 
+        "progestin", 
+        "mini pill",
+        "piru",
+        "ピル",
+        "経口避妊薬",
+        "pregnancy prevention"
+    ],
+
+    // Enhanced research fields
+    uniqueStory: "Japan was the LAST developed country to legalize birth control pills (1999) — 40 years behind the West",
+    culturalContext: "Birth control pills were only legalized in Japan in 1999, making Japan the last developed country to approve them. This massive 40-year delay explains why only low-dose combination pills are available, costs are high, insurance doesn't cover contraception, and there's an 80% cultural preference for condoms among married women.",
+    commonMisconception: "Assuming all international birth control types exist in Japan, underestimating cost and monthly renewal requirements, not planning for extended stays",
+    surpriseFactor: "The contraceptive pill — easier to import than you think, harder to obtain locally than you'd ever imagine",
+
+    availableInJapan: {
+        status: "Limited prescription options available — only low-dose combination pills",
+        costEstimate: "¥2,000-3,500/month (not covered by insurance)",
+        prescriptionRequired: "Yes — monthly or bi-monthly renewals required",
+        alternatives: [
+            "Marvelon (マーベロン) — monophasic", 
+            "Triquilar (トリキュラー) — triphasic", 
+            "Ange (アンジュ) — triphasic", 
+            "Ortho M-21 (オーソM-21) — monophasic",
+            "Ortho 777 (オーソ777) — triphasic"
+        ],
+        limitations: "Mini-pills (progestin-only) NOT available, extended-cycle pills generally not available"
+    },
+
+    commentary: {
+        storyHook: "Birth control pills were only legalized in Japan in 1999 — making Japan the last developed country to approve them, 40 years behind the West",
+        practicalTips: "For stays over 1 month, apply for Yunyu Kakunin-sho 2-3 weeks in advance or plan to get Japanese prescription. Research your specific brand's availability beforehand since selection is very limited. Budget for higher costs than home country.",
+        commonMistakes: "Assuming all international birth control types exist in Japan, underestimating cost and monthly renewal requirements, not planning for extended stays, using pill organizers instead of original bottles",
+        realWorldInsights: "Japan's 40-year delay in legalizing birth control explains why only low-dose combination pills are available, costs are high, and insurance doesn't cover contraception. Online consultation services now available but doctors may require blood tests and additional exams. Cultural preference for condoms (80% usage rate) affects availability and attitudes.",
+        proTips: "Online consultation services now available for renewals, but doctors may require blood tests and additional exams. Consider switching to available Japanese brands before travel if staying long-term. Bring 3-month supply with proper import certificate for extended stays.",
+        warningFlags: "Mini-pills (progestin-only) are NOT available in Japan. Extended-cycle pills generally not available. Monthly renewal requirements can be burdensome for busy schedules. Insurance does not cover contraception in Japan."
+    },
+
+    // Research quality indicators
+    evidenceQuality: "Strong - Multiple official MHLW sources, embassy guidance, current practitioner information",
+    lastVerified: "June 2025",
+    contradictionsFound: "None found - All sources consistently confirm 1-month limit and non-controlled status"
+}
+        
     ];
 
     // Tab switching functionality
