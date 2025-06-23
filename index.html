@@ -955,6 +955,11 @@
         const encyclopedia = document.getElementById(`${cardId}-encyclopedia`);
         if (encyclopedia) { encyclopedia.classList.toggle('expanded'); }
     }
+        function searchSpecific(medicationName) {
+    const searchInput = document.getElementById('medicationSearch');
+    searchInput.value = medicationName;
+    searchMedications();
+}
 </script>
 </body>
 </html>
