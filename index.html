@@ -1355,7 +1355,7 @@ function displayRestrictionResults(results) {
                 </div>
 
                 <!-- Customs Declaration Guidance -->
-                ${med.customsDeclaration ? `
+                ${med.customsDeclaration && med.customsDeclaration.legal && med.customsDeclaration.recommended ? `
                     <div class="customs-guidance">
                         <div class="guidance-title">🛂 Customs Declaration Guidance</div>
                         <div class="guidance-tabs">
