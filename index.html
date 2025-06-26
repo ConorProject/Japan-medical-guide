@@ -773,6 +773,130 @@
   border-left: 4px solid #e67e22 !important;
 }
 }
+
+/* ============================================================================ */
+/* NEW CSS STYLES FOR ENHANCED CLASSIFICATION SYSTEM */
+/* ============================================================================ */
+
+/* Threshold-based medication styling */
+.threshold-info {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.threshold-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #495057;
+}
+
+.threshold-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.threshold-item {
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.threshold-item.permitted {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+.threshold-item.restricted {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+}
+
+.threshold-status {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.threshold-limit, .threshold-trigger {
+    font-size: 0.9em;
+    margin-bottom: 3px;
+}
+
+.threshold-note {
+    font-size: 0.8em;
+    color: #6c757d;
+}
+
+/* Customs guidance styling */
+.customs-guidance {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.guidance-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #495057;
+}
+
+.guidance-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.guidance-tab.legal {
+    background: #e3f2fd;
+    border: 1px solid #bbdefb;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.guidance-tab.recommended {
+    background: #f3e5f5;
+    border: 1px solid #e1bee7;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.guidance-tab h5 {
+    margin: 0 0 8px 0;
+    font-size: 0.9em;
+}
+
+.guidance-item {
+    margin-bottom: 5px;
+    font-size: 0.85em;
+}
+
+.guidance-item strong {
+    font-weight: 600;
+}
+
+/* Status badge updates for new system */
+.status-badge.threshold-based {
+    background: linear-gradient(135deg, #28a745, #ffc107);
+    color: white;
+}
+
+/* Mobile responsiveness for new elements */
+@media (max-width: 768px) {
+    .threshold-grid,
+    .guidance-tabs {
+        grid-template-columns: 1fr;
+    }
+    
+    .threshold-item,
+    .guidance-tab {
+        margin-bottom: 10px;
+    }
+}
     </style>
 </head>
 <body>
@@ -1135,7 +1259,7 @@ function searchMedications() {
     }
 
     noResults.style.display = 'none';
-    displayResults(results);
+    displayRestrictionResults(results);
 }
 
 // --- CATEGORY BUTTON SEARCH ---
@@ -1144,56 +1268,144 @@ function searchSpecific(medicationName) {
     searchMedications();
 }
 
-// --- RICH RESULT CARDS ---
-function displayResults(results) {
+// --- ENHANCED RESTRICTION RESULTS DISPLAY ---
+function displayRestrictionResults(results) {
     const resultsGrid = document.getElementById('searchResults');
     resultsGrid.innerHTML = results.map(med => {
-        let statusIcon, statusText;
-        switch(med.status) {
-            case 'prohibited': statusIcon = '❌'; statusText = 'PROHIBITED'; break;
-            case 'restricted': statusIcon = '⚠️'; statusText = 'RESTRICTED'; break;
-            case 'permitted':  statusIcon = '✅'; statusText = 'PERMITTED'; break;
-            default:           statusIcon = '❓'; statusText = med.status?.toUpperCase() || 'UNKNOWN';
+        // Determine primary status and styling
+        let statusIcon, statusClass, statusText;
+        
+        // Handle threshold-based medications
+        if (med.regulatoryThresholds) {
+            statusIcon = '⚖️';
+            statusClass = 'threshold-based';
+            statusText = `${med.status.toUpperCase()} (with limits)`;
+        } else {
+            switch(med.status) {
+                case 'prohibited':
+                    statusIcon = '❌';
+                    statusClass = 'prohibited';
+                    statusText = 'PROHIBITED';
+                    break;
+                case 'restricted':
+                    statusIcon = '⚠️';
+                    statusClass = 'restricted';
+                    statusText = 'RESTRICTED';
+                    break;
+                case 'permitted':
+                    statusIcon = '✅';
+                    statusClass = 'permitted';
+                    statusText = 'PERMITTED';
+                    break;
+                default:
+                    statusIcon = '❓';
+                    statusClass = 'unknown';
+                    statusText = 'UNKNOWN';
+            }
         }
 
         const cardId = `med-${med.name.replace(/\s+/g, '-').toLowerCase()}`;
 
         return `
         <div class="medication-card status-${med.status}">
+            <!-- HANDY GUIDE LAYER -->
             <div class="handy-guide">
                 <div class="guide-header">
                     <div class="medication-title">
                         <h2 class="medication-name">${med.name}</h2>
                         <div class="medication-generic">${med.genericName || ''}</div>
                     </div>
-                    <div class="status-badge ${med.status}">
+                    <div class="status-badge ${statusClass}">
                         ${statusIcon} ${statusText}
                     </div>
                 </div>
+
+                <!-- Threshold Information for Dual-Status Medications -->
+                ${med.regulatoryThresholds ? `
+                    <div class="threshold-info">
+                        <div class="threshold-title">📊 Quantity-Based Requirements</div>
+                        <div class="threshold-grid">
+                            <div class="threshold-item permitted">
+                                <div class="threshold-status">✅ PERMITTED</div>
+                                <div class="threshold-limit">${med.regulatoryThresholds.permitted.limit}</div>
+                                <div class="threshold-note">${med.regulatoryThresholds.permitted.typical_duration}</div>
+                            </div>
+                            <div class="threshold-item restricted">
+                                <div class="threshold-status">⚠️ RESTRICTED</div>
+                                <div class="threshold-trigger">${med.regulatoryThresholds.restricted.trigger}</div>
+                                <div class="threshold-note">Advance permit required</div>
+                            </div>
+                        </div>
+                    </div>
+                ` : ''}
+
+                <!-- Story Hook -->
                 ${med.uniqueStory ? `
                     <div class="story-hook">
                         <div class="hook-text">${med.uniqueStory}</div>
                     </div>
                 ` : ''}
+
+                <!-- Critical Action Box -->
                 <div class="critical-action">
                     <div class="action-title">🎯 What You Need to Do</div>
                     <div class="action-steps">
                         ${generateActionSteps(med)}
                     </div>
                 </div>
+
+                <!-- Customs Declaration Guidance -->
+                ${med.customsDeclaration ? `
+                    <div class="customs-guidance">
+                        <div class="guidance-title">🛂 Customs Declaration Guidance</div>
+                        <div class="guidance-tabs">
+                            <div class="guidance-tab legal">
+                                <h5>📋 Legal Requirements</h5>
+                                <div class="guidance-item">
+                                    <strong>Form Declaration:</strong> ${med.customsDeclaration.legal.formDeclaration}
+                                </div>
+                                <div class="guidance-item">
+                                    <strong>Channel:</strong> ${med.customsDeclaration.legal.channel}
+                                </div>
+                                <div class="guidance-item">
+                                    <strong>Verbal:</strong> ${med.customsDeclaration.legal.verbalRequirement}
+                                </div>
+                            </div>
+                            <div class="guidance-tab recommended">
+                                <h5>💡 Our Recommendation</h5>
+                                <div class="guidance-item">
+                                    <strong>Approach:</strong> ${med.customsDeclaration.recommended.channel}
+                                </div>
+                                <div class="guidance-item">
+                                    <strong>Phrase:</strong> "${med.customsDeclaration.recommended.verbalApproach}"
+                                </div>
+                                <div class="guidance-item">
+                                    <strong>Why:</strong> ${med.customsDeclaration.recommended.reasoning}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ` : ''}
+
+                <!-- Quick Facts Grid -->
                 <div class="quick-facts">
                     ${generateQuickFacts(med)}
                 </div>
+
                 ${med.consequences && med.status === 'prohibited' ? `
                     <div style="background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 6px; padding: 15px; margin-bottom: 15px;">
                         <div style="font-weight: 600; color: #721c24; margin-bottom: 8px;">🚨 Critical Warning</div>
                         <div style="color: #721c24;">${med.consequences}</div>
                     </div>
                 ` : ''}
+
+                <!-- Toggle to Encyclopedia -->
                 <button class="encyclopedia-toggle" onclick="toggleEncyclopedia('${cardId}')">
                     📚 View Complete Details & Commentary
                 </button>
             </div>
+
+            <!-- ENCYCLOPEDIA LAYER -->
             <div class="encyclopedia" id="${cardId}-encyclopedia">
                 <div class="encyclopedia-header">
                     📚 Complete ${med.name} Import Guide
