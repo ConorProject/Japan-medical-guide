@@ -90,13 +90,13 @@ Look for contradictions that defy logic:
 - ✅ "Easy to import, impossible to buy OTC domestically" (Birth control)
 - ✅ "ANY quantity requires permits while cousins have thresholds" (Clonazepam)
 
-#### **2. Identify The Cultural Time Warp**
+#### **2. Identify The Cultural Context**
 
-Japan's unique timeline often creates surprising contrasts:
+Japan's unique regulatory approach often creates interesting contrasts:
 
-- ✅ "Last developed country to legalize" (Birth control - 1999)
-- ✅ "Decades behind global standards" (Mini-pills still unavailable)
-- ✅ "Traditional approach in modern world" (Monthly prescription renewals)
+- ✅ "Unique regulatory timeline" (Birth control - 1999 approval)
+- ✅ "Different availability patterns" (Mini-pills still unavailable)
+- ✅ "Traditional approach considerations" (Monthly prescription renewals)
 
 #### **3. Discover The Bureaucratic Surprise**
 
@@ -248,8 +248,8 @@ Based on the birth control research example, provide comprehensive data to popul
 
 ### **Birth Control Pills**
 
-- **Story Hook**: "The contraceptive pill - easier to import than you think, harder to obtain locally than you'd ever imagine"
-- **Cultural Paradox**: "Japan was the LAST developed nation to legalize birth control (1999) - 40 years after the West"
+- **Story Hook**: "The contraceptive access paradox - easier to import than to obtain locally"
+- **Cultural Context**: "Japan's contraceptive pill approval followed a unique regulatory timeline (1999)"
 - **Key statistic**: "80% of Japanese married women prefer condoms over hormonal contraception"
 
 ### **Clonazepam**

@@ -37,3 +37,16 @@ Base this on the official MHLW lists:
 ---
 
 By adding the explicit **Step 2: "Hunt for Supporting Documents,"** this refined process is now far more robust. It forces the researcher to find the specific, contextual examples that can completely change the interpretation of a rule, making it much less likely that we would misclassify a medication like Vyvanse or Tramadol again.
+
+---
+
+## **Cultural Sensitivity Guidelines**
+
+When researching and writing about Japan's medication regulations:
+
+- **Explain, don't criticize** Japan's unique approaches
+- **Provide historical context** for regulatory differences without implying Japan was "behind"
+- **Avoid Western-centric comparisons** that frame other countries as the standard
+- **Focus on practical impact** for travelers rather than policy judgments
+- **Respect cultural values** while serving traveler needs
+- **Use neutral, explanatory language** rather than judgmental terms
