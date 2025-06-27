@@ -915,22 +915,24 @@
 /* Classification Info Modal Styles */
 .info-button {
     font-family: 'Source Sans Pro', sans-serif;
-    background: #1976d2;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
+    background: transparent;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 400;
     cursor: pointer;
-    margin: 15px auto;
+    margin: 10px auto;
     display: block;
     transition: all 0.2s ease;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
 }
 
 .info-button:hover {
-    background: #1565c0;
+    background: #f8f9fa;
+    border-color: #adb5bd;
+    color: #495057;
 }
 
 .modal {
@@ -1025,7 +1027,7 @@
             <p>Instant answers: Is your medication prohibited, restricted, or permitted in Japan?</p>
             
             <button class="info-button" onclick="openClassificationModal()">
-                ℹ️ How Our Classification System Works
+                How Our Classification System Works
             </button>
             
             <div class="search-bar">
