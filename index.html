@@ -402,8 +402,9 @@
         }
 
         .category-prohibited {
-            background: #f8d7da;
-            border: 2px solid #dc3545;
+            background: #fdf2f2;
+            border: 1px solid #f5c6cb;
+            border-left: 4px solid #dc3545;
         }
 
         .category-prohibited h3,
@@ -412,18 +413,20 @@
         }
 
         .category-restricted {
-            background: #fff3cd;
-            border: 2px solid #856404;
+            background: #fffdf5;
+            border: 1px solid #ffeaa7;
+            border-left: 4px solid #fd7e14;
         }
 
         .category-restricted h3,
         .category-restricted p {
-            color: #856404;
+            color: #6f4e08;
         }
 
         .category-permitted {
-            background: #d4edda;
-            border: 2px solid #155724;
+            background: #f8fbf8;
+            border: 1px solid #c3e6cb;
+            border-left: 4px solid #28a745;
         }
 
         .category-permitted h3,
@@ -1050,7 +1053,7 @@
             <!-- Category Overview -->
             <div class="category-overview" id="categoryOverview">
                 <div class="category-card category-prohibited">
-                    <h3>❌ Prohibited (2)</h3>
+                    <h3>Prohibited (2)</h3>
                     <p>Cannot enter Japan under any circumstances</p>
                     <div class="med-buttons">
                         <button class="med-button" style="color: #dc3545;" onclick="searchSpecific('Adderall')">Adderall</button>
@@ -1059,9 +1062,10 @@
                 </div>
 
                 <div class="category-card category-restricted">
-                    <h3>⚠️ Restricted (4)</h3>
+                    <h3>Restricted (5)</h3>
                     <p>Requires permits or customs declaration</p>
                     <div class="med-buttons">
+                        <button class="med-button" style="color: #856404;" onclick="searchSpecific('Xanax')">Xanax</button>
                         <button class="med-button" style="color: #856404;" onclick="searchSpecific('Vyvanse')">Vyvanse</button>
                         <button class="med-button" style="color: #856404;" onclick="searchSpecific('Concerta')">Concerta</button>
                         <button class="med-button" style="color: #856404;" onclick="searchSpecific('Clonazepam')">Clonazepam</button>
@@ -1070,10 +1074,13 @@
                 </div>
 
                 <div class="category-card category-permitted">
-                    <h3>✅ Permitted (2)</h3>
+                    <h3>Permitted (5)</h3>
                     <p>Allowed with standard requirements</p>
                     <div class="med-buttons">
                         <button class="med-button" style="color: #155724;" onclick="searchSpecific('Birth Control')">Birth Control</button>
+                        <button class="med-button" style="color: #155724;" onclick="searchSpecific('Albuterol')">Albuterol Inhaler</button>
+                        <button class="med-button" style="color: #155724;" onclick="searchSpecific('Zoloft')">Zoloft</button>
+                        <button class="med-button" style="color: #155724;" onclick="searchSpecific('Amoxicillin')">Amoxicillin</button>
                         <button class="med-button" style="color: #155724;" onclick="searchSpecific('Tramadol')">Tramadol</button>
                     </div>
                 </div>
