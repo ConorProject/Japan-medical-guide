@@ -1676,14 +1676,18 @@ function generateCompleteChart(med) {
 // --- TOGGLE DETAILS ---
 function toggleEncyclopedia(cardId) {
     const encyclopedia = document.getElementById(`${cardId}-encyclopedia`);
-    const button = event.target;
+    const buttons = document.querySelectorAll(`[onclick="toggleEncyclopedia('${cardId}')"]`);
 
     if (encyclopedia.classList.contains('expanded')) {
         encyclopedia.classList.remove('expanded');
-        button.textContent = '📚 View Complete Details & Commentary';
+        buttons.forEach(button => {
+            button.textContent = '📚 View Complete Details & Commentary';
+        });
     } else {
         encyclopedia.classList.add('expanded');
-        button.textContent = '↑ Hide Complete Details';
+        buttons.forEach(button => {
+            button.textContent = '↑ Hide Complete Details';
+        });
         encyclopedia.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
