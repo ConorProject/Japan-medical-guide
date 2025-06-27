@@ -1257,6 +1257,113 @@
                     "confidenceLevel": "High - backed by official sources and traveler experiences"
                 }
             },
+
+            {
+                "name": "Xanax (Alprazolam)",
+                "genericName": "alprazolam",
+                "alternateNames": ["Xanax", "Xanax XR", "Alprazolam", "Niravam"],
+                "status": "permitted",
+                "category": "Benzodiazepines (Anxiety)",
+                
+                // Threshold-based dual status system
+                "regulatoryThresholds": {
+                    "permitted": {
+                        "limit": "72mg total",
+                        "requirements": ["Red Channel declaration recommended", "Doctor's letter", "Original prescription"],
+                        "typical_duration": "1-2 months supply for most dosages"
+                    },
+                    "restricted": {
+                        "trigger": ">72mg total", 
+                        "requirements": ["Advance permit required", "14+ days processing", "Medical certificate", "NCD approval"],
+                        "status": "restricted"
+                    }
+                },
+                
+                // Dual-track customs declaration guidance
+                "customsDeclaration": {
+                    "legal": {
+                        "formDeclaration": "Not required for amounts ≤72mg",
+                        "channel": "Green Channel (technically allowed)",
+                        "verbalRequirement": "Only if asked by officer"
+                    },
+                    "recommended": {
+                        "formDeclaration": "Consider voluntary declaration for transparency",
+                        "channel": "Red Channel recommended for any controlled substance",
+                        "verbalApproach": "I have prescription medication with proper documentation",
+                        "reasoning": "Prevents suspicion and demonstrates good faith compliance"
+                    }
+                },
+                
+                "permitRequired": "Not required for ≤72mg. Yunyu Kakunin-sho required for >72mg (apply 14+ days in advance)",
+                "searchTerms": ["xanax", "alprazolam", "anxiety", "panic", "benzodiazepine", "benzo"],
+                
+                // Story elements - focused on the threshold paradox
+                "uniqueStory": "The anxiety medication with the strictest threshold - easier to exceed the 72mg limit than other benzos",
+                "culturalContext": "Japan's psychotropic regulations set different quantity limits for each specific medication, not blanket rules",
+                "commonMisconception": "That all benzodiazepines have the same import limits - alprazolam has a much lower threshold than clonazepam",
+                "surpriseFactor": "At 72mg total, Xanax travelers often need permits where Klonopin users don't - check your specific medication",
+                
+                "commentary": {
+                    "storyHook": "The anxiety medication where dosage math matters most.",
+                    "practicalTips": [
+                        "Calculate total mg: 0.5mg x 144 tablets = 72mg (exactly at limit)",
+                        "Higher doses like 2mg tablets hit the limit quickly (36 tablets = 1 month)",
+                        "Consider switching to clonazepam before travel (180mg threshold)",
+                        "Apply for permit if you need more than 1-2 months supply"
+                    ],
+                    "commonMistakes": [
+                        "Not calculating total milligrams before travel",
+                        "Assuming same rules as other anxiety medications",
+                        "Bringing extended release plus immediate release forms"
+                    ],
+                    "realWorldInsights": [
+                        "Most 0.25mg users can bring 3+ months without permits",
+                        "1mg+ users typically need permits for longer trips",
+                        "Customs may count all benzodiazepines together"
+                    ],
+                    "warningFlags": [
+                        "Check total milligrams across all forms and strengths",
+                        "Don't combine with other benzodiazepines without checking totals",
+                        "Higher potency = faster threshold crossing"
+                    ]
+                },
+
+                "japanAvailability": {
+                    "prescriptionRequired": true,
+                    "costRange": "¥500-1,500 per month",
+                    "insuranceCoverage": "Covered under national health insurance",
+                    "availableBrands": ["Alprazolam (generic)", "Constan", "Solanax"],
+                    "restrictions": "Regular psychiatric consultation required, controlled substance monitoring",
+                    "alternativeOptions": "Other benzodiazepines available (lorazepam, etizolam)"
+                },
+
+                "importDetails": {
+                    "customsDeclaration": "Not required ≤72mg, recommended for transparency",
+                    "channelRequired": "Green Channel legal, Red Channel recommended",
+                    "documentationNeeded": [
+                        "Original prescription bottle with pharmacy label",
+                        "Doctor's letter explaining medical necessity",
+                        "Prescription copy"
+                    ],
+                    "quantityLimits": "≤72mg permitted, >72mg requires advance permit",
+                    "permitProcess": "Yunyu Kakunin-sho via Regional Health Bureau (14+ days processing)"
+                },
+
+                "researchQuality": {
+                    "primarySources": [
+                        "MHLW psychotropic substances list",
+                        "Japan NCD quantity thresholds",
+                        "Official customs declaration guidance"
+                    ],
+                    "communityValidation": [
+                        "Traveler reports confirm 72mg threshold enforcement",
+                        "Embassy guidance consistent with official limits",
+                        "Permit success stories for larger quantities"
+                    ],
+                    "lastUpdated": "2025-01-15",
+                    "confidenceLevel": "High - official thresholds with community validation"
+                }
+            },
                         
             {
                 name: "Tramadol",
