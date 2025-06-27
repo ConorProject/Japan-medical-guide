@@ -1074,55 +1074,52 @@
             // PERMITTED
             {
                 "name": "Birth Control Pills",
-                "genericName": "various oral contraceptives",
+                "genericName": "various oral contraceptives (estrogen/progestin combinations)",
                 "alternateNames": [
-                    "The Pill",
-                    "Oral contraceptives",
-                    "Combined pill",
-                    "Mini-pill",
-                    "Yaz",
-                    "Yasmin",
-                    "Ortho Tri-Cyclen",
-                    "Lo Loestrin",
-                    "Seasonique",
-                    "Marvelon",
-                    "Triquilar",
-                    "Microgynon",
-                    "Diane-35",
-                    "Cerazette"
+                    "The Pill", "Oral contraceptives", "Combined pill", "Mini-pill", 
+                    "Yaz", "Yasmin", "Ortho Tri-Cyclen", "Lo Loestrin", "Seasonique",
+                    "Marvelon", "Triquilar", "Microgynon", "Diane-35", "Cerazette"
                 ],
                 "status": "permitted",
                 "category": "Contraceptives",
+                
+                // Enhanced customs guidance from unified template
+                "customsDeclaration": {
+                    "legal": {
+                        "formDeclaration": "Not required for 1-month supplies",
+                        "channel": "Green Channel (no declaration needed)",
+                        "verbalRequirement": "Only if specifically asked by officer"
+                    },
+                    "recommended": {
+                        "formDeclaration": "Not necessary for typical travelers",
+                        "channel": "Green Channel - proceed normally",
+                        "verbalApproach": "If questioned: 'I have prescription medication with proper documentation'",
+                        "reasoning": "Birth control is explicitly mentioned as permitted by multiple official sources"
+                    }
+                },
+                
                 "maxQuantity": "1 month supply (21-28 pills) without permit. Larger quantities require Yunyu Kakunin-sho",
                 "conditions": "Keep in original prescription bottle with pharmacy label clearly showing your name and prescribing doctor",
-                "notes": "Monthly mail delivery option available for long-term stays. Japanese options limited with costs of ¥2,000-3,500/month, no insurance coverage unless for medical conditions. Mini-pills (progesterone-only) not available in Japan. Most travelers successfully bring 1-month supplies without issues.",
-                "permitRequired": "Not required for 1 month supply. Yunyu Kakunin-sho required for larger quantities (apply 2-3 weeks in advance)",
-                "searchTerms": [
-                    "birth control",
-                    "contraceptive",
-                    "pill",
-                    "yaz",
-                    "ortho",
-                    "yasmin",
-                    "oral contraceptive",
-                    "hormone",
-                    "estrogen",
-                    "progestin",
-                    "mini pill",
-                    "contraception",
-                    "family planning",
-                    "piru"
+                "notes": "Explicitly listed as permitted medication by US Embassy, Kansai Gaidai, and MHLW guidance. Easier to import than obtain locally due to Japan's limited availability and high costs",
+                "permitRequired": "Not required for 1-month supply. Yunyu Kakunin-sho required for larger quantities (apply 2-3 weeks in advance)",
+                "consequences": "No special issues - standard permitted medication",
+                "alternatives": [
+                    "Japanese prescription options (limited brands, ¥2,000-3,500/month)", 
+                    "Mail delivery services for extended stays",
+                    "Online consultation services for English speakers"
                 ],
-                "customsDeclaration": "Not required",
+                "searchTerms": [
+                    "birth control", "contraceptive", "pill", "yaz", "ortho", "yasmin", 
+                    "oral contraceptive", "hormone", "estrogen", "progestin", "mini pill", 
+                    "contraception", "family planning", "piru"
+                ],
                 "channelRequired": "Green Channel",
-            
-                "uniqueStory": "Japan took a distinctive regulatory approach, carefully evaluating oral contraceptives for over three decades before approval in 1999, emphasizing safety and cultural considerations.",
-            
-                "culturalContext": "Japan approved oral contraceptives in 1999, following a thorough regulatory process that differed from Western timelines. This reflected Japan's methodical approach to pharmaceutical safety and consideration of cultural factors, including existing high effectiveness of condom use (preferred by 80% of Japanese couples) and concerns about STI prevention.",
-            
-                "commonMisconception": "That birth control pills are widely available and affordable in Japan like in Western countries. In reality, options are limited, expensive (¥2,000-3,500/month), require monthly doctor visits, and aren't covered by insurance for contraceptive use.",
-            
-                "surpriseFactor": "Bringing your own birth control pills from overseas is actually easier and more practical than obtaining them within Japan, where monthly prescriptions, regular blood tests, and high costs create significant barriers.",
+
+                // Enhanced story elements with compelling narrative
+                "uniqueStory": "The contraceptive paradox: easier to import than buy locally in a country where Viagra was approved in 6 months but birth control took 35+ years",
+                "culturalContext": "Japan was the last developed nation to legalize birth control pills in 1999, 40 years after the West. The approval came only after public outcry over Viagra's rapid 6-month approval versus decades of birth control delays, highlighting gender inequality in healthcare policy",
+                "commonMisconception": "That birth control pills are widely available and affordable in Japan like in Western countries. Reality: only 0.9-3% usage rate, expensive (¥2,000-3,500/month), no insurance coverage, monthly doctor visits required",
+                "surpriseFactor": "Despite being legal since 1999, 80% of Japanese couples still prefer condoms, and some Japanese women travel to South Korea for easier contraceptive access",
             
                 "commentary": {
                     "storyHook": "The contraceptive choice paradox: easier to import than to buy locally in Japan.",
@@ -1622,7 +1619,7 @@ function generateQuickFacts(med) {
     facts.push(`
         <div class="fact-item">
             <div class="fact-label">Customs Declaration</div>
-            <div class="fact-value">${med.customsDeclaration}</div>
+            <div class="fact-value">${typeof med.customsDeclaration === 'object' ? med.customsDeclaration.legal.formDeclaration : med.customsDeclaration}</div>
         </div>
     `);
     facts.push(`
@@ -1658,7 +1655,7 @@ function generateCompleteChart(med) {
     chartItems.push(`
         <div class="chart-item">
             <div class="chart-label">Customs Declaration</div>
-            <div class="chart-value">${med.customsDeclaration}</div>
+            <div class="chart-value">${typeof med.customsDeclaration === 'object' ? med.customsDeclaration.legal.formDeclaration : med.customsDeclaration}</div>
         </div>
     `);
     chartItems.push(`
