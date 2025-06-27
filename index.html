@@ -253,20 +253,22 @@
         /* Encyclopedia Toggle */
         .encyclopedia-toggle {
             width: 100%;
-            padding: 12px 20px;
-            background: #1976d2;
-            color: white;
-            border: none;
+            padding: 10px 20px;
+            background: #f8f9fa;
+            color: #6c757d;
+            border: 1px solid #dee2e6;
             border-radius: 6px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
             cursor: pointer;
-            transition: background-color 0.2s ease;
+            transition: all 0.2s ease;
         }
 
         .encyclopedia-toggle:hover {
-            background: #1565c0;
+            background: #e9ecef;
+            border-color: #adb5bd;
+            color: #495057;
         }
 
         /* Encyclopedia Section */
@@ -1806,28 +1808,28 @@ function displayRestrictionResults(results) {
         
         // Handle threshold-based medications
         if (med.regulatoryThresholds) {
-            statusIcon = '⚖️';
+            statusIcon = '';
             statusClass = 'threshold-based';
             statusText = `${med.status.toUpperCase()} (with limits)`;
         } else {
             switch(med.status) {
                 case 'prohibited':
-                    statusIcon = '❌';
+                    statusIcon = '';
                     statusClass = 'prohibited';
                     statusText = 'PROHIBITED';
                     break;
                 case 'restricted':
-                    statusIcon = '⚠️';
+                    statusIcon = '';
                     statusClass = 'restricted';
                     statusText = 'RESTRICTED';
                     break;
                 case 'permitted':
-                    statusIcon = '✅';
+                    statusIcon = '';
                     statusClass = 'permitted';
                     statusText = 'PERMITTED';
                     break;
                 default:
-                    statusIcon = '❓';
+                    statusIcon = '';
                     statusClass = 'unknown';
                     statusText = 'UNKNOWN';
             }
@@ -1930,7 +1932,7 @@ function displayRestrictionResults(results) {
 
                 <!-- Toggle to Encyclopedia -->
                 <button class="encyclopedia-toggle" onclick="toggleEncyclopedia('${cardId}')">
-                    📚 View Complete Details & Commentary
+                    View Complete Details
                 </button>
             </div>
 
@@ -2213,12 +2215,12 @@ function toggleEncyclopedia(cardId) {
     if (encyclopedia.classList.contains('expanded')) {
         encyclopedia.classList.remove('expanded');
         buttons.forEach(button => {
-            button.textContent = '📚 View Complete Details & Commentary';
+            button.textContent = 'View Complete Details';
         });
     } else {
         encyclopedia.classList.add('expanded');
         buttons.forEach(button => {
-            button.textContent = '↑ Hide Complete Details';
+            button.textContent = 'Hide Details';
         });
         encyclopedia.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
