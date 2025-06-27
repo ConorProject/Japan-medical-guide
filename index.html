@@ -1098,6 +1098,7 @@
                 genericName: "clonazepam",
                 status: "restricted",
                 category: "Benzodiazepine",
+                mhlwPsychotropicList: true,
                 maxQuantity: "ANY quantity requires permit - no threshold exemption",
                 conditions: "Import permit required for ANY amount. Must declare at Red Channel.",
                 notes: "Unlike other benzodiazepines, clonazepam has NO quantity exemption. Even 1 pill requires permit.",
@@ -1262,8 +1263,9 @@
                 "name": "Xanax (Alprazolam)",
                 "genericName": "alprazolam",
                 "alternateNames": ["Xanax", "Xanax XR", "Alprazolam", "Niravam"],
-                "status": "permitted",
+                "status": "restricted",
                 "category": "Benzodiazepines (Anxiety)",
+                "mhlwPsychotropicList": true,
                 
                 // Threshold-based dual status system
                 "regulatoryThresholds": {
@@ -1279,18 +1281,18 @@
                     }
                 },
                 
-                // Dual-track customs declaration guidance
+                // Mandatory declaration for all psychotropics (Tokyo Customs guidance)
                 "customsDeclaration": {
                     "legal": {
-                        "formDeclaration": "Not required for amounts ≤72mg",
-                        "channel": "Green Channel (technically allowed)",
-                        "verbalRequirement": "Only if asked by officer"
+                        "formDeclaration": "REQUIRED - mark Yes on customs form regardless of quantity",
+                        "channel": "Red Channel - mandatory for all psychotropics",
+                        "verbalRequirement": "Must proceed to manned inspection desk"
                     },
                     "recommended": {
-                        "formDeclaration": "Consider voluntary declaration for transparency",
-                        "channel": "Red Channel recommended for any controlled substance",
-                        "verbalApproach": "I have prescription medication with proper documentation",
-                        "reasoning": "Prevents suspicion and demonstrates good faith compliance"
+                        "formDeclaration": "Required by Tokyo Customs directive",
+                        "channel": "Red Channel - no exceptions for psychotropics",
+                        "verbalApproach": "I am declaring psychotropic medication with proper prescription",
+                        "reasoning": "Official Tokyo Customs guidance requires declaration of all psychotropics"
                     }
                 },
                 
@@ -1338,30 +1340,30 @@
                 },
 
                 "importDetails": {
-                    "customsDeclaration": "Not required ≤72mg, recommended for transparency",
-                    "channelRequired": "Green Channel legal, Red Channel recommended",
+                    "customsDeclaration": "REQUIRED - all psychotropics must be declared",
+                    "channelRequired": "Red Channel - mandatory for psychotropics",
                     "documentationNeeded": [
                         "Original prescription bottle with pharmacy label",
-                        "Doctor's letter explaining medical necessity",
+                        "Doctor's letter explaining medical necessity", 
                         "Prescription copy"
                     ],
-                    "quantityLimits": "≤72mg permitted, >72mg requires advance permit",
+                    "quantityLimits": "≤72mg no permit needed, >72mg requires advance permit",
                     "permitProcess": "Yunyu Kakunin-sho via Regional Health Bureau (14+ days processing)"
                 },
 
                 "researchQuality": {
                     "primarySources": [
                         "MHLW psychotropic substances list",
-                        "Japan NCD quantity thresholds",
-                        "Official customs declaration guidance"
+                        "Tokyo Customs email directive (2025)",
+                        "Official customs declaration form guidance"
                     ],
                     "communityValidation": [
-                        "Traveler reports confirm 72mg threshold enforcement",
-                        "Embassy guidance consistent with official limits",
-                        "Permit success stories for larger quantities"
+                        "Direct correspondence with Tokyo Customs",
+                        "Embassy guidance consistent with customs requirements",
+                        "Official directive supersedes anecdotal reports"
                     ],
                     "lastUpdated": "2025-01-15",
-                    "confidenceLevel": "High - official thresholds with community validation"
+                    "confidenceLevel": "Absolute - direct customs authority guidance"
                 }
             },
                         
