@@ -1367,19 +1367,9 @@
                 "category": "Benzodiazepines (Anxiety)",
                 "mhlwPsychotropicList": true,
                 
-                // Threshold-based dual status system
-                "regulatoryThresholds": {
-                    "permitted": {
-                        "limit": "72mg total",
-                        "requirements": ["Red Channel declaration recommended", "Doctor's letter", "Original prescription"],
-                        "typical_duration": "1-2 months supply for most dosages"
-                    },
-                    "restricted": {
-                        "trigger": ">72mg total", 
-                        "requirements": ["Advance permit required", "14+ days processing", "Medical certificate", "NCD approval"],
-                        "status": "restricted"
-                    }
-                },
+                // Psychotropic medication - Red Channel required regardless of quantity
+                "maxQuantity": "≤72mg no permit needed, >72mg requires advance permit",
+                "conditions": "Must declare at Red Channel regardless of quantity (psychotropic substance)",
                 
                 // Mandatory declaration for all psychotropics (Tokyo Customs guidance)
                 "customsDeclaration": {
@@ -1397,7 +1387,10 @@
                 },
                 
                 "permitRequired": "Not required for ≤72mg. Yunyu Kakunin-sho required for >72mg (apply 14+ days in advance)",
+                "consequences": "Confiscation if not declared; permit required for >72mg",
+                "alternatives": ["Other benzodiazepines with higher thresholds", "Switch to Japanese alternatives"],
                 "searchTerms": ["xanax", "alprazolam", "anxiety", "panic", "benzodiazepine", "benzo"],
+                "channelRequired": "Red Channel - mandatory for psychotropics",
                 
                 // Story elements - focused on the threshold paradox
                 "uniqueStory": "The anxiety medication with the strictest threshold - easier to exceed the 72mg limit than other benzos",
