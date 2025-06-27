@@ -974,19 +974,42 @@
         const medications = [
             // PROHIBITED
             {
-                name: "Adderall",
-                genericName: "amphetamine/dextroamphetamine",
-                status: "prohibited",
-                category: "Amphetamine Stimulants",
-                maxQuantity: "ZERO - Completely prohibited",
-                conditions: "Illegal to possess in Japan",
-                notes: "Contains amphetamine - classified as illegal stimulant in Japan. Possession can lead to arrest and detention.",
-                permitRequired: "Cannot obtain permit - substance is illegal",
-                consequences: "Arrest, detention (18+ days documented), deportation, permanent entry ban",
-                alternatives: ["Vyvanse (with permit)", "Concerta (with permit)", "Strattera (available in Japan)"],
-                searchTerms: ["adderall", "amphetamine", "dextroamphetamine", "adhd", "mydayis"],
-                customsDeclaration: "ILLEGAL - will be confiscated",
-                channelRequired: "Immediate detention if discovered"
+                "name": "Adderall",
+                "genericName": "amphetamine/dextroamphetamine mixed salts",
+                "alternateNames": ["Adderall XR", "Mixed amphetamine salts", "Mydayis"],
+                "status": "prohibited",
+                "category": "Stimulants (ADHD)",
+                
+                // Simple prohibited structure - no thresholds needed
+                "maxQuantity": "ZERO - Completely prohibited under Stimulants Control Act",
+                "conditions": "Illegal to possess in Japan - no exceptions",
+                "permitRequired": "Cannot obtain permit - amphetamine is classified as illegal stimulant",
+                "consequences": "Immediate arrest, 20+ day detention, deportation, permanent criminal record",
+                "alternatives": ["Vyvanse (with advance permit)", "Concerta (with advance permit)", "Strattera (available in Japan)"],
+                "searchTerms": ["adderall", "amphetamine", "dextroamphetamine", "adhd", "mydayis", "mixed salts"],
+                "customsDeclaration": "ILLEGAL - will be confiscated",
+                "channelRequired": "Immediate detention if discovered",
+                
+                // Story elements - focused and factual for prohibited drug
+                "uniqueStory": "The ADHD medication that's completely banned while chemically similar Vyvanse can be imported with permits",
+                "culturalContext": "Japan's zero-tolerance approach to amphetamines stems from historical stimulant abuse issues in the post-war period",
+                "commonMisconception": "That all ADHD medications are treated equally - Adderall is uniquely prohibited while others require permits",
+                "surpriseFactor": "Documented cases show 23-day detention periods and permanent deportation for a single bottle of pills",
+                
+                // Minimal commentary for prohibited substances
+                "commentary": {
+                    "storyHook": "The one ADHD medication that guarantees arrest in Japan.",
+                    "practicalTips": [
+                        "Switch to Vyvanse or Concerta before travel (4-6 weeks permit process)",
+                        "Consult doctor about Strattera - available in Japan without permits",
+                        "Never attempt to bring even a single pill - zero tolerance enforcement"
+                    ],
+                    "warningFlags": [
+                        "20 police officers, immediate arrest, 23-day average detention",
+                        "Permanent criminal record and entry ban to Japan",
+                        "No humanitarian exceptions - documented enforcement cases"
+                    ]
+                }
             },
 
             {
