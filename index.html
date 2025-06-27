@@ -1055,18 +1055,18 @@
             <!-- Category Overview -->
             <div class="category-overview" id="categoryOverview">
                 <div class="category-card category-prohibited">
-                    <h3>Prohibited (2)</h3>
+                    <h3>Prohibited (1)</h3>
                     <p>Cannot enter Japan under any circumstances</p>
                     <div class="med-buttons">
                         <button class="med-button" style="color: #dc3545;" onclick="searchSpecific('Adderall')">Adderall</button>
-                        <button class="med-button" style="color: #dc3545;" onclick="searchSpecific('Sudafed')">Sudafed</button>
                     </div>
                 </div>
 
                 <div class="category-card category-restricted">
-                    <h3>Restricted (5)</h3>
+                    <h3>Restricted (6)</h3>
                     <p>Requires permits or customs declaration</p>
                     <div class="med-buttons">
+                        <button class="med-button" style="color: #856404;" onclick="searchSpecific('Sudafed')">Sudafed</button>
                         <button class="med-button" style="color: #856404;" onclick="searchSpecific('Xanax')">Xanax</button>
                         <button class="med-button" style="color: #856404;" onclick="searchSpecific('Vyvanse')">Vyvanse</button>
                         <button class="med-button" style="color: #856404;" onclick="searchSpecific('Concerta')">Concerta</button>
@@ -1175,19 +1175,89 @@
             },
 
             {
-                name: "Sudafed",
-                genericName: "pseudoephedrine",
-                status: "prohibited",
-                category: "Decongestants",
-                maxQuantity: "ZERO - Completely prohibited", 
-                conditions: "Illegal stimulant precursor in Japan",
-                notes: "Pseudoephedrine is banned in Japan as stimulant precursor. Use phenylephrine alternatives instead.",
-                permitRequired: "Cannot obtain permit - substance is banned",
-                consequences: "Confiscation at customs, possible detention",
-                alternatives: ["Pabron (Japanese decongestant)", "Phenylephrine-based alternatives"],
-                searchTerms: ["sudafed", "pseudoephedrine", "decongestant", "cold medicine"],
-                customsDeclaration: "ILLEGAL - will be confiscated",
-                channelRequired: "Will be stopped at customs"
+                "name": "Sudafed (Pseudoephedrine)",
+                "genericName": "pseudoephedrine",
+                "alternateNames": ["Sudafed", "Pseudoephedrine", "Decongestant tablets"],
+                "status": "restricted",
+                "category": "Stimulant Raw Materials",
+                
+                // Stimulant precursor requiring advance permits
+                "maxQuantity": "Advance permit required for any amount >10% concentration",
+                "conditions": "Must obtain NCD permit 14+ days before travel. Most Sudafed products exceed 10% threshold.",
+                "permitRequired": "YES - Stimulant Raw Materials permit from NCD required for standard Sudafed",
+                "consequences": "Arrest, detention if brought without permit. Treated as stimulant precursor violation",
+                "alternatives": ["Phenylephrine-based decongestants", "Pabron (Japanese OTC)", "Nasal saline sprays"],
+                "searchTerms": ["sudafed", "pseudoephedrine", "decongestant", "cold medicine", "sinus"],
+                "customsDeclaration": "Required - Red Channel with permit documentation",
+                "channelRequired": "Red Channel - must declare stimulant raw material",
+                
+                // Story elements - the criminal connection
+                "uniqueStory": "The innocent cold medicine with a criminal past - treated as methamphetamine precursor despite medical use",
+                "culturalContext": "Japan's strict pseudoephedrine controls stem from post-WWII methamphetamine epidemic and international precursor control efforts",
+                "commonMisconception": "That common cold medicines are automatically safe to travel with - Sudafed requires same permits as controlled substances",
+                "surpriseFactor": "A basic decongestant requires advance permits, medical certificates, and 14-day processing while stronger prescription drugs may not",
+                
+                "commentary": {
+                    "storyHook": "The cold medicine that requires a criminal background check.",
+                    "practicalTips": [
+                        "Apply for NCD permit 3+ weeks before travel if medical necessity documented",
+                        "Switch to phenylephrine-based alternatives (Sudafed PE) - not controlled",
+                        "Consider nasal saline or Japanese OTC options like Pabron",
+                        "Never attempt to bring standard Sudafed without permits - arrest risk"
+                    ],
+                    "commonMistakes": [
+                        "Assuming 'over-the-counter' means 'safe to travel with'",
+                        "Not checking active ingredients in cold medicines",
+                        "Bringing Sudafed for minor congestion without permit process",
+                        "Underestimating Japan's stimulant precursor enforcement"
+                    ],
+                    "realWorldInsights": [
+                        "10% concentration limit means most commercial Sudafed requires permits",
+                        "Historical methamphetamine problems drive current strict enforcement",
+                        "Permit process exists but requires genuine medical necessity documentation"
+                    ],
+                    "warningFlags": [
+                        "Standard 12-hour Sudafed tablets exceed 10% limit - permits required",
+                        "Enforcement treats this as seriously as other controlled substances",
+                        "Check ALL cold medicine ingredients - many contain pseudoephedrine"
+                    ]
+                },
+
+                "japanAvailability": {
+                    "prescriptionRequired": false,
+                    "costRange": "Not available - pseudoephedrine products prohibited without permits",
+                    "insuranceCoverage": "Not applicable",
+                    "availableBrands": [],
+                    "restrictions": "Classified as stimulant raw materials - requires import permits",
+                    "alternativeOptions": "Phenylephrine-based decongestants available OTC (Pabron, etc.)"
+                },
+
+                "importDetails": {
+                    "customsDeclaration": "Required - must declare as stimulant raw materials",
+                    "channelRequired": "Red Channel with permit documentation",
+                    "documentationNeeded": [
+                        "NCD Stimulant Raw Materials import permit",
+                        "Medical certificate showing necessity",
+                        "Original product packaging"
+                    ],
+                    "quantityLimits": "Permit specifies allowed quantity based on medical need",
+                    "permitProcess": "Apply to NCD 14+ days in advance with medical documentation"
+                },
+
+                "researchQuality": {
+                    "primarySources": [
+                        "NCD Stimulant Raw Materials regulations",
+                        "MHLW 10% concentration thresholds",
+                        "Official embassy warnings"
+                    ],
+                    "communityValidation": [
+                        "Consistent embassy and institutional warnings",
+                        "Documented enforcement cases",
+                        "Clear regulatory framework"
+                    ],
+                    "lastUpdated": "2025-01-15",
+                    "confidenceLevel": "High - clear regulatory classification with permit pathway"
+                }
             },
 
             // RESTRICTED
