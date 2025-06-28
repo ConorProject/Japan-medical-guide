@@ -1990,13 +1990,19 @@ function displayRestrictionResults(results) {
     const resultsGrid = document.getElementById('searchResults');
     resultsGrid.innerHTML = results.map(med => {
         // Determine primary status and styling
-        let statusIcon, statusClass, statusText;
+        let statusIcon, statusClass, statusText, statusBadges = null;
         
-        // Handle threshold-based medications
+        // Handle threshold-based medications with dual badges
         if (med.regulatoryThresholds) {
-            statusIcon = '';
-            statusClass = 'threshold-based';
-            statusText = `${med.status.toUpperCase()} (with limits)`;
+            // Create dual badge display
+            statusBadges = `
+                <div class="status-badge permitted">
+                    ✓ PERMITTED (${med.regulatoryThresholds.permitted.limit})
+                </div>
+                <div class="status-badge restricted" style="margin-left: 8px;">
+                    ⚠️ RESTRICTED (${med.regulatoryThresholds.restricted.trigger})
+                </div>
+            `;
         } else {
             switch(med.status) {
                 case 'prohibited':
@@ -2032,9 +2038,9 @@ function displayRestrictionResults(results) {
                         <h2 class="medication-name">${med.name}</h2>
                         <div class="medication-generic">${med.genericName || ''}</div>
                     </div>
-                    <div class="status-badge ${statusClass}">
+                    ${statusBadges || `<div class="status-badge ${statusClass}">
                         ${statusIcon} ${statusText}
-                    </div>
+                    </div>`}
                 </div>
 
                 <!-- Threshold Information for Dual-Status Medications -->
