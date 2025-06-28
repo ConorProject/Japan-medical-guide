@@ -1269,12 +1269,12 @@
                 
                 // Age-based threshold system - unique to Vyvanse
                 "regulatoryThresholds": {
-                    "permitted": {
+                    "restrictedPermitted": {
                         "limit": "Children under 18 only - with advance permit",
                         "requirements": ["Import permit from NCD (14+ days advance)", "Medical certificate", "Photos of medication"],
                         "typical_duration": "Up to 30 days supply"
                     },
-                    "restricted": {
+                    "prohibited": {
                         "trigger": "Adult patients (18+ years)",
                         "status": "Effectively prohibited for adults",
                         "reasoning": "Vyvanse only approved for pediatric use in Japan"
@@ -1996,11 +1996,11 @@ function displayRestrictionResults(results) {
         if (med.regulatoryThresholds) {
             // Create dual badge display
             statusBadges = `
-                <div class="status-badge permitted">
-                    ✓ PERMITTED (${med.regulatoryThresholds.permitted.limit})
+                <div class="status-badge restricted">
+                    ⚠️ RESTRICTED (${med.regulatoryThresholds.restrictedPermitted.limit})
                 </div>
-                <div class="status-badge restricted" style="margin-left: 8px;">
-                    ⚠️ RESTRICTED (${med.regulatoryThresholds.restricted.trigger})
+                <div class="status-badge prohibited" style="margin-left: 8px;">
+                    🚫 PROHIBITED (${med.regulatoryThresholds.prohibited.trigger})
                 </div>
             `;
         } else {
@@ -2048,15 +2048,15 @@ function displayRestrictionResults(results) {
                     <div class="threshold-info">
                         <div class="threshold-title">📊 Quantity-Based Requirements</div>
                         <div class="threshold-grid">
-                            <div class="threshold-item permitted">
-                                <div class="threshold-status">✅ PERMITTED</div>
-                                <div class="threshold-limit">${med.regulatoryThresholds.permitted.limit}</div>
-                                <div class="threshold-note">${med.regulatoryThresholds.permitted.typical_duration}</div>
-                            </div>
                             <div class="threshold-item restricted">
                                 <div class="threshold-status">⚠️ RESTRICTED</div>
-                                <div class="threshold-trigger">${med.regulatoryThresholds.restricted.trigger}</div>
-                                <div class="threshold-note">Advance permit required</div>
+                                <div class="threshold-limit">${med.regulatoryThresholds.restrictedPermitted.limit}</div>
+                                <div class="threshold-note">${med.regulatoryThresholds.restrictedPermitted.typical_duration}</div>
+                            </div>
+                            <div class="threshold-item prohibited">
+                                <div class="threshold-status">🚫 PROHIBITED</div>
+                                <div class="threshold-trigger">${med.regulatoryThresholds.prohibited.trigger}</div>
+                                <div class="threshold-note">No permits available</div>
                             </div>
                         </div>
                     </div>
