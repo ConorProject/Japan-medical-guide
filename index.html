@@ -221,6 +221,49 @@
             font-weight: 500;
         }
 
+        .step-examples {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .step-note {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 4px;
+        }
+
+        .step-critical {
+            font-size: 0.85rem;
+            color: #721c24;
+            background: #fdf2f2;
+            padding: 4px 8px;
+            border-radius: 3px;
+            margin-top: 4px;
+            border-left: 3px solid #dc3545;
+        }
+
+        .step-mandatory {
+            font-size: 0.85rem;
+            color: #6f4e08;
+            background: #fffdf5;
+            padding: 4px 8px;
+            border-radius: 3px;
+            margin-top: 4px;
+            border-left: 3px solid #ffc107;
+        }
+
+        .step-phrase {
+            font-size: 0.85rem;
+            color: #155724;
+            background: #f0f9f0;
+            padding: 4px 8px;
+            border-radius: 3px;
+            margin-top: 4px;
+            font-family: monospace;
+        }
+
         /* Quick Facts */
         .quick-facts {
             display: grid;
@@ -1600,11 +1643,48 @@
                     }
                 },
                 
-                "permitRequired": "Not required for ≤72mg. Yunyu Kakunin-sho required for >72mg (apply 14+ days in advance)",
+                "permitRequired": "Not required for ≤72mg. Yunyu Kakunin-sho required for >72mg (apply AT LEAST 2 weeks in advance - official MHLW requirement)",
                 "consequences": "Confiscation if not declared; permit required for >72mg",
                 "alternatives": ["Other benzodiazepines with higher thresholds", "Switch to Japanese alternatives"],
                 "searchTerms": ["xanax", "alprazolam", "anxiety", "panic", "benzodiazepine", "benzo"],
                 "channelRequired": "Red Channel - mandatory for psychotropics",
+                
+                // Step-by-step action plan for travelers
+                "actionSteps": {
+                    "title": "What You Need to Do: Xanax Travel Checklist",
+                    "steps": [
+                        {
+                            "number": "1",
+                            "title": "Calculate your total milligrams",
+                            "action": "Add up all Xanax: (tablet strength × number of tablets) = total mg",
+                            "examples": ["0.5mg × 144 tablets = 72mg (exactly at limit)", "2mg × 36 tablets = 72mg (1 month supply)"]
+                        },
+                        {
+                            "number": "2", 
+                            "title": "Apply for permit if over 72mg",
+                            "action": "Submit Yunyu Kakunin-sho application AT LEAST 2 weeks before travel (official MHLW requirement)",
+                            "note": "Apply through Regional Health Bureau with medical certificate"
+                        },
+                        {
+                            "number": "3",
+                            "title": "Prepare required documentation", 
+                            "action": "Gather original prescription bottle + doctor's letter + permit (if >72mg)",
+                            "critical": "Doctor's letter should explain medical necessity for anxiety treatment"
+                        },
+                        {
+                            "number": "4",
+                            "title": "Declare at Red Channel (mandatory for all amounts)",
+                            "action": "Mark 'YES' on customs form for restricted items → Proceed to Red Channel",
+                            "mandatory": "Required for ALL quantities - psychotropics must be declared regardless of amount"
+                        },
+                        {
+                            "number": "5",
+                            "title": "Present documents at inspection desk",
+                            "action": "Show prescription, doctor's letter, and permit (if applicable) to customs officer",
+                            "phrase": "Say: 'I am declaring psychotropic medication with proper prescription'"
+                        }
+                    ]
+                },
                 
                 // Story elements - focused on the threshold paradox
                 "uniqueStory": "The anxiety medication with the strictest threshold - easier to exceed the 72mg limit than other benzos",
@@ -1655,7 +1735,7 @@
                         "Prescription copy"
                     ],
                     "quantityLimits": "≤72mg no permit needed, >72mg requires advance permit",
-                    "permitProcess": "Yunyu Kakunin-sho via Regional Health Bureau (14+ days processing)"
+                    "permitProcess": "Yunyu Kakunin-sho via Regional Health Bureau (apply AT LEAST 2 weeks before travel - official MHLW requirement)"
                 },
 
                 "researchQuality": {
@@ -2293,6 +2373,24 @@ function displayRestrictionResults(results) {
 
 // --- ACTION STEPS ---
 function generateActionSteps(med) {
+    // Check for custom action steps first
+    if (med.actionSteps && med.actionSteps.steps) {
+        return med.actionSteps.steps.map(step => `
+            <div class="step-item">
+                <div class="step-number">${step.number}</div>
+                <div class="step-content">
+                    <strong>${step.title}:</strong> ${step.action}
+                    ${step.examples ? `<div class="step-examples">Examples: ${step.examples.join(', ')}</div>` : ''}
+                    ${step.note ? `<div class="step-note">Note: ${step.note}</div>` : ''}
+                    ${step.critical ? `<div class="step-critical">Critical: ${step.critical}</div>` : ''}
+                    ${step.mandatory ? `<div class="step-mandatory">Mandatory: ${step.mandatory}</div>` : ''}
+                    ${step.phrase ? `<div class="step-phrase">Suggested phrase: "${step.phrase}"</div>` : ''}
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    // Fall back to generic steps
     switch(med.status) {
         case 'prohibited':
             return `
