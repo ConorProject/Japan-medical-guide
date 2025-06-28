@@ -2407,22 +2407,26 @@ function generateActionSteps(med) {
                 return `
                     <div class="step-item">
                         <div class="step-number">1</div>
-                        <div class="step-content">Apply for import permit 4-6 weeks before travel</div>
+                        <div class="step-content"><strong>Apply</strong> for import permit AT LEAST 2 weeks before travel</div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">2</div>
-                        <div class="step-content">At airport: Red Channel, present permit + prescription</div>
+                        <div class="step-content"><strong>Prepare</strong> original prescription + doctor's letter + permit</div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content"><strong>Declare</strong> at Red Channel with all documentation</div>
                     </div>
                 `;
             } else {
                 return `
                     <div class="step-item">
                         <div class="step-number">1</div>
-                        <div class="step-content">Pack in original containers with prescription</div>
+                        <div class="step-content"><strong>Prepare</strong> original prescription bottle + doctor's letter</div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">2</div>
-                        <div class="step-content">At airport: Red Channel - must declare at customs</div>
+                        <div class="step-content"><strong>Declare</strong> at Red Channel (mandatory for restricted medications)</div>
                     </div>
                 `;
             }
@@ -2431,7 +2435,7 @@ function generateActionSteps(med) {
                 <div class="step-item">
                     <div class="step-number">✓</div>
                     <div class="step-content">
-                        Keep in original packaging with prescription. Green Channel - no special procedures required.
+                        <strong>Travel</strong> with original prescription bottle. Use Green Channel - no special procedures required.
                     </div>
                 </div>
             `;
