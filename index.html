@@ -1261,19 +1261,126 @@
             },
 
             {
-                name: "Vyvanse",
-                genericName: "lisdexamfetamine",
-                status: "restricted",
-                category: "ADHD Medication",
-                maxQuantity: "Children under 18 only - 30 days with permit",
-                conditions: "Import permit required 14+ days before travel. CRITICAL: Only approved for children under 18 in Japan.",
-                notes: "Age restriction: Adults cannot legally use Vyvanse in Japan regardless of permits. Pediatric-only approval creates unique situation where age determines legality.",
-                permitRequired: "YES - Stimulants' Raw Materials import permit from NCD required 14+ days before travel",
-                consequences: "Confiscation without permit. Adult patients face effective prohibition due to age restrictions.",
-                alternatives: ["Concerta (with permit, all ages)", "Strattera (available in Japan by prescription)", "Switch to non-stimulant before travel"],
-                searchTerms: ["vyvanse", "lisdexamfetamine", "elvanse", "adhd", "stimulant raw materials"],
-                customsDeclaration: "Required - Red Channel with permit",
-                channelRequired: "Red Channel - mandatory declaration"
+                "name": "Vyvanse",
+                "genericName": "lisdexamfetamine",
+                "alternateNames": ["Elvanse", "Lisdexamfetamine dimesylate"],
+                "status": "restricted",
+                "category": "ADHD Medication (Stimulants' Raw Materials)",
+                
+                // Age-based threshold system - unique to Vyvanse
+                "regulatoryThresholds": {
+                    "permitted": {
+                        "limit": "Children under 18 only - with advance permit",
+                        "requirements": ["Import permit from NCD (14+ days advance)", "Medical certificate", "Photos of medication"],
+                        "typical_duration": "Up to 30 days supply"
+                    },
+                    "prohibited": {
+                        "trigger": "Adult patients (18+ years)",
+                        "status": "Effectively prohibited for adults",
+                        "reasoning": "Vyvanse only approved for pediatric use in Japan"
+                    }
+                },
+                
+                // Customs guidance
+                "customsDeclaration": {
+                    "legal": {
+                        "formDeclaration": "Must declare on customs form",
+                        "channel": "Red Channel mandatory",
+                        "verbalRequirement": "Present import permit and medical certificate"
+                    },
+                    "recommended": {
+                        "formDeclaration": "Check 'Yes' for restricted medications",
+                        "channel": "Red Channel with all documentation ready",
+                        "verbalApproach": "Have permit and medical certificate easily accessible",
+                        "reasoning": "Streamlines inspection process"
+                    }
+                },
+                
+                // Basic import info
+                "maxQuantity": "Up to 30 days supply with valid import permit (children under 18 only)",
+                "conditions": "Import permit required 14+ days before travel. Only approved for children under 18 in Japan.",
+                "notes": "Critical age restriction: Adults cannot legally use Vyvanse in Japan regardless of import permits. Only approved for pediatric ADHD treatment.",
+                "permitRequired": "YES - Stimulants' Raw Materials import permit from NCD required 14+ days before travel",
+                "consequences": "Confiscation without permit. Adult patients face effective prohibition due to age restrictions.",
+                "alternatives": ["Concerta (with permit, all ages)", "Strattera (available in Japan by prescription)", "Transition to non-stimulant before travel"],
+                "searchTerms": ["vyvanse", "lisdexamfetamine", "elvanse", "adhd", "stimulant raw materials"],
+                "channelRequired": "Red Channel - mandatory declaration",
+                
+                // Story elements
+                "uniqueStory": "The ADHD medication with an age ceiling - legal for children, effectively prohibited for adults",
+                "culturalContext": "Japan's unique pediatric-only approval creates the rare situation where age determines medication legality",
+                "commonMisconception": "That Vyvanse import permits work for all ages - adults face effective prohibition despite permit availability",
+                "surpriseFactor": "Only major ADHD medication where age determines legal status in Japan",
+                
+                // Commentary
+                "commentary": {
+                    "storyHook": "The stimulant that follows different rules depending on your birthday.",
+                    "practicalTips": [
+                        "Adult travelers: Begin transition to age-appropriate alternatives 8+ weeks before travel",
+                        "Parents: Apply for import permits 14+ days before travel with medical certificates",
+                        "Consider Strattera consultation in Japan - available for all ages without import restrictions"
+                    ],
+                    "commonMistakes": [
+                        "Assuming import permits work for adults - age restriction creates effective prohibition",
+                        "Last-minute permit applications - 14-day minimum processing required",
+                        "Not researching alternatives - Strattera available in Japan without permits"
+                    ],
+                    "realWorldInsights": [
+                        "TripAdvisor forums show active permit applications by parents for children",
+                        "Adult travelers consistently report switching to Strattera before Japan travel",
+                        "Embassy sources notably don't warn against Vyvanse like they do for Adderall"
+                    ],
+                    "proTips": [
+                        "Contact NCD early for pediatric permit applications - processing can take longer than minimum",
+                        "Adult patients: Discuss Concerta transition with doctor - available for all ages with permits",
+                        "Document everything: Medical certificates must be within 3 months of application"
+                    ],
+                    "warningFlags": [
+                        "Adult patients cannot legally use Vyvanse in Japan regardless of permits",
+                        "No emergency provisions - permits must be obtained before travel",
+                        "Age verification may be required at customs - bring ID documentation"
+                    ]
+                },
+                
+                // Japan availability
+                "japanAvailability": {
+                    "prescriptionRequired": true,
+                    "costRange": "¥8,000-12,000 per month (pediatric patients only)",
+                    "insuranceCoverage": "Partially covered under Japanese health insurance",
+                    "availableBrands": ["Vyvanse (pediatric formulation only)"],
+                    "restrictions": "Restricted to children under 18 - adult prescriptions not available",
+                    "alternativeOptions": "Strattera (atomoxetine) available for all ages; Concerta with permits"
+                },
+                
+                // Import details
+                "importDetails": {
+                    "customsDeclaration": "Required - Red Channel mandatory",
+                    "channelRequired": "Red Channel with permit documentation",
+                    "documentationNeeded": [
+                        "Import permit from Narcotics Control Department",
+                        "Medical certificate (within 3 months)",
+                        "Photos of medication packaging",
+                        "Age verification documents"
+                    ],
+                    "quantityLimits": "Up to 30 days supply (children under 18 only)",
+                    "permitProcess": "Apply to NCD 14+ days before travel with medical documentation"
+                },
+                
+                // Research quality
+                "researchQuality": {
+                    "primarySources": [
+                        "Japan NCD Stimulants' Raw Materials classification",
+                        "MHLW pediatric approval documentation",
+                        "Official import application forms and requirements"
+                    ],
+                    "communityValidation": [
+                        "TripAdvisor parent experiences with permit applications",
+                        "Embassy sources show differential treatment vs Adderall",
+                        "Reddit discussions confirm age restriction enforcement"
+                    ],
+                    "lastUpdated": "2025-01-27",
+                    "confidenceLevel": "High - Official sources confirm age restrictions and permit requirements"
+                }
             },
 
             {
