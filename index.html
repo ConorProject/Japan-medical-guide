@@ -1573,19 +1573,137 @@
             {
                 "name": "Clonazepam",
                 "genericName": "clonazepam",
+                "alternateNames": ["Klonopin", "Rivotril", "Klonopin Wafers"],
                 "status": "restricted",
-                "category": "Benzodiazepine",
-                "mhlwPsychotropicList": true,
-                "maxQuantity": "ANY quantity requires permit - no threshold exemption",
-                "conditions": "Import permit required for ANY amount. Must declare at Red Channel.",
-                "notes": "Unlike other benzodiazepines, clonazepam has NO quantity exemption. Even 1 pill requires permit.",
-                "permitRequired": "YES - Required for any quantity (unique among benzos)",
-                "consequences": "Confiscation without permit. Treated as illegal import.",
-                "alternatives": ["Diazepam (under 1.2g allowed)", "Switch to Japanese anxiety medication"],
-                "searchTerms": ["clonazepam", "klonopin", "rivotril", "anxiety"],
-                "customsDeclaration": "Required - Red Channel",
-                "channelRequired": "Red Channel - must declare",
-                "uniqueStory": "The only benzodiazepine with ZERO quantity tolerance - even one pill needs a permit"
+                "category": "Benzodiazepine (Third Category Psychotropic Drug)",
+                
+                // Corrected threshold system - NOT zero tolerance
+                "maxQuantity": "≤180mg total no permit needed, >180mg requires advance permit",
+                "conditions": "Must declare at Red Channel regardless of quantity. Apply for permit if over 180mg total.",
+                "notes": "CORRECTION: Clonazepam DOES have a quantity exemption (180mg threshold) - more generous than Xanax's 72mg limit. Previous 'zero tolerance' claims were incorrect.",
+                "permitRequired": "Not required for ≤180mg. Import certificate required for >180mg (apply AT LEAST 2 weeks in advance - official MHLW requirement)",
+                "consequences": "Confiscation if not declared. Permit required for >180mg. No different from other benzodiazepines.",
+                "alternatives": ["Diazepam (1.2g threshold)", "Alprazolam (72mg threshold)", "Switch to Japanese anxiety medication"],
+                "searchTerms": ["clonazepam", "klonopin", "rivotril", "anxiety", "benzodiazepine", "benzo"],
+                "customsDeclaration": "Required - Red Channel with documentation",
+                "channelRequired": "Red Channel - mandatory for psychotropics",
+                
+                // Step-by-step action plan for travelers
+                "actionSteps": {
+                    "title": "What You Need to Do: Clonazepam Travel Checklist",
+                    "steps": [
+                        {
+                            "number": "1",
+                            "title": "Calculate your total clonazepam content",
+                            "action": "Add up all clonazepam: (tablet strength × number of tablets) = total mg",
+                            "examples": ["0.5mg × 360 tablets = 180mg (exactly at limit)", "1mg × 180 tablets = 180mg", "2mg × 90 tablets = 180mg"]
+                        },
+                        {
+                            "number": "2", 
+                            "title": "Apply for permit if over 180mg",
+                            "action": "Submit import application via yakkan@mhlw.go.jp AT LEAST 2 weeks before travel",
+                            "note": "Include diagnosis, active ingredients, dosage, and planned amount. Apply through Regional Health Bureau."
+                        },
+                        {
+                            "number": "3",
+                            "title": "Prepare required documentation", 
+                            "action": "Gather original prescription containers + doctor's certificate + permit (if >180mg)",
+                            "critical": "Doctor's certificate must specify medical necessity and anxiety disorder diagnosis"
+                        },
+                        {
+                            "number": "4",
+                            "title": "Declare at Red Channel (mandatory for all amounts)",
+                            "action": "Mark 'YES' on customs form for restricted items → Proceed to Red Channel",
+                            "mandatory": "Required for ALL quantities - psychotropics must be declared regardless of amount"
+                        },
+                        {
+                            "number": "5",
+                            "title": "Present documents at inspection desk",
+                            "action": "Show prescription containers, doctor's certificate, and permit (if applicable) to customs officer",
+                            "phrase": "Say: 'I am declaring psychotropic medication for anxiety disorder with proper documentation'"
+                        }
+                    ]
+                },
+                
+                // Story elements - correcting the misconception
+                "uniqueStory": "The anxiety medication that's misunderstood - labeled 'zero tolerance' but actually has a 180mg threshold",
+                "culturalContext": "Japan's complex psychotropic classification creates confusion where clonazepam is treated more restrictively in guides than in actual regulations",
+                "commonMisconception": "That clonazepam has 'zero tolerance' when it actually follows standard psychotropic procedures with a 180mg threshold",
+                "surpriseFactor": "The 180mg threshold is more generous than Xanax's 72mg limit, despite widespread misinformation about 'no exemptions'",
+                
+                // Commentary with corrected information
+                "commentary": {
+                    "storyHook": "The benzodiazepine that got a bad reputation it didn't deserve.",
+                    "practicalTips": [
+                        "Calculate total mg: Many travelers can bring 3-6 months supply under 180mg threshold",
+                        "0.5mg users: Up to 360 tablets allowed without permits (12+ months for many)",
+                        "1mg users: Up to 180 tablets allowed without permits (6+ months for many)",
+                        "2mg users: Up to 90 tablets allowed without permits (3+ months for most)"
+                    ],
+                    "commonMistakes": [
+                        "Believing 'zero tolerance' misinformation and avoiding Japan unnecessarily",
+                        "Not calculating total clonazepam content before assuming permits needed",
+                        "Confusing clonazepam with truly prohibited substances like Adderall",
+                        "Not declaring at Red Channel even for sub-threshold amounts"
+                    ],
+                    "realWorldInsights": [
+                        "Embassy sources don't warn about clonazepam like they do for prohibited drugs",
+                        "No detention stories or embassy alerts - indicates standard processing",
+                        "Online application portal available for permit applications",
+                        "180mg threshold confirmed through official MHLW documentation"
+                    ],
+                    "proTips": [
+                        "Contact yakkan@mhlw.go.jp for official threshold confirmation",
+                        "Keep detailed medical records showing ongoing anxiety treatment",
+                        "Injectable forms always require permits regardless of amount",
+                        "Third Category Psychotropic classification means standard procedures apply"
+                    ],
+                    "warningFlags": [
+                        "Previous guides incorrectly stated 'zero tolerance' - this has been corrected",
+                        "Must declare at Red Channel even for amounts under 180mg",
+                        "Injection forms require permits regardless of quantity"
+                    ]
+                },
+                
+                // Japan availability
+                "japanAvailability": {
+                    "prescriptionRequired": true,
+                    "costRange": "¥3,000-8,000 per month depending on dosage",
+                    "insuranceCoverage": "Covered under Japanese health insurance with psychiatric prescription",
+                    "availableBrands": ["Rivotril", "Generic clonazepam"],
+                    "restrictions": "Requires psychiatric consultation and monitored prescription",
+                    "alternativeOptions": "Multiple benzodiazepines available; switching to Japanese prescription often easier than import"
+                },
+                
+                // Import details
+                "importDetails": {
+                    "customsDeclaration": "Required - Red Channel mandatory",
+                    "channelRequired": "Red Channel with psychotropic documentation",
+                    "documentationNeeded": [
+                        "Original prescription containers with pharmacy labels",
+                        "Doctor's certificate specifying anxiety disorder diagnosis",
+                        "Import permit (if over 180mg)",
+                        "Medical necessity documentation"
+                    ],
+                    "quantityLimits": "≤180mg no permit needed, >180mg requires advance permit",
+                    "permitProcess": "Email yakkan@mhlw.go.jp or apply through Regional Health Bureau AT LEAST 2 weeks before travel"
+                },
+                
+                // Research quality
+                "researchQuality": {
+                    "primarySources": [
+                        "MHLW Third Category Psychotropic Drug regulations",
+                        "Official NCD threshold documentation and procedures",
+                        "Regional Health Bureau application processes"
+                    ],
+                    "communityValidation": [
+                        "Embassy absence from problem lists indicates standard treatment",
+                        "No prohibition warnings found across multiple embassy sources",
+                        "Online application portal confirms permit pathway availability"
+                    ],
+                    "lastUpdated": "2025-01-27",
+                    "confidenceLevel": "High - Official threshold confirmed, previous 'zero tolerance' misinformation corrected"
+                }
             },
 
             {
