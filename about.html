@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Japan Medical Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 30px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: #6c757d;
+            font-weight: 400;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .section {
+            margin-bottom: 45px;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .section h3 {
+            color: #495057;
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            margin-top: 30px;
+            font-weight: 600;
+        }
+
+        .section p {
+            margin-bottom: 18px;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        .methodology {
+            background-color: #f8f9fa;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+
+        .methodology h3 {
+            color: #495057;
+            margin-bottom: 20px;
+        }
+
+        .methodology p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .sources {
+            background-color: #f8f9fa;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+
+        .sources h3 {
+            color: #495057;
+            margin-bottom: 15px;
+        }
+
+        .sources ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sources li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            color: #555;
+        }
+
+        .sources li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #6c757d;
+        }
+
+        .disclaimer {
+            background-color: #f1f3f4;
+            padding: 25px;
+            border-radius: 4px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #5f6368;
+            line-height: 1.6;
+        }
+
+        .disclaimer h3 {
+            color: #495057;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* Dual Agency Diagram Styles */
+        .visual-explainer {
+            margin: 40px 0;
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .visual-explainer h3 {
+            text-align: center;
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .agencies-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .agency-box {
+            flex: 1;
+            background: #f8f9fa;
+            border: 2px solid #6c757d;
+            border-radius: 8px;
+            padding: 25px;
+            position: relative;
+        }
+
+        .agency-header {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .agency-subtitle {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .agency-functions {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .agency-functions li {
+            background: white;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            border-left: 3px solid #6c757d;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .connection-arrow {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.5rem;
+            color: #6c757d;
+        }
+
+        .key-insight {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+
+        .key-insight h4 {
+            color: #495057;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .key-insight p {
+            color: #495057;
+            margin: 0;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .example-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .example-box h4 {
+            color: #495057;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .example-box p {
+            color: #495057;
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .diagram-caption {
+            text-align: center;
+            font-style: italic;
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        .research-link {
+            background: #e8f4f8;
+            border: 1px solid #bee5eb;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .research-link a {
+            color: #0c5460;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .research-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 25px 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .agencies-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .visual-explainer {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="nav-link">← Back to Medication Guide</a>
+        
+        <div class="header">
+            <h1>About Japan Medical Guide</h1>
+            <p class="subtitle">Resolving the confusion around medication import regulations</p>
+        </div>
+
+        <div class="section">
+            <h2>The Problem We Address</h2>
+            <p>Anyone planning to bring medication to Japan encounters contradictory information from seemingly official sources. This confusion exists because two separate government agencies—the Ministry of Health and Tokyo Customs—have different rules. Understanding this distinction is the key to navigating the system with confidence.</p>
+            
+            <p>Travel forums, embassy websites, and even authoritative sources contradict each other on basic questions like which medications require customs declaration. Travelers arrive at Japanese airports uncertain whether their medications will be confiscated or which customs channel to use.</p>
+            
+            <p>This guide was created to resolve that confusion by making the crucial distinction between agencies clear.</p>
+        </div>
+
+        <div class="section">
+            <h2>Understanding the Dual System</h2>
+            <p>The confusion stems from a fundamental misunderstanding: medication imports involve two distinct government entities with separate jurisdictions and different requirements.</p>
+            
+            <p>The <strong>Ministry of Health, Labour and Welfare (MHLW)</strong> controls which medications can legally enter Japan. The <strong>Tokyo Customs</strong> controls what happens at the border, including declaration requirements and inspection procedures.</p>
+
+            <div class="visual-explainer">
+                <h3>Japan's Dual-Agency Medication Import System</h3>
+                
+                <div class="agencies-container">
+                    <div class="agency-box">
+                        <div class="agency-header">Ministry of Health, Labour & Welfare (MHLW)</div>
+                        <div class="agency-subtitle">Controls WHAT is allowed</div>
+                        <ul class="agency-functions">
+                            <li>Maintains substance classification lists</li>
+                            <li>Issues "Yakkan Shomei" import permits</li>
+                            <li>Sets quantity thresholds (e.g., 72mg limits)</li>
+                            <li>Determines legal status of medications</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="agency-box">
+                        <div class="agency-header">Tokyo Customs (Ministry of Finance)</div>
+                        <div class="agency-subtitle">Controls HOW things enter</div>
+                        <ul class="agency-functions">
+                            <li>Manages Red/Green Channel system</li>
+                            <li>Requires customs declarations</li>
+                            <li>Conducts border inspections</li>
+                            <li>Enforces import procedures at airports</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="connection-arrow">
+                    ↕️
+                </div>
+
+                <div class="key-insight">
+                    <h4>Why This Matters</h4>
+                    <p><strong>Same medication, different requirements:</strong> A medication can be "permitted" by MHLW while simultaneously requiring "Red Channel declaration" by Customs. This dual system explains why travel guidance often seems contradictory.</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>Real Example: Clonazepam (Klonopin)</h4>
+                    <p><strong>MHLW Status:</strong> Permitted up to 180mg without advance permit<br>
+                    <strong>Customs Status:</strong> Must be declared at Red Channel (psychotropic substance)<br>
+                    <strong>Result:</strong> Legal to import, but requires specific border procedure</p>
+                </div>
+
+                <p class="diagram-caption">This fundamental distinction explains why medication import guidance often appears contradictory - different agencies, different rules, different procedures.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>How We Verify Information</h2>
+            <p>Every piece of regulatory information on this site goes through our systematic verification process:</p>
+            
+            <div class="methodology">
+                <h3>Our 5-Step Verification Process</h3>
+                <p><strong>1. Official MHLW documentation</strong> - Primary source review of substance classifications and permit requirements</p>
+                <p><strong>2. Customs authority confirmation</strong> - Direct correspondence with Tokyo Customs regarding border procedures</p>
+                <p><strong>3. Embassy guidance cross-reference</strong> - Secondary verification through diplomatic sources</p>
+                <p><strong>4. Community validation</strong> - Real traveler experiences and outcomes</p>
+                <p><strong>5. Regular monitoring for updates</strong> - Monthly verification of regulatory changes</p>
+                
+                <p style="margin-top: 20px;"><em>We are not medical professionals - we are information researchers who systematically track and translate official Japanese sources. When sources conflict, we contact authorities directly for clarification.</em></p>
+            </div>
+
+            <div class="research-link">
+                <a href="research.html">→ Read about our detailed research process and official correspondence</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Our Philosophy</h2>
+            <p>We maintain a straightforward philosophy: transparency is always the best policy. When someone writes, "I brought my controlled medication in without declaring it and had no problems," they are describing a successful gamble, not a rule.</p>
+            
+            <p>The customs officers of Japan are professionals. A proactive, honest declaration, supported by proper documentation, is not an admission of wrongdoing—it is a sign of respect for the country you are visiting. It is the most reliable path to being processed efficiently, leaving you free to begin your journey with peace of mind.</p>
+            
+            <p>By conducting the necessary research on your behalf, we aim to replace uncertainty with clarity, allowing you to focus on the true purpose of your travels.</p>
+        </div>
+
+        <div class="sources">
+            <h3>Information Sources</h3>
+            <ul>
+                <li>Direct correspondence with Tokyo Customs Counselor's Office</li>
+                <li>Ministry of Health, Labour and Welfare official documentation</li>
+                <li>MHLW psychotropic substances list with quantity thresholds</li>
+                <li>Japan Customs declaration forms and procedures</li>
+                <li>Regional Health Bureau guidance and contact information</li>
+                <li>Cross-verification with embassy resources</li>
+            </ul>
+        </div>
+
+        <div class="disclaimer">
+            <h3>Important Disclaimer</h3>
+            <p><strong>This website provides informational guidance only and is not a substitute for professional medical or legal advice.</strong> While we strive for accuracy through direct correspondence with official sources, medication import regulations can change, and individual circumstances may vary. Always verify current requirements with official Japanese government sources and consult with healthcare professionals regarding your specific medical needs.</p>
+            
+            <p style="margin-top: 20px;"><strong>Last Updated:</strong> <span id="lastUpdated"></span></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    </script>
+</body>
+</html>
