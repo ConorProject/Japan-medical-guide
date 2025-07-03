@@ -907,6 +907,71 @@
     margin: 15px 0;
 }
 
+/* Customs Requirements Section */
+.customs-requirements {
+    background: #f8f9fa;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.customs-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.customs-alert {
+    border-radius: 6px;
+    padding: 15px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.customs-alert.red-channel {
+    background: #f8d7da;
+    border: 2px solid #dc3545;
+    color: #721c24;
+}
+
+.customs-alert.green-channel {
+    background: #d4edda;
+    border: 2px solid #28a745;
+    color: #155724;
+}
+
+.customs-alert.prohibited-channel {
+    background: #f8d7da;
+    border: 2px solid #dc3545;
+    color: #721c24;
+}
+
+.customs-channel {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.channel-icon {
+    font-size: 1.4rem;
+    margin-right: 8px;
+}
+
+.customs-declaration {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.customs-details {
+    font-size: 0.9rem;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
 .guidance-title {
     font-weight: bold;
     margin-bottom: 10px;
@@ -1570,20 +1635,7 @@
                     }
                 },
                 
-                // Customs guidance
-                "customsDeclaration": {
-                    "legal": {
-                        "formDeclaration": "Must declare on customs form",
-                        "channel": "Red Channel mandatory",
-                        "verbalRequirement": "Present import permit and medical certificate"
-                    },
-                    "recommended": {
-                        "formDeclaration": "Check 'Yes' for restricted medications",
-                        "channel": "Red Channel with all documentation ready",
-                        "verbalApproach": "Have permit and medical certificate easily accessible",
-                        "reasoning": "Streamlines inspection process"
-                    }
-                },
+                "customsDeclaration": "Required - Red Channel with permit documentation",
                 
                 // Basic import info
                 "maxQuantity": "Up to 30 days supply with valid import permit (children under 18 only)",
@@ -2321,20 +2373,7 @@
                 "status": "permitted",
                 "category": "Contraceptives",
                 
-                // Enhanced customs guidance from unified template
-                "customsDeclaration": {
-                    "legal": {
-                        "formDeclaration": "Not required for 1-month supplies",
-                        "channel": "Green Channel (no declaration needed)",
-                        "verbalRequirement": "Only if specifically asked by officer"
-                    },
-                    "recommended": {
-                        "formDeclaration": "Not necessary for typical travelers",
-                        "channel": "Green Channel - proceed normally",
-                        "verbalApproach": "If questioned: 'I have prescription medication with proper documentation'",
-                        "reasoning": "Birth control is explicitly mentioned as permitted by multiple official sources"
-                    }
-                },
+                "customsDeclaration": "Not required - Green Channel",
                 
                 "maxQuantity": "1 month supply (21-28 pills) without permit. Larger quantities require Yunyu Kakunin-sho",
                 "conditions": "Keep in original prescription bottle with pharmacy label clearly showing your name and prescribing doctor",
@@ -2503,20 +2542,7 @@
                 "maxQuantity": "≤72mg no permit needed, >72mg requires advance permit",
                 "conditions": "Must declare at Red Channel regardless of quantity (psychotropic substance)",
                 
-                // Mandatory declaration for all psychotropics (Tokyo Customs guidance)
-                "customsDeclaration": {
-                    "legal": {
-                        "formDeclaration": "REQUIRED - mark Yes on customs form regardless of quantity",
-                        "channel": "Red Channel - mandatory for all psychotropics",
-                        "verbalRequirement": "Must proceed to manned inspection desk"
-                    },
-                    "recommended": {
-                        "formDeclaration": "Required by Tokyo Customs directive",
-                        "channel": "Red Channel - no exceptions for psychotropics",
-                        "verbalApproach": "I am declaring psychotropic medication with proper prescription",
-                        "reasoning": "Official Tokyo Customs guidance requires declaration of all psychotropics"
-                    }
-                },
+                "customsDeclaration": "REQUIRED - Red Channel mandatory for all psychotropics",
                 
                 "permitRequired": "Not required for ≤72mg. Yunyu Kakunin-sho required for >72mg (apply AT LEAST 2 weeks in advance - official MHLW requirement)",
                 "consequences": "Confiscation if not declared; permit required for >72mg",
@@ -5181,35 +5207,12 @@ function displayRestrictionResults(results) {
                     </div>
                 </div>
 
-                <!-- Customs Declaration Guidance -->
-                ${med.customsDeclaration && med.customsDeclaration.legal && med.customsDeclaration.recommended ? `
-                    <div class="customs-guidance">
-                        <div class="guidance-title">🛂 Customs Declaration Guidance</div>
-                        <div class="guidance-tabs">
-                            <div class="guidance-tab legal">
-                                <h5>📋 Legal Requirements</h5>
-                                <div class="guidance-item">
-                                    <strong>Form Declaration:</strong> ${med.customsDeclaration.legal.formDeclaration}
-                                </div>
-                                <div class="guidance-item">
-                                    <strong>Channel:</strong> ${med.customsDeclaration.legal.channel}
-                                </div>
-                                <div class="guidance-item">
-                                    <strong>Verbal:</strong> ${med.customsDeclaration.legal.verbalRequirement}
-                                </div>
-                            </div>
-                            <div class="guidance-tab recommended">
-                                <h5>💡 Our Recommendation</h5>
-                                <div class="guidance-item">
-                                    <strong>Approach:</strong> ${med.customsDeclaration.recommended.channel}
-                                </div>
-                                <div class="guidance-item">
-                                    <strong>Phrase:</strong> "${med.customsDeclaration.recommended.verbalApproach}"
-                                </div>
-                                <div class="guidance-item">
-                                    <strong>Why:</strong> ${med.customsDeclaration.recommended.reasoning}
-                                </div>
-                            </div>
+                <!-- Customs Requirements Section -->
+                ${med.customsDeclaration ? `
+                    <div class="customs-requirements">
+                        <div class="customs-title">🛂 Customs Declaration Requirements</div>
+                        <div class="customs-content">
+                            ${generateCustomsRequirements(med)}
                         </div>
                     </div>
                 ` : ''}
@@ -5501,6 +5504,51 @@ function generateQuickFacts(med) {
         </div>
     `);
     return facts.join('');
+}
+
+// --- CUSTOMS REQUIREMENTS GENERATOR ---
+function generateCustomsRequirements(med) {
+    if (!med.customsDeclaration) return '';
+    
+    // Determine channel and styling based on declaration requirements
+    let channelType, channelIcon, channelClass, declarationText;
+    
+    if (med.customsDeclaration.includes('Red Channel') || med.customsDeclaration.includes('RED CHANNEL')) {
+        channelType = 'Red Channel';
+        channelIcon = '🔴';
+        channelClass = 'red-channel';
+        declarationText = 'REQUIRED - Must declare at customs';
+    } else if (med.customsDeclaration.includes('Green Channel') || med.customsDeclaration.includes('GREEN CHANNEL')) {
+        channelType = 'Green Channel';
+        channelIcon = '🟢';
+        channelClass = 'green-channel';
+        declarationText = 'Not required - Standard processing';
+    } else if (med.customsDeclaration.includes('ILLEGAL') || med.customsDeclaration.includes('Prohibited')) {
+        channelType = 'Prohibited';
+        channelIcon = '🚫';
+        channelClass = 'prohibited-channel';
+        declarationText = 'Cannot be legally imported';
+    } else {
+        channelType = 'Unknown';
+        channelIcon = '❓';
+        channelClass = 'unknown-channel';
+        declarationText = med.customsDeclaration;
+    }
+    
+    return `
+        <div class="customs-alert ${channelClass}">
+            <div class="customs-channel">
+                <span class="channel-icon">${channelIcon}</span>
+                <span class="channel-text">${channelType}</span>
+            </div>
+            <div class="customs-declaration">
+                ${declarationText}
+            </div>
+            <div class="customs-details">
+                ${med.customsDeclaration}
+            </div>
+        </div>
+    `;
 }
 
 // --- IMPORT REQUIREMENTS CHART ---
