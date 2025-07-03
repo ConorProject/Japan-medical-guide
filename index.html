@@ -5345,74 +5345,88 @@ function displayRestrictionResults(results) {
 }
 
 // --- ACTION STEPS ---
-function generateActionSteps(med) {
-    // Check for custom action steps first
-    if (med.actionSteps && med.actionSteps.steps) {
-        return med.actionSteps.steps.map(step => `
-            <div class="step-item">
-                <div class="step-number">${step.number}</div>
-                <div class="step-content">
-                    <strong>${step.title}:</strong> ${step.action}
-                    ${step.examples ? `<div class="step-examples">Examples: ${step.examples.join(', ')}</div>` : ''}
-                    ${step.note ? `<div class="step-note">Note: ${step.note}</div>` : ''}
-                    ${step.critical ? `<div class="step-critical">Critical: ${step.critical}</div>` : ''}
-                    ${step.mandatory ? `<div class="step-mandatory">Mandatory: ${step.mandatory}</div>` : ''}
-                    ${step.phrase ? `<div class="step-phrase">Suggested phrase: "${step.phrase}"</div>` : ''}
-                </div>
-            </div>
-        `).join('');
-    }
-    
-    // Fall back to generic steps
+// Default action step configurations by medication status
+const DEFAULT_ACTION_STEPS = {
+    prohibited: [
+        {
+            number: "❌",
+            title: "DO NOT BRING",
+            action: "This medication is illegal in Japan",
+            hasAlternatives: true
+        }
+    ],
+    restricted_with_permit: [
+        {
+            number: "1",
+            title: "Apply",
+            action: "for import permit AT LEAST 2 weeks before travel"
+        },
+        {
+            number: "2", 
+            title: "Prepare",
+            action: "original prescription containers + doctor's letter + permit"
+        },
+        {
+            number: "3",
+            title: "Declare", 
+            action: "at Red Channel with all documentation"
+        }
+    ],
+    restricted_without_permit: [
+        {
+            number: "1",
+            title: "Prepare",
+            action: "original prescription containers + doctor's letter"
+        },
+        {
+            number: "2",
+            title: "Declare",
+            action: "at Red Channel (mandatory for restricted medications)"
+        }
+    ],
+    permitted: [
+        {
+            number: "✓",
+            title: "Travel",
+            action: "with original prescription containers. Use Green Channel - no special procedures required"
+        }
+    ]
+};
+
+function getDefaultActionSteps(med) {
     switch(med.status) {
         case 'prohibited':
-            return `
-                <div class="step-item">
-                    <div class="step-number">❌</div>
-                    <div class="step-content">
-                        <strong>DO NOT BRING:</strong> This medication is illegal in Japan.
-                        ${med.alternatives ? `Consider alternatives: ${med.alternatives[0]}` : 'Consult your doctor about legal alternatives before travel.'}
-                    </div>
-                </div>
-            `;
+            return DEFAULT_ACTION_STEPS.prohibited;
         case 'restricted':
             if (med.permitRequired && med.permitRequired.toUpperCase().includes('YES')) {
-                return `
-                    <div class="step-item">
-                        <div class="step-number">1</div>
-                        <div class="step-content"><strong>Apply</strong> for import permit AT LEAST 2 weeks before travel</div>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-number">2</div>
-                        <div class="step-content"><strong>Prepare</strong> original prescription containers + doctor's letter + permit</div>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-number">3</div>
-                        <div class="step-content"><strong>Declare</strong> at Red Channel with all documentation</div>
-                    </div>
-                `;
+                return DEFAULT_ACTION_STEPS.restricted_with_permit;
             } else {
-                return `
-                    <div class="step-item">
-                        <div class="step-number">1</div>
-                        <div class="step-content"><strong>Prepare</strong> original prescription containers + doctor's letter</div>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-number">2</div>
-                        <div class="step-content"><strong>Declare</strong> at Red Channel (mandatory for restricted medications)</div>
-                    </div>
-                `;
+                return DEFAULT_ACTION_STEPS.restricted_without_permit;
             }
         default:
-            return `
-                <div class="step-item">
-                    <div class="step-number">✓</div>
-                    <div class="step-content">
-                        <strong>Travel</strong> with original prescription containers. Use Green Channel - no special procedures required.
-                    </div>
-                </div>
-            `;
+            return DEFAULT_ACTION_STEPS.permitted;
     }
+}
+
+function generateActionSteps(med) {
+    // Use custom action steps if available, otherwise use defaults
+    const actionSteps = med.actionSteps && med.actionSteps.steps ? med.actionSteps.steps : getDefaultActionSteps(med);
+    
+    return actionSteps.map(step => `
+        <div class="step-item">
+            <div class="step-number">${step.number}</div>
+            <div class="step-content">
+                <strong>${step.title}:</strong> ${step.action}
+                ${step.hasAlternatives && med.alternatives ? `Consider alternatives: ${med.alternatives[0]}` : ''}
+                ${!step.hasAlternatives && step.title === 'DO NOT BRING' && !med.alternatives ? 'Consult your doctor about legal alternatives before travel.' : ''}
+                ${step.examples ? `<div class="step-examples">Examples: ${step.examples.join(', ')}</div>` : ''}
+                ${step.note ? `<div class="step-note">Note: ${step.note}</div>` : ''}
+                ${step.critical ? `<div class="step-critical">Critical: ${step.critical}</div>` : ''}
+                ${step.mandatory ? `<div class="step-mandatory">Mandatory: ${step.mandatory}</div>` : ''}
+                ${step.phrase ? `<div class="step-phrase">Suggested phrase: "${step.phrase}"</div>` : ''}
+            </div>
+        </div>
+    `).join('');
 }
 
 // --- QUICK FACTS ---
