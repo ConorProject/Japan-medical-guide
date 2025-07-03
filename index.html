@@ -1346,23 +1346,14 @@
                 },
 
                 "researchQuality": {
-                    "primarySources": [
-                        "MHLW Stimulants Control Act (official)",
-                        "Japan NCD controlled substances list",
-                        "Embassy warnings (US, UK, AU, CA)"
-                    ],
-                    "communityValidation": [
-                        "Documented detention cases (Carrie Russell, 2019)",
-                        "Consistent embassy warnings",
-                        "Zero successful import cases found"
-                    ],
                     "lastUpdated": "2025-01-15",
                     "confidenceLevel": "Absolute - legal certainty from primary sources",
                     "sourceDocumentation": {
-                        "officialSources": [
+                        "sources": [
                             {
                                 "source": "MHLW Stimulants Control Act",
                                 "type": "official_regulation",
+                                "agency": "MHLW",
                                 "verified_date": "2025-01-15",
                                 "url": "https://www.mhlw.go.jp/bunya/iyakuhin/yakubuturanyou/",
                                 "key_finding": "Amphetamine salts explicitly prohibited - no personal use exceptions"
@@ -1370,28 +1361,27 @@
                             {
                                 "source": "Japan NCD Controlled Substances List",
                                 "type": "official_regulation",
+                                "agency": "NCD",
                                 "verified_date": "2025-01-15",
                                 "url": "https://www.ncd.mhlw.go.jp/",
                                 "key_finding": "Adderall components listed as controlled stimulants"
-                            }
-                        ],
-                        "embassySources": [
+                            },
                             {
-                                "source": "US Embassy Japan",
+                                "source": "US Embassy Japan Medication Warnings",
                                 "type": "embassy_guidance",
+                                "agency": "US Embassy Japan",
                                 "verified_date": "2025-01-15",
                                 "url": "https://jp.usembassy.gov/",
                                 "key_finding": "Explicit warnings against bringing Adderall to Japan"
                             },
                             {
-                                "source": "UK Embassy Japan",
+                                "source": "UK Embassy Japan Travel Advisory",
                                 "type": "embassy_guidance",
+                                "agency": "UK Embassy Japan",
                                 "verified_date": "2025-01-15",
                                 "url": "https://www.gov.uk/foreign-travel-advice/japan",
                                 "key_finding": "Lists Adderall in prohibited medications"
-                            }
-                        ],
-                        "communityValidation": [
+                            },
                             {
                                 "source": "Carrie Russell Detention Case",
                                 "type": "documented_case",
@@ -1535,10 +1525,11 @@
                     "lastUpdated": "2025-01-15",
                     "confidenceLevel": "High - clear regulatory classification with permit pathway",
                     "sourceDocumentation": {
-                        "officialSources": [
+                        "sources": [
                             {
                                 "source": "NCD Stimulant Raw Materials List",
                                 "type": "official_regulation",
+                                "agency": "NCD",
                                 "verified_date": "2025-01-15",
                                 "url": "https://www.ncd.mhlw.go.jp/",
                                 "key_finding": "Pseudoephedrine listed as controlled precursor with permit requirements"
@@ -1546,21 +1537,19 @@
                             {
                                 "source": "MHLW 10% Concentration Threshold Documentation",
                                 "type": "official_regulation",
+                                "agency": "MHLW",
                                 "verified_date": "2025-01-15",
                                 "url": "https://www.mhlw.go.jp/",
                                 "key_finding": "Products with >10% pseudoephedrine require special permits"
-                            }
-                        ],
-                        "embassySources": [
+                            },
                             {
-                                "source": "US Embassy Japan",
+                                "source": "US Embassy Japan Medication Warnings",
                                 "type": "embassy_guidance",
+                                "agency": "US Embassy Japan",
                                 "verified_date": "2025-01-15",
                                 "url": "https://jp.usembassy.gov/",
                                 "key_finding": "Sudafed listed in controlled medication warnings"
-                            }
-                        ],
-                        "communityValidation": [
+                            },
                             {
                                 "source": "Enforcement Case Documentation",
                                 "type": "legal_precedent",
@@ -5122,12 +5111,7 @@ function displayRestrictionResults(results) {
                         <div class="status-badge ${statusClass}">
                             ${statusIcon} ${statusText}
                         </div>
-                        ${med.researchQuality?.sourceDocumentation ? `
-                        <div class="citation-line">
-                            Source: <a href="${med.researchQuality.sourceDocumentation.officialSources?.[0]?.url || '#'}">${med.researchQuality.sourceDocumentation.officialSources?.[0]?.agency || 'MHLW'} ${med.researchQuality.sourceDocumentation.officialSources?.[0]?.document || 'Regulations'}</a> (${med.researchQuality.sourceDocumentation.officialSources?.[0]?.verified_date || 'verified'})
-                            ${med.researchQuality.sourceDocumentation.officialSources?.[1] ? '<span class="citation-separator">|</span> <a href="' + (med.researchQuality.sourceDocumentation.officialSources[1].url || '#') + '">' + (med.researchQuality.sourceDocumentation.officialSources[1].agency || 'Tokyo Customs') + '</a> (' + (med.researchQuality.sourceDocumentation.officialSources[1].verified_date || 'June 19, 2025') + ')' : ''}
-                        </div>
-                        ` : ''}
+                        ${generateCitationLine(med)}
                     </div>
                     `}
                 </div>
@@ -5430,12 +5414,7 @@ function generateQuickFacts(med) {
             <div class="fact-value">
                 <div class="sourced-fact threshold-fact">
                     ${med.maxQuantity}
-                    ${med.researchQuality?.sourceDocumentation ? `
-                    <div class="citation-line">
-                        Source: <a href="${med.researchQuality.sourceDocumentation.officialSources?.[0]?.url || '#'}">${med.researchQuality.sourceDocumentation.officialSources?.[0]?.agency || 'MHLW'}</a> (${med.researchQuality.sourceDocumentation.officialSources?.[0]?.verified_date || 'verified'})
-                        ${med.researchQuality.sourceDocumentation.officialSources?.[1] ? '<span class="citation-separator">|</span> <a href="' + (med.researchQuality.sourceDocumentation.officialSources[1].url || '#') + '">' + (med.researchQuality.sourceDocumentation.officialSources[1].agency || 'Tokyo Customs') + '</a> (' + (med.researchQuality.sourceDocumentation.officialSources[1].verified_date || 'verified') + ')' : ''}
-                    </div>
-                    ` : ''}
+                    ${generateCitationLine(med)}
                 </div>
             </div>
         </div>
@@ -5446,12 +5425,7 @@ function generateQuickFacts(med) {
             <div class="fact-value">
                 <div class="sourced-fact customs-fact">
                     ${typeof med.customsDeclaration === 'object' ? med.customsDeclaration.legal.formDeclaration : med.customsDeclaration}
-                    ${med.researchQuality?.sourceDocumentation ? `
-                    <div class="citation-line">
-                        Source: <a href="${med.researchQuality.sourceDocumentation.officialSources?.find(s => s.agency === 'Tokyo Customs')?.url || '#'}">Tokyo Customs</a> (${med.researchQuality.sourceDocumentation.officialSources?.find(s => s.agency === 'Tokyo Customs')?.verified_date || 'June 19, 2025'})
-                        <span class="citation-separator">|</span> <a href="${med.researchQuality.sourceDocumentation.officialSources?.[0]?.url || '#'}">${med.researchQuality.sourceDocumentation.officialSources?.[0]?.agency || 'MHLW'}</a>
-                    </div>
-                    ` : ''}
+                    ${generateCitationLine(med)}
                 </div>
             </div>
         </div>
@@ -5463,6 +5437,40 @@ function generateQuickFacts(med) {
         </div>
     `);
     return facts.join('');
+}
+
+// --- CITATION GENERATOR FOR UNIFIED SOURCE STRUCTURE ---
+function generateCitationLine(med, maxSources = 2) {
+    if (!med.researchQuality?.sourceDocumentation?.sources) {
+        return '';
+    }
+    
+    const sources = med.researchQuality.sourceDocumentation.sources;
+    
+    // Prioritize source types: official_regulation > embassy_guidance > documented_case > community_research
+    const typePriority = {
+        'official_regulation': 1,
+        'embassy_guidance': 2,
+        'documented_case': 3,
+        'community_research': 4,
+        'regulatory_analysis': 5
+    };
+    
+    // Sort sources by priority and take the most important ones
+    const prioritizedSources = sources
+        .sort((a, b) => (typePriority[a.type] || 99) - (typePriority[b.type] || 99))
+        .slice(0, maxSources);
+    
+    if (prioritizedSources.length === 0) return '';
+    
+    const citationLinks = prioritizedSources.map(source => {
+        const url = source.url || '#';
+        const agency = source.agency || source.source;
+        const date = source.verified_date || 'verified';
+        return `<a href="${url}">${agency}</a> (${date})`;
+    });
+    
+    return `<div class="citation-line">Source: ${citationLinks.join('<span class="citation-separator"> | </span>')}</div>`;
 }
 
 // --- CUSTOMS REQUIREMENTS GENERATOR ---
