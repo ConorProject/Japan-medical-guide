@@ -4939,37 +4939,28 @@
                 },
 
                 "researchQuality": {
-                    "primarySources": [
-                        "MHLW Narcotics Control Department narcotic classification",
-                        "Regional Bureau permit requirements documentation",
-                        "Japan's Narcotics and Psychotropics Control Act"
-                    ],
-                    "communityValidation": [
-                        "Multiple documented detention cases for unpermitted narcotic import",
-                        "Clear narcotic permit requirements with no quantity exemptions",
-                        "Confirmed domestic OTC availability paradox"
-                    ],
                     "lastUpdated": "2025-07-03",
                     "confidenceLevel": "Very High - extensive enforcement documentation and clear regulatory framework",
                     "sourceDocumentation": {
-                        "officialSources": [
+                        "sources": [
                             {
+                                "source": "MHLW Narcotics Control Department - Narcotic Import Requirements Framework",
+                                "type": "official_regulation",
                                 "agency": "MHLW Narcotics Control Department",
-                                "document": "Narcotic Import Requirements Framework",
                                 "verified_date": "2025-07-03",
                                 "key_finding": "Codeine classified as narcotic requiring permits for all quantities"
                             },
                             {
+                                "source": "Regional Bureau of Health and Welfare - Narcotic Certificate Application Process",
+                                "type": "official_regulation",
                                 "agency": "Regional Bureau of Health and Welfare",
-                                "document": "Narcotic Certificate Application Process",
                                 "verified_date": "2025-07-03",
                                 "key_finding": "Minimum 14-day advance application required for all narcotic imports"
-                            }
-                        ],
-                        "embassySources": [
+                            },
                             {
                                 "source": "US Embassy Japan Narcotic Warnings",
                                 "type": "embassy_guidance",
+                                "agency": "US Embassy Japan",
                                 "verified_date": "2025-07-03",
                                 "url": "https://jp.usembassy.gov/services/importing-medication/",
                                 "key_finding": "Explicit warnings about codeine requiring advance narcotic permits"
@@ -4977,28 +4968,27 @@
                             {
                                 "source": "Australian Embassy Japan Medical Advisory",
                                 "type": "embassy_guidance",
+                                "agency": "Australian Embassy Japan",
                                 "verified_date": "2025-07-03",
                                 "key_finding": "Narcotic Certificate required or confiscation guaranteed"
-                            }
-                        ],
-                        "communityValidation": [
+                            },
                             {
                                 "source": "TripAdvisor Japan Codeine Import Experience",
-                                "type": "traveler_experience_documentation",
+                                "type": "traveler_experience",
                                 "verified_date": "2025-07-03",
                                 "description": "Real traveler experience with Japanese Embassy narcotic permit requirements",
                                 "key_finding": "2-week permit process required for basic codeine tablets"
                             },
                             {
                                 "source": "Documented Detention Cases Analysis",
-                                "type": "enforcement_pattern_research",
+                                "type": "documented_case",
                                 "verified_date": "2025-07-03",
                                 "description": "Analysis of traveler detention cases for narcotic import violations",
                                 "key_finding": "23-day detention without charge standard for narcotic violations"
                             },
                             {
                                 "source": "Japanese OTC Medicine Survey",
-                                "type": "domestic_availability_research",
+                                "type": "regulatory_analysis",
                                 "verified_date": "2025-07-03",
                                 "description": "Research on codeine availability in Japanese over-the-counter medicines",
                                 "key_finding": "Nearly all Japanese cold medicines contain codeine or ephedrine"
@@ -5452,8 +5442,10 @@ function generateCitationLine(med, maxSources = 2) {
         'official_regulation': 1,
         'embassy_guidance': 2,
         'documented_case': 3,
-        'community_research': 4,
-        'regulatory_analysis': 5
+        'legal_precedent': 4,
+        'traveler_experience': 5,
+        'community_research': 6,
+        'regulatory_analysis': 7
     };
     
     // Sort sources by priority and take the most important ones
