@@ -1,4 +1,4 @@
-# Japan Medical Guide  
+# Japan Medication Guide  
 
 ## Overview  
 This project is designed to help travelers in Japan navigate drugstores, find local medications for their symptoms, and identify Japanese equivalents of international medicines.  
@@ -10,7 +10,7 @@ This project is designed to help travelers in Japan navigate drugstores, find lo
 - **Future plans** – AI-powered product identification using photos to compare medicines instantly.  
 
 ## How to Use  
-Visit **[Japan Medical Guide](https://yourgithubpageslink.com)** (replace with your actual site URL) to access the guide. Users can enter symptoms or medicine names to receive relevant information.  
+Visit **[Japan Medication Guide](https://japanmedicationguide.com)** to access the guide to access the guide. Users can enter symptoms or medicine names to receive relevant information.  
 
 ## Roadmap  
 ✅ Website launch via GitHub Pages  
