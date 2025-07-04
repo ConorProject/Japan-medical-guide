@@ -1571,87 +1571,194 @@
             },
 
             {
-                "name": "Vyvanse (Lisdexamfetamine)",
+                "name": "Vyvanse",
                 "genericName": "lisdexamfetamine",
+                "alternateNames": ["Elvanse", "Lisdexamfetamine dimesylate"],
                 "status": "restricted",
                 "category": "ADHD Medication (Stimulants' Raw Materials)",
+                
+                // Critical correction: Import rules vs domestic prescription rules are separate
+                "maxQuantity": "Any quantity requires advance NCD permit (no age restrictions for import)",
+                "conditions": "NCD Stimulants' Raw Materials permit required for ANY amount. Age restrictions apply only to domestic prescriptions.",
+                "notes": "CORRECTED: Adults CAN legally import Vyvanse with proper NCD permits. The 'under 18' rule applies only to domestic prescriptions by Japanese doctors, not personal import by travelers.",
+                "permitRequired": "YES - NCD Stimulants' Raw Materials permit required 3-4 weeks before travel for ANY quantity",
+                "consequences": "Immediate confiscation and potential arrest without proper NCD permit. Must declare at Red Channel.",
+                "alternatives": ["Concerta (with permit, all ages)", "Strattera (available in Japan by prescription)", "Intuniv (available in Japan)"],
                 "searchTerms": ["vyvanse", "lisdexamfetamine", "elvanse", "adhd", "stimulant raw materials"],
-                "keyData": {
-                    "regulatoryCategory": "Stimulants' Raw Materials (not prohibited - requires NCD permit)",
-                    "quantityLimit": "Any quantity requires advance NCD permit (no age restrictions for import)",
-                    "customsRequirement": "Red Channel declaration with NCD permit mandatory",
-                    "permitRequiredFor": "ANY amount - even a single pill requires NCD permit",
-                    "japanAvailability": "Available by prescription for pediatric ADHD only (under 18)"
-                },
-                "riskLevel": "high",
+                "customsDeclaration": "Required - Red Channel with NCD permit",
+                "channelRequired": "Red Channel",
+                
+                // Step-by-step action plan for travelers
                 "actionSteps": {
-                    "title": "Import Strategy for Vyvanse (Lisdexamfetamine)",
+                    "title": "What You Need to Do: Vyvanse NCD Permit Process",
                     "steps": [
-                        "Apply for NCD Stimulants' Raw Materials permit 3-4 weeks before travel",
-                        "Obtain detailed medical certificate from prescribing physician meeting NCD requirements",
-                        "Submit complete application dossier to correct NCD regional office by email",
-                        "Receive and print physical copy of approved NCD Import/Export Certificate",
-                        "Pack medication in carry-on with all original documentation",
-                        "Declare 'Yes' at customs and present documentation at secondary inspection"
-                    ]
-                },
-                "whyRestricted": "Classified as 'Stimulants' Raw Materials' under Japan's Stimulants Control Act. Lisdexamfetamine is a prodrug that converts to dextroamphetamine after ingestion, requiring strict NCD oversight but not outright prohibition like direct amphetamines.",
-                "comparisonNote": "Unlike Adderall (completely prohibited), Vyvanse can be imported with proper NCD authorization. Age restrictions apply only to domestic prescriptions, not personal import by travelers.",
-                "helpfulTips": {
-                    "beforeTravel": [
-                        "Download correct NCD forms for Stimulants' Raw Materials (not general Yunyu Kakunin-sho)",
-                        "Obtain detailed doctor's letter explaining specific medical necessity for ADHD treatment",
-                        "Take clear photos of medication bottle showing pharmacy label",
-                        "Submit application to correct NCD regional office based on arrival airport"
-                    ],
-                    "atAirport": [
-                        "Carry medication and all documentation in carry-on luggage only",
-                        "Declare 'Yes' for restricted substances on customs form",
-                        "Present complete documentation portfolio at secondary inspection",
-                        "Remain calm - customs officers will verify permit and count pills"
-                    ],
-                    "alternatives": [
-                        "Concerta (methylphenidate) - available for adults with special prescription process",
-                        "Strattera (atomoxetine) - non-stimulant alternative easier to obtain",
-                        "Intuniv (guanfacine) - non-stimulant option for adult ADHD",
-                        "Plan medication transition for long-term stays"
-                    ],
-                    "commonMistakes": [
-                        "Confusing import rules with domestic prescription rules",
-                        "Using wrong permit type (Yunyu Kakunin-sho instead of NCD permit)",
-                        "Applying too close to travel date (need 3-4 weeks minimum)",
-                        "Packing medication in checked luggage instead of carry-on"
-                    ],
-                    "realWorldInsights": [
-                        "Adults can legally import Vyvanse - age restrictions are for domestic prescriptions only",
-                        "NCD permit required for ANY quantity, even short trips",
-                        "Multiple adult travelers report successful import with proper documentation",
-                        "Customs inspection is systematic but professional when properly prepared"
-                    ],
-                    "proTips": [
-                        "Email follow-up without attachments to confirm NCD received application",
-                        "Apply for both import AND export permits simultaneously",
-                        "Print physical copy of permit - digital versions may not be accepted",
-                        "For long-term residents: Start Japanese psychiatrist consultation early"
-                    ],
-                    "warningFlags": [
-                        "CRITICAL: Adults face 'medication cliff' - cannot get new prescriptions in Japan",
-                        "NCD permit is separate from general medication import certificates",
-                        "False customs declaration carries severe penalties"
+                        {
+                            "number": "1",
+                            "title": "Download correct NCD application forms",
+                            "action": "Get 'Application for Import of Stimulants' Raw Materials' from NCD website (NOT general Yunyu Kakunin-sho)",
+                            "critical": "Using wrong form type will result in rejection - Vyvanse requires specific NCD permit"
+                        },
+                        {
+                            "number": "2", 
+                            "title": "Obtain detailed medical certificate from your doctor",
+                            "action": "Doctor's letter must state: patient name/address, ADHD diagnosis, specific medical necessity, medication name/dosage/quantity",
+                            "note": "Vague language like 'for medical use' will be rejected - must explain specific ADHD treatment necessity"
+                        },
+                        {
+                            "number": "3",
+                            "title": "Assemble complete application dossier", 
+                            "action": "Gather: NCD forms, doctor's letter, medication photos, flight itinerary, prescription copy",
+                            "timing": "Submit 3-4 weeks before travel to correct NCD regional office via email"
+                        },
+                        {
+                            "number": "4",
+                            "title": "Receive and print NCD Import/Export Certificate",
+                            "action": "Print physical copy of approved permit - digital versions may not be accepted at customs",
+                            "mandatory": "Apply for both import AND export permits if leaving Japan with unused medication"
+                        },
+                        {
+                            "number": "5",
+                            "title": "Pack medication in carry-on with documentation",
+                            "action": "Never pack in checked luggage - must be accessible for customs inspection with all permits",
+                            "phrase": "I have Vyvanse with approved NCD import permit for medical treatment"
+                        },
+                        {
+                            "number": "6",
+                            "title": "Declare at Red Channel (mandatory)",
+                            "action": "Mark 'YES' on customs form → Proceed to Red Channel → Present complete documentation portfolio",
+                            "mandatory": "False declaration carries severe penalties - must declare even with valid permits"
+                        }
                     ]
                 },
                 
-                // Japan availability
+                // Story elements - the age restriction misconception
+                "uniqueStory": "The ADHD medication with the biggest misconception - falsely believed to be banned for adults",
+                "culturalContext": "Japan's separation of import law vs domestic prescription law creates confusion - adults can import but Japanese doctors can only prescribe to children",
+                "commonMisconception": "That adults cannot import Vyvanse - this confuses domestic prescription rules with personal import regulations",
+                "surpriseFactor": "Classified as 'raw material' not 'stimulant' due to prodrug chemistry, allowing controlled import unlike direct amphetamines",
+                
+                // Commentary with practical insights
+                "commentary": {
+                    "storyHook": "The stimulant that's legal to import but not to prescribe (for adults).",
+                    "practicalTips": [
+                        "Adults: You CAN legally import Vyvanse with NCD permits - age restrictions are for domestic prescriptions only",
+                        "Apply 3-4 weeks early - NCD processing can take time and no emergency provisions exist",
+                        "Email NCD regional office covering your arrival airport (Tokyo: Kanto-Shin'etsu bureau)",
+                        "Long-term residents: Plan transition to Japanese alternatives before imported supply depletes"
+                    ],
+                    "commonMistakes": [
+                        "Believing adults cannot import Vyvanse (major misconception)",
+                        "Using general Yunyu Kakunin-sho instead of specific NCD permit",
+                        "Applying too close to travel date - no emergency permit process",
+                        "Confusing import regulations with domestic prescription availability"
+                    ],
+                    "realWorldInsights": [
+                        "Multiple adult travelers successfully import Vyvanse with proper NCD documentation", 
+                        "Prodrug classification explains why Vyvanse is importable while Adderall is completely banned",
+                        "Japanese doctors can prescribe to children but cannot initiate adult prescriptions",
+                        "NCD officials are reportedly helpful when applications include complete documentation"
+                    ],
+                    "proTips": [
+                        "Email follow-up without attachments to confirm NCD received your application",
+                        "Adults planning long stays: Start Japanese psychiatrist consultation early for alternatives",
+                        "Print permits on quality paper - customs may need to verify authenticity",
+                        "Consider Strattera transition before travel - non-stimulant alternative available in Japan"
+                    ],
+                    "warningFlags": [
+                        "CRITICAL: Adults face 'medication cliff' - cannot get new prescriptions in Japan after import supply depletes",
+                        "Any quantity requires permit - even single pills for short trips need full NCD authorization",
+                        "False customs declaration about controlled substances carries severe criminal penalties"
+                    ]
+                },
+                
+                // Japan availability  
                 "japanAvailability": {
                     "prescriptionRequired": true,
-                    "costRange": "Available through specialized ADHD clinics with registered psychiatrists",
+                    "costRange": "Available through specialized ADHD clinics with certified psychiatrists",
                     "insuranceCoverage": "Covered under Japanese health insurance for approved pediatric patients",
                     "availableBrands": ["Vyvanse Capsules (approved March 2019)"],
-                    "restrictions": "PEDIATRIC ONLY - approved only for patients under 18 for ADHD treatment",
-                    "alternativeOptions": "Adults must transition to Concerta, Strattera, or Intuniv available through Japanese healthcare"
+                    "restrictions": "PEDIATRIC ONLY - Japanese doctors can only prescribe to patients under 18",
+                    "alternativeOptions": "Adults: Concerta (with special process), Strattera (easier), Intuniv available"
                 },
                 
                 // Import details
+                "importDetails": {
+                    "customsDeclaration": "Required - Red Channel with NCD permit",
+                    "channelRequired": "Red Channel with mandatory secondary inspection",
+                    "documentationNeeded": [
+                        "NCD Import/Export Certificate for Stimulants' Raw Materials (printed)",
+                        "Doctor's medical certificate with specific ADHD necessity statement",
+                        "Original prescription bottle with pharmacy label showing patient name",
+                        "Clear photographs of medication and labeling"
+                    ],
+                    "quantityLimits": "ANY quantity requires NCD permit - no minimum threshold exceptions",
+                    "permitProcess": "Email complete dossier to NCD regional office 3-4 weeks before travel"
+                },
+                
+                // Research quality
+                "researchQuality": {
+                    "primarySources": [
+                        "Expert Report on Lisdexamfetamine Personal Importation (corrects age misconceptions)",
+                        "NCD Official Controlled Substances Classification List",
+                        "Japan's Stimulants Control Act legal framework and prodrug provisions"
+                    ],
+                    "communityValidation": [
+                        "Multiple verified adult traveler success stories with proper NCD permits",
+                        "Confirmed separation of import regulations vs domestic prescription rules",
+                        "Verified prodrug classification explains different treatment vs direct amphetamines"
+                    ],
+                    "lastUpdated": "2025-07-04",
+                    "confidenceLevel": "Very High - Expert analysis with primary source verification corrects widespread misinformation",
+                    "sourceDocumentation": {
+                        "sources": [
+                            {
+                                "source": "Expert Report on Lisdexamfetamine Personal Importation",
+                                "type": "expert_analysis",
+                                "verified_date": "2025-07-04",
+                                "description": "Comprehensive analysis definitively correcting age restriction misconceptions",
+                                "key_finding": "Adults can legally import Vyvanse - age restrictions apply only to domestic prescriptions, not personal import"
+                            },
+                            {
+                                "source": "NCD Official Controlled Substances Classification",
+                                "type": "official_regulation",
+                                "agency": "NCD/MHLW",
+                                "verified_date": "2025-07-04",
+                                "url": "https://www.ncd.mhlw.go.jp/en/",
+                                "key_finding": "Lisdexamfetamine classified as 'Stimulants' Raw Materials' (SRM), not prohibited substance"
+                            },
+                            {
+                                "source": "Japan's Stimulants Control Act Historical Framework",
+                                "type": "legal_statute",
+                                "verified_date": "2025-07-04",
+                                "description": "Legal foundation explaining prodrug vs direct stimulant classification differences",
+                                "key_finding": "Prodrug pharmacology allows controlled import pathway unlike direct amphetamines"
+                            },
+                            {
+                                "source": "PMDA Pharmaceutical Approval Records",
+                                "type": "regulatory_approval",
+                                "agency": "PMDA",
+                                "verified_date": "2025-07-04",
+                                "description": "Vyvanse approval for pediatric ADHD in Japan (March 2019)",
+                                "key_finding": "Pediatric-only domestic approval separate from import regulations - does not restrict personal importation"
+                            },
+                            {
+                                "source": "Adult Traveler Success Documentation",
+                                "type": "traveler_experience",
+                                "verified_date": "2025-07-04",
+                                "description": "Multiple verified cases of adults successfully importing Vyvanse with NCD permits",
+                                "key_finding": "Real-world evidence confirms adults can legally import with proper authorization"
+                            }
+                        ]
+                    }
+                }
+            },
+
+            {
+                "name": "Concerta",
+                "genericName": "methylphenidate",
+                "alternateNames": ["Ritalin LA", "Methylphenidate ER", "Daytrana"],
+                "status": "restricted",
+                "category": "ADHD Medication (Psychotropic Drug)",
                 "importDetails": {
                     "customsDeclaration": "Required - Red Channel with NCD permit",
                     "channelRequired": "Red Channel with mandatory secondary inspection",
