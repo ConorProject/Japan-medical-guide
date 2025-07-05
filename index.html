@@ -6709,6 +6709,55 @@ window.onclick = function(event) {
     }
 }
 
+// --- PERMIT WIZARD INTEGRATION ---
+// Add permit wizard button to restricted medication cards
+function addPermitButtons() {
+    // Wait for cards to be rendered
+    setTimeout(() => {
+        document.querySelectorAll('.medication-card').forEach(card => {
+            const statusBadge = card.querySelector('.status-badge');
+            if (statusBadge && statusBadge.textContent.toLowerCase() === 'restricted') {
+                const actionSection = card.querySelector('.critical-action');
+                if (actionSection && !actionSection.querySelector('.permit-wizard-btn')) {
+                    const permitBtn = document.createElement('button');
+                    permitBtn.className = 'permit-wizard-btn';
+                    permitBtn.innerHTML = '📋 Start Permit Application →';
+                    permitBtn.onclick = function() {
+                        const medName = card.querySelector('.medication-name').textContent;
+                        const genericName = card.querySelector('.medication-generic').textContent;
+                        
+                        // Store in sessionStorage
+                        sessionStorage.setItem('permitMedication', JSON.stringify({
+                            name: medName,
+                            generic: genericName,
+                            timestamp: Date.now()
+                        }));
+                        
+                        // Navigate to permit wizard
+                        window.location.href = 'permit-wizard.html';
+                    };
+                    
+                    actionSection.appendChild(permitBtn);
+                }
+            }
+        });
+    }, 100);
+}
+
+// Call after displaying results
+const originalDisplayResults = displayRestrictionResults;
+displayRestrictionResults = function(results) {
+    originalDisplayResults(results);
+    addPermitButtons();
+};
+
+// Also add on category button clicks
+document.querySelectorAll('.restriction-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        setTimeout(addPermitButtons, 200);
+    });
+});
+
 // --- INITIALIZE ---
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('categoryOverview').style.display = 'grid';
