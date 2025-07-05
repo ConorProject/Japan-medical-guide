@@ -6736,8 +6736,12 @@ function addPermitButtons() {
     // Wait for cards to be rendered
     setTimeout(() => {
         document.querySelectorAll('.medication-card').forEach(card => {
-            const statusBadge = card.querySelector('.status-badge');
-            if (statusBadge && statusBadge.textContent.toLowerCase() === 'restricted') {
+            // Check if this is a restricted medication card
+            const isRestricted = card.classList.contains('status-restricted') || 
+                               card.querySelector('.status-badge.restricted') ||
+                               card.querySelector('.status-badge').textContent.includes('RESTRICTED');
+            
+            if (isRestricted) {
                 const actionSection = card.querySelector('.critical-action');
                 if (actionSection && !actionSection.querySelector('.permit-wizard-btn')) {
                     const permitBtn = document.createElement('button');
