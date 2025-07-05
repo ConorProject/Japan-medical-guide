@@ -326,30 +326,187 @@
         });
 
         function updateCalculations() {
-            const strength = parseFloat(document.getElementById('strength').value) || 0;
-            const tabletCount = parseInt(document.getElementById('tabletCount').value) || 0;
-            const tripDays = parseInt(document.getElementById('tripDays').value) || 0;
-            
-            if (strength && tabletCount && tripDays) {
-                const totalMg = strength * tabletCount;
-                const dailyDose = tabletCount / tripDays;
-                
-                document.getElementById('quantityCalculation').innerHTML = `
-                    <strong>Calculation Summary:</strong><br>
-                    Total medication: ${totalMg}mg<br>
-                    Daily dose: ${dailyDose.toFixed(1)} tablets per day<br>
-                    Supply duration: ${tripDays} days
-                `;
-                
-                // Store in wizardData
-                wizardData.quantity = {
-                    strength: strength,
-                    tabletCount: tabletCount,
-                    tripDays: tripDays,
-                    totalMg: totalMg,
-                    dailyDose: dailyDose
-                };
+            calculateQuantity();
+        }
+
+        // Replace the existing calculateQuantity function with this improved version
+        function calculateQuantity() {
+            const strength = parseFloat(document.getElementById('strength').value);
+            const tabletCount = parseInt(document.getElementById('tabletCount').value);
+            const tripDays = parseInt(document.getElementById('tripDays').value);
+
+            if (!strength || !tabletCount || !tripDays) {
+                return;
             }
+
+            const totalMg = strength * tabletCount;
+            const dailyDose = tabletCount / tripDays;
+
+            wizardData.quantity = {
+                strength,
+                tabletCount,
+                tripDays,
+                totalMg,
+                dailyDose
+            };
+
+            // Check threshold and calculate percentage
+            const threshold = wizardData.medication ? wizardData.medication.threshold : null;
+            const percentageOfLimit = threshold ? (totalMg / threshold * 100) : 0;
+            
+            // Determine permit requirement and recommendation
+            let permitStatus, recommendation, nextAction;
+            
+            if (threshold === null) {
+                // No restrictions
+                permitStatus = 'no-restrictions';
+                recommendation = 'No special requirements for this medication';
+                nextAction = 'travel-letter';
+            } else if (threshold === 0) {
+                // Always requires permit
+                permitStatus = 'permit-required';
+                recommendation = 'This medication always requires a permit';
+                nextAction = 'continue-application';
+            } else if (percentageOfLimit <= 50) {
+                // Well under limit
+                permitStatus = 'well-under';
+                recommendation = 'You\'re well under the limit. No permit needed!';
+                nextAction = 'travel-letter';
+            } else if (percentageOfLimit <= 90) {
+                // Getting close
+                permitStatus = 'getting-close';
+                recommendation = 'You\'re approaching the limit. Consider preparing documents as backup.';
+                nextAction = 'optional-documents';
+            } else if (percentageOfLimit < 100) {
+                // Very close
+                permitStatus = 'very-close';
+                recommendation = 'You\'re very close to the limit! We strongly recommend preparing permit documents.';
+                nextAction = 'recommended-documents';
+            } else {
+                // Over limit
+                permitStatus = 'over-limit';
+                recommendation = 'You exceed Japan\'s limit. A permit is required.';
+                nextAction = 'continue-application';
+            }
+
+            wizardData.permitRequired = (percentageOfLimit >= 100 || threshold === 0);
+            wizardData.percentageOfLimit = percentageOfLimit;
+
+            // Display enhanced results
+            displayQuantityResults(permitStatus, recommendation, nextAction, percentageOfLimit);
+        }
+
+        function displayQuantityResults(permitStatus, recommendation, nextAction, percentageOfLimit) {
+            const resultDiv = document.getElementById('quantityCalculation');
+            const threshold = wizardData.medication ? wizardData.medication.threshold : null;
+            
+            let resultHTML = `
+                <div class="result-header">Calculation Results</div>
+                <div class="result-item">
+                    <span class="result-label">Total amount:</span>
+                    <span class="result-value">${wizardData.quantity.totalMg}mg (${wizardData.quantity.tabletCount} tablets)</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Daily average:</span>
+                    <span class="result-value">${wizardData.quantity.dailyDose.toFixed(1)} tablets</span>
+                </div>
+            `;
+
+            if (threshold !== null) {
+                resultHTML += `
+                    <div class="result-item">
+                        <span class="result-label">Japan's limit:</span>
+                        <span class="result-value">${threshold === 0 ? 'No exemption' : threshold + 'mg'}</span>
+                    </div>
+                `;
+
+                if (threshold > 0) {
+                    // Add visual progress bar
+                    resultHTML += `
+                        <div style="margin: 20px 0;">
+                            <div style="background: #e9ecef; height: 30px; border-radius: 15px; overflow: hidden; position: relative;">
+                                <div style="background: ${getProgressColor(percentageOfLimit)}; width: ${Math.min(percentageOfLimit, 100)}%; height: 100%; transition: width 0.5s ease;">
+                                </div>
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight: bold;">
+                                    ${percentageOfLimit.toFixed(0)}% of limit
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            // Add status-specific styling and message
+            const statusStyles = {
+                'no-restrictions': 'permit-not-required',
+                'well-under': 'permit-not-required',
+                'getting-close': 'permit-warning',
+                'very-close': 'permit-warning',
+                'over-limit': 'permit-required',
+                'permit-required': 'permit-required'
+            };
+
+            resultHTML += `
+                <div class="permit-status ${statusStyles[permitStatus]}">
+                    ${getStatusIcon(permitStatus)} ${recommendation}
+                </div>
+            `;
+
+            resultDiv.innerHTML = resultHTML;
+        }
+
+        function getProgressColor(percentage) {
+            if (percentage <= 50) return '#28a745';
+            if (percentage <= 90) return '#ffc107';
+            return '#dc3545';
+        }
+
+        function getStatusIcon(status) {
+            const icons = {
+                'no-restrictions': '✅',
+                'well-under': '✅',
+                'getting-close': '⚠️',
+                'very-close': '🟡',
+                'over-limit': '📋',
+                'permit-required': '📋'
+            };
+            return icons[status] || '📋';
+        }
+
+        function generateTravelLetter() {
+            // Simple travel letter for under-limit medications
+            const letterHTML = `
+                <div style="max-width: 600px; margin: 30px auto; padding: 30px; background: #f8f9fa; border-radius: 10px;">
+                    <h3>✈️ Travel Letter Generated!</h3>
+                    <p>Even though you don't need a permit, it's good to have documentation.</p>
+                    
+                    <div style="background: white; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                        <strong>To Whom It May Concern:</strong><br><br>
+                        This letter confirms that the bearer is carrying ${wizardData.medication ? wizardData.medication.name : 'medication'} 
+                        (${wizardData.quantity.tabletCount} tablets, ${wizardData.quantity.totalMg}mg total) 
+                        for personal medical use during their ${wizardData.quantity.tripDays}-day trip to Japan.<br><br>
+                        This quantity is within Japan's personal use allowance and does not require an import permit.<br><br>
+                        Date: ${new Date().toLocaleDateString()}
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="window.print()">Print Letter</button>
+                    <button class="btn btn-secondary" onclick="location.reload()">Start Over</button>
+                </div>
+            `;
+            
+            const step2Div = document.getElementById('step2');
+            if (step2Div) {
+                step2Div.innerHTML = letterHTML;
+            }
+        }
+
+        function showWhyTravelLetter() {
+            alert('Even when no permit is required, a travel letter can:\n\n' +
+                  '• Speed up customs checks\n' +
+                  '• Avoid language barriers\n' +
+                  '• Provide peace of mind\n' +
+                  '• Document your medical needs\n\n' +
+                  'It takes just seconds to generate!');
         }
 
         function toggleChecklist(item) {
@@ -645,6 +802,81 @@
             .no-print { display: none; }
             body { margin: 0; padding: 20px; }
         }
+
+        .permit-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 2px solid #ffeaa7;
+        }
+
+        .permit-status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* Progress bar styles */
+        .limit-progress-bar {
+            background: #e9ecef;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .limit-progress-fill {
+            height: 100%;
+            transition: width 0.5s ease;
+        }
+
+        .limit-progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            color: #333;
+        }
+
+        .permit-not-required {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+
+        .permit-required {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+
+        .result-header {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .result-label {
+            font-weight: 500;
+        }
+
+        .result-value {
+            font-weight: 600;
+            color: #007bff;
+        }
     </style>
 </head>
 <body>
@@ -937,9 +1169,15 @@ ${wizardData.travelInfo.email}</div>
 
         // Show download modal
         function showDownloadModal() {
+            // Remove any existing modal first
+            const existingModal = document.getElementById('downloadModal');
+            if (existingModal) {
+                existingModal.remove();
+            }
+            
             const modalHTML = `
-                <div id="downloadModal" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000;">
-                    <div style="background: white; padding: 30px; border-radius: 10px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto;">
+                <div id="downloadModal" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000;" onclick="if(event.target.id === 'downloadModal') closeDownloadModal()">
+                    <div style="background: white; padding: 30px; border-radius: 10px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto;" onclick="event.stopPropagation();">
                         <h2 style="margin-top: 0;">📄 Your Documents Are Ready!</h2>
                         <p>Click each document to open in a new tab. Save or print as needed.</p>
                         
@@ -984,7 +1222,39 @@ ${wizardData.travelInfo.email}</div>
         function closeDownloadModal() {
             const modal = document.getElementById('downloadModal');
             if (modal) {
-                modal.remove();
+                modal.style.display = 'none';
+                setTimeout(() => {
+                    modal.remove();
+                }, 100);
+            }
+        }
+
+        function goToStep3() {
+            // Only validate if we have quantity data
+            if (!wizardData.quantity.totalMg) {
+                alert('Please calculate your quantity first');
+                return;
+            }
+            
+            // Check if we actually need their info
+            if (wizardData.permitRequired || wizardData.percentageOfLimit > 50) {
+                showStep(3);
+            } else {
+                // Skip to simple letter generation
+                generateTravelLetter();
+            }
+        }
+
+        function showStep(stepNumber) {
+            // Hide all steps
+            document.querySelectorAll('.wizard-step').forEach(step => {
+                step.style.display = 'none';
+            });
+            
+            // Show the requested step
+            const targetStep = document.getElementById('step' + stepNumber);
+            if (targetStep) {
+                targetStep.style.display = 'block';
             }
         }
     </script>
