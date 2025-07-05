@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permit Application Wizard - Japan Medication Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+
+        .wizard-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .wizard-step {
+            padding: 30px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .wizard-step:last-child {
+            border-bottom: none;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            background: #007bff;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 15px;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .generate-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .generate-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .checklist-item {
+            padding: 15px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            border-color: #007bff;
+        }
+
+        .checklist-item.completed {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .medication-info {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Medication Guide</a>
+        
+        <div class="header">
+            <h1>📋 Permit Application Wizard</h1>
+            <p>Generate all required documents for your medication import permit</p>
+        </div>
+
+        <div id="selectedMedication" class="medication-info">
+            <!-- Will be populated by JavaScript -->
+        </div>
+
+        <div class="wizard-card">
+            <div class="wizard-step">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Travel Information</div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Full Name (as on passport)</label>
+                    <input type="text" class="form-control" id="fullName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Arrival Date in Japan</label>
+                    <input type="date" class="form-control" id="arrivalDate" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Entry Port</label>
+                    <select class="form-control" id="entryPort" required>
+                        <option value="">Select your arrival airport</option>
+                        <option value="NRT">Narita International Airport (NRT)</option>
+                        <option value="HND">Tokyo Haneda Airport (HND)</option>
+                        <option value="KIX">Kansai International Airport (KIX)</option>
+                        <option value="NGO">Chubu Centrair International Airport (NGO)</option>
+                        <option value="CTS">New Chitose Airport (CTS)</option>
+                        <option value="FUK">Fukuoka Airport (FUK)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="wizard-step">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Medication Quantity</div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Tablet Strength (mg per tablet)</label>
+                    <input type="number" class="form-control" id="strength" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Number of Tablets</label>
+                    <input type="number" class="form-control" id="tabletCount" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Trip Duration (days)</label>
+                    <input type="number" class="form-control" id="tripDays" required>
+                </div>
+                
+                <div id="quantityCalculation" style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="wizard-step">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Document Checklist</div>
+                </div>
+                
+                <div class="checklist-item" onclick="toggleChecklist(this)">
+                    <strong>✓ Passport copy ready</strong><br>
+                    <small>Photo page showing your name and passport number</small>
+                </div>
+                
+                <div class="checklist-item" onclick="toggleChecklist(this)">
+                    <strong>✓ Prescription copy ready</strong><br>
+                    <small>Clear photo or scan of your current prescription</small>
+                </div>
+                
+                <div class="checklist-item" onclick="toggleChecklist(this)">
+                    <strong>✓ Flight booking confirmation</strong><br>
+                    <small>Showing your arrival date and entry port</small>
+                </div>
+                
+                <div class="checklist-item" onclick="toggleChecklist(this)">
+                    <strong>✓ Hotel/accommodation booking</strong><br>
+                    <small>Confirmation of where you'll be staying</small>
+                </div>
+                
+                <div class="checklist-item" onclick="toggleChecklist(this)">
+                    <strong>✓ Doctor available for letter</strong><br>
+                    <small>Confirmed your doctor can provide the required medical letter</small>
+                </div>
+            </div>
+
+            <div class="wizard-step">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Generate Documents</div>
+                </div>
+                
+                <p>Once all information is complete and documents are ready, generate your permit application package:</p>
+                
+                <button class="generate-btn" onclick="generateDocuments()">
+                    Generate My Documents →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let wizardData = {};
+
+        // Load medication from sessionStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const storedMedication = sessionStorage.getItem('permitMedication');
+            if (storedMedication) {
+                const medication = JSON.parse(storedMedication);
+                wizardData.medication = medication;
+                
+                document.getElementById('selectedMedication').innerHTML = `
+                    <h3>Selected Medication: ${medication.name}</h3>
+                    <p><strong>Generic Name:</strong> ${medication.generic}</p>
+                    <p>Complete the form below to generate your permit application documents.</p>
+                `;
+            } else {
+                document.getElementById('selectedMedication').innerHTML = `
+                    <h3>⚠️ No medication selected</h3>
+                    <p><a href="index.html">Return to medication guide</a> and select a restricted medication first.</p>
+                `;
+            }
+
+            // Add event listeners for calculations
+            document.getElementById('strength').addEventListener('input', updateCalculations);
+            document.getElementById('tabletCount').addEventListener('input', updateCalculations);
+            document.getElementById('tripDays').addEventListener('input', updateCalculations);
+        });
+
+        function updateCalculations() {
+            const strength = parseFloat(document.getElementById('strength').value) || 0;
+            const tabletCount = parseInt(document.getElementById('tabletCount').value) || 0;
+            const tripDays = parseInt(document.getElementById('tripDays').value) || 0;
+            
+            if (strength && tabletCount && tripDays) {
+                const totalMg = strength * tabletCount;
+                const dailyDose = tabletCount / tripDays;
+                
+                document.getElementById('quantityCalculation').innerHTML = `
+                    <strong>Calculation Summary:</strong><br>
+                    Total medication: ${totalMg}mg<br>
+                    Daily dose: ${dailyDose.toFixed(1)} tablets per day<br>
+                    Supply duration: ${tripDays} days
+                `;
+                
+                // Store in wizardData
+                wizardData.quantity = {
+                    strength: strength,
+                    tabletCount: tabletCount,
+                    tripDays: tripDays,
+                    totalMg: totalMg,
+                    dailyDose: dailyDose
+                };
+            }
+        }
+
+        function toggleChecklist(item) {
+            item.classList.toggle('completed');
+        }
+
+        function collectFormData() {
+            // Collect travel info
+            wizardData.travelInfo = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                arrivalDate: document.getElementById('arrivalDate').value,
+                entryPort: document.getElementById('entryPort').value
+            };
+
+            // Add bureau info based on entry port
+            const bureauMap = {
+                'NRT': { name: 'Kanto-Shin\'etsu', email: 'tokyoncd@mhlw.go.jp' },
+                'HND': { name: 'Kanto-Shin\'etsu', email: 'tokyoncd@mhlw.go.jp' },
+                'KIX': { name: 'Kinki', email: 'osakancd@mhlw.go.jp' },
+                'NGO': { name: 'Kinki', email: 'osakancd@mhlw.go.jp' },
+                'CTS': { name: 'Hokkaido', email: 'sapporoncd@mhlw.go.jp' },
+                'FUK': { name: 'Kyushu', email: 'fukuokancd@mhlw.go.jp' }
+            };
+            
+            wizardData.travelInfo.bureau = bureauMap[wizardData.travelInfo.entryPort] || bureauMap['NRT'];
+        }
+
+        // Document Generation Functions
+        function generateDocuments() {
+            if (!allDocumentsChecked()) {
+                alert('Please check all document requirements first');
+                return;
+            }
+
+            // Collect form data
+            collectFormData();
+
+            // Show loading state
+            const btn = event.target;
+            btn.disabled = true;
+            btn.textContent = 'Generating documents...';
+
+            // Generate all documents
+            setTimeout(() => {
+                generateYunyuKakuninsho();
+                generateDoctorLetter();
+                generateEmailTemplate();
+                showDownloadModal();
+                
+                btn.disabled = false;
+                btn.textContent = 'Generate My Documents →';
+            }, 1000);
+        }
+
+        function allDocumentsChecked() {
+            const checkedItems = document.querySelectorAll('.checklist-item.completed');
+            return checkedItems.length === 5;
+        }
+
+        // Generate Yunyu Kakunin-sho Form
+        function generateYunyuKakuninsho() {
+            const formHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yunyu Kakunin-sho Application - ${wizardData.travelInfo.fullName}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #000;
+        }
+        .form-title-jp {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .form-title-en {
+            font-size: 18px;
+            color: #333;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 16px;
+        }
+        .form-row {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        .form-label {
+            min-width: 200px;
+            font-weight: bold;
+        }
+        .form-value {
+            flex: 1;
+            padding: 8px;
+            background: white;
+            border: 1px solid #ccc;
+            min-height: 30px;
+        }
+        .medication-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .medication-table th,
+        .medication-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        .medication-table th {
+            background: #e9e9e9;
+            font-weight: bold;
+        }
+        .notes {
+            margin-top: 30px;
+            padding: 20px;
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+        }
+        @media print {
+            body { margin: 0; padding: 10px; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-header">
+        <div class="form-title-jp">薬監証明申請書</div>
+        <div class="form-title-en">YUNYU KAKUNIN-SHO (Import Confirmation) Application</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">申請者情報 / Applicant Information</div>
+        <div class="form-row">
+            <div class="form-label">氏名 / Full Name:</div>
+            <div class="form-value">${wizardData.travelInfo.fullName}</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">Email:</div>
+            <div class="form-value">${wizardData.travelInfo.email}</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">入国予定日 / Entry Date:</div>
+            <div class="form-value">${formatJapaneseDate(wizardData.travelInfo.arrivalDate)}</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">入国地 / Port of Entry:</div>
+            <div class="form-value">${getAirportName(wizardData.travelInfo.entryPort)}</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">滞在期間 / Duration:</div>
+            <div class="form-value">${wizardData.quantity.tripDays} days</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">医薬品情報 / Medication Information</div>
+        <table class="medication-table">
+            <thead>
+                <tr>
+                    <th>医薬品名<br>Medication Name</th>
+                    <th>成分名<br>Generic Name</th>
+                    <th>含有量<br>Strength</th>
+                    <th>数量<br>Quantity</th>
+                    <th>総量<br>Total Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>${wizardData.medication.name}</td>
+                    <td>${wizardData.medication.name.match(/\(([^)]+)\)/)?.[1] || wizardData.medication.name}</td>
+                    <td>${wizardData.quantity.strength}mg</td>
+                    <td>${wizardData.quantity.tabletCount} tablets</td>
+                    <td>${wizardData.quantity.totalMg}mg</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <div class="section-title">提出先 / Submission Bureau</div>
+        <div class="form-row">
+            <div class="form-label">地方厚生局 / Regional Bureau:</div>
+            <div class="form-value">${wizardData.travelInfo.bureau.name} Regional Bureau of Health and Welfare</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">Email:</div>
+            <div class="form-value">${wizardData.travelInfo.bureau.email}</div>
+        </div>
+    </div>
+
+    <div class="notes">
+        <strong>Important Notes:</strong>
+        <ul>
+            <li>This form has been pre-filled based on your information</li>
+            <li>Print this form and sign it before scanning</li>
+            <li>Submit along with other required documents</li>
+            <li>Processing time: 14-21 business days</li>
+        </ul>
+    </div>
+
+    <div class="no-print" style="margin-top: 30px; text-align: center;">
+        <button onclick="window.print()" style="padding: 10px 30px; font-size: 16px;">Print This Form</button>
+    </div>
+</body>
+</html>
+            `;
+            
+            // Store for download
+            window.generatedDocuments = window.generatedDocuments || {};
+            window.generatedDocuments.yunyuForm = formHTML;
+        }
+
+        // Generate Doctor's Letter Template
+        function generateDoctorLetter() {
+            const letterHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor's Letter - ${wizardData.travelInfo.fullName}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px;
+            line-height: 1.8;
+        }
+        .letterhead {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #333;
+        }
+        .letterhead-placeholder {
+            background: #f0f0f0;
+            padding: 40px;
+            border: 2px dashed #999;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .date {
+            text-align: right;
+            margin-bottom: 30px;
+        }
+        .recipient {
+            margin-bottom: 30px;
+        }
+        .medication-details {
+            background: #f9f9f9;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #007bff;
+        }
+        .japanese-section {
+            background: #f0f8ff;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #b0d4ff;
+        }
+        .signature-area {
+            margin-top: 60px;
+        }
+        .signature-line {
+            border-bottom: 1px solid #333;
+            width: 300px;
+            margin-top: 60px;
+        }
+        @media print {
+            .no-print { display: none; }
+            body { margin: 0; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="letterhead">
+        <div class="letterhead-placeholder">
+            [YOUR DOCTOR'S LETTERHEAD HERE]<br>
+            Clinic/Hospital Name<br>
+            Address<br>
+            Phone | Fax | Email
+        </div>
+    </div>
+
+    <div class="date">${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+
+    <div class="recipient">
+        <strong>To: Regional Bureau of Health and Welfare</strong><br>
+        Ministry of Health, Labour and Welfare<br>
+        Government of Japan
+    </div>
+
+    <p><strong>RE: Medical Certificate for ${wizardData.travelInfo.fullName}</strong></p>
+
+    <p>To Whom It May Concern:</p>
+
+    <p>I am writing to certify that my patient, <strong>${wizardData.travelInfo.fullName}</strong>, 
+    requires the following medication for their medical condition during their travel to Japan 
+    from ${formatDisplayDate(wizardData.travelInfo.arrivalDate)} for ${wizardData.quantity.tripDays} days.</p>
+
+    <div class="medication-details">
+        <strong>Prescribed Medication:</strong><br>
+        Medication: ${wizardData.medication.name}<br>
+        Dosage: ${wizardData.quantity.strength}mg per tablet<br>
+        Quantity: ${wizardData.quantity.tabletCount} tablets<br>
+        Total Amount: ${wizardData.quantity.totalMg}mg<br>
+        Daily Dose: Approximately ${wizardData.quantity.dailyDose.toFixed(1)} tablets per day
+    </div>
+
+    <p>This medication is medically necessary for the patient's health and well-being. The quantity 
+    prescribed represents a ${wizardData.quantity.tripDays}-day supply for personal use only during their stay in Japan.</p>
+
+    <p>The patient has been under my care since [DATE], and has been stable on this medication regimen. 
+    Discontinuation of this medication could result in serious health consequences.</p>
+
+    <div class="japanese-section">
+        <strong>日本語要約 / Japanese Summary:</strong><br>
+        患者名: ${wizardData.travelInfo.fullName}<br>
+        薬品名: ${wizardData.medication.name}<br>
+        処方量: ${wizardData.quantity.totalMg}mg (${wizardData.quantity.tabletCount}錠)<br>
+        使用目的: 個人使用、医療上必要<br>
+        滞在期間: ${wizardData.quantity.tripDays}日間
+    </div>
+
+    <p>Should you require any additional information, please do not hesitate to contact me at the above address.</p>
+
+    <p>Sincerely,</p>
+
+    <div class="signature-area">
+        <div class="signature-line"></div>
+        <p>
+            [Doctor's Name], [Degree]<br>
+            [License Number]<br>
+            [Contact Information]
+        </p>
+    </div>
+
+    <div class="no-print" style="margin-top: 40px; padding: 20px; background: #fff3cd; border: 1px solid #ffeaa7;">
+        <strong>Instructions for your doctor:</strong>
+        <ol>
+            <li>Print this letter on official letterhead</li>
+            <li>Fill in the bracketed information</li>
+            <li>Sign and stamp (if applicable)</li>
+            <li>Provide original to patient</li>
+        </ol>
+    </div>
+</body>
+</html>
+            `;
+            
+            window.generatedDocuments.doctorLetter = letterHTML;
+        }
+
+        // Generate Email Template
+        function generateEmailTemplate() {
+            const emailTemplate = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Template - Permit Submission</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .email-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .email-header {
+            background: #007bff;
+            color: white;
+            padding: 20px;
+            margin: -30px -30px 30px -30px;
+            border-radius: 10px 10px 0 0;
+        }
+        .field {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+        }
+        .field-label {
+            font-weight: bold;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .field-value {
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .copy-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            float: right;
+        }
+        .copy-btn:hover {
+            background: #218838;
+        }
+        .japanese-text {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .attachments {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <h2 style="margin: 0;">Email Template for Permit Submission</h2>
+            <p style="margin: 5px 0 0 0; opacity: 0.9;">To: ${wizardData.travelInfo.bureau.name} Regional Bureau</p>
+        </div>
+
+        <div class="field">
+            <button class="copy-btn" onclick="copyToClipboard('email-to')">Copy</button>
+            <div class="field-label">TO:</div>
+            <div class="field-value" id="email-to">${wizardData.travelInfo.bureau.email}</div>
+        </div>
+
+        <div class="field">
+            <button class="copy-btn" onclick="copyToClipboard('email-subject')">Copy</button>
+            <div class="field-label">SUBJECT:</div>
+            <div class="field-value" id="email-subject">薬監証明申請 / Yunyu Kakunin-sho Application - ${wizardData.travelInfo.fullName}</div>
+        </div>
+
+        <div class="field">
+            <button class="copy-btn" onclick="copyToClipboard('email-body')">Copy All</button>
+            <div class="field-label">EMAIL BODY:</div>
+            <div class="field-value" id="email-body">${wizardData.travelInfo.bureau.name}地方厚生局 御中
+To the ${wizardData.travelInfo.bureau.name} Regional Bureau of Health and Welfare,
+
+私は${formatDisplayDate(wizardData.travelInfo.arrivalDate)}に日本に入国予定の${wizardData.travelInfo.fullName}と申します。
+個人使用のための医薬品の輸入確認を申請いたします。
+
+I am ${wizardData.travelInfo.fullName}, planning to enter Japan on ${formatDisplayDate(wizardData.travelInfo.arrivalDate)}.
+I would like to apply for import confirmation for my personal medication.
+
+申請内容 / Application Details:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+入国日 / Entry Date: ${formatDisplayDate(wizardData.travelInfo.arrivalDate)}
+入国地 / Port of Entry: ${getAirportName(wizardData.travelInfo.entryPort)}
+滞在期間 / Duration of Stay: ${wizardData.quantity.tripDays} days
+
+医薬品情報 / Medication Information:
+薬品名 / Medication Name: ${wizardData.medication.name}
+数量 / Quantity: ${wizardData.quantity.tabletCount} tablets (${wizardData.quantity.totalMg}mg)
+使用目的 / Purpose: 個人使用 / Personal medical use
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+添付書類 / Attached Documents:
+1. 薬監証明申請書 / Yunyu Kakunin-sho Application Form
+2. 医師の証明書 / Doctor's Certificate  
+3. 処方箋の写し / Copy of Prescription
+4. パスポートの写し / Copy of Passport
+5. 旅程表 / Travel Itinerary
+
+ご審査のほど、よろしくお願いいたします。
+Thank you for your consideration of this application.
+
+敬具 / Sincerely,
+${wizardData.travelInfo.fullName}
+${wizardData.travelInfo.email}</div>
+        </div>
+
+        <div class="attachments">
+            <strong>📎 Attachment Checklist:</strong>
+            <ul style="margin: 10px 0;">
+                <li>✓ Yunyu Kakunin-sho form (PDF)</li>
+                <li>✓ Doctor's letter (PDF)</li>
+                <li>✓ Prescription copy (JPG/PDF)</li>
+                <li>✓ Passport photo page (JPG/PDF)</li>
+                <li>✓ Flight/hotel bookings (PDF)</li>
+            </ul>
+            <p style="margin-bottom: 0; font-size: 14px;">
+                <strong>File naming suggestion:</strong> 
+                ${wizardData.travelInfo.fullName.replace(/\s+/g, '_')}_[DocumentType].pdf
+            </p>
+        </div>
+
+        <div style="margin-top: 20px; padding: 20px; background: #d4edda; border-radius: 5px;">
+            <strong>✅ Next Steps:</strong>
+            <ol style="margin: 10px 0;">
+                <li>Copy the email content above</li>
+                <li>Attach all required documents</li>
+                <li>Send to the bureau email address</li>
+                <li>You should receive an auto-reply within 24-48 hours</li>
+                <li>Full processing takes 14-21 business days</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                btn.style.background = '#28a745';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
+            `;
+            
+            window.generatedDocuments.emailTemplate = emailTemplate;
+        }
+
+        // Helper functions
+        function formatJapaneseDate(dateString) {
+            const date = new Date(dateString);
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            return `${year}年${month}月${day}日`;
+        }
+
+        function formatDisplayDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+
+        function getAirportName(code) {
+            const airports = {
+                'NRT': 'Narita International Airport',
+                'HND': 'Tokyo Haneda Airport',
+                'KIX': 'Kansai International Airport',
+                'NGO': 'Chubu Centrair International Airport',
+                'CTS': 'New Chitose Airport',
+                'FUK': 'Fukuoka Airport'
+            };
+            return airports[code] || code;
+        }
+
+        // Show download modal
+        function showDownloadModal() {
+            const modalHTML = `
+                <div id="downloadModal" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000;">
+                    <div style="background: white; padding: 30px; border-radius: 10px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto;">
+                        <h2 style="margin-top: 0;">📄 Your Documents Are Ready!</h2>
+                        <p>Click each document to open in a new tab. Save or print as needed.</p>
+                        
+                        <div style="margin: 20px 0;">
+                            <button onclick="openDocument('yunyuForm')" style="width: 100%; padding: 15px; margin-bottom: 10px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                                📋 Open Yunyu Kakunin-sho Form
+                            </button>
+                            <button onclick="openDocument('doctorLetter')" style="width: 100%; padding: 15px; margin-bottom: 10px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                                👨‍⚕️ Open Doctor's Letter Template
+                            </button>
+                            <button onclick="openDocument('emailTemplate')" style="width: 100%; padding: 15px; margin-bottom: 10px; background: #17a2b8; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                                ✉️ Open Email Template
+                            </button>
+                        </div>
+                        
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;">
+                            <strong>💡 Quick Tips:</strong>
+                            <ul style="margin: 10px 0; padding-left: 20px;">
+                                <li>Save all documents as PDFs</li>
+                                <li>Keep file sizes under 10MB total</li>
+                                <li>Name files clearly (e.g., "John_Smith_YunyuForm.pdf")</li>
+                            </ul>
+                        </div>
+                        
+                        <button onclick="closeDownloadModal()" style="width: 100%; padding: 12px; background: #6c757d; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+        }
+
+        function openDocument(docType) {
+            const doc = window.generatedDocuments[docType];
+            const newWindow = window.open('', '_blank');
+            newWindow.document.write(doc);
+            newWindow.document.close();
+        }
+
+        function closeDownloadModal() {
+            const modal = document.getElementById('downloadModal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+    </script>
+</body>
+</html>
