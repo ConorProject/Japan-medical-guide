@@ -6988,45 +6988,48 @@ function startPermitApplication(medName, genericName, quantityData) {
 function generateTravelLetter(medName, genericName, quantityData) {
     // Generate a simple travel letter
     const letterWindow = window.open('', '_blank');
-    letterWindow.document.write(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>Travel Letter - ${medName}</title>
-            <style>
-                body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; line-height: 1.6; }
-                .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #333; padding-bottom: 20px; }
-                .content { margin: 20px 0; }
-            </style>
-        </head>
-        <body>
-            <div class="header">
-                <h2>Medical Travel Documentation</h2>
-                <p>For Entry into Japan</p>
-            </div>
-            <div class="content">
-                <p><strong>Date:</strong> ${new Date().toLocaleDateString()}</p>
-                <p><strong>To Whom It May Concern:</strong></p>
-                <p>This letter confirms that the bearer is carrying <strong>${medName}</strong> (${quantityData.tablets} tablets, ${quantityData.totalMg}mg total) for personal medical use during their ${quantityData.days}-day trip to Japan.</p>
-                <p>This quantity is within Japan's personal use allowance and does not require an import permit.</p>
-                <p><strong>Medication Details:</strong></p>
-                <ul>
-                    <li>Medication: ${medName} (${genericName})</li>
-                    <li>Strength: ${quantityData.strength}mg per tablet</li>
-                    <li>Quantity: ${quantityData.tablets} tablets</li>
-                    <li>Total Amount: ${quantityData.totalMg}mg</li>
-                    <li>Daily Dose: ${quantityData.dailyDose.toFixed(1)} tablets</li>
-                    <li>Trip Duration: ${quantityData.days} days</li>
-                </ul>
-                <p>This medication is for personal medical use only and will not be distributed, sold, or given to others.</p>
-                <p>Sincerely,<br><br>_________________________<br>Traveler Signature</p>
-            </div>
-            <script>
-                window.onload = function() { window.print(); };
-            </script>
-        </body>
-        </html>
-    `);
+    const currentDate = new Date().toLocaleDateString();
+    const dailyDose = quantityData.dailyDose.toFixed(1);
+    
+    letterWindow.document.write(
+        '<!DOCTYPE html>' +
+        '<html>' +
+        '<head>' +
+        '<title>Travel Letter - ' + medName + '</title>' +
+        '<style>' +
+        'body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; line-height: 1.6; }' +
+        '.header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #333; padding-bottom: 20px; }' +
+        '.content { margin: 20px 0; }' +
+        '</style>' +
+        '</head>' +
+        '<body>' +
+        '<div class="header">' +
+        '<h2>Medical Travel Documentation</h2>' +
+        '<p>For Entry into Japan</p>' +
+        '</div>' +
+        '<div class="content">' +
+        '<p><strong>Date:</strong> ' + currentDate + '</p>' +
+        '<p><strong>To Whom It May Concern:</strong></p>' +
+        '<p>This letter confirms that the bearer is carrying <strong>' + medName + '</strong> (' + quantityData.tablets + ' tablets, ' + quantityData.totalMg + 'mg total) for personal medical use during their ' + quantityData.days + '-day trip to Japan.</p>' +
+        '<p>This quantity is within Japan\'s personal use allowance and does not require an import permit.</p>' +
+        '<p><strong>Medication Details:</strong></p>' +
+        '<ul>' +
+        '<li>Medication: ' + medName + ' (' + genericName + ')</li>' +
+        '<li>Strength: ' + quantityData.strength + 'mg per tablet</li>' +
+        '<li>Quantity: ' + quantityData.tablets + ' tablets</li>' +
+        '<li>Total Amount: ' + quantityData.totalMg + 'mg</li>' +
+        '<li>Daily Dose: ' + dailyDose + ' tablets</li>' +
+        '<li>Trip Duration: ' + quantityData.days + ' days</li>' +
+        '</ul>' +
+        '<p>This medication is for personal medical use only and will not be distributed, sold, or given to others.</p>' +
+        '<p>Sincerely,<br><br>_________________________<br>Traveler Signature</p>' +
+        '</div>' +
+        '<script>' +
+        'window.onload = function() { window.print(); };' +
+        '</script>' +
+        '</body>' +
+        '</html>'
+    );
 }
 
 // Search for specific medication by name
