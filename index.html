@@ -7024,12 +7024,14 @@ function generateTravelLetter(medName, genericName, quantityData) {
         '<p>This medication is for personal medical use only and will not be distributed, sold, or given to others.</p>' +
         '<p>Sincerely,<br><br>_________________________<br>Traveler Signature</p>' +
         '</div>' +
-        '<script>' +
-        'window.onload = function() { window.print(); };' +
-        '</script>' +
         '</body>' +
         '</html>'
     );
+    
+    // Add print functionality after document is written
+    setTimeout(() => {
+        letterWindow.print();
+    }, 500);
 }
 
 // Search for specific medication by name
