@@ -6602,28 +6602,54 @@ function generateEssentialTravelInfo(med) {
     const threshold = getThresholdForMedication(med);
     let essentialInfo = '';
     
-    // Quantity limits - most critical info
+    // Quantity limits with complete information
     if (threshold === 0) {
-        essentialInfo += '<div class="essential-item critical">🚫 <strong>Requires Permit</strong> - No quantity exemptions</div>';
+        essentialInfo += '<div class="essential-item critical">🚫 <strong>Always Requires Permit</strong> - No quantity exemptions available</div>';
     } else if (threshold === null) {
-        essentialInfo += '<div class="essential-item safe">✅ <strong>No Import Restrictions</strong> - Standard personal use rules</div>';
+        essentialInfo += '<div class="essential-item safe">✅ <strong>Standard Personal Use</strong> - Up to 1-month supply without permits</div>';
     } else {
-        essentialInfo += `<div class="essential-item warning">⚠️ <strong>Limit: ${threshold}mg</strong> - Permits required above this amount</div>`;
+        essentialInfo += `<div class="essential-item warning">⚠️ <strong>Permit-Free Limit: ${threshold}mg</strong> - Must not exceed 1-month supply</div>`;
     }
     
-    // Channel requirements
-    if (med.channelRequired === 'Red Channel' || med.customsDeclaration?.legal?.channel === 'Red Channel') {
+    // Customs declaration requirements with psychotropic specifics
+    const isPsychotropic = checkIfPsychotropic(med);
+    if (isPsychotropic) {
+        essentialInfo += '<div class="essential-item critical">🔴 <strong>Red Channel Required</strong> - ALL quantities must be declared (Japan Customs requirement)</div>';
+    } else if (med.channelRequired === 'Red Channel' || med.customsDeclaration?.legal?.channel === 'Red Channel') {
         essentialInfo += '<div class="essential-item critical">🔴 <strong>Red Channel Required</strong> - Must declare at customs</div>';
     } else if (med.channelRequired === 'Green Channel') {
         essentialInfo += '<div class="essential-item safe">🟢 <strong>Green Channel</strong> - Standard customs procedure</div>';
     }
     
-    // Permit timeline if restricted
-    if (med.status === 'restricted' || threshold === 0) {
-        essentialInfo += '<div class="essential-item info">⏱️ <strong>Permit Processing:</strong> 14-21 business days</div>';
+    // Additional restrictions or requirements
+    if (med.status === 'prohibited') {
+        essentialInfo += '<div class="essential-item critical">🚫 <strong>Import Prohibited</strong> - Cannot enter Japan under any circumstances</div>';
+    } else if (med.status === 'restricted' || threshold === 0) {
+        essentialInfo += '<div class="essential-item info">⏱️ <strong>Permit Processing:</strong> 14-21 business days advance notice required</div>';
+    }
+    
+    // Prescription requirements
+    if (med.status !== 'prohibited') {
+        essentialInfo += '<div class="essential-item info">📋 <strong>Documentation:</strong> Original prescription + doctor\'s letter required</div>';
     }
     
     return essentialInfo;
+}
+
+// Check if medication is on Japan's psychotropic substances list
+function checkIfPsychotropic(med) {
+    const psychotropicMedications = [
+        'Clonazepam', 'Xanax', 'Ativan', 'Lorazepam', 'Alprazolam', 
+        'Diazepam', 'Valium', 'Klonopin', 'Temazepam', 'Zolpidem', 
+        'Ambien', 'Lunesta', 'Triazolam'
+    ];
+    
+    return psychotropicMedications.some(psychotropic => 
+        med.name.toLowerCase().includes(psychotropic.toLowerCase()) ||
+        (med.alternateNames && med.alternateNames.some(alt => 
+            alt.toLowerCase().includes(psychotropic.toLowerCase())
+        ))
+    );
 }
 
 function generateActionSteps(med) {
