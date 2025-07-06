@@ -1249,6 +1249,19 @@
     margin: 5px 0;
     border-left: 4px solid #007bff;
 }
+
+.essential-citations {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #dee2e6;
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.essential-citations .citation-line {
+    font-size: 12px;
+    opacity: 0.8;
+}
     </style>
 </head>
 <body>
@@ -6631,6 +6644,11 @@ function generateEssentialTravelInfo(med) {
     // Prescription requirements
     if (med.status !== 'prohibited') {
         essentialInfo += '<div class="essential-item info">📋 <strong>Documentation:</strong> Original prescription + doctor\'s letter required</div>';
+    }
+    
+    // Add citations for the essential info
+    if (essentialInfo) {
+        essentialInfo += '<div class="essential-citations">' + generateCitationLine(med, 2) + '</div>';
     }
     
     return essentialInfo;
