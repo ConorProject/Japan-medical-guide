@@ -6614,7 +6614,7 @@ function generateEssentialTravelInfo(med) {
     // Customs declaration requirements with psychotropic specifics
     const isPsychotropic = checkIfPsychotropic(med);
     if (isPsychotropic) {
-        essentialInfo += '<div class="essential-item critical">🔴 <strong>Red Channel Required</strong> - ALL quantities must be declared (Japan Customs requirement)</div>';
+        essentialInfo += '<div class="essential-item critical">🔴 <strong>Customs Declaration Required</strong> - ALL quantities must be declared regardless of amount (Japan Customs official requirement)</div>';
     } else if (med.channelRequired === 'Red Channel' || med.customsDeclaration?.legal?.channel === 'Red Channel') {
         essentialInfo += '<div class="essential-item critical">🔴 <strong>Red Channel Required</strong> - Must declare at customs</div>';
     } else if (med.channelRequired === 'Green Channel') {
@@ -6636,18 +6636,25 @@ function generateEssentialTravelInfo(med) {
     return essentialInfo;
 }
 
-// Check if medication is on Japan's psychotropic substances list
+// Check if medication requires customs declaration per Japan's controlled substances lists
 function checkIfPsychotropic(med) {
-    const psychotropicMedications = [
+    const controlledMedications = [
+        // Psychotropic substances
         'Clonazepam', 'Xanax', 'Ativan', 'Lorazepam', 'Alprazolam', 
         'Diazepam', 'Valium', 'Klonopin', 'Temazepam', 'Zolpidem', 
-        'Ambien', 'Lunesta', 'Triazolam'
+        'Ambien', 'Lunesta', 'Triazolam',
+        // Stimulants (methylphenidate-based)
+        'Concerta', 'Ritalin', 'Methylphenidate',
+        // Other stimulants  
+        'Vyvanse', 'Lisdexamfetamine', 'Modafinil',
+        // Any medication requiring Red Channel
+        'EpiPen', 'Epinephrine'
     ];
     
-    return psychotropicMedications.some(psychotropic => 
-        med.name.toLowerCase().includes(psychotropic.toLowerCase()) ||
+    return controlledMedications.some(controlled => 
+        med.name.toLowerCase().includes(controlled.toLowerCase()) ||
         (med.alternateNames && med.alternateNames.some(alt => 
-            alt.toLowerCase().includes(psychotropic.toLowerCase())
+            alt.toLowerCase().includes(controlled.toLowerCase())
         ))
     );
 }
