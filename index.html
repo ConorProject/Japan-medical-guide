@@ -1173,6 +1173,26 @@
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
+
+.travel-letter-btn {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.travel-letter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
     </style>
 </head>
 <body>
@@ -6731,42 +6751,282 @@ window.onclick = function(event) {
 }
 
 // --- PERMIT WIZARD INTEGRATION ---
-// Add permit wizard button to restricted medication cards
+// Add quantity calculator and smart permit buttons to medication cards
 function addPermitButtons() {
     // Wait for cards to be rendered
     setTimeout(() => {
         document.querySelectorAll('.medication-card').forEach(card => {
-            // Check if this is a restricted medication card
-            const isRestricted = card.classList.contains('status-restricted') || 
-                               card.querySelector('.status-badge.restricted') ||
-                               card.querySelector('.status-badge').textContent.includes('RESTRICTED');
-            
-            if (isRestricted) {
-                const actionSection = card.querySelector('.critical-action');
-                if (actionSection && !actionSection.querySelector('.permit-wizard-btn')) {
-                    const permitBtn = document.createElement('button');
-                    permitBtn.className = 'permit-wizard-btn';
-                    permitBtn.innerHTML = '📋 Start Permit Application →';
-                    permitBtn.onclick = function() {
-                        const medName = card.querySelector('.medication-name').textContent;
-                        const genericName = card.querySelector('.medication-generic').textContent;
-                        
-                        // Store in sessionStorage
-                        sessionStorage.setItem('permitMedication', JSON.stringify({
-                            name: medName,
-                            generic: genericName,
-                            timestamp: Date.now()
-                        }));
-                        
-                        // Navigate to permit wizard
-                        window.location.href = 'permit-wizard.html';
-                    };
-                    
-                    actionSection.appendChild(permitBtn);
-                }
+            const actionSection = card.querySelector('.critical-action');
+            if (actionSection && !actionSection.querySelector('.quantity-calculator')) {
+                // Get medication data
+                const medName = card.querySelector('.medication-name').textContent;
+                const genericName = card.querySelector('.medication-generic').textContent;
+                
+                // Find medication in data array
+                const medication = medications.find(med => 
+                    med.name === medName || med.genericName === genericName
+                );
+                
+                // Add quantity calculator
+                const calculatorHTML = `
+                    <div class="quantity-calculator" style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                        <h4 style="margin-bottom: 15px; color: #2c3e50;">📊 Check Your Quantity</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; margin-bottom: 15px;">
+                            <div>
+                                <label style="display: block; font-weight: 500; margin-bottom: 5px;">Strength (mg)</label>
+                                <input type="number" class="calc-strength" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" placeholder="10">
+                            </div>
+                            <div>
+                                <label style="display: block; font-weight: 500; margin-bottom: 5px;">Tablets</label>
+                                <input type="number" class="calc-tablets" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" placeholder="30">
+                            </div>
+                            <div>
+                                <label style="display: block; font-weight: 500; margin-bottom: 5px;">Trip Days</label>
+                                <input type="number" class="calc-days" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" placeholder="14">
+                            </div>
+                        </div>
+                        <div class="calculation-result" style="display: none;"></div>
+                        <div class="permit-options" style="display: none;"></div>
+                    </div>
+                `;
+                
+                actionSection.insertAdjacentHTML('afterbegin', calculatorHTML);
+                
+                // Add event listeners for real-time calculation
+                const calculator = actionSection.querySelector('.quantity-calculator');
+                const inputs = calculator.querySelectorAll('input');
+                
+                inputs.forEach(input => {
+                    input.addEventListener('input', () => {
+                        calculateMedicationQuantity(calculator, medication, medName, genericName);
+                    });
+                });
             }
         });
     }, 100);
+}
+
+// Calculate medication quantity and show recommendations
+function calculateMedicationQuantity(calculator, medication, medName, genericName) {
+    const strength = parseFloat(calculator.querySelector('.calc-strength').value);
+    const tablets = parseInt(calculator.querySelector('.calc-tablets').value);
+    const days = parseInt(calculator.querySelector('.calc-days').value);
+    
+    if (!strength || !tablets || !days) {
+        calculator.querySelector('.calculation-result').style.display = 'none';
+        calculator.querySelector('.permit-options').style.display = 'none';
+        return;
+    }
+    
+    const totalMg = strength * tablets;
+    const dailyDose = tablets / days;
+    
+    // Get threshold data (you'll need to add this to medication data)
+    const threshold = getThresholdForMedication(medication);
+    const percentageOfLimit = threshold > 0 ? (totalMg / threshold * 100) : 0;
+    
+    // Show calculation results
+    const resultDiv = calculator.querySelector('.calculation-result');
+    resultDiv.innerHTML = `
+        <div style="background: white; padding: 15px; border-radius: 5px; margin: 10px 0;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+                <div><strong>Total:</strong> ${totalMg}mg (${tablets} tablets)</div>
+                <div><strong>Daily:</strong> ${dailyDose.toFixed(1)} tablets</div>
+            </div>
+            ${threshold > 0 ? `
+                <div style="margin: 15px 0;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span>Japan's Limit: ${threshold}mg</span>
+                        <span>${percentageOfLimit.toFixed(0)}% of limit</span>
+                    </div>
+                    <div style="background: #e9ecef; height: 20px; border-radius: 10px; overflow: hidden;">
+                        <div style="background: ${getProgressColor(percentageOfLimit)}; width: ${Math.min(percentageOfLimit, 100)}%; height: 100%; transition: width 0.5s ease;"></div>
+                    </div>
+                </div>
+            ` : ''}
+        </div>
+    `;
+    resultDiv.style.display = 'block';
+    
+    // Show permit options
+    showPermitOptions(calculator, percentageOfLimit, threshold, medName, genericName, {
+        strength, tablets, days, totalMg, dailyDose
+    });
+}
+
+// Show flexible permit options based on calculation
+function showPermitOptions(calculator, percentageOfLimit, threshold, medName, genericName, quantityData) {
+    const optionsDiv = calculator.querySelector('.permit-options');
+    let optionsHTML = '';
+    
+    if (threshold === null || threshold === 0) {
+        // Prohibited or always requires permit
+        optionsHTML = `
+            <div class="permit-status permit-required" style="background: #f8d7da; color: #721c24; border: 2px solid #f5c6cb; padding: 15px; border-radius: 8px; text-align: center; margin: 10px 0;">
+                📋 Permit Required
+            </div>
+            <button class="permit-wizard-btn" onclick="startPermitApplication('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})">
+                Start Permit Application →
+            </button>
+        `;
+    } else if (percentageOfLimit >= 100) {
+        // Over limit - permit required
+        optionsHTML = `
+            <div class="permit-status permit-required" style="background: #f8d7da; color: #721c24; border: 2px solid #f5c6cb; padding: 15px; border-radius: 8px; text-align: center; margin: 10px 0;">
+                📋 Over Limit - Permit Required
+            </div>
+            <button class="permit-wizard-btn" onclick="startPermitApplication('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})">
+                Start Permit Application →
+            </button>
+        `;
+    } else if (percentageOfLimit >= 90) {
+        // Very close - recommend permit
+        optionsHTML = `
+            <div class="permit-status permit-warning" style="background: #fff3cd; color: #856404; border: 2px solid #ffeaa7; padding: 15px; border-radius: 8px; text-align: center; margin: 10px 0;">
+                🟡 Very Close to Limit - Permit Strongly Recommended
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">
+                <button class="permit-wizard-btn" onclick="startPermitApplication('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})">
+                    Get Permit (Recommended) →
+                </button>
+                <button class="travel-letter-btn" onclick="generateTravelLetter('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})" style="background: #6c757d;">
+                    Travel Letter (Higher Risk)
+                </button>
+            </div>
+        `;
+    } else if (percentageOfLimit >= 75) {
+        // Getting close - offer both options
+        optionsHTML = `
+            <div class="permit-status permit-warning" style="background: #fff3cd; color: #856404; border: 2px solid #ffeaa7; padding: 15px; border-radius: 8px; text-align: center; margin: 10px 0;">
+                ⚠️ Approaching Limit - Consider Permit for Peace of Mind
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">
+                <button class="travel-letter-btn" onclick="generateTravelLetter('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})" style="background: #28a745;">
+                    Travel Letter →
+                </button>
+                <button class="permit-wizard-btn" onclick="startPermitApplication('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})">
+                    Get Permit (Extra Safe) →
+                </button>
+            </div>
+        `;
+    } else if (percentageOfLimit >= 50) {
+        // Moderate amount - travel letter recommended
+        optionsHTML = `
+            <div class="permit-status permit-not-required" style="background: #d4edda; color: #155724; border: 2px solid #c3e6cb; padding: 15px; border-radius: 8px; text-align: center; margin: 10px 0;">
+                ✅ Under Limit - Travel Letter Recommended
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr auto; gap: 10px; margin: 10px 0;">
+                <button class="travel-letter-btn" onclick="generateTravelLetter('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})" style="background: #28a745;">
+                    Generate Travel Letter →
+                </button>
+                <button class="permit-wizard-btn" onclick="startPermitApplication('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})" style="background: #6c757d; font-size: 14px;">
+                    Get Permit (Cautious)
+                </button>
+            </div>
+        `;
+    } else {
+        // Well under limit
+        optionsHTML = `
+            <div class="permit-status permit-not-required" style="background: #d4edda; color: #155724; border: 2px solid #c3e6cb; padding: 15px; border-radius: 8px; text-align: center; margin: 10px 0;">
+                ✅ Well Under Limit - No Permit Needed
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr auto; gap: 10px; margin: 10px 0;">
+                <button class="travel-letter-btn" onclick="generateTravelLetter('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})" style="background: #28a745;">
+                    Generate Travel Letter →
+                </button>
+                <button class="permit-wizard-btn" onclick="startPermitApplication('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})" style="background: #6c757d; font-size: 14px;">
+                    Get Permit (Very Cautious)
+                </button>
+            </div>
+            <div style="font-size: 12px; color: #6c757d; text-align: center; margin-top: 5px;">
+                For cautious travelers who prefer maximum documentation
+            </div>
+        `;
+    }
+    
+    optionsDiv.innerHTML = optionsHTML;
+    optionsDiv.style.display = 'block';
+}
+
+// Helper functions
+function getThresholdForMedication(medication) {
+    // You'll need to add threshold data to medication objects
+    // For now, return some sample thresholds based on medication type
+    if (!medication) return 1000; // Default threshold
+    
+    // Add threshold logic based on medication data
+    // This should be moved to the medication data structure
+    const thresholds = {
+        'Concerta': 2160, // 30 days × 72mg
+        'Clonazepam': 0,  // Always requires permit
+        'Adderall': 0,    // Prohibited
+        'EpiPen': 0,      // Always requires permit
+        'Birth Control': null, // No restrictions
+        'Omeprazole': 3000 // 30 days worth
+    };
+    
+    return thresholds[medication.name] || 1000;
+}
+
+function getProgressColor(percentage) {
+    if (percentage <= 50) return '#28a745';
+    if (percentage <= 75) return '#ffc107';
+    if (percentage <= 90) return '#fd7e14';
+    return '#dc3545';
+}
+
+function startPermitApplication(medName, genericName, quantityData) {
+    sessionStorage.setItem('permitMedication', JSON.stringify({
+        name: medName,
+        generic: genericName,
+        quantity: quantityData,
+        timestamp: Date.now()
+    }));
+    window.location.href = 'permit-wizard.html';
+}
+
+function generateTravelLetter(medName, genericName, quantityData) {
+    // Generate a simple travel letter
+    const letterWindow = window.open('', '_blank');
+    letterWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Travel Letter - ${medName}</title>
+            <style>
+                body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; line-height: 1.6; }
+                .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #333; padding-bottom: 20px; }
+                .content { margin: 20px 0; }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h2>Medical Travel Documentation</h2>
+                <p>For Entry into Japan</p>
+            </div>
+            <div class="content">
+                <p><strong>Date:</strong> ${new Date().toLocaleDateString()}</p>
+                <p><strong>To Whom It May Concern:</strong></p>
+                <p>This letter confirms that the bearer is carrying <strong>${medName}</strong> (${quantityData.tablets} tablets, ${quantityData.totalMg}mg total) for personal medical use during their ${quantityData.days}-day trip to Japan.</p>
+                <p>This quantity is within Japan's personal use allowance and does not require an import permit.</p>
+                <p><strong>Medication Details:</strong></p>
+                <ul>
+                    <li>Medication: ${medName} (${genericName})</li>
+                    <li>Strength: ${quantityData.strength}mg per tablet</li>
+                    <li>Quantity: ${quantityData.tablets} tablets</li>
+                    <li>Total Amount: ${quantityData.totalMg}mg</li>
+                    <li>Daily Dose: ${quantityData.dailyDose.toFixed(1)} tablets</li>
+                    <li>Trip Duration: ${quantityData.days} days</li>
+                </ul>
+                <p>This medication is for personal medical use only and will not be distributed, sold, or given to others.</p>
+                <p>Sincerely,<br><br>_________________________<br>Traveler Signature</p>
+            </div>
+            <script>
+                window.onload = function() { window.print(); };
+            </script>
+        </body>
+        </html>
+    `);
 }
 
 // Call after displaying results
