@@ -1193,6 +1193,62 @@
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
 }
+
+/* Essential travel info styling */
+.essential-info {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+    border-left: 4px solid #007bff;
+}
+
+.essential-item {
+    padding: 8px 0;
+    font-size: 15px;
+    line-height: 1.4;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.essential-item:last-child {
+    border-bottom: none;
+}
+
+.essential-item.critical {
+    color: #721c24;
+    background: #f8d7da;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+    border-left: 4px solid #dc3545;
+}
+
+.essential-item.warning {
+    color: #856404;
+    background: #fff3cd;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+    border-left: 4px solid #ffc107;
+}
+
+.essential-item.safe {
+    color: #155724;
+    background: #d4edda;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+    border-left: 4px solid #28a745;
+}
+
+.essential-item.info {
+    color: #004085;
+    background: #cce7ff;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+    border-left: 4px solid #007bff;
+}
     </style>
 </head>
 <body>
@@ -6254,6 +6310,11 @@ function displayRestrictionResults(results) {
                     `}
                 </div>
 
+                <!-- ESSENTIAL TRAVEL INFO - Prime real estate -->
+                <div class="essential-info">
+                    ${generateEssentialTravelInfo(med)}
+                </div>
+
                 <!-- Threshold Information for Dual-Status Medications -->
                 ${med.regulatoryThresholds ? `
                     <div class="threshold-info">
@@ -6534,6 +6595,35 @@ function getDefaultActionSteps(med) {
         default:
             return DEFAULT_ACTION_STEPS.permitted;
     }
+}
+
+// Generate essential travel info for prime real estate under medication name
+function generateEssentialTravelInfo(med) {
+    const threshold = getThresholdForMedication(med);
+    let essentialInfo = '';
+    
+    // Quantity limits - most critical info
+    if (threshold === 0) {
+        essentialInfo += '<div class="essential-item critical">🚫 <strong>Requires Permit</strong> - No quantity exemptions</div>';
+    } else if (threshold === null) {
+        essentialInfo += '<div class="essential-item safe">✅ <strong>No Import Restrictions</strong> - Standard personal use rules</div>';
+    } else {
+        essentialInfo += `<div class="essential-item warning">⚠️ <strong>Limit: ${threshold}mg</strong> - Permits required above this amount</div>`;
+    }
+    
+    // Channel requirements
+    if (med.channelRequired === 'Red Channel' || med.customsDeclaration?.legal?.channel === 'Red Channel') {
+        essentialInfo += '<div class="essential-item critical">🔴 <strong>Red Channel Required</strong> - Must declare at customs</div>';
+    } else if (med.channelRequired === 'Green Channel') {
+        essentialInfo += '<div class="essential-item safe">🟢 <strong>Green Channel</strong> - Standard customs procedure</div>';
+    }
+    
+    // Permit timeline if restricted
+    if (med.status === 'restricted' || threshold === 0) {
+        essentialInfo += '<div class="essential-item info">⏱️ <strong>Permit Processing:</strong> 14-21 business days</div>';
+    }
+    
+    return essentialInfo;
 }
 
 function generateActionSteps(med) {
