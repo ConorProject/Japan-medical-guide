@@ -6957,12 +6957,23 @@ function getThresholdForMedication(medication) {
     // Add threshold logic based on medication data
     // This should be moved to the medication data structure
     const thresholds = {
-        'Concerta': 2160, // 30 days × 72mg
+        'Concerta': 2160, // 30 days × 72mg max dose
         'Clonazepam': 0,  // Always requires permit
         'Adderall': 0,    // Prohibited
         'EpiPen': 0,      // Always requires permit
         'Birth Control': null, // No restrictions
-        'Omeprazole': 3000 // 30 days worth
+        'Omeprazole': 3000, // 30 days worth
+        'Ritalin': 1800, // 30 days × 60mg max
+        'Vyvanse': 2100, // 30 days × 70mg max
+        'Xanax': 60, // 30 days × 2mg max
+        'Ativan': 120, // 30 days × 4mg max
+        'Modafinil': 6000, // 30 days × 200mg
+        'Melatonin': 900, // 30 days × 30mg
+        'Prozac': 2400, // 30 days × 80mg max
+        'Wellbutrin': 13500, // 30 days × 450mg max
+        'Sudafed': 0, // Prohibited
+        'Codeine': 1800, // 30 days worth
+        'Testosterone': 0 // Always requires permit
     };
     
     return thresholds[medication.name] || 1000;
