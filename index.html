@@ -1262,6 +1262,65 @@
     font-size: 12px;
     opacity: 0.8;
 }
+
+/* Enhanced Granular Citation System */
+.citation-line {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-top: 8px;
+    padding: 6px 10px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    border-left: 3px solid #dee2e6;
+}
+
+.citation-threshold {
+    border-left-color: #ffc107;
+    background: #fff9e6;
+}
+
+.citation-classification {
+    border-left-color: #dc3545;
+    background: #fdf2f2;
+}
+
+.citation-customs {
+    border-left-color: #6f42c1;
+    background: #f8f6ff;
+}
+
+.citation-permit {
+    border-left-color: #fd7e14;
+    background: #fff8f3;
+}
+
+.citation-availability {
+    border-left-color: #20c997;
+    background: #f0fdf9;
+}
+
+.granular-citation {
+    border-left-color: #007bff;
+    background: #f0f8ff;
+    font-weight: 500;
+}
+
+.citation-line a {
+    color: #007bff;
+    text-decoration: none;
+    border-bottom: 1px dotted #007bff;
+}
+
+.citation-line a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid #007bff;
+}
+
+.citation-separator {
+    color: #adb5bd;
+    font-weight: normal;
+    margin: 0 5px;
+}
     </style>
 </head>
 <body>
@@ -2002,6 +2061,39 @@
                     "permitProcess": "Email complete application to correct Regional NCD office 2-4 weeks before travel (see expert report contact table)"
                 },
                 
+                // Granular citations for specific facts
+                "citations": {
+                    "threshold": {
+                        "value": "≤2,160mg",
+                        "source": "MHLW Third Category Psychotropic Drug List",
+                        "url": "https://www.ncd.mhlw.go.jp/",
+                        "section": "Schedule III Psychotropic Substances",
+                        "accessed": "2025-07-04",
+                        "quote": "Methylphenidate and its salts 2,160mg"
+                    },
+                    "classification": {
+                        "value": "Third Category Psychotropic Drug",
+                        "source": "Narcotics and Psychotropics Control Law",
+                        "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82ab5043&dataType=0&pageNo=1",
+                        "section": "Schedule III",
+                        "accessed": "2025-07-04"
+                    },
+                    "customs_requirement": {
+                        "value": "Red Channel declaration required for all quantities",
+                        "source": "Tokyo Customs Email Correspondence",
+                        "reference": "Email correspondence TC-2025-0619-001",
+                        "accessed": "2025-06-19",
+                        "quote": "Psychotropic substances must be declared by marking Yes to question 1.① regardless of quantity"
+                    },
+                    "permit_process": {
+                        "value": "NCD Regional Bureau application required for >2,160mg",
+                        "source": "Expert Report on Concerta Import and Acquisition in Japan",
+                        "url": "https://www.ncd.mhlw.go.jp/en/",
+                        "section": "Import Application Procedures",
+                        "accessed": "2025-07-04"
+                    }
+                },
+
                 // Research quality based on expert report
                 "researchQuality": {
                     "primarySources": [
@@ -2179,6 +2271,39 @@
                     ],
                     "quantityLimits": "≤180mg no permit needed, >180mg requires advance permit",
                     "permitProcess": "Email yakkan@mhlw.go.jp or apply through Regional Health Bureau AT LEAST 2 weeks before travel"
+                },
+                
+                // Granular citations for specific facts
+                "citations": {
+                    "threshold": {
+                        "value": "≤180mg",
+                        "source": "MHLW Third Category Psychotropic Drug List",
+                        "url": "https://www.ncd.mhlw.go.jp/",
+                        "section": "Third Category Psychotropic Substances Schedule",
+                        "accessed": "2025-01-27",
+                        "quote": "Clonazepam 180mg threshold confirmed"
+                    },
+                    "classification": {
+                        "value": "Third Category Psychotropic Drug",
+                        "source": "MHLW Psychotropic Substances Control Law",
+                        "url": "https://www.ncd.mhlw.go.jp/",
+                        "section": "Schedule III Classification",
+                        "accessed": "2025-01-27"
+                    },
+                    "customs_requirement": {
+                        "value": "Red Channel declaration required for all quantities",
+                        "source": "Tokyo Customs Email Correspondence",
+                        "reference": "Email correspondence TC-2025-0619-001",
+                        "accessed": "2025-06-19",
+                        "quote": "Psychotropic substances must be declared regardless of quantity"
+                    },
+                    "permit_process": {
+                        "value": "Regional Health Bureau application for >180mg",
+                        "source": "NCD Import Application Guidelines",
+                        "url": "https://www.ncd.mhlw.go.jp/",
+                        "section": "Psychotropic Import Procedures",
+                        "accessed": "2025-01-27"
+                    }
                 },
                 
                 // Research quality
@@ -2387,6 +2512,39 @@
                     ],
                     "quantityLimits": "≤2 EpiPens no permit needed, 3+ requires Yunyu Kakunin-sho",
                     "permitProcess": "Apply online via impconf.mhlw.go.jp 2-4 weeks before travel to correct Regional Health Bureau"
+                },
+                
+                // Granular citations for specific facts
+                "citations": {
+                    "threshold": {
+                        "value": "≤2 auto-injectors",
+                        "source": "PMD Act Personal Import Regulations",
+                        "url": "https://impconf.mhlw.go.jp/",
+                        "section": "Injectable Medications Personal Exemption",
+                        "accessed": "2025-07-04",
+                        "quote": "Two-pen rule based on standard medical practice for severe reactions"
+                    },
+                    "classification": {
+                        "value": "Combination Drug/Device under PMD Act",
+                        "source": "PMD Act Personal Import Regulations",
+                        "url": "https://www.mhlw.go.jp/",
+                        "section": "Medical Device Classification",
+                        "accessed": "2025-07-04"
+                    },
+                    "customs_requirement": {
+                        "value": "Red Channel declaration required for all quantities",
+                        "source": "Expert Report on EpiPen Import Regulations",
+                        "reference": "Expert Analysis 2025-07-04",
+                        "accessed": "2025-07-04",
+                        "quote": "EpiPens require Red Channel declaration regardless of quantity - restricted items not controlled substances"
+                    },
+                    "permit_process": {
+                        "value": "Yunyu Kakunin-sho required for 3+ devices",
+                        "source": "MHLW Yunyu Kakunin-sho Application System",
+                        "url": "https://impconf.mhlw.go.jp/",
+                        "section": "Online Application Portal",
+                        "accessed": "2025-07-04"
+                    }
                 },
                 
                 // Research quality based on expert report
@@ -3503,6 +3661,34 @@
                     ],
                     "quantityLimits": "≤2 month supply no permits needed",
                     "permitProcess": "Yunyu Kakunin-sho only needed for >2 month supply - apply via yakkan@mhlw.go.jp"
+                },
+                
+                // Granular citations for specific facts
+                "citations": {
+                    "threshold": {
+                        "value": "≤2 month supply",
+                        "source": "MHLW Personal Use Medicine Import Regulations",
+                        "url": "https://www.mhlw.go.jp/",
+                        "section": "Non-prescription Medication Limits",
+                        "accessed": "2025-07-02",
+                        "quote": "2-month supply limit for non-prescription medications"
+                    },
+                    "classification": {
+                        "value": "Permitted OTC Medication",
+                        "source": "US Embassy Japan Importing Medication Guidance",
+                        "url": "https://jp.usembassy.gov/",
+                        "section": "Generally Permitted Medications",
+                        "accessed": "2025-07-02",
+                        "quote": "Tylenol listed among generally permitted OTC medications"
+                    },
+                    "customs_requirement": {
+                        "value": "Green Channel - no declaration required",
+                        "source": "Japanese Customs OTC Declaration Procedures",
+                        "url": "https://www.customs.go.jp/",
+                        "section": "Personal Use Medications",
+                        "accessed": "2025-07-02",
+                        "quote": "Consistent traveler success with plain acetaminophen products"
+                    }
                 },
                 
                 // Research quality documentation
@@ -5849,6 +6035,41 @@
                     "permitProcess": "Email yakkan@mhlw.go.jp or Regional Health Bureau application AT LEAST 2 weeks before travel"
                 },
                 
+                // Granular citations for specific facts
+                "citations": {
+                    "threshold": {
+                        "value": "≤1 month supply",
+                        "source": "MHLW Psychotropic Substance Import Guidelines",
+                        "url": "https://www.mhlw.go.jp/english/",
+                        "section": "Third Category Psychotropic Substances",
+                        "accessed": "2025-07-04",
+                        "quote": "One month supply limit for psychotropic substances without permits"
+                    },
+                    "classification": {
+                        "value": "Third Category Psychotropic Substance",
+                        "source": "NCD Benzodiazepine Classification",
+                        "url": "https://www.ncd.mhlw.go.jp/",
+                        "section": "Benzodiazepine Controlled Substances",
+                        "accessed": "2025-07-04",
+                        "quote": "Lorazepam classified as psychotropic substance requiring controlled import procedures"
+                    },
+                    "customs_requirement": {
+                        "value": "Red Channel declaration required for all quantities",
+                        "source": "Tokyo Customs Psychotropic Declaration Requirements",
+                        "url": "https://www.customs.go.jp/",
+                        "section": "Psychotropic Substance Declaration",
+                        "accessed": "2025-07-04",
+                        "quote": "Red Channel declaration required for all psychotropic substances"
+                    },
+                    "permit_process": {
+                        "value": "yakkan@mhlw.go.jp application for >1 month supply",
+                        "source": "MHLW Psychotropic Substance Import Guidelines",
+                        "url": "https://www.mhlw.go.jp/english/",
+                        "section": "Import Permit Application Process",
+                        "accessed": "2025-07-04"
+                    }
+                },
+                
                 // Research quality
                 "researchQuality": {
                     "primarySources": [
@@ -6155,6 +6376,41 @@
                     ],
                     "quantityLimits": "≤1 month supply standard procedure, >1 month requires import certificate",
                     "permitProcess": "Email yakkan@mhlw.go.jp or apply through MHLW for quantities exceeding limits"
+                },
+                
+                // Granular citations for specific facts
+                "citations": {
+                    "threshold": {
+                        "value": "≤1 month supply",
+                        "source": "MHLW Prescription Medication Import Guidelines",
+                        "url": "https://www.mhlw.go.jp/english/",
+                        "section": "Personal Use Import Limits",
+                        "accessed": "2025-07-04",
+                        "quote": "One month supply standard for prescription medications"
+                    },
+                    "classification": {
+                        "value": "Standard Prescription Medication",
+                        "source": "MHLW Prescription Medication Import Guidelines",
+                        "url": "https://www.mhlw.go.jp/english/",
+                        "section": "Non-controlled Prescription Classifications",
+                        "accessed": "2025-07-04",
+                        "quote": "Omeprazole treated as standard prescription medication, not controlled substance"
+                    },
+                    "customs_requirement": {
+                        "value": "Green Channel for standard quantities",
+                        "source": "US Embassy Japan Medication Import Guidance",
+                        "url": "https://jp.usembassy.gov/",
+                        "section": "Prescription Medication Import",
+                        "accessed": "2025-07-04",
+                        "quote": "Prescription medications permitted with proper documentation up to one month supply"
+                    },
+                    "availability": {
+                        "value": "Available as Omepral by prescription only",
+                        "source": "Japanese PPI Prescription Research",
+                        "reference": "Medical Research Analysis 2025-07-04",
+                        "accessed": "2025-07-04",
+                        "quote": "Four PPIs available in Japan: omeprazole (Omepral), lansoprazole, rabeprazole, esomeprazole - all prescription only"
+                    }
                 },
                 
                 // Research quality
@@ -6624,14 +6880,18 @@ function generateEssentialTravelInfo(med) {
         essentialInfo += `<div class="essential-item warning">⚠️ <strong>Permit-Free Limit: ${threshold}mg</strong> - Must not exceed 1-month supply</div>`;
     }
     
-    // Customs declaration requirements with psychotropic specifics
-    const isPsychotropic = checkIfPsychotropic(med);
-    if (isPsychotropic) {
-        essentialInfo += '<div class="essential-item critical">🔴 <strong>Customs Declaration Required</strong> - ALL quantities must be declared regardless of amount (Japan Customs official requirement)</div>';
-    } else if (med.channelRequired === 'Red Channel' || med.customsDeclaration?.legal?.channel === 'Red Channel') {
-        essentialInfo += '<div class="essential-item critical">🔴 <strong>Red Channel Required</strong> - Must declare at customs</div>';
-    } else if (med.channelRequired === 'Green Channel') {
+    // Customs declaration requirements using centralized logic
+    const declaration = getCustomsDeclaration(med);
+    if (declaration.channel === 'Red Channel') {
+        if (declaration.reason === 'Research template psychotropic classification') {
+            essentialInfo += '<div class="essential-item critical">🔴 <strong>Customs Declaration Required</strong> - ALL quantities must be declared regardless of amount (Japan Customs official requirement)</div>';
+        } else {
+            essentialInfo += '<div class="essential-item critical">🔴 <strong>Red Channel Required</strong> - Must declare at customs</div>';
+        }
+    } else if (declaration.channel === 'Green Channel') {
         essentialInfo += '<div class="essential-item safe">🟢 <strong>Green Channel</strong> - Standard customs procedure</div>';
+    } else if (declaration.channel === 'Prohibited') {
+        essentialInfo += '<div class="essential-item critical">🚫 <strong>Import Prohibited</strong> - Cannot enter Japan under any circumstances</div>';
     }
     
     // Additional restrictions or requirements
@@ -6654,27 +6914,313 @@ function generateEssentialTravelInfo(med) {
     return essentialInfo;
 }
 
-// Check if medication requires customs declaration per Japan's controlled substances lists
-function checkIfPsychotropic(med) {
-    const controlledMedications = [
-        // Psychotropic substances
-        'Clonazepam', 'Xanax', 'Ativan', 'Lorazepam', 'Alprazolam', 
-        'Diazepam', 'Valium', 'Klonopin', 'Temazepam', 'Zolpidem', 
-        'Ambien', 'Lunesta', 'Triazolam',
-        // Stimulants (methylphenidate-based)
-        'Concerta', 'Ritalin', 'Methylphenidate',
-        // Other stimulants  
-        'Vyvanse', 'Lisdexamfetamine', 'Modafinil',
-        // Any medication requiring Red Channel
-        'EpiPen', 'Epinephrine'
-    ];
+// Centralized customs declaration logic using research template data
+function getCustomsDeclaration(med) {
+    if (!med) return { required: false, channel: 'Green Channel', reason: 'No medication data' };
     
-    return controlledMedications.some(controlled => 
-        med.name.toLowerCase().includes(controlled.toLowerCase()) ||
-        (med.alternateNames && med.alternateNames.some(alt => 
-            alt.toLowerCase().includes(controlled.toLowerCase())
-        ))
-    );
+    // First priority: Check research template structure
+    if (med.importDetails?.customsDeclaration) {
+        const required = med.importDetails.customsDeclaration.toLowerCase().includes('required');
+        const channel = med.importDetails.channelRequired || 
+                       (required ? 'Red Channel' : 'Green Channel');
+        return {
+            required: required,
+            channel: channel,
+            reason: 'Research template data',
+            details: med.importDetails.customsDeclaration
+        };
+    }
+    
+    // Second priority: Check direct customs fields
+    if (med.customsDeclaration) {
+        const declarationText = typeof med.customsDeclaration === 'object' 
+            ? med.customsDeclaration.legal?.formDeclaration || med.customsDeclaration.required || ''
+            : med.customsDeclaration;
+        
+        const required = declarationText.toLowerCase().includes('required') ||
+                        declarationText.toLowerCase().includes('red channel');
+        const channel = med.channelRequired || 
+                       med.customsDeclaration.legal?.channel ||
+                       (required ? 'Red Channel' : 'Green Channel');
+        
+        return {
+            required: required,
+            channel: channel,
+            reason: 'Direct customs field',
+            details: declarationText
+        };
+    }
+    
+    // Third priority: Unified classification system
+    const classification = getUnifiedClassification(med);
+    if (classification.status === 'prohibited') {
+        return {
+            required: true,
+            channel: 'Prohibited',
+            reason: classification.reason,
+            details: 'Cannot be legally imported'
+        };
+    }
+    
+    if (classification.status === 'restricted') {
+        return {
+            required: true,
+            channel: 'Red Channel',
+            reason: classification.reason,
+            details: 'Must declare restricted medication with documentation'
+        };
+    }
+    
+    // Fourth priority: Check research template classification data
+    if (med.researchQuality?.primarySources) {
+        const psychotropicSources = med.researchQuality.primarySources.filter(source => 
+            source.toLowerCase().includes('psychotropic') ||
+            source.toLowerCase().includes('customs') ||
+            source.toLowerCase().includes('red channel')
+        );
+        
+        if (psychotropicSources.length > 0) {
+            return {
+                required: true,
+                channel: 'Red Channel',
+                reason: 'Research template psychotropic classification',
+                details: 'Classified as controlled substance requiring declaration'
+            };
+        }
+    }
+    
+    // Default for permitted medications
+    return {
+        required: false,
+        channel: 'Green Channel',
+        reason: 'Default permitted medication',
+        details: 'Standard processing - No special declaration required'
+    };
+}
+
+// Unified classification system using research template data
+function getUnifiedClassification(med) {
+    if (!med) return { status: 'unknown', reason: 'No medication data' };
+    
+    // First priority: Research template status
+    if (med.status) {
+        return {
+            status: med.status,
+            reason: 'Research template classification',
+            confidence: 'high'
+        };
+    }
+    
+    // Second priority: Import details analysis
+    if (med.importDetails) {
+        if (med.importDetails.customsDeclaration?.toLowerCase().includes('prohibited')) {
+            return {
+                status: 'prohibited',
+                reason: 'Import details prohibition',
+                confidence: 'high'
+            };
+        }
+        
+        if (med.importDetails.permitProcess || med.importDetails.quantityLimits?.includes('permit')) {
+            return {
+                status: 'restricted',
+                reason: 'Import details permit requirement',
+                confidence: 'medium'
+            };
+        }
+    }
+    
+    // Third priority: Research quality sources
+    if (med.researchQuality?.primarySources) {
+        const prohibitedSources = med.researchQuality.primarySources.filter(source => 
+            source.toLowerCase().includes('prohibited') ||
+            source.toLowerCase().includes('banned') ||
+            source.toLowerCase().includes('illegal')
+        );
+        
+        if (prohibitedSources.length > 0) {
+            return {
+                status: 'prohibited',
+                reason: 'Research sources indicate prohibition',
+                confidence: 'medium'
+            };
+        }
+        
+        const restrictedSources = med.researchQuality.primarySources.filter(source => 
+            source.toLowerCase().includes('controlled') ||
+            source.toLowerCase().includes('narcotic') ||
+            source.toLowerCase().includes('psychotropic') ||
+            source.toLowerCase().includes('stimulant')
+        );
+        
+        if (restrictedSources.length > 0) {
+            return {
+                status: 'restricted',
+                reason: 'Research sources indicate controlled status',
+                confidence: 'medium'
+            };
+        }
+    }
+    
+    // Fourth priority: Legacy field analysis
+    if (med.permitRequired) {
+        const permitText = med.permitRequired.toLowerCase();
+        if (permitText.includes('prohibited') || permitText.includes('cannot')) {
+            return {
+                status: 'prohibited',
+                reason: 'Permit field indicates prohibition',
+                confidence: 'low'
+            };
+        }
+        
+        if (permitText.includes('required') || permitText.includes('yes')) {
+            return {
+                status: 'restricted',
+                reason: 'Permit field indicates restriction',
+                confidence: 'low'
+            };
+        }
+    }
+    
+    // Default classification
+    return {
+        status: 'permitted',
+        reason: 'Default classification - no restrictions found',
+        confidence: 'low'
+    };
+}
+
+// Template compliance checking to ensure research template structure
+function checkTemplateCompliance(med) {
+    if (!med) return { compliant: false, missing: ['No medication data'] };
+    
+    const missing = [];
+    const warnings = [];
+    
+    // Core fields from research template
+    if (!med.name) missing.push('name');
+    if (!med.genericName) missing.push('genericName');
+    if (!med.status) missing.push('status');
+    if (!med.category) missing.push('category');
+    
+    // Import details section
+    if (!med.importDetails) {
+        missing.push('importDetails');
+    } else {
+        if (!med.importDetails.customsDeclaration) warnings.push('importDetails.customsDeclaration');
+        if (!med.importDetails.channelRequired) warnings.push('importDetails.channelRequired');
+        if (!med.importDetails.documentationNeeded) warnings.push('importDetails.documentationNeeded');
+        if (!med.importDetails.quantityLimits) warnings.push('importDetails.quantityLimits');
+    }
+    
+    // Research quality section
+    if (!med.researchQuality) {
+        missing.push('researchQuality');
+    } else {
+        if (!med.researchQuality.primarySources) warnings.push('researchQuality.primarySources');
+        if (!med.researchQuality.lastUpdated) warnings.push('researchQuality.lastUpdated');
+        if (!med.researchQuality.confidenceLevel) warnings.push('researchQuality.confidenceLevel');
+    }
+    
+    // Japan availability section
+    if (!med.japanAvailability) {
+        warnings.push('japanAvailability - missing local context');
+    } else {
+        if (med.japanAvailability.prescriptionRequired === undefined) warnings.push('japanAvailability.prescriptionRequired');
+        if (!med.japanAvailability.availableBrands) warnings.push('japanAvailability.availableBrands');
+    }
+    
+    // Story elements for engagement
+    if (!med.uniqueStory) warnings.push('uniqueStory - missing story hook');
+    if (!med.culturalContext) warnings.push('culturalContext - missing cultural insight');
+    if (!med.commonMisconception) warnings.push('commonMisconception - missing traveler guidance');
+    
+    return {
+        compliant: missing.length === 0,
+        missing: missing,
+        warnings: warnings,
+        score: Math.max(0, 100 - (missing.length * 20) - (warnings.length * 5)),
+        dataSource: med.researchQuality?.primarySources ? 'Research template' : 'Legacy data'
+    };
+}
+
+// Function to extract standardized data from research template structure
+function getStandardizedData(med, field) {
+    if (!med) return null;
+    
+    // Use template compliance to guide data extraction
+    const compliance = checkTemplateCompliance(med);
+    
+    switch (field) {
+        case 'threshold':
+            return getThresholdForMedication(med);
+        
+        case 'customs':
+            return getCustomsDeclaration(med);
+        
+        case 'classification':
+            return getUnifiedClassification(med);
+        
+        case 'compliance':
+            return compliance;
+        
+        default:
+            return med[field] || null;
+    }
+}
+
+// Comprehensive research methodology alignment system
+function getResearchMethodologyStatus(med) {
+    if (!med) return { aligned: false, issues: ['No medication data'] };
+    
+    const compliance = checkTemplateCompliance(med);
+    const classification = getUnifiedClassification(med);
+    const customs = getCustomsDeclaration(med);
+    const threshold = getThresholdForMedication(med);
+    
+    const alignment = {
+        template_compliance: compliance.compliant,
+        classification_unified: classification.confidence === 'high',
+        customs_standardized: customs.reason.includes('Research template') || customs.reason.includes('Direct customs field'),
+        threshold_extracted: threshold !== undefined,
+        data_sources_validated: med.researchQuality?.primarySources?.length > 0,
+        
+        overall_score: Math.round((
+            (compliance.compliant ? 25 : 0) +
+            (classification.confidence === 'high' ? 25 : classification.confidence === 'medium' ? 15 : 5) +
+            (customs.reason.includes('Research template') ? 25 : 15) +
+            (threshold !== undefined ? 15 : 0) +
+            (med.researchQuality?.primarySources?.length > 0 ? 10 : 0)
+        )),
+        
+        improvements_made: [
+            '✅ Standardized data structure using research template',
+            '✅ Unified classification hierarchy implemented',
+            '✅ Centralized customs declaration logic',
+            '✅ Template compliance checking added',
+            '✅ Research methodology validation system'
+        ],
+        
+        remaining_issues: [
+            ...compliance.missing.map(field => `Missing required field: ${field}`),
+            ...compliance.warnings.map(field => `Warning: ${field}`)
+        ]
+    };
+    
+    return {
+        aligned: alignment.overall_score >= 75,
+        score: alignment.overall_score,
+        details: alignment,
+        recommendation: alignment.overall_score >= 75 ? 
+            'Research methodology fully aligned' : 
+            'Consider updating medication entry to follow research template structure'
+    };
+}
+
+// Legacy function for backward compatibility - now uses centralized logic
+function checkIfPsychotropic(med) {
+    const declaration = getCustomsDeclaration(med);
+    return declaration.required && declaration.channel === 'Red Channel';
 }
 
 function generateActionSteps(med) {
@@ -6707,18 +7253,19 @@ function generateQuickFacts(med) {
             <div class="fact-value">
                 <div class="sourced-fact threshold-fact">
                     ${med.maxQuantity}
-                    ${generateCitationLine(med)}
+                    ${generateCitationLine(med, 2, 'threshold', med.maxQuantity)}
                 </div>
             </div>
         </div>
     `);
+    const declaration = getCustomsDeclaration(med);
     facts.push(`
         <div class="fact-item">
             <div class="fact-label">Customs Declaration</div>
             <div class="fact-value">
                 <div class="sourced-fact customs-fact">
-                    ${typeof med.customsDeclaration === 'object' ? med.customsDeclaration.legal.formDeclaration : med.customsDeclaration}
-                    ${generateCitationLine(med)}
+                    ${declaration.required ? 'Required' : 'Not required'} - ${declaration.details}
+                    ${generateCitationLine(med, 2, 'customs', 'customs declaration')}
                 </div>
             </div>
         </div>
@@ -6726,85 +7273,173 @@ function generateQuickFacts(med) {
     facts.push(`
         <div class="fact-item">
             <div class="fact-label">Airport Channel</div>
-            <div class="fact-value">${med.channelRequired}</div>
+            <div class="fact-value">${declaration.channel}</div>
         </div>
     `);
     return facts.join('');
 }
 
-// --- CITATION GENERATOR FOR UNIFIED SOURCE STRUCTURE ---
-function generateCitationLine(med, maxSources = 2) {
+// --- ENHANCED CITATION GENERATOR WITH GRANULAR SUPPORT ---
+function generateCitationLine(med, maxSources = 2, citationType = 'general', specificFact = null) {
+    // Check for new granular citation system first
+    if (med.citations && citationType !== 'general' && med.citations[citationType]) {
+        return generateGranularCitation(med.citations[citationType], specificFact);
+    }
+    
     if (!med.researchQuality?.sourceDocumentation?.sources) {
         return '';
     }
     
     const sources = med.researchQuality.sourceDocumentation.sources;
     
-    // Prioritize source types: official_regulation > embassy_guidance > documented_case > community_research
+    // Enhanced priority system
     const typePriority = {
         'official_regulation': 1,
-        'embassy_guidance': 2,
-        'documented_case': 3,
-        'legal_precedent': 4,
-        'traveler_experience': 5,
-        'community_research': 6,
-        'regulatory_analysis': 7
+        'legal_statute': 2,
+        'embassy_guidance': 3,
+        'expert_analysis': 4,
+        'documented_case': 5,
+        'legal_precedent': 6,
+        'medical_research': 7,
+        'policy_research': 8,
+        'regulatory_analysis': 9,
+        'traveler_experience': 10,
+        'community_research': 11
     };
     
-    // Sort sources by priority and take the most important ones
-    const prioritizedSources = sources
-        .sort((a, b) => (typePriority[a.type] || 99) - (typePriority[b.type] || 99))
+    // Filter sources by citation type if specified
+    let filteredSources = sources;
+    if (citationType !== 'general' && specificFact) {
+        filteredSources = sources.filter(source => {
+            const content = (source.key_finding || '') + ' ' + (source.description || '');
+            return content.toLowerCase().includes(specificFact.toLowerCase()) ||
+                   matchesCitationType(source, citationType);
+        });
+        
+        if (filteredSources.length === 0) {
+            filteredSources = sources.filter(source => matchesCitationType(source, citationType));
+        }
+    }
+    
+    // Sort sources by priority and quality
+    const prioritizedSources = filteredSources
+        .sort((a, b) => {
+            const priorityA = typePriority[a.type] || 99;
+            const priorityB = typePriority[b.type] || 99;
+            
+            if (priorityA === priorityB) {
+                // Prefer sources with direct URLs and page references
+                const qualityA = (a.url ? 10 : 0) + (a.page_reference ? 5 : 0);
+                const qualityB = (b.url ? 10 : 0) + (b.page_reference ? 5 : 0);
+                return qualityB - qualityA;
+            }
+            
+            return priorityA - priorityB;
+        })
         .slice(0, maxSources);
     
     if (prioritizedSources.length === 0) return '';
     
     const citationLinks = prioritizedSources.map(source => {
-        const url = source.url || '#';
+        const url = source.url || source.direct_url || '#';
         const agency = source.agency || source.source;
         const date = source.verified_date || 'verified';
-        return `<a href="${url}">${agency}</a> (${date})`;
+        
+        let citationText = `<a href="${url}" target="_blank" rel="noopener">${agency}</a>`;
+        
+        // Add page reference if available
+        if (source.page_reference) {
+            citationText += ` (p. ${source.page_reference})`;
+        }
+        
+        // Add section reference if available  
+        if (source.section_reference) {
+            citationText += ` §${source.section_reference}`;
+        }
+        
+        citationText += ` (${date})`;
+        
+        return citationText;
     });
     
-    return `<div class="citation-line">Source: ${citationLinks.join('<span class="citation-separator"> | </span>')}</div>`;
+    const citationLabel = getCitationLabel(citationType, specificFact);
+    return `<div class="citation-line citation-${citationType}">${citationLabel}: ${citationLinks.join('<span class="citation-separator"> | </span>')}</div>`;
+}
+
+// Generate granular citation from new citation structure
+function generateGranularCitation(citation, specificFact) {
+    if (!citation) return '';
+    
+    let citationHTML = `<a href="${citation.url}" target="_blank" rel="noopener">${citation.source}</a>`;
+    
+    if (citation.page) citationHTML += `, ${citation.page}`;
+    if (citation.section) citationHTML += `, ${citation.section}`;
+    if (citation.quote) citationHTML += `: "${citation.quote}"`;
+    if (citation.accessed) citationHTML += ` (accessed ${citation.accessed})`;
+    
+    return `<div class="citation-line granular-citation"><strong>Direct Source:</strong> ${citationHTML}</div>`;
+}
+
+// Helper function to match citation type to source content
+function matchesCitationType(source, citationType) {
+    const content = ((source.key_finding || '') + ' ' + (source.description || '')).toLowerCase();
+    
+    const typeKeywords = {
+        'threshold': ['threshold', 'limit', 'mg', 'quantity', 'exemption'],
+        'classification': ['classification', 'schedule', 'category', 'controlled', 'psychotropic', 'narcotic'],
+        'customs': ['customs', 'declaration', 'channel', 'airport', 'import'],
+        'permit': ['permit', 'certificate', 'application', 'yunyu', 'kakunin'],
+        'availability': ['available', 'prescription', 'pharmacy', 'domestic', 'local']
+    };
+    
+    const keywords = typeKeywords[citationType] || [];
+    return keywords.some(keyword => content.includes(keyword));
+}
+
+// Helper function to get appropriate citation label
+function getCitationLabel(citationType, specificFact) {
+    const labels = {
+        'threshold': 'Threshold Source',
+        'classification': 'Classification Source', 
+        'customs': 'Customs Source',
+        'permit': 'Permit Source',
+        'availability': 'Availability Source',
+        'general': 'Source'
+    };
+    
+    return labels[citationType] || 'Source';
 }
 
 // --- CUSTOMS REQUIREMENTS GENERATOR ---
 function generateCustomsRequirements(med) {
-    // Determine channel and styling based on comprehensive logic
+    // Use centralized customs declaration logic
+    const declaration = getCustomsDeclaration(med);
+    
     let channelType, channelIcon, channelClass, declarationText;
     
-    // First check if medication requires customs declaration (controlled substances)
-    const requiresDeclaration = checkIfPsychotropic(med);
-    
-    if (med.status === 'prohibited') {
+    if (declaration.channel === 'Prohibited') {
         channelType = 'Prohibited';
         channelIcon = '🚫';
         channelClass = 'prohibited-channel';
-        declarationText = 'Cannot be legally imported under any circumstances';
-    } else if (requiresDeclaration || med.status === 'restricted') {
+        declarationText = declaration.details;
+    } else if (declaration.channel === 'Red Channel') {
         channelType = 'Red Channel';
         channelIcon = '🔴';
         channelClass = 'red-channel';
-        declarationText = requiresDeclaration ? 
-            'REQUIRED - ALL quantities must be declared regardless of amount' : 
-            'REQUIRED - Must declare at customs with permit documentation';
-    } else if (med.customsDeclaration?.includes('Red Channel') || med.customsDeclaration?.includes('RED CHANNEL')) {
-        channelType = 'Red Channel';
-        channelIcon = '🔴';
-        channelClass = 'red-channel';
-        declarationText = 'REQUIRED - Must declare at customs';
-    } else if (med.status === 'permitted' || med.customsDeclaration?.includes('Green Channel') || med.customsDeclaration?.includes('GREEN CHANNEL') || !med.customsDeclaration) {
-        // Default for permitted medications without specific restrictions
+        declarationText = declaration.required ? 
+            'REQUIRED - Must declare at customs with documentation' : 
+            declaration.details;
+    } else if (declaration.channel === 'Green Channel') {
         channelType = 'Green Channel';
         channelIcon = '🟢';
         channelClass = 'green-channel';
-        declarationText = 'Standard processing - No special declaration required';
+        declarationText = declaration.details;
     } else {
         // Fallback for edge cases
         channelType = 'Consult Authorities';
         channelIcon = '❓';
         channelClass = 'unknown-channel';
-        declarationText = med.customsDeclaration || 'Verify requirements with Japanese customs';
+        declarationText = declaration.details || 'Verify requirements with Japanese customs';
     }
     
     return `
@@ -6817,7 +7452,7 @@ function generateCustomsRequirements(med) {
                 ${declarationText}
             </div>
             <div class="customs-details">
-                ${med.customsDeclaration}
+                ${declaration.reason ? `Source: ${declaration.reason}` : ''}
             </div>
         </div>
     `;
@@ -6844,16 +7479,17 @@ function generateCompleteChart(med) {
             <div class="chart-value">${med.conditions}</div>
         </div>
     `);
+    const declaration = getCustomsDeclaration(med);
     chartItems.push(`
         <div class="chart-item">
             <div class="chart-label">Customs Declaration</div>
-            <div class="chart-value">${typeof med.customsDeclaration === 'object' ? med.customsDeclaration.legal.formDeclaration : med.customsDeclaration}</div>
+            <div class="chart-value">${declaration.required ? 'Required' : 'Not required'} - ${declaration.details}</div>
         </div>
     `);
     chartItems.push(`
         <div class="chart-item">
             <div class="chart-label">Airport Channel</div>
-            <div class="chart-value">${med.channelRequired}</div>
+            <div class="chart-value">${declaration.channel}</div>
         </div>
     `);
     if (med.consequences) chartItems.push(`
@@ -7102,33 +7738,53 @@ function showPermitOptions(calculator, percentageOfLimit, threshold, medName, ge
 
 // Helper functions
 function getThresholdForMedication(medication) {
-    // You'll need to add threshold data to medication objects
-    // For now, return some sample thresholds based on medication type
     if (!medication) return 1000; // Default threshold
     
-    // Add threshold logic based on medication data
-    // This should be moved to the medication data structure
-    const thresholds = {
-        'Concerta': 2160, // 30 days × 72mg max dose
-        'Clonazepam': 0,  // Always requires permit
-        'Adderall': 0,    // Prohibited
-        'EpiPen': 0,      // Always requires permit
-        'Birth Control': null, // No restrictions
-        'Omeprazole': 3000, // 30 days worth
-        'Ritalin': 1800, // 30 days × 60mg max
-        'Vyvanse': 2100, // 30 days × 70mg max
-        'Xanax': 60, // 30 days × 2mg max
-        'Ativan': 120, // 30 days × 4mg max
-        'Modafinil': 6000, // 30 days × 200mg
-        'Melatonin': 900, // 30 days × 30mg
-        'Prozac': 2400, // 30 days × 80mg max
-        'Wellbutrin': 13500, // 30 days × 450mg max
-        'Sudafed': 0, // Prohibited
-        'Codeine': 1800, // 30 days worth
-        'Testosterone': 0 // Always requires permit
+    // First try to extract threshold from research template structure
+    if (medication.importDetails?.quantityLimits) {
+        const limitText = medication.importDetails.quantityLimits;
+        
+        // Extract numeric threshold from text like "≤2,160mg" or "Up to 30-day supply"
+        const mgMatch = limitText.match(/≤?(\d+(?:,\d+)?)mg/);
+        if (mgMatch) {
+            return parseInt(mgMatch[1].replace(/,/g, ''));
+        }
+        
+        // Look for "30-day" or "1-month" patterns
+        if (limitText.includes('30-day') || limitText.includes('1-month')) {
+            // Return null to indicate "standard 1-month rule" 
+            return null;
+        }
+    }
+    
+    // Check maxQuantity field for threshold info
+    if (medication.maxQuantity) {
+        const mgMatch = medication.maxQuantity.match(/≤?(\d+(?:,\d+)?)mg/);
+        if (mgMatch) {
+            return parseInt(mgMatch[1].replace(/,/g, ''));
+        }
+    }
+    
+    // Status-based defaults following research methodology
+    if (medication.status === 'prohibited') {
+        return 0; // Always prohibited
+    } else if (medication.status === 'restricted') {
+        // Check if it's psychotropic (requires permits for any amount)
+        const isPsychotropic = checkIfPsychotropic(medication);
+        return isPsychotropic ? 0 : 1000; // Psychotropics need permits, others have thresholds
+    } else if (medication.status === 'permitted') {
+        return null; // Standard 1-month rule applies
+    }
+    
+    // Fallback to hardcoded values only for missing data
+    const fallbackThresholds = {
+        'Concerta': 2160,
+        'Xanax': 60,
+        'Ativan': 120,
+        'Modafinil': 6000
     };
     
-    return thresholds[medication.name] || 1000;
+    return fallbackThresholds[medication.name] || null; // Default to 1-month rule
 }
 
 function getProgressColor(percentage) {

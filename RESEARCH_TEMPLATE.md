@@ -232,12 +232,46 @@ Based on the birth control research example, provide comprehensive data to popul
         "permitProcess": "[If permits required, describe process]"  
     },
 
+    // GRANULAR CITATIONS - Each fact must have specific, verifiable source
+    "citations": {
+        "threshold": {
+            "value": "≤2,160mg",
+            "source": "MHLW Third Category Psychotropic Drug List",
+            "url": "https://www.ncd.mhlw.go.jp/dl_data/psychotropic/third_category.pdf",
+            "page": "Page 3, Item 12",
+            "accessed": "2025-01-27",
+            "quote": "メチルフェニデート及びその塩類 2,160mg"
+        },
+        "classification": {
+            "value": "Third Category Psychotropic",
+            "source": "Pharmaceutical and Medical Device Act Schedule III",
+            "url": "https://www.mhlw.go.jp/file/06-Seisakujouhou-11120000-Iyakushokuhinkyoku/0000032166.pdf",
+            "section": "Schedule III, Section 2",
+            "accessed": "2025-01-27"
+        },
+        "customs_requirement": {
+            "value": "Red Channel declaration required",
+            "source": "Tokyo Customs Email Response",
+            "reference": "Email correspondence TC-2025-0619-001",
+            "accessed": "2025-06-19",
+            "quote": "Regardless of the quantity of psychotropic substances brought in, please declare them by marking Yes to question 1.①"
+        },
+        "permit_process": {
+            "value": "Regional Health Bureau application required",
+            "source": "MHLW Import Certificate Application Guidelines",
+            "url": "https://impconf.mhlw.go.jp/",
+            "section": "Application Process for Psychotropic Substances",
+            "accessed": "2025-01-27"
+        }
+    },
+
     // RESEARCH QUALITY (from Research Template)
     "researchQuality": {  
         "primarySources": ["Official source 1", "Official source 2"],  
         "communityValidation": ["Community source 1", "Traveler experience validation"],  
         "lastUpdated": "YYYY-MM-DD",  
-        "confidenceLevel": "High/Medium/Low - [explanation]"  
+        "confidenceLevel": "High/Medium/Low - [explanation]",
+        "citationQuality": "Each major fact has specific, verifiable citation with direct URL and page reference"
     }  
 }  
 ```
