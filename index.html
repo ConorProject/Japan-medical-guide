@@ -6770,31 +6770,41 @@ function generateCitationLine(med, maxSources = 2) {
 
 // --- CUSTOMS REQUIREMENTS GENERATOR ---
 function generateCustomsRequirements(med) {
-    if (!med.customsDeclaration) return '';
-    
-    // Determine channel and styling based on declaration requirements
+    // Determine channel and styling based on comprehensive logic
     let channelType, channelIcon, channelClass, declarationText;
     
-    if (med.customsDeclaration.includes('Red Channel') || med.customsDeclaration.includes('RED CHANNEL')) {
+    // First check if medication requires customs declaration (controlled substances)
+    const requiresDeclaration = checkIfPsychotropic(med);
+    
+    if (med.status === 'prohibited') {
+        channelType = 'Prohibited';
+        channelIcon = '🚫';
+        channelClass = 'prohibited-channel';
+        declarationText = 'Cannot be legally imported under any circumstances';
+    } else if (requiresDeclaration || med.status === 'restricted') {
+        channelType = 'Red Channel';
+        channelIcon = '🔴';
+        channelClass = 'red-channel';
+        declarationText = requiresDeclaration ? 
+            'REQUIRED - ALL quantities must be declared regardless of amount' : 
+            'REQUIRED - Must declare at customs with permit documentation';
+    } else if (med.customsDeclaration?.includes('Red Channel') || med.customsDeclaration?.includes('RED CHANNEL')) {
         channelType = 'Red Channel';
         channelIcon = '🔴';
         channelClass = 'red-channel';
         declarationText = 'REQUIRED - Must declare at customs';
-    } else if (med.customsDeclaration.includes('Green Channel') || med.customsDeclaration.includes('GREEN CHANNEL')) {
+    } else if (med.status === 'permitted' || med.customsDeclaration?.includes('Green Channel') || med.customsDeclaration?.includes('GREEN CHANNEL') || !med.customsDeclaration) {
+        // Default for permitted medications without specific restrictions
         channelType = 'Green Channel';
         channelIcon = '🟢';
         channelClass = 'green-channel';
-        declarationText = 'Not required - Standard processing';
-    } else if (med.customsDeclaration.includes('ILLEGAL') || med.customsDeclaration.includes('Prohibited')) {
-        channelType = 'Prohibited';
-        channelIcon = '🚫';
-        channelClass = 'prohibited-channel';
-        declarationText = 'Cannot be legally imported';
+        declarationText = 'Standard processing - No special declaration required';
     } else {
-        channelType = 'Unknown';
+        // Fallback for edge cases
+        channelType = 'Consult Authorities';
         channelIcon = '❓';
         channelClass = 'unknown-channel';
-        declarationText = med.customsDeclaration;
+        declarationText = med.customsDeclaration || 'Verify requirements with Japanese customs';
     }
     
     return `
