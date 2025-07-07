@@ -7005,8 +7005,21 @@ function getCustomsDeclaration(med) {
     // First priority: Check research template structure
     if (med.importDetails?.customsDeclaration) {
         const required = med.importDetails.customsDeclaration.toLowerCase().includes('required');
-        const channel = med.importDetails.channelRequired || 
-                       (required ? 'Red Channel' : 'Green Channel');
+        
+        // Normalize channel to standard values
+        let channel = med.importDetails.channelRequired;
+        if (channel) {
+            if (channel.toLowerCase().includes('red')) {
+                channel = 'Red Channel';
+            } else if (channel.toLowerCase().includes('green')) {
+                channel = 'Green Channel';
+            } else if (channel.toLowerCase().includes('prohibited')) {
+                channel = 'Prohibited';
+            }
+        } else {
+            channel = required ? 'Red Channel' : 'Green Channel';
+        }
+        
         return {
             required: required,
             channel: channel,
@@ -7023,9 +7036,19 @@ function getCustomsDeclaration(med) {
         
         const required = declarationText.toLowerCase().includes('required') ||
                         declarationText.toLowerCase().includes('red channel');
-        const channel = med.channelRequired || 
-                       med.customsDeclaration.legal?.channel ||
-                       (required ? 'Red Channel' : 'Green Channel');
+        // Normalize channel to standard values
+        let channel = med.channelRequired || med.customsDeclaration.legal?.channel;
+        if (channel) {
+            if (channel.toLowerCase().includes('red')) {
+                channel = 'Red Channel';
+            } else if (channel.toLowerCase().includes('green')) {
+                channel = 'Green Channel';
+            } else if (channel.toLowerCase().includes('prohibited')) {
+                channel = 'Prohibited';
+            }
+        } else {
+            channel = required ? 'Red Channel' : 'Green Channel';
+        }
         
         return {
             required: required,
