@@ -4270,6 +4270,14 @@
                 "commonMisconception": "Travelers assume all benzodiazepines have the same restrictions, but lorazepam's threshold limits are mysteriously undisclosed compared to diazepam's clear 1.2g limit",
                 "surpriseFactor": "The benzodiazepine that hides in plain sight - absent from embassy warning lists while its cousins get constant mentions",
                 "alternatives": ["Japanese-prescribed benzodiazepines", "Non-benzodiazepine anxiolytics", "SSRIs"],
+                
+                "maxQuantity": "Up to 1 month supply without permits; excess requires advance import certificate",
+                "conditions": "Must carry personally, cannot send separately. Red Channel declaration required for all quantities.",
+                "permitRequired": "Required for quantities exceeding 1 month supply or injection forms",
+                "consequences": "Arrest and detention for violations - Japan has strict psychotropic drug enforcement",
+                "customsDeclaration": true,
+                "channelRequired": "Red Channel",
+                
                 "keyData": {
                     "regulatoryCategory": "Third Category Psychotropic Substance (controlled benzodiazepine)",
                     "quantityLimit": "One month supply without permit / Excess requires advance permit",
