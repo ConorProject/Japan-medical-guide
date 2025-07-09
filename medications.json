@@ -4271,19 +4271,20 @@
                 "surpriseFactor": "The benzodiazepine that hides in plain sight - absent from embassy warning lists while its cousins get constant mentions",
                 "alternatives": ["Japanese-prescribed benzodiazepines", "Non-benzodiazepine anxiolytics", "SSRIs"],
                 
-                "maxQuantity": "Dual-trigger system: Up to 1 month supply (MHLW rule) AND within NCD weight threshold (specific mg limit in Table 3); excess requires permits",
+                "maxQuantity": "Dual-trigger system: Up to 1 month supply (MHLW rule) AND ≤90mg total weight; excess requires permits",
                 "conditions": "Must carry personally, cannot send separately. Dual-trigger system applies - check both time AND weight limits. Red Channel declaration required for all quantities.",
-                "permitRequired": "Required for quantities exceeding 1 month supply OR NCD weight threshold OR injection forms",
+                "permitRequired": "Required for quantities exceeding 1 month supply OR 90mg weight threshold OR injection forms",
                 "consequences": "Arrest and detention for violations - Japan has strict psychotropic drug enforcement with zero tolerance",
                 "customsDeclaration": true,
                 "channelRequired": "Red Channel",
                 
                 "calculationGuide": {
                     "formula": "Total mg = (Number of tablets) × (Dosage per tablet in mg)",
-                    "example1": "60 tablets × 0.5mg = 30mg total",
-                    "example2": "40 tablets × 2.0mg = 80mg total",
-                    "thresholdNote": "Must check your total mg against NCD Table 3 limits (specific threshold not publicly accessible - contact yakkan@mhlw.go.jp)",
-                    "dualTrigger": "Exceeding EITHER time limit (1 month) OR weight limit triggers documentation requirements"
+                    "example1": "60 tablets × 0.5mg = 30mg total (OK - under 90mg threshold)",
+                    "example2": "40 tablets × 2.0mg = 80mg total (OK - under 90mg threshold)",
+                    "example3": "50 tablets × 2.0mg = 100mg total (REQUIRES PERMITS - over 90mg threshold)",
+                    "thresholdNote": "Must check your total mg against 90mg threshold (NCD Table 3 confirmed limit)",
+                    "dualTrigger": "Exceeding EITHER time limit (1 month) OR 90mg weight limit triggers documentation requirements"
                 },
                 
                 "keyData": {
@@ -4298,10 +4299,10 @@
                     "title": "Import Strategy for Ativan (Lorazepam)",
                     "steps": [
                         "Calculate total dosage using formula: (tablets × mg per tablet) = total mg",
-                        "Check against dual-trigger system: Does your supply exceed 1 month OR NCD weight threshold?",
-                        "Email yakkan@mhlw.go.jp for specific NCD Table 3 threshold confirmation 2-4 weeks before travel",
+                        "Check against dual-trigger system: Does your supply exceed 1 month OR 90mg weight threshold?",
+                        "If over 90mg: Contact yakkan@mhlw.go.jp for permit requirements 2-4 weeks before travel",
                         "If over 1 month supply: Apply for Yunyu Kakunin-sho at https://impconf.mhlw.go.jp/aicpte/page/login.jsp?lang=en",
-                        "If over NCD weight threshold: Obtain mandatory medical certificate from prescribing doctor",
+                        "If over 90mg threshold: Obtain mandatory medical certificate from prescribing doctor",
                         "Prepare for customs: Complete Visit Japan Web declaration answering 'Yes' to psychotropic substances",
                         "At airport: Proceed to Red Channel with all documentation, medication in original containers"
                     ]
@@ -4362,18 +4363,17 @@
                 },
                 
                 "importDetails": {
-                    "customsDeclaration": "Required - Red Channel via Visit Japan Web or paper form",
+                    "customsDeclaration": "Required - Red Channel via Visit Japan Web declaring 'Yes' to psychotropic substances question",
                     "channelRequired": "Red Channel with psychotropic documentation",
                     "documentationNeeded": [
                         "Original prescription containers with pharmacy labels",
                         "Medical necessity letter from prescribing physician",
                         "Yunyu Kakunin-sho (if over 1 month supply)",
-                        "NCD medical certificate (if over weight threshold)",
+                        "NCD medical certificate (if over 90mg threshold)",
                         "Visit Japan Web QR code or paper customs declaration"
                     ],
-                    "quantityLimits": "Dual-trigger: ≤1 month supply AND ≤NCD weight threshold requires no permits",
-                    "permitProcess": "Yunyu Kakunin-sho: Apply at https://impconf.mhlw.go.jp/aicpte/page/login.jsp?lang=en (2-4 weeks advance)",
-                    "customsDeclaration": "Complete Visit Japan Web declaring 'Yes' to psychotropic substances question"
+                    "quantityLimits": "Dual-trigger: ≤1 month supply AND ≤90mg requires no permits",
+                    "permitProcess": "Yunyu Kakunin-sho: Apply at https://impconf.mhlw.go.jp/aicpte/page/login.jsp?lang=en (2-4 weeks advance)"
                 },
                 
                 "citations": {
