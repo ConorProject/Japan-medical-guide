@@ -122,7 +122,7 @@
                                 "type": "embassy_guidance",
                                 "agency": "US Embassy Japan",
                                 "verified_date": "2025-01-15",
-                                "url": "https://jp.usembassy.gov/",
+                                "url": "https://jp.usembassy.gov/services/importing-medication/",
                                 "key_finding": "Explicit warnings against bringing Adderall into Japan"
                             },
                             {
@@ -287,7 +287,7 @@
                                 "type": "official_regulation",
                                 "agency": "MHLW",
                                 "verified_date": "2025-01-15",
-                                "url": "https://www.mhlw.go.jp/",
+                                "url": "https://www.mhlw.go.jp/english/policy/health-medical/pharmaceuticals/01.html",
                                 "key_finding": "Products with >10% pseudoephedrine require special permits"
                             },
                             {
@@ -295,7 +295,7 @@
                                 "type": "embassy_guidance",
                                 "agency": "US Embassy Japan",
                                 "verified_date": "2025-01-15",
-                                "url": "https://jp.usembassy.gov/",
+                                "url": "https://jp.usembassy.gov/services/importing-medication/",
                                 "key_finding": "Sudafed listed in controlled medication warnings"
                             },
                             {
@@ -914,7 +914,7 @@
                                 "type": "embassy_guidance",
                                 "agency": "US Embassy Japan",
                                 "verified_date": "2025-01-27",
-                                "url": "https://jp.usembassy.gov/",
+                                "url": "https://jp.usembassy.gov/services/importing-medication/",
                                 "key_finding": "Clonazepam absent from prohibited medication warnings"
                             },
                             {
@@ -1084,7 +1084,7 @@
                     "classification": {
                         "value": "Combination Drug/Device under PMD Act",
                         "source": "PMD Act Personal Import Regulations",
-                        "url": "https://www.mhlw.go.jp/",
+                        "url": "https://www.mhlw.go.jp/english/policy/health-medical/pharmaceuticals/01.html",
                         "section": "Medical Device Classification",
                         "accessed": "2025-07-04"
                     },
@@ -1300,7 +1300,7 @@
                                 "type": "embassy_guidance",
                                 "agency": "US Embassy Japan",
                                 "verified_date": "2025-01-15",
-                                "url": "https://jp.usembassy.gov/",
+                                "url": "https://jp.usembassy.gov/services/importing-medication/",
                                 "key_finding": "Birth control pills not listed in restricted medications"
                             },
                             {
@@ -2192,7 +2192,7 @@
                     "threshold": {
                         "value": "≤2 month supply",
                         "source": "MHLW Personal Use Medicine Import Regulations",
-                        "url": "https://www.mhlw.go.jp/",
+                        "url": "https://www.mhlw.go.jp/english/policy/health-medical/pharmaceuticals/01.html",
                         "section": "Non-prescription Medication Limits",
                         "accessed": "2025-07-02",
                         "quote": "2-month supply limit for non-prescription medications"
@@ -4414,7 +4414,7 @@
                                 "type": "embassy_guidance",
                                 "agency": "US Embassy Japan",
                                 "verified_date": "2025-07-04",
-                                "url": "https://jp.usembassy.gov/",
+                                "url": "https://jp.usembassy.gov/services/importing-medication/",
                                 "key_finding": "General psychotropic import procedures apply - no specific prohibition warnings"
                             }
                         ]
@@ -4650,7 +4650,7 @@
                                 "type": "embassy_guidance",
                                 "agency": "US Embassy Japan",
                                 "verified_date": "2025-07-04",
-                                "url": "https://jp.usembassy.gov/",
+                                "url": "https://jp.usembassy.gov/services/importing-medication/",
                                 "key_finding": "Birth control pills and emergency contraception permitted with proper documentation"
                             },
                             {
@@ -4792,7 +4792,7 @@
                     "customs_requirement": {
                         "value": "Green Channel for standard quantities",
                         "source": "US Embassy Japan Medication Import Guidance",
-                        "url": "https://jp.usembassy.gov/",
+                        "url": "https://jp.usembassy.gov/services/importing-medication/",
                         "section": "Prescription Medication Import",
                         "accessed": "2025-07-04",
                         "quote": "Prescription medications permitted with proper documentation up to one month supply"
@@ -4834,7 +4834,7 @@
                                 "type": "embassy_guidance",
                                 "agency": "US Embassy Japan",
                                 "verified_date": "2025-07-04",
-                                "url": "https://jp.usembassy.gov/",
+                                "url": "https://jp.usembassy.gov/services/importing-medication/",
                                 "key_finding": "Prescription medications permitted with proper documentation up to one month supply"
                             },
                             {
