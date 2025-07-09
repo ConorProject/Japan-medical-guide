@@ -3973,8 +3973,8 @@
                                 "type": "medical_research",
                                 "verified_date": "2025-07-03",
                                 "description": "Clinical studies showing gabapentin use in Japanese epilepsy treatment",
-                                "key_finding": "Gabapentin (GBP) included in prescription patterns for anti-seizure medications in Japan"
-"url": "https://www.jepilepsysociety.jp/english/guideline/guideline.html",
+                                "key_finding": "Gabapentin (GBP) included in prescription patterns for anti-seizure medications in Japan",
+                                "url": "https://www.jepilepsysociety.jp/english/guideline/guideline.html"
                             },
                             {
                                 "source": "MHLW Standard Import Guidelines",
@@ -4107,8 +4107,8 @@
                                 "type": "medical_research",
                                 "verified_date": "2025-07-03",
                                 "description": "Clinical evidence of thyroid hormone treatment practices in Japan",
-                                "key_finding": "Thyroid hormone replacement therapy well-established in Japanese medical practice"
-"url": "https://www.japanthyroid.jp/english/",
+                                "key_finding": "Thyroid hormone replacement therapy well-established in Japanese medical practice",
+                                "url": "https://www.japanthyroid.jp/english/"
                             },
                             {
                                 "source": "NCD Controlled Substances Framework",
@@ -4660,8 +4660,8 @@
                                 "type": "medical_research",
                                 "verified_date": "2025-07-04",
                                 "description": "Analysis of emergency contraception availability and regulatory status in Japan",
-                                "key_finding": "NorLevo (levonorgestrel) available by prescription since 2016, OTC trial conducted 2023-2024"
-"url": "https://www.jsog.or.jp/english/",
+                                "key_finding": "NorLevo (levonorgestrel) available by prescription since 2016, OTC trial conducted 2023-2024",
+                                "url": "https://www.jsog.or.jp/english/"
                             },
                             {
                                 "source": "NCD Controlled Substances Schedule Review",
@@ -4831,7 +4831,6 @@
                                 "verified_date": "2025-07-04",
                                 "url": "https://www.mhlw.go.jp/english/",
                                 "key_finding": "Omeprazole treated as standard prescription medication, not controlled substance"
-"url": "https://www.jga.or.jp/english/",
                             },
                             {
                                 "source": "US Embassy Japan Medication Import Guidance",
@@ -4846,8 +4845,8 @@
                                 "type": "medical_research",
                                 "verified_date": "2025-07-04",
                                 "description": "Analysis of proton pump inhibitor availability and prescription status in Japan",
-                                "key_finding": "Four PPIs available in Japan: omeprazole (Omepral), lansoprazole, rabeprazole, esomeprazole - all prescription only"
-"url": "https://www.jga.or.jp/english/",
+                                "key_finding": "Four PPIs available in Japan: omeprazole (Omepral), lansoprazole, rabeprazole, esomeprazole - all prescription only",
+                                "url": "https://www.jga.or.jp/english/"
                             },
                             {
                                 "source": "Internet Import Quality Study",
@@ -5053,8 +5052,8 @@
                                 "type": "medical_research",
                                 "verified_date": "2025-07-07",
                                 "description": "Analysis of available sleep aids in Japanese pharmacies",
-                                "key_finding": "Diphenhydramine-based alternatives readily available: Drewell (¥1,958), Neoday, Doriel"
-"url": "https://www.jpma.or.jp/english/",
+                                "key_finding": "Diphenhydramine-based alternatives readily available: Drewell (¥1,958), Neoday, Doriel",
+                                "url": "https://www.jpma.or.jp/english/"
                             },
                             {
                                 "source": "Traveler Experience Documentation",
