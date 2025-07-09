@@ -4459,9 +4459,18 @@
             {
                 "name": "Plan B (Emergency Contraception)",
                 "genericName": "levonorgestrel",
+                "alternateNames": ["Plan B", "Morning After Pill", "NorLevo", "Emergency Contraception"],
                 "status": "permitted",
                 "category": "Emergency Contraceptive/Reproductive Health",
                 "searchTerms": ["plan b", "emergency contraception", "morning after pill", "levonorgestrel", "norlevo", "contraceptive", "birth control"],
+                
+                "maxQuantity": "Up to 1 month supply without permits; excess requires import certificate",
+                "conditions": "Standard prescription medication rules apply. Must have prescription documentation.",
+                "permitRequired": "Only required for quantities exceeding 1 month supply",
+                "consequences": "Standard medication import violations - confiscation possible for undocumented quantities",
+                "customsDeclaration": false,
+                "channelRequired": "Green Channel",
+                "alternatives": ["NorLevo (Japanese equivalent)", "Japanese contraceptive consultation"],
                 "keyData": {
                     "regulatoryCategory": "Prescription Medication (not classified as controlled substance)",
                     "quantityLimit": "1 month supply without permit / Excess requires import certificate",
