@@ -1434,7 +1434,11 @@
         async function loadMedications() {
             try {
                 const response = await fetch('medications.json');
-                medications = await response.json();
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                const text = await response.text();
+                medications = JSON.parse(text);
                 console.log('Medications loaded:', medications.length, 'entries');
                 
                 // Trigger any initialization that depends on medications being loaded
