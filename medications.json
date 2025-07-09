@@ -4718,9 +4718,23 @@
             {
                 "name": "Omeprazole (Prilosec)",
                 "genericName": "omeprazole",
+                "alternateNames": ["Prilosec", "Losec", "Omepral", "PPI"],
                 "status": "permitted",
                 "category": "Proton Pump Inhibitor/Acid Reflux",
                 "searchTerms": ["omeprazole", "prilosec", "losec", "omepral", "proton pump inhibitor", "ppi", "acid reflux", "gerd", "heartburn"],
+                
+                "maxQuantity": "Up to 1 month supply without permits; excess requires import certificate",
+                "conditions": "Standard prescription medication rules apply. Must have prescription documentation.",
+                "permitRequired": "Only required for quantities exceeding 1 month supply",
+                "consequences": "Standard medication import violations - confiscation possible for undocumented quantities",
+                "customsDeclaration": false,
+                "channelRequired": "Green Channel",
+                
+                "uniqueStory": "The acid reducer available everywhere but Japan - OTC globally yet prescription-only in the land of the rising sun",
+                "culturalContext": "Japan's strict prescription culture means even common heartburn medications require doctor visits, reflecting healthcare system emphasis on professional oversight",
+                "commonMisconception": "Travelers assume OTC status translates globally, but Japan treats many common medications as prescription-only",
+                "surpriseFactor": "Readily available as Omepral in Japan but requires prescription despite OTC status in most countries",
+                "alternatives": ["Omepral (Japanese omeprazole)", "Lansoprazole", "Famotidine"],
                 "keyData": {
                     "regulatoryCategory": "Prescription Medication (not classified as controlled substance)",
                     "quantityLimit": "1 month supply without permit / Excess requires import certificate",
