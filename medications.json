@@ -4271,12 +4271,20 @@
                 "surpriseFactor": "The benzodiazepine that hides in plain sight - absent from embassy warning lists while its cousins get constant mentions",
                 "alternatives": ["Japanese-prescribed benzodiazepines", "Non-benzodiazepine anxiolytics", "SSRIs"],
                 
-                "maxQuantity": "Up to 1 month supply without permits; excess requires advance import certificate",
-                "conditions": "Must carry personally, cannot send separately. Red Channel declaration required for all quantities.",
-                "permitRequired": "Required for quantities exceeding 1 month supply or injection forms",
-                "consequences": "Arrest and detention for violations - Japan has strict psychotropic drug enforcement",
+                "maxQuantity": "Dual-trigger system: Up to 1 month supply (MHLW rule) AND within NCD weight threshold (specific mg limit in Table 3); excess requires permits",
+                "conditions": "Must carry personally, cannot send separately. Dual-trigger system applies - check both time AND weight limits. Red Channel declaration required for all quantities.",
+                "permitRequired": "Required for quantities exceeding 1 month supply OR NCD weight threshold OR injection forms",
+                "consequences": "Arrest and detention for violations - Japan has strict psychotropic drug enforcement with zero tolerance",
                 "customsDeclaration": true,
                 "channelRequired": "Red Channel",
+                
+                "calculationGuide": {
+                    "formula": "Total mg = (Number of tablets) × (Dosage per tablet in mg)",
+                    "example1": "60 tablets × 0.5mg = 30mg total",
+                    "example2": "40 tablets × 2.0mg = 80mg total",
+                    "thresholdNote": "Must check your total mg against NCD Table 3 limits (specific threshold not publicly accessible - contact yakkan@mhlw.go.jp)",
+                    "dualTrigger": "Exceeding EITHER time limit (1 month) OR weight limit triggers documentation requirements"
+                },
                 
                 "keyData": {
                     "regulatoryCategory": "Third Category Psychotropic Substance (controlled benzodiazepine)",
@@ -4289,12 +4297,13 @@
                 "actionSteps": {
                     "title": "Import Strategy for Ativan (Lorazepam)",
                     "steps": [
-                        "Check exact quantity - permits required for amounts exceeding one month supply",
-                        "Email yakkan@mhlw.go.jp for specific quantity threshold confirmation 2+ weeks before travel",
-                        "Prepare prescription documentation with medical necessity letter from prescribing doctor",
-                        "Apply for import permit if bringing more than one month supply or injectable forms",
-                        "Declare at Red Channel customs desk with all psychotropic documentation regardless of quantity",
-                        "Consider consulting Japanese psychiatrist for prescription switching upon arrival"
+                        "Calculate total dosage using formula: (tablets × mg per tablet) = total mg",
+                        "Check against dual-trigger system: Does your supply exceed 1 month OR NCD weight threshold?",
+                        "Email yakkan@mhlw.go.jp for specific NCD Table 3 threshold confirmation 2-4 weeks before travel",
+                        "If over 1 month supply: Apply for Yunyu Kakunin-sho at https://impconf.mhlw.go.jp/aicpte/page/login.jsp?lang=en",
+                        "If over NCD weight threshold: Obtain mandatory medical certificate from prescribing doctor",
+                        "Prepare for customs: Complete Visit Japan Web declaration answering 'Yes' to psychotropic substances",
+                        "At airport: Proceed to Red Channel with all documentation, medication in original containers"
                     ]
                 },
                 "whyRestricted": "Classified as psychotropic substance under Japan's controlled substances framework. All benzodiazepines require customs declaration due to abuse potential and regulatory sensitivity, regardless of quantity.",
@@ -4353,16 +4362,18 @@
                 },
                 
                 "importDetails": {
-                    "customsDeclaration": "Required - Red Channel",
+                    "customsDeclaration": "Required - Red Channel via Visit Japan Web or paper form",
                     "channelRequired": "Red Channel with psychotropic documentation",
                     "documentationNeeded": [
                         "Original prescription containers with pharmacy labels",
                         "Medical necessity letter from prescribing physician",
-                        "Import permit (if exceeding one month supply)",
-                        "Anxiety disorder diagnosis documentation"
+                        "Yunyu Kakunin-sho (if over 1 month supply)",
+                        "NCD medical certificate (if over weight threshold)",
+                        "Visit Japan Web QR code or paper customs declaration"
                     ],
-                    "quantityLimits": "≤1 month supply no permit needed, >1 month requires advance permit",
-                    "permitProcess": "Email yakkan@mhlw.go.jp or Regional Health Bureau application AT LEAST 2 weeks before travel"
+                    "quantityLimits": "Dual-trigger: ≤1 month supply AND ≤NCD weight threshold requires no permits",
+                    "permitProcess": "Yunyu Kakunin-sho: Apply at https://impconf.mhlw.go.jp/aicpte/page/login.jsp?lang=en (2-4 weeks advance)",
+                    "customsDeclaration": "Complete Visit Japan Web declaring 'Yes' to psychotropic substances question"
                 },
                 
                 "citations": {
@@ -4409,47 +4420,49 @@
                         "Standard psychotropic processing - no prohibition warnings found",
                         "Prescription switching commonly recommended approach"
                     ],
-                    "lastUpdated": "2025-07-04",
-                    "confidenceLevel": "High - Official psychotropic classification confirmed, import procedures established",
+                    "lastUpdated": "2025-07-09",
+                    "confidenceLevel": "Very High - Enhanced with verified dual-trigger system, working application portals, and calculation methodology",
                     "sourceDocumentation": {
                         "sources": [
                             {
-                                "source": "MHLW Psychotropic Substance Import Guidelines",
+                                "source": "MHLW Dual-Trigger Import System",
                                 "type": "official_regulation",
                                 "agency": "MHLW",
-                                "verified_date": "2025-07-04",
-                                "url": "https://www.mhlw.go.jp/english/",
-                                "key_finding": "One month supply limit for psychotropic substances without permits"
+                                "verified_date": "2025-07-09",
+                                "url": "https://www.mhlw.go.jp/english/policy/health-medical/pharmaceuticals/01.html",
+                                "key_finding": "One month supply limit for prescription drugs; separate NCD weight limits for psychotropics"
                             },
                             {
-                                "source": "Tokyo Customs Psychotropic Declaration Requirements",
-                                "type": "official_regulation",
-                                "agency": "Tokyo Customs",
-                                "verified_date": "2025-07-04",
-                                "key_finding": "Red Channel declaration required for all psychotropic substances"
-                            },
-                            {
-                                "source": "NCD Benzodiazepine Classification",
+                                "source": "NCD Psychotropic Import Application Requirements",
                                 "type": "official_regulation",
                                 "agency": "NCD",
-                                "verified_date": "2025-07-04",
-                                "url": "https://www.ncd.mhlw.go.jp/en/",
-                                "key_finding": "Lorazepam classified as psychotropic substance requiring controlled import procedures"
+                                "verified_date": "2025-07-09",
+                                "url": "https://www.ncd.mhlw.go.jp/en/application2.html",
+                                "key_finding": "Specific weight thresholds in Table 3 for psychotropic substances including lorazepam"
                             },
                             {
-                                "source": "Japanese Benzodiazepine Market Analysis",
-                                "type": "medical_research",
-                                "verified_date": "2025-07-04",
-                                "description": "Research on benzodiazepine prescription trends in Japan",
-                                "key_finding": "Lorazepam available in Japanese market with prescription"
+                                "source": "MHLW Yunyu Kakunin-sho Application Portal",
+                                "type": "official_regulation",
+                                "agency": "MHLW",
+                                "verified_date": "2025-07-09",
+                                "url": "https://impconf.mhlw.go.jp/aicpte/page/login.jsp?lang=en",
+                                "key_finding": "Working online portal for import certificate applications over 1 month supply"
                             },
                             {
-                                "source": "Embassy Medication Import Guidance",
+                                "source": "Japan Customs Declaration System",
+                                "type": "official_regulation",
+                                "agency": "Japan Customs",
+                                "verified_date": "2025-07-09",
+                                "url": "https://www.customs.go.jp/english/passenger/declaration/declaration_app.html",
+                                "key_finding": "Visit Japan Web system for electronic customs declarations including psychotropic substances"
+                            },
+                            {
+                                "source": "Embassy Medication Import Analysis",
                                 "type": "embassy_guidance",
                                 "agency": "US Embassy Japan",
-                                "verified_date": "2025-07-04",
+                                "verified_date": "2025-07-09",
                                 "url": "https://jp.usembassy.gov/services/importing-medication/",
-                                "key_finding": "General psychotropic import procedures apply - no specific prohibition warnings"
+                                "key_finding": "Lorazepam notably absent from specific embassy warnings despite psychotropic classification"
                             }
                         ]
                     }
