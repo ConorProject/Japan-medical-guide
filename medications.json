@@ -114,7 +114,7 @@
                                 "type": "official_regulation",
                                 "agency": "NCD",
                                 "verified_date": "2025-01-15",
-                                "url": "https://www.ncd.mhlw.go.jp/",
+                                "url": "https://www.ncd.mhlw.go.jp/en/",
                                 "key_finding": "Adderall components listed as controlled stimulants"
                             },
                             {
@@ -279,7 +279,7 @@
                                 "type": "official_regulation",
                                 "agency": "NCD",
                                 "verified_date": "2025-01-15",
-                                "url": "https://www.ncd.mhlw.go.jp/",
+                                "url": "https://www.ncd.mhlw.go.jp/en/",
                                 "key_finding": "Pseudoephedrine listed as controlled precursor with permit requirements"
                             },
                             {
@@ -891,7 +891,7 @@
                                 "type": "official_regulation",
                                 "agency": "MHLW",
                                 "verified_date": "2025-01-27",
-                                "url": "https://www.ncd.mhlw.go.jp/",
+                                "url": "https://www.ncd.mhlw.go.jp/en/",
                                 "key_finding": "180mg threshold confirmed for clonazepam"
                             },
                             {
@@ -906,7 +906,7 @@
                                 "type": "official_regulation",
                                 "agency": "NCD",
                                 "verified_date": "2025-01-27",
-                                "url": "https://www.ncd.mhlw.go.jp/",
+                                "url": "https://www.ncd.mhlw.go.jp/en/",
                                 "key_finding": "Third Category Psychotropic drugs have quantity thresholds - not zero tolerance"
                             },
                             {
@@ -1452,7 +1452,7 @@
                                 "source": "MHLW Third Category Psychotropic Substances List",
                                 "type": "official_regulation",
                                 "agency": "MHLW",
-                                "url": "https://www.ncd.mhlw.go.jp/",
+                                "url": "https://www.ncd.mhlw.go.jp/en/",
                                 "verified_date": "2025-01-15",
                                 "key_finding": "72mg alprazolam threshold confirmed"
                             }
@@ -4343,7 +4343,7 @@
                     "classification": {
                         "value": "Third Category Psychotropic Substance",
                         "source": "NCD Benzodiazepine Classification",
-                        "url": "https://www.ncd.mhlw.go.jp/",
+                        "url": "https://www.ncd.mhlw.go.jp/en/",
                         "section": "Benzodiazepine Controlled Substances",
                         "accessed": "2025-07-04",
                         "quote": "Lorazepam classified as psychotropic substance requiring controlled import procedures"
