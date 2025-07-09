@@ -4296,15 +4296,39 @@
                 },
                 "riskLevel": "medium-high",
                 "actionSteps": {
-                    "title": "Import Strategy for Ativan (Lorazepam)",
+                    "title": "What You Need to Do: Ativan (Lorazepam) Import Strategy",
                     "steps": [
-                        "Calculate total dosage using formula: (tablets × mg per tablet) = total mg",
-                        "Check against dual-trigger system: Does your supply exceed 1 month OR 90mg weight threshold?",
-                        "If over 90mg: Contact yakkan@mhlw.go.jp for permit requirements 2-4 weeks before travel",
-                        "If over 1 month supply: Apply for Yunyu Kakunin-sho at https://impconf.mhlw.go.jp/aicpte/page/login.jsp?lang=en",
-                        "If over 90mg threshold: Obtain mandatory medical certificate from prescribing doctor",
-                        "Prepare for customs: Complete Visit Japan Web declaration answering 'Yes' to psychotropic substances",
-                        "At airport: Proceed to Red Channel with all documentation, medication in original containers"
+                        {
+                            "number": "1",
+                            "title": "Calculate your total dosage",
+                            "action": "Use formula: (tablets × mg per tablet) = total mg to determine if you exceed 90mg threshold"
+                        },
+                        {
+                            "number": "2",
+                            "title": "Check dual-trigger system",
+                            "action": "Verify your supply doesn't exceed 1 month supply OR 90mg weight threshold"
+                        },
+                        {
+                            "number": "3",
+                            "title": "Apply for permits if needed",
+                            "action": "Contact yakkan@mhlw.go.jp for Yunyu Kakunin-sho if over 90mg or 1 month supply",
+                            "note": "Apply 2-4 weeks before travel"
+                        },
+                        {
+                            "number": "4",
+                            "title": "Obtain medical certificate",
+                            "action": "Get mandatory medical certificate from prescribing doctor if over 90mg threshold"
+                        },
+                        {
+                            "number": "5",
+                            "title": "Prepare customs declaration",
+                            "action": "Complete Visit Japan Web declaring 'Yes' to psychotropic substances question"
+                        },
+                        {
+                            "number": "6",
+                            "title": "Use Red Channel at airport",
+                            "action": "Proceed to Red Channel with all documentation and medication in original containers"
+                        }
                     ]
                 },
                 "whyRestricted": "Classified as psychotropic substance under Japan's controlled substances framework. All benzodiazepines require customs declaration due to abuse potential and regulatory sensitivity, regardless of quantity.",
@@ -4766,14 +4790,38 @@
                 },
                 "riskLevel": "low",
                 "actionSteps": {
-                    "title": "Import Strategy for Omeprazole (Prilosec)",
+                    "title": "What You Need to Do: Omeprazole (Prilosec) Import Strategy",
                     "steps": [
-                        "Verify quantity - up to one month supply permitted without special certificates",
-                        "Prepare prescription documentation and original pharmacy bottles",
-                        "Apply for import certificate (Yunyu Kakunin-sho) if bringing more than one month supply",
-                        "Email yakkan@mhlw.go.jp for specific guidance 2+ weeks before travel",
-                        "Proceed through Green Channel for standard quantities with proper documentation",
-                        "Consider Japanese alternatives: Omepral (omeprazole), lansoprazole, esomeprazole, rabeprazole available by prescription"
+                        {
+                            "number": "1",
+                            "title": "Verify quantity limits",
+                            "action": "Confirm you have up to one month supply - no special certificates needed for standard quantities"
+                        },
+                        {
+                            "number": "2",
+                            "title": "Prepare documentation",
+                            "action": "Gather prescription documentation and keep medication in original pharmacy bottles"
+                        },
+                        {
+                            "number": "3",
+                            "title": "Apply for import certificate if needed",
+                            "action": "Submit Yunyu Kakunin-sho application if bringing more than one month supply"
+                        },
+                        {
+                            "number": "4",
+                            "title": "Contact authorities for guidance",
+                            "action": "Email yakkan@mhlw.go.jp for specific guidance 2+ weeks before travel"
+                        },
+                        {
+                            "number": "5",
+                            "title": "Use Green Channel at customs",
+                            "action": "Proceed through Green Channel for standard quantities with proper documentation"
+                        },
+                        {
+                            "number": "6",
+                            "title": "Consider Japanese alternatives",
+                            "action": "Research local options: Omepral (omeprazole), lansoprazole, esomeprazole, rabeprazole available by prescription"
+                        }
                     ]
                 },
                 "whyPermitted": "Omeprazole is not classified as a controlled substance under Japan's narcotic or psychotropic drug schedules. Regulated as standard prescription medication under Pharmaceutical Affairs Law.",
