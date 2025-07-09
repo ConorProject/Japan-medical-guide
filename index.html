@@ -2563,6 +2563,11 @@ function addPermitButtons() {
                     med.name === medName || med.genericName === genericName
                 );
                 
+                // Skip prohibited medications - they don't need calculators
+                if (medication && medication.status === 'prohibited') {
+                    return;
+                }
+                
                 // Add quantity calculator
                 const calculatorHTML = `
                     <div class="quantity-calculator" style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
