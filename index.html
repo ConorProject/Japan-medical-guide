@@ -1452,9 +1452,8 @@
         
         // Load medications when page loads
         document.addEventListener('DOMContentLoaded', loadMedications);
-EOF < /dev/null
 
-// --- MAIN SEARCH FUNCTION ---
+        // --- MAIN SEARCH FUNCTION ---
 function searchMedications() {
     const searchTerm = document.getElementById('medicationSearch').value.toLowerCase().trim();
     const resultsGrid = document.getElementById('searchResults');
@@ -1491,11 +1490,13 @@ function searchMedications() {
     displayRestrictionResults(results);
 }
 
-// --- CATEGORY BUTTON SEARCH ---
+// --- SPECIFIC MEDICATION SEARCH ---
 function searchSpecific(medicationName) {
     document.getElementById('medicationSearch').value = medicationName;
     searchMedications();
 }
+
+// --- CATEGORY BUTTON SEARCH ---
 
 // --- ENHANCED RESTRICTION RESULTS DISPLAY ---
 function displayRestrictionResults(results) {
