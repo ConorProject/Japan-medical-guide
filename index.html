@@ -1494,6 +1494,23 @@ function searchMedications() {
     displayRestrictionResults(results);
 }
 
+// --- SHOW ALL MEDICATIONS ---
+function showAllMedications() {
+    // Clear search input
+    document.getElementById('medicationSearch').value = '';
+    
+    // Get the relevant DOM elements
+    const categoryOverview = document.getElementById('categoryOverview');
+    const resultsGrid = document.getElementById('searchResults');
+    const noResults = document.getElementById('noResults');
+    
+    // Show category overview, hide results and no-results
+    categoryOverview.style.display = 'grid';
+    resultsGrid.innerHTML = '';
+    resultsGrid.style.display = 'none';
+    noResults.style.display = 'none';
+}
+
 // --- SPECIFIC MEDICATION SEARCH ---
 function searchSpecific(medicationName) {
     document.getElementById('medicationSearch').value = medicationName;
