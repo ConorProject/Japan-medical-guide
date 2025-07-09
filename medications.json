@@ -1,5 +1,4 @@
 [
-            // PROHIBITED
             {
                 "name": "Adderall",
                 "genericName": "amphetamine/dextroamphetamine mixed salts",
@@ -7,7 +6,6 @@
                 "status": "prohibited",
                 "category": "Stimulants (ADHD)",
                 
-                // Simple prohibited structure - no thresholds needed
                 "maxQuantity": "ZERO - Article 13 Stimulants Control Act: 'No person may import or export any Stimulants'",
                 "conditions": "Classified as 'Prohibited Article' - no medical exceptions under Japanese law",
                 "permitRequired": "No permits exist - distinguished from 'Restricted Articles' which allow permits",
@@ -17,7 +15,6 @@
                 "customsDeclaration": "ILLEGAL - will be confiscated",
                 "channelRequired": "Immediate detention if discovered",
                 
-                // Action steps for prohibited medication - focus on alternatives
                 "actionSteps": {
                     "title": "What You Need to Do: Adderall Alternatives Checklist", 
                     "steps": [
@@ -54,13 +51,11 @@
                     ]
                 },
                 
-                // Story elements - focused and factual for prohibited drug
                 "uniqueStory": "The ADHD medication that's completely banned while chemically similar Vyvanse can be imported with permits",
                 "culturalContext": "EXPERT ENHANCED: Post-WWII crisis - 550,000 chronic users + 2 million former users by 1954 from military amphetamine stockpiles. Stimulants Control Act (1951) born from this trauma.",
                 "commonMisconception": "That all ADHD medications are treated equally - Adderall is uniquely prohibited while others require permits",
                 "surpriseFactor": "Documented cases show 23-day detention periods and permanent deportation for a single bottle of pills",
                 
-                // Minimal commentary for prohibited substances
                 "commentary": {
                     "storyHook": "The one ADHD medication that guarantees arrest in Japan.",
                     "practicalTips": [
@@ -164,7 +159,6 @@
                 "status": "restricted",
                 "category": "Stimulant Raw Materials",
                 
-                // Stimulant precursor requiring advance permits
                 "maxQuantity": "Advance permit required for any amount >10% concentration",
                 "conditions": "Effectively prohibited without advance NCD permit, which is rarely granted for simple congestion. Most Sudafed products exceed 10% threshold.",
                 "notes": "EFFECTIVELY PROHIBITED: While technically restricted, NCD permits are rarely granted for simple congestion relief. Japan treats pseudoephedrine as methamphetamine precursor with serious criminal penalties.",
@@ -175,7 +169,6 @@
                 "customsDeclaration": "Required - Red Channel with permit documentation",
                 "channelRequired": "Red Channel - must declare stimulant raw material",
                 
-                // Action steps for restricted pseudoephedrine
                 "actionSteps": {
                     "title": "What You Need to Do: Sudafed Import Checklist",
                     "steps": [
@@ -214,7 +207,6 @@
                     ]
                 },
                 
-                // Story elements - the criminal connection
                 "uniqueStory": "The innocent cold medicine with a criminal past - treated as methamphetamine precursor despite medical use",
                 "culturalContext": "Japan's strict pseudoephedrine controls stem from post-WWII methamphetamine epidemic and international precursor control efforts",
                 "commonMisconception": "That common cold medicines are automatically safe to travel with - Sudafed requires same permits as controlled substances",
@@ -325,7 +317,6 @@
                 "status": "restricted",
                 "category": "ADHD Medication (Stimulants' Raw Materials)",
                 
-                // Critical correction: Import rules vs domestic prescription rules are separate
                 "maxQuantity": "Any quantity requires advance NCD permit (no age restrictions for import)",
                 "conditions": "NCD Stimulants' Raw Materials permit required for ANY amount. Age restrictions apply only to domestic prescriptions.",
                 "notes": "CORRECTED: Adults CAN legally import Vyvanse with proper NCD permits. The 'under 18' rule applies only to domestic prescriptions by Japanese doctors, not personal import by travelers.",
@@ -336,7 +327,6 @@
                 "customsDeclaration": "Required - Red Channel with NCD permit",
                 "channelRequired": "Red Channel",
                 
-                // Step-by-step action plan for travelers
                 "actionSteps": {
                     "title": "What You Need to Do: Vyvanse NCD Permit Process",
                     "steps": [
@@ -379,13 +369,11 @@
                     ]
                 },
                 
-                // Story elements - the age restriction misconception
                 "uniqueStory": "The ADHD medication with the biggest misconception - falsely believed to be banned for adults",
                 "culturalContext": "Japan's separation of import law vs domestic prescription law creates confusion - adults can import but Japanese doctors can only prescribe to children",
                 "commonMisconception": "That adults cannot import Vyvanse - this confuses domestic prescription rules with personal import regulations",
                 "surpriseFactor": "Classified as 'raw material' not 'stimulant' due to prodrug chemistry, allowing controlled import unlike direct amphetamines",
                 
-                // Commentary with practical insights
                 "commentary": {
                     "storyHook": "The stimulant that's legal to import but not to prescribe (for adults).",
                     "practicalTips": [
@@ -419,7 +407,6 @@
                     ]
                 },
                 
-                // Japan availability  
                 "japanAvailability": {
                     "prescriptionRequired": true,
                     "costRange": "Available through specialized ADHD clinics with certified psychiatrists",
@@ -429,7 +416,6 @@
                     "alternativeOptions": "Adults: Concerta (with special process), Strattera (easier), Intuniv available"
                 },
                 
-                // Import details
                 "importDetails": {
                     "customsDeclaration": "Required - Red Channel with NCD permit",
                     "channelRequired": "Red Channel with mandatory secondary inspection",
@@ -443,7 +429,6 @@
                     "permitProcess": "Email complete dossier to NCD regional office 3-4 weeks before travel"
                 },
                 
-                // Granular citations for specific facts
                 "citations": {
                     "classification": {
                         "value": "Stimulants' Raw Materials classification",
@@ -469,7 +454,6 @@
                     }
                 },
 
-                // Research quality
                 "researchQuality": {
                     "primarySources": [
                         "Expert Report on Lisdexamfetamine Personal Importation (corrects age misconceptions)",
@@ -534,7 +518,6 @@
                 "status": "restricted",
                 "category": "ADHD Medication (Psychotropic Drug)",
                 
-                // Updated based on comprehensive expert report
                 "maxQuantity": "≤2,160mg (2.16g) no permit needed, >2,160mg requires NCD import certificate",
                 "conditions": "Must declare at Red Channel regardless of quantity. Psychotropic drug classification under Narcotics and Psychotropics Control Law.",
                 "notes": "CORRECTED: Generous 2,160mg threshold allows 60-day supply for 36mg users. Unlike prohibited amphetamines, methylphenidate has legal import pathway.",
@@ -545,7 +528,6 @@
                 "customsDeclaration": "Required - Red Channel regardless of quantity",
                 "channelRequired": "Red Channel",
                 
-                // Comprehensive action steps based on expert analysis
                 "actionSteps": {
                     "title": "What You Need to Do: Concerta Import Process",
                     "steps": [
@@ -591,13 +573,11 @@
                     ]
                 },
                 
-                // Story elements - historical context and legal framework
                 "uniqueStory": "The ADHD medication that survived Japan's stimulant crusade - legal where Adderall is banned due to crucial pharmacological distinctions",
                 "culturalContext": "Japan's post-WWII methamphetamine epidemics (1946-1956, 1970s) created zero-tolerance for amphetamines but methylphenidate classified separately as manageable psychotropic",
                 "commonMisconception": "That all ADHD stimulants face the same restrictions - methylphenidate vs amphetamine classification creates vastly different legal pathways",
                 "surpriseFactor": "2,160mg threshold allows substantial supply (60+ days for many users) while Adderall carriers face immediate arrest",
                 
-                // Commentary based on expert report insights
                 "commentary": {
                     "storyHook": "The ADHD medication that navigated Japan's stimulant maze through careful pharmacological classification.",
                     "practicalTips": [
@@ -633,7 +613,6 @@
                     ]
                 },
                 
-                // Japan availability with Concerta Card system details
                 "japanAvailability": {
                     "prescriptionRequired": true,
                     "costRange": "Covered under National Health Insurance (70% coverage) with certified psychiatrist",
@@ -643,7 +622,6 @@
                     "alternativeOptions": "Strattera (atomoxetine) and Intuniv (guanfacine) available without controlled substance restrictions"
                 },
                 
-                // Import details with regional office system
                 "importDetails": {
                     "customsDeclaration": "Required - Red Channel for ALL quantities",
                     "channelRequired": "Red Channel with medical documentation",
@@ -657,7 +635,6 @@
                     "permitProcess": "Email complete application to correct Regional NCD office 2-4 weeks before travel (see expert report contact table)"
                 },
                 
-                // Granular citations for specific facts
                 "citations": {
                     "threshold": {
                         "value": "≤2,160mg",
@@ -690,7 +667,6 @@
                     }
                 },
 
-                // Research quality based on expert report
                 "researchQuality": {
                     "primarySources": [
                         "Narcotics and Psychotropics Control Law official classification",
@@ -757,7 +733,6 @@
                 "status": "restricted",
                 "category": "Benzodiazepine (Third Category Psychotropic Drug)",
                 
-                // Corrected threshold system - NOT zero tolerance
                 "maxQuantity": "≤180mg total no permit needed, >180mg requires advance permit",
                 "conditions": "Must declare at Red Channel regardless of quantity.",
                 "notes": "Clonazepam has a 180mg threshold, more generous than Xanax's 72mg limit. Contrary to some guides, it follows standard psychotropic procedures.",
@@ -768,7 +743,6 @@
                 "customsDeclaration": "Required - Red Channel with documentation",
                 "channelRequired": "Red Channel",
                 
-                // Step-by-step action plan for travelers
                 "actionSteps": {
                     "title": "What You Need to Do: Clonazepam Travel Checklist",
                     "steps": [
@@ -805,13 +779,11 @@
                     ]
                 },
                 
-                // Story elements - correcting the misconception
                 "uniqueStory": "The anxiety medication that's misunderstood - labeled 'zero tolerance' but actually has a 180mg threshold",
                 "culturalContext": "Japan's complex psychotropic classification creates confusion where clonazepam is treated more restrictively in guides than in actual regulations",
                 "commonMisconception": "That clonazepam has 'zero tolerance' when it actually follows standard psychotropic procedures with a 180mg threshold",
                 "surpriseFactor": "The 180mg threshold is more generous than Xanax's 72mg limit, despite widespread misinformation about 'no exemptions'",
                 
-                // Commentary with corrected information
                 "commentary": {
                     "storyHook": "The benzodiazepine that got a bad reputation it didn't deserve.",
                     "practicalTips": [
@@ -845,7 +817,6 @@
                     ]
                 },
                 
-                // Japan availability
                 "japanAvailability": {
                     "prescriptionRequired": true,
                     "costRange": "¥3,000-8,000 per month depending on dosage",
@@ -855,7 +826,6 @@
                     "alternativeOptions": "Multiple benzodiazepines available; switching to Japanese prescription often easier than import"
                 },
                 
-                // Import details
                 "importDetails": {
                     "customsDeclaration": "Required - Red Channel",
                     "channelRequired": "Red Channel with psychotropic documentation",
@@ -869,7 +839,6 @@
                     "permitProcess": "Email yakkan@mhlw.go.jp or apply through Regional Health Bureau AT LEAST 2 weeks before travel"
                 },
                 
-                // Granular citations for specific facts
                 "citations": {
                     "threshold": {
                         "value": "≤180mg",
@@ -902,7 +871,6 @@
                     }
                 },
                 
-                // Research quality
                 "researchQuality": {
                     "primarySources": [
                         "MHLW Third Category Psychotropic Drug regulations",
@@ -991,7 +959,6 @@
                 "status": "restricted",
                 "category": "Emergency Medical Device (Combination Drug/Device)",
                 
-                // Dual classification: prescription drug + medical device under PMD Act
                 "maxQuantity": "Up to 2 auto-injectors without permit ('two-pen rule'), 3+ requires Yunyu Kakunin-sho",
                 "conditions": "Must declare at Red Channel regardless of quantity. Governed by PMD Act, not narcotics/stimulants laws.",
                 "notes": "CORRECTED: Must declare 'YES' for restricted items and use Red Channel. EpiPen available in Japan as エピペン with prescription.",
@@ -1002,7 +969,6 @@
                 "customsDeclaration": "Required - Red Channel with medical documentation",
                 "channelRequired": "Red Channel",
                 
-                // Step-by-step action plan based on expert analysis
                 "actionSteps": {
                     "title": "What You Need to Do: EpiPen Import Process",
                     "steps": [
@@ -1045,13 +1011,11 @@
                     ]
                 },
                 
-                // Story elements - the dual classification complexity
                 "uniqueStory": "The life-saving device with hidden complexity - appears simple but requires Red Channel declaration",
                 "culturalContext": "Japan's dual classification system treats EpiPens as both prescription drug AND medical device under PMD Act, not controlled substances laws",
                 "commonMisconception": "That EpiPens can use Green Channel like standard medications - they require Red Channel declaration regardless of quantity",
                 "surpriseFactor": "Despite being life-saving emergency devices, EpiPens require the same declaration procedures as restricted medications",
                 
-                // Commentary based on expert analysis
                 "commentary": {
                     "storyHook": "The emergency device that requires declaration but not fear - Red Channel doesn't mean rejection.",
                     "practicalTips": [
@@ -1086,7 +1050,6 @@
                     ]
                 },
                 
-                // Japan availability based on expert report
                 "japanAvailability": {
                     "prescriptionRequired": true,
                     "costRange": "Available through specialized allergy clinics and hospitals",
@@ -1096,7 +1059,6 @@
                     "alternativeOptions": "English-speaking allergy specialists available in Tokyo, Osaka, other major cities"
                 },
                 
-                // Import details corrected per expert analysis
                 "importDetails": {
                     "customsDeclaration": "Required - Red Channel with medical documentation",
                     "channelRequired": "Red Channel for ALL quantities",
@@ -1110,7 +1072,6 @@
                     "permitProcess": "Apply online via impconf.mhlw.go.jp 2-4 weeks before travel to correct Regional Health Bureau"
                 },
                 
-                // Granular citations for specific facts
                 "citations": {
                     "threshold": {
                         "value": "≤2 auto-injectors",
@@ -1143,7 +1104,6 @@
                     }
                 },
                 
-                // Research quality based on expert report
                 "researchQuality": {
                     "primarySources": [
                         "PMD Act regulations governing combination drug/device products",
@@ -1203,7 +1163,6 @@
                 }
             },
 
-            // PERMITTED
             {
                 "name": "Birth Control Pills",
                 "genericName": "various oral contraceptives (estrogen/progestin combinations)",
@@ -1234,7 +1193,6 @@
                 ],
                 "channelRequired": "Green Channel",
 
-                // Enhanced story elements with compelling narrative
                 "uniqueStory": "The contraceptive access paradox: easier to import than to obtain locally, with limited availability despite legal status",
                 "culturalContext": "Japan's contraceptive pill approval followed a unique regulatory timeline, with legalization occurring in 1999. The country's approach emphasizes traditional contraceptive methods and careful evaluation of new pharmaceutical options",
                 "commonMisconception": "That birth control pills are widely available and affordable in Japan. Reality: only 0.9-3% usage rate, expensive (¥2,000-3,500/month), no insurance coverage, monthly doctor visits required",
@@ -1380,7 +1338,6 @@
                 "category": "Benzodiazepines (Anxiety)",
                 "mhlwPsychotropicList": true,
                 
-                // Psychotropic medication - Red Channel required regardless of quantity
                 "maxQuantity": "≤72mg no permit needed, >72mg requires advance permit",
                 "conditions": "Must declare at Red Channel regardless of quantity (psychotropic substance)",
                 
@@ -1392,7 +1349,6 @@
                 "searchTerms": ["xanax", "alprazolam", "anxiety", "panic", "benzodiazepine", "benzo"],
                 "channelRequired": "Red Channel",
                 
-                // Step-by-step action plan for travelers
                 "actionSteps": {
                     "title": "What You Need to Do: Xanax Travel Checklist",
                     "steps": [
@@ -1429,7 +1385,6 @@
                     ]
                 },
                 
-                // Story elements - focused on the threshold paradox
                 "uniqueStory": "The anxiety medication with the strictest threshold - easier to exceed the 72mg limit than other benzos",
                 "culturalContext": "Japan's psychotropic regulations set different quantity limits for each specific medication, not blanket rules",
                 "commonMisconception": "That all benzodiazepines have the same import limits - alprazolam has a much lower threshold than clonazepam",
@@ -1513,7 +1468,6 @@
                 "status": "permitted",
                 "category": "Respiratory Medicine (Medical Device)",
                 
-                // Medical device + medication combination
                 "maxQuantity": "1 month supply + 1 inhaler device per person",
                 "conditions": "Keep in original packaging with prescription. Medical device regulations apply.",
                 "permitRequired": "Not required for 1 month supply + 1 device",
@@ -1523,7 +1477,6 @@
                 "customsDeclaration": "Not required for personal use quantities",
                 "channelRequired": "Green Channel",
                 
-                // Story elements - device complexity with medication simplicity
                 "uniqueStory": "The life-saving device that's easier to import than you'd expect, but beware the ingredient trap",
                 "culturalContext": "Japan recognizes inhalers as essential emergency medication, with straightforward import rules for standard bronchodilators",
                 "commonMisconception": "That all inhalers are treated as medical devices requiring special permits - albuterol inhalers follow standard prescription rules",
@@ -1613,7 +1566,6 @@
                 "status": "permitted",
                 "category": "Antidepressants (SSRI)",
                 
-                // Standard prescription drug - not controlled psychotropic
                 "maxQuantity": "Up to 30-day supply without permits",
                 "conditions": "Keep in original packaging with prescription",
                 "permitRequired": "Not required for ≤30 days. Yakkan Shoumei for longer supplies",
@@ -1623,7 +1575,6 @@
                 "customsDeclaration": "Not required",
                 "channelRequired": "Green Channel",
                 
-                // Story elements - regulatory distinction surprise
                 "uniqueStory": "The psychotropic medication that's not a 'psychotropic' - SSRIs escape Japan's controlled substance net",
                 "culturalContext": "Japan distinguishes between medical psychotropics and regulatory 'Psychotropics' - sertraline approved since 2006 with 20% antidepressant market share",
                 "commonMisconception": "That all medications affecting mental health require Red Channel declaration - SSRIs follow standard prescription drug rules",
@@ -1713,7 +1664,6 @@
                 "status": "restricted",
                 "category": "Antidepressants (SSRI - Not Approved in Japan)",
                 
-                // Research-based comprehensive findings
                 "maxQuantity": "Up to 1-month supply without permits, longer requires Yunyu Kakunin-sho",
                 "conditions": "Must apply for import permit for extended supplies. Keep original packaging with prescription.",
                 "notes": "Not approved for prescription in Japan but legally importable for personal use. Import permits typically approved within 1-2 days despite official warnings of longer processing.",
@@ -1724,7 +1674,6 @@
                 "customsDeclaration": "Standard procedure for short stays, permit documentation for longer",
                 "channelRequired": "Green Channel for short stays, declare permits for longer",
                 
-                // Comprehensive action steps following established pattern
                 "actionSteps": {
                     "title": "What You Need to Do: Prozac Travel Checklist",
                     "steps": [
@@ -1763,13 +1712,11 @@
                     ]
                 },
                 
-                // Story elements based on comprehensive research findings
                 "uniqueStory": "The antidepressant that Japan said 'no' to - but you can still legally bring for personal use",
                 "culturalContext": "Japan's conservative psychiatric medication approval process requires proof of superiority over existing treatments, creating barriers for globally-accepted antidepressants",
                 "commonMisconception": "That 'not approved' means 'not importable' - Prozac has clear legal import pathways despite domestic unavailability",
                 "surpriseFactor": "Import permits approved in 1-2 days despite official warnings of weeks, showing bureaucratic efficiency for personal medical needs",
                 
-                // Comprehensive commentary from all research phases
                 "commentary": {
                     "storyHook": "The medication that reveals Japan's cautious approach to psychiatric treatment - available worldwide but requiring import permits in Japan.",
                     "practicalTips": [
@@ -1803,7 +1750,6 @@
                     ]
                 },
                 
-                // Japan availability based on research
                 "japanAvailability": {
                     "prescriptionRequired": false,
                     "costRange": "Not available for prescription in Japan",
@@ -1813,7 +1759,6 @@
                     "alternativeOptions": "Zoloft (sertraline), Paxil (paroxetine), Lexapro (escitalopram) - all require psychiatric consultation"
                 },
                 
-                // Import details based on comprehensive research
                 "importDetails": {
                     "customsDeclaration": "Standard for short stays, permit documentation for extended stays",
                     "channelRequired": "Green Channel for ≤30 days, declare permits for longer",
@@ -1827,7 +1772,6 @@
                     "permitProcess": "Email yakkan@mhlw.go.jp or apply through online portal with medical documentation"
                 },
                 
-                // Research quality documentation
                 "researchQuality": {
                     "lastUpdated": "2025-01-27",
                     "confidenceLevel": "High - Comprehensive research across official sources and real-world experiences",
@@ -1866,7 +1810,6 @@
                 "status": "permitted",
                 "category": "Antibiotics (Beta-lactam)",
                 
-                // Standard prescription drug despite domestic prescription restrictions
                 "maxQuantity": "Up to 1 month supply without permits",
                 "conditions": "Keep in original packaging with prescription and doctor's letter",
                 "permitRequired": "Not required for ≤1 month supply. Yunyu Kakunin-sho for longer supplies",
@@ -1876,7 +1819,6 @@
                 "customsDeclaration": "Not required",
                 "channelRequired": "Green Channel",
                 
-                // Action steps for permitted antibiotic
                 "actionSteps": {
                     "title": "What You Need to Do: Amoxicillin Travel Checklist",
                     "steps": [
@@ -1913,7 +1855,6 @@
                     ]
                 },
                 
-                // Story elements - domestic vs import paradox
                 "uniqueStory": "The antibiotic that's easier to import than to obtain locally - strict Japanese prescriptions vs straightforward traveler rules",
                 "culturalContext": "Japan's antimicrobial stewardship measures make antibiotics prescription-only domestically, but don't elevate them to controlled substance status for imports",
                 "commonMisconception": "That Japan's strict domestic prescription requirements mean antibiotics are controlled substances for import - they follow standard prescription drug rules",
@@ -2004,7 +1945,6 @@
                 "status": "permitted",
                 "category": "Pain Relief (Uncontrolled Opioid-like)",
                 
-                // Research-corrected comprehensive findings
                 "maxQuantity": "Up to 1-month supply without permits (standard prescription drug limit)",
                 "conditions": "Keep in original packaging with prescription documentation.",
                 "notes": "Classified as 'General medicines (unregulated)' in Japan despite Schedule IV status in US. Completely uncontrolled - no permits needed.",
@@ -2015,7 +1955,6 @@
                 "customsDeclaration": "Not required - standard permitted medication",
                 "channelRequired": "Green Channel",
                 
-                // Comprehensive action steps following established pattern
                 "actionSteps": {
                     "title": "What You Need to Do: Tramadol Travel Checklist",
                     "steps": [
@@ -2053,13 +1992,11 @@
                     ]
                 },
                 
-                // Story elements based on comprehensive research findings
                 "uniqueStory": "The international regulatory paradox - Schedule IV controlled substance in America, unregulated general medicine in Japan",
                 "culturalContext": "Japan's unique pain medication regulation exempts tramadol from strict opioid controls, creating a regulatory paradox with Western countries",
                 "commonMisconception": "That all opioid-like medications face strict controls in Japan - tramadol uniquely escapes Japan's otherwise comprehensive controlled substance framework",
                 "surpriseFactor": "A Schedule IV controlled substance in the US requires no permits or special procedures in Japan - complete regulatory reversal",
                 
-                // Comprehensive commentary from all research phases
                 "commentary": {
                     "storyHook": "The medication that reveals international regulatory differences - controlled in America, unregulated in Japan.",
                     "practicalTips": [
@@ -2093,7 +2030,6 @@
                     ]
                 },
                 
-                // Japan availability based on research
                 "japanAvailability": {
                     "prescriptionRequired": true,
                     "costRange": "Available but pricing varies - typically several thousand yen monthly",
@@ -2103,7 +2039,6 @@
                     "alternativeOptions": "NSAIDs widely available OTC, other pain management approaches emphasized"
                 },
                 
-                // Import details based on comprehensive research
                 "importDetails": {
                     "customsDeclaration": "Not required - standard permitted medication procedures",
                     "channelRequired": "Green Channel for standard quantities",
@@ -2116,7 +2051,6 @@
                     "permitProcess": "No permits required - one of the few opioid-like medications exempt from Japan's controlled substance framework"
                 },
                 
-                // Research quality documentation
                 "researchQuality": {
                     "lastUpdated": "2025-01-27",
                     "confidenceLevel": "Very High - Official classification confirmed, real-world validation extensive, regulatory paradox well-documented",
@@ -2155,7 +2089,6 @@
                 "status": "permitted",
                 "category": "Pain Relief (OTC Analgesic)",
                 
-                // Standard OTC with important formulation distinctions
                 "maxQuantity": "Up to 2-month supply without permits (standard OTC limit)",
                 "conditions": "Plain acetaminophen permitted. Combination products with pseudoephedrine prohibited.",
                 "notes": "Critical distinction: Plain Tylenol is permitted, but Tylenol Cold/Flu/Sinus products are prohibited due to stimulant content.",
@@ -2166,7 +2099,6 @@
                 "customsDeclaration": "Not required for standard quantities",
                 "channelRequired": "Green Channel",
                 
-                // Action steps emphasizing formulation importance
                 "actionSteps": {
                     "title": "What You Need to Do: Tylenol Import Checklist",
                     "steps": [
@@ -2197,7 +2129,6 @@
                     ]
                 },
                 
-                // Story elements emphasizing the formulation trap
                 "uniqueStory": "The pain reliever with a dangerous doppelganger - plain Tylenol sails through customs while Tylenol Cold triggers arrests",
                 "culturalContext": "Japan's stimulant controls create a regulatory minefield where familiar brand names can be either permitted or prohibited depending on formulation",
                 "commonMisconception": "That all Tylenol products are the same - combination cold/flu formulas contain prohibited stimulants",
@@ -2236,7 +2167,6 @@
                     ]
                 },
                 
-                // Japan availability
                 "japanAvailability": {
                     "prescriptionRequired": false,
                     "costRange": "¥300-800 for standard bottle",
@@ -2246,7 +2176,6 @@
                     "alternativeOptions": "Multiple Japanese OTC pain relievers available"
                 },
                 
-                // Import details
                 "importDetails": {
                     "customsDeclaration": "Not required for personal use quantities",
                     "channelRequired": "Green Channel for standard imports",
@@ -2259,7 +2188,6 @@
                     "permitProcess": "Yunyu Kakunin-sho only needed for >2 month supply - apply via yakkan@mhlw.go.jp"
                 },
                 
-                // Granular citations for specific facts
                 "citations": {
                     "threshold": {
                         "value": "≤2 month supply",
@@ -2287,7 +2215,6 @@
                     }
                 },
                 
-                // Research quality documentation
                 "researchQuality": {
                     "lastUpdated": "2025-07-02",
                     "confidenceLevel": "High - Clear regulatory distinction between plain and combination products",
@@ -2326,7 +2253,6 @@
                 "status": "permitted",
                 "category": "Pain Relief (NSAID)",
                 
-                // Standard OTC with formulation distinction paralleling Tylenol
                 "maxQuantity": "Up to 2-month supply without permits (standard OTC limit)",
                 "conditions": "Plain ibuprofen permitted. Combination products with pseudoephedrine prohibited.",
                 "notes": "Critical distinction: Plain Advil is permitted, but Advil Cold & Sinus is prohibited due to stimulant content.",
@@ -2337,7 +2263,6 @@
                 "customsDeclaration": "Not required for standard quantities",
                 "channelRequired": "Green Channel",
                 
-                // Action steps mirroring Tylenol structure
                 "actionSteps": {
                     "title": "What You Need to Do: Advil Import Checklist",
                     "steps": [
@@ -2368,7 +2293,6 @@
                     ]
                 },
                 
-                // Story elements emphasizing the parallel formulation trap
                 "uniqueStory": "The anti-inflammatory with a criminal twin - plain Advil passes customs while Advil Cold triggers enforcement actions",
                 "culturalContext": "Japan's pseudoephedrine restrictions create identical regulatory patterns across pain relief brands - base medications permitted, combination products prohibited",
                 "commonMisconception": "That NSAIDs are automatically safe for travel - combination formulas turn permitted medications into contraband",
@@ -2407,7 +2331,6 @@
                     ]
                 },
                 
-                // Japan availability
                 "japanAvailability": {
                     "prescriptionRequired": false,
                     "costRange": "¥400-1,200 for standard bottle",
@@ -2417,7 +2340,6 @@
                     "alternativeOptions": "Multiple Japanese NSAID options available"
                 },
                 
-                // Import details
                 "importDetails": {
                     "customsDeclaration": "Not required for personal use quantities",
                     "channelRequired": "Green Channel for standard imports",
@@ -2430,7 +2352,6 @@
                     "permitProcess": "Yunyu Kakunin-sho only needed for >2 month supply - apply via yakkan@mhlw.go.jp"
                 },
                 
-                // Research quality documentation
                 "researchQuality": {
                     "lastUpdated": "2025-07-02",
                     "confidenceLevel": "High - Clear embassy guidance distinguishing plain vs. combination products",
@@ -2469,7 +2390,6 @@
                 "status": "permitted",
                 "category": "Injectable Diabetes Medication",
                 
-                // Complex regulatory status - permitted with special injectable procedures
                 "maxQuantity": "≤1 month supply without permits. >1 month requires Yunyu Kakunin-sho",
                 "conditions": "Pre-filled syringes/self-injection kits only. Must be in original packaging with prescription documentation.",
                 "notes": "Life-essential medication with flexible import procedures. Insulin pumps allowed without permits. Available in Japan with prescription.",
@@ -2480,7 +2400,6 @@
                 "customsDeclaration": "Green Channel for standard quantities",
                 "channelRequired": "Green Channel (≤1 month supply)",
                 
-                // Comprehensive action steps for diabetic travelers
                 "actionSteps": {
                     "title": "What You Need to Do: Insulin Travel Checklist",
                     "steps": [
@@ -2524,13 +2443,11 @@
                     ]
                 },
                 
-                // Story elements reflecting the life-essential nature
                 "uniqueStory": "The life-essential medication that Japan treats with pragmatic flexibility - diabetes doesn't wait for bureaucracy",
                 "culturalContext": "Japan's recognition of diabetes as a serious medical condition creates flexible import procedures for insulin despite strict medication controls",
                 "commonMisconception": "That insulin requires complex permits when standard quantities are actually straightforward to import",
                 "surpriseFactor": "Insulin pumps and injection devices are explicitly allowed without permits - Japan prioritizes diabetic health management",
                 
-                // Comprehensive commentary based on research
                 "commentary": {
                     "storyHook": "The injectable medication that proves Japan's medication rules have heart - diabetes management transcends bureaucracy.",
                     "practicalTips": [
@@ -2566,7 +2483,6 @@
                     ]
                 },
                 
-                // Japan availability comprehensive
                 "japanAvailability": {
                     "prescriptionRequired": true,
                     "costRange": "¥300-500 per insulin pen with prescription (with 70% insurance coverage)",
@@ -2578,7 +2494,6 @@
                     "specialCoverage": "Children with type 1 diabetes receive special coverage up to age 20"
                 },
                 
-                // Import details specific to injectables
                 "importDetails": {
                     "customsDeclaration": "Not required for ≤1 month supply",
                     "channelRequired": "Green Channel for standard quantities",
@@ -2592,7 +2507,6 @@
                     "permitProcess": "Email yakkan@mhlw.go.jp at least 2 weeks before travel for extended supplies"
                 },
                 
-                // Granular citations for specific facts
                 "citations": {
                     "device_permissions": {
                         "value": "Insulin pumps and syringes allowed without permits",
@@ -2631,7 +2545,6 @@
                     }
                 },
                 
-                // Research quality with focus on regulatory complexity
                 "researchQuality": {
                     "primarySources": [
                         "MHLW injectable medication import regulations",
@@ -2716,7 +2629,6 @@
                 "status": "permitted",
                 "category": "Non-Stimulant ADHD Medication",
                 
-                // Critical distinction from prohibited stimulant ADHD medications
                 "maxQuantity": "≤1 month supply without permits. >1 month requires Yunyu Kakunin-sho",
                 "conditions": "Non-stimulant ADHD medication. Must be in original packaging with prescription documentation.",
                 "notes": "Legal alternative to prohibited stimulant ADHD medications like Adderall. Available in Japan with prescription.",
@@ -2727,7 +2639,6 @@
                 "customsDeclaration": "Green Channel for standard quantities",
                 "channelRequired": "Green Channel (≤1 month supply)",
                 
-                // Comprehensive action steps emphasizing distinction from stimulants
                 "actionSteps": {
                     "title": "What You Need to Do: Strattera Import Checklist",
                     "steps": [
@@ -2765,13 +2676,11 @@
                     ]
                 },
                 
-                // Story elements emphasizing the legal alternative angle
                 "uniqueStory": "The ADHD medication that breaks Japan's stimulant barrier - Strattera succeeds where Adderall fails",
                 "culturalContext": "Japan's strict stimulant controls create demand for non-stimulant ADHD alternatives, making Strattera a valuable legal option",
                 "commonMisconception": "That all ADHD medications are prohibited in Japan when non-stimulant options like Strattera are actually permitted",
                 "surpriseFactor": "While Adderall is completely banned, Strattera is not even classified as a controlled substance in Japan",
                 
-                // Comprehensive commentary based on research
                 "commentary": {
                     "storyHook": "The ADHD medication that opens doors when stimulants close them - Strattera navigates Japan's regulatory maze with ease.",
                     "practicalTips": [
@@ -2805,7 +2714,6 @@
                     ]
                 },
                 
-                // Japan availability comprehensive
                 "japanAvailability": {
                     "prescriptionRequired": true,
                     "costRange": "Covered under Japanese health insurance with ADHD diagnosis",
@@ -2815,7 +2723,6 @@
                     "alternativeOptions": "Guanfacine (Intuniv) also available as non-stimulant alternative"
                 },
                 
-                // Import details specific to non-stimulant status
                 "importDetails": {
                     "customsDeclaration": "Not required for ≤1 month supply",
                     "channelRequired": "Green Channel for standard quantities",
@@ -2829,7 +2736,6 @@
                     "permitProcess": "Email yakkan@mhlw.go.jp at least 3 weeks before travel for extended supplies"
                 },
                 
-                // Research quality with emphasis on legal distinction
                 "researchQuality": {
                     "primarySources": [
                         "MHLW non-stimulant medication import regulations",
@@ -2912,7 +2818,6 @@
                 "status": "restricted",
                 "category": "Injectable Hormone / TRT Medication",
                 
-                // Complex regulatory status - medical necessity vs performance enhancement critical
                 "maxQuantity": "≤1 month supply with extensive documentation. >1 month requires Yunyu Kakunin-sho",
                 "conditions": "Injectable hormone requiring medical necessity documentation. Syringes/vials need special permits. Must distinguish TRT from performance enhancement.",
                 "notes": "Complex regulatory status due to anabolic potential. Medical TRT permitted with extensive documentation. Available in Japan through specialized clinics.",
@@ -2923,7 +2828,6 @@
                 "customsDeclaration": "Red Channel required - injectable hormone with medical documentation",
                 "channelRequired": "Red Channel (injectable hormone medication)",
                 
-                // Comprehensive action steps emphasizing medical necessity and documentation
                 "actionSteps": {
                     "title": "What You Need to Do: Testosterone TRT Import Checklist",
                     "steps": [
@@ -2968,13 +2872,11 @@
                     ]
                 },
                 
-                // Story elements emphasizing medical vs performance enhancement distinction
                 "uniqueStory": "The hormone where medical necessity meets anabolic suspicion - TRT navigates Japan's performance enhancement fears",
                 "culturalContext": "Japan's strict anabolic steroid controls create intense scrutiny for legitimate medical testosterone use",
                 "commonMisconception": "That all testosterone is treated as anabolic steroids when legitimate TRT has documented medical pathways",
                 "surpriseFactor": "Medical testosterone faces more scrutiny than many controlled substances due to performance enhancement concerns",
                 
-                // Comprehensive commentary based on research
                 "commentary": {
                     "storyHook": "The male hormone caught between medicine and muscle - testosterone's legitimate medical use faces anabolic assumptions.",
                     "practicalTips": [
@@ -3008,7 +2910,6 @@
                     ]
                 },
                 
-                // Japan availability through specialized clinics
                 "japanAvailability": {
                     "prescriptionRequired": true,
                     "costRange": "¥18,000-35,000 per dose (specialized clinics, not insurance covered)",
@@ -3018,7 +2919,6 @@
                     "alternativeOptions": "Natural hormone therapy, specialized endocrinology clinics, men's health centers"
                 },
                 
-                // Import details specific to injectable hormone status
                 "importDetails": {
                     "customsDeclaration": "Required - declare as injectable hormone medication",
                     "channelRequired": "Red Channel (injectable hormone with medical documentation)",
@@ -3033,7 +2933,6 @@
                     "permitProcess": "Email yakkan@mhlw.go.jp at least 3 weeks before travel with comprehensive medical justification"
                 },
                 
-                // Research quality emphasizing regulatory complexity
                 "researchQuality": {
                     "primarySources": [
                         "MHLW injectable hormone import regulations",
@@ -3115,7 +3014,6 @@
                 "status": "prohibited",
                 "category": "Stimulant ADHD Medication",
                 
-                // Absolutely prohibited under Stimulant Control Act
                 "maxQuantity": "ZERO - Completely prohibited under all circumstances",
                 "conditions": "Classified as stimulant under Stimulant Control Act. No exceptions for medical use or prescriptions.",
                 "notes": "EXPERT UPDATED: Article 13 Stimulants Control Act states 'No person may import or export any Stimulants' - zero exceptions. Post-war epidemic (550,000 users by 1954) drives absolute ban.",
@@ -3126,7 +3024,6 @@
                 "customsDeclaration": "N/A - Prohibited substance",
                 "channelRequired": "N/A - Cannot legally enter Japan",
                 
-                // Critical action steps emphasizing complete prohibition
                 "actionSteps": {
                     "title": "What You Need to Do: Dexedrine Prohibition Response",
                     "steps": [
@@ -3167,13 +3064,11 @@
                     ]
                 },
                 
-                // Story elements emphasizing historical context and severity
                 "uniqueStory": "The ADHD medication trapped by history - Dexedrine faces Japan's post-war stimulant trauma",
                 "culturalContext": "EXPERT CORRECTED: Post-WWII epidemic peaked at 550,000 chronic + 2 million former users by 1954. Military stockpiles flooded civilian market after 1945, creating national trauma driving current zero-tolerance.",
                 "commonMisconception": "That medical prescriptions or small quantities might be permitted when Japan makes absolutely no exceptions",
                 "surpriseFactor": "A legitimate ADHD medication faces the same penalties as illegal street drugs due to historical amphetamine trauma",
                 
-                // Comprehensive commentary based on research
                 "commentary": {
                     "storyHook": "The stimulant that triggers Japan's deepest drug trauma - Dexedrine awakens post-war methamphetamine nightmares.",
                     "practicalTips": [
@@ -3209,7 +3104,6 @@
                     ]
                 },
                 
-                // Japan availability - only alternatives
                 "japanAvailability": {
                     "prescriptionRequired": "N/A - Dexedrine completely prohibited",
                     "costRange": "N/A - Not available under any circumstances",
@@ -3219,7 +3113,6 @@
                     "alternativeOptions": "Concerta (methylphenidate), Strattera (atomoxetine), Intuniv (guanfacine) for ADHD treatment"
                 },
                 
-                // Import details emphasizing complete prohibition
                 "importDetails": {
                     "customsDeclaration": "N/A - Cannot be legally declared",
                     "channelRequired": "N/A - Prohibited substance",
@@ -3232,7 +3125,6 @@
                     "permitProcess": "No permits available - substance is banned under Stimulant Control Act"
                 },
                 
-                // Research quality emphasizing prohibition certainty
                 "researchQuality": {
                     "primarySources": [
                         "Japan Stimulant Control Act official text",
@@ -3321,7 +3213,6 @@
                 "status": "prohibited", 
                 "category": "Stimulant Weight Loss Medication",
                 
-                // Prohibited under stimulant control due to amphetamine-like structure
                 "maxQuantity": "ZERO - Prohibited as stimulant appetite suppressant",
                 "conditions": "Stimulant appetite suppressant prohibited under Japan's stimulant control framework. No exceptions for weight loss treatment.",
                 "notes": "Amphetamine-like stimulant weight loss medication prohibited under Japan's broad stimulant controls. Japan offers alternative weight loss treatments through prescription.",
@@ -3332,7 +3223,6 @@
                 "customsDeclaration": "N/A - Prohibited substance",
                 "channelRequired": "N/A - Cannot legally enter Japan",
                 
-                // Critical action steps emphasizing prohibition and alternatives
                 "actionSteps": {
                     "title": "What You Need to Do: Phentermine Prohibition Response",
                     "steps": [
@@ -3373,13 +3263,11 @@
                     ]
                 },
                 
-                // Story elements emphasizing appetite suppressant vs medical distinction
                 "uniqueStory": "The diet pill caught in stimulant crossfire - Phentermine's weight loss purpose can't escape Japan's amphetamine fears",
                 "culturalContext": "Japan's post-war stimulant trauma extends to all amphetamine-like substances, regardless of medical purpose or addiction potential",
                 "commonMisconception": "That appetite suppressants for weight loss are treated differently from recreational stimulants",
                 "surpriseFactor": "A legal weight loss medication faces the same penalties as illegal amphetamines due to chemical similarity",
                 
-                // Comprehensive commentary based on research
                 "commentary": {
                     "storyHook": "The appetite suppressant that triggers Japan's stimulant sensors - Phentermine's diet purpose can't overcome amphetamine ancestry.",
                     "practicalTips": [
@@ -3413,7 +3301,6 @@
                     ]
                 },
                 
-                // Japan availability - only alternatives
                 "japanAvailability": {
                     "prescriptionRequired": "N/A - Phentermine completely prohibited",
                     "costRange": "N/A - Not available under any circumstances",
@@ -3423,7 +3310,6 @@
                     "alternativeOptions": "Semaglutide (prescription GLP-1, 2023), Orlistat (OTC lipase inhibitor, 2023), Mazindol (limited prescription), Bofutsushosan (Kampo traditional medicine)"
                 },
                 
-                // Import details emphasizing complete prohibition
                 "importDetails": {
                     "customsDeclaration": "N/A - Cannot be legally declared",
                     "channelRequired": "N/A - Prohibited substance",
@@ -3436,7 +3322,6 @@
                     "permitProcess": "No permits available - substance prohibited under broad stimulant controls"
                 },
                 
-                // Research quality emphasizing strong inference from stimulant controls
                 "researchQuality": {
                     "primarySources": [
                         "Japan Stimulant Control Act broad prohibition language",
@@ -3510,7 +3395,6 @@
                 "status": "restricted",
                 "category": "ADHD/Narcolepsy Medication (Psychotropic Drug)",
                 
-                // Psychotropic drug with narcolepsy-specific approval in Japan
                 "maxQuantity": "≤2,160mg total no permit needed, >2,160mg requires advance permit",
                 "conditions": "Must declare at Red Channel regardless of quantity. Apply for permit if over 2,160mg total.",
                 "notes": "Ritalin approved in Japan only for narcolepsy treatment, not ADHD. Different from Concerta which is ADHD-approved. Same methylphenidate thresholds apply.",
@@ -3521,7 +3405,6 @@
                 "customsDeclaration": "Red Channel mandatory - psychotropic substance regardless of quantity",
                 "channelRequired": "Red Channel mandatory with prescription documentation",
                 
-                // Comprehensive action steps following established pattern
                 "actionSteps": {
                     "title": "What You Need to Do: Ritalin Travel Checklist",
                     "steps": [
@@ -3560,16 +3443,13 @@
                     ]
                 },
                 
-                // Story elements based on comprehensive research findings
                 "uniqueStory": "The same molecule, different rules - Ritalin for narcolepsy vs Concerta for ADHD in Japan's regulatory maze",
                 "culturalContext": "Japan's compartmentalized approach to methylphenidate reflects their careful medical regulation - same drug, different approved uses",
                 "commonMisconception": "That Ritalin and Concerta are interchangeable for import purposes - Japan treats them as distinct medications with different medical approvals",
                 "surpriseFactor": "Ritalin is available in Japan but only for narcolepsy, while Concerta (same ingredient) is the ADHD-approved version",
                 
-                // Comprehensive commentary from all research phases
                 "commentary": "Ritalin represents Japan's nuanced approach to methylphenidate regulation - the same active ingredient (methylphenidate) is approved for different conditions under different brand names. While Concerta is approved for ADHD treatment, Ritalin is specifically approved only for narcolepsy. This creates a unique situation where travelers might need to understand not just the drug's legal status, but which specific medical condition it's approved to treat in Japan. The 2,160mg threshold applies to all methylphenidate regardless of brand, making this an important consideration for travelers using multiple methylphenidate formulations.",
                 
-                // Regulatory research findings 
                 "japanAvailability": {
                     "prescriptionRequired": "Yes - specialist prescription required for narcolepsy",
                     "commonBrands": ["Ritalin (immediate-release)", "Concerta (extended-release for ADHD)"],
@@ -3591,7 +3471,6 @@
                     "permitProcess": "MHLW Narcotics Control Department - minimum 2 weeks advance application"
                 },
 
-                // Granular citations for specific facts
                 "citations": {
                     "threshold": {
                         "value": "≤2,160mg",
@@ -3687,7 +3566,6 @@
                 "status": "restricted",
                 "category": "Opioid Pain Medication (Narcotic Drug)",
                 
-                // Narcotic drug requiring advance import permits
                 "maxQuantity": "ALL quantities require advance permit - NO threshold exemption",
                 "conditions": "Must obtain Narcotic Certificate from Regional Bureau of Health and Welfare before travel. Apply minimum 14 days in advance.",
                 "notes": "Codeine available in Japan domestically in OTC cough medicines but import requires narcotic permits. Zero tolerance for unpermitted import.",
@@ -3698,7 +3576,6 @@
                 "customsDeclaration": "Red Channel mandatory with Narcotic Certificate presentation",
                 "channelRequired": "Red Channel mandatory - narcotic drug declaration required",
                 
-                // Comprehensive action steps following established pattern
                 "actionSteps": {
                     "title": "What You Need to Do: Codeine Import Compliance",
                     "steps": [
@@ -3737,16 +3614,13 @@
                     ]
                 },
                 
-                // Story elements based on comprehensive research findings
                 "uniqueStory": "The cough medicine paradox - available in Japanese drugstores but requiring permits to import",
                 "culturalContext": "Japan's complex opioid relationship - domestic availability with strict import controls reflecting historical drug concerns",
                 "commonMisconception": "That codeine's OTC availability in Japan means easy import - domestic access doesn't override import controls",
                 "surpriseFactor": "Japanese OTC cough medicines contain codeine while foreign codeine requires narcotic permits for import",
                 
-                // Comprehensive commentary from all research phases
                 "commentary": "Codeine presents a fascinating regulatory paradox in Japan - it's widely available in domestic over-the-counter cough medicines yet classified as a strictly controlled narcotic for import purposes. This reflects Japan's dual approach: domestic pharmaceutical oversight versus border control security. The research revealed that nearly every Japanese cold medicine contains codeine or ephedrine, yet travelers face potential arrest and 23-day detention for bringing identical substances without proper permits. This distinction between domestic availability and import restrictions highlights Japan's complex drug control philosophy that separates internal medical practice from external security concerns.",
                 
-                // Regulatory research findings 
                 "japanAvailability": {
                     "prescriptionRequired": "Available OTC in cough medicines, prescription required for pure codeine",
                     "commonBrands": ["BRON (OTC cough syrup with codeine)", "Various Japanese cold medicines"],
@@ -3836,7 +3710,6 @@
                 "status": "permitted",
                 "category": "Antidepressant (SSRI)",
                 
-                // Approved SSRI with straightforward import rules
                 "maxQuantity": "Up to 30 days supply without advance permit",
                 "conditions": "Standard prescription drug rules apply - keep in original packaging with prescription documentation",
                 "permitRequired": "Not required for 30 days supply or less",
@@ -3846,7 +3719,6 @@
                 "customsDeclaration": "Not required for personal use quantities",
                 "channelRequired": "Green Channel",
                 
-                // Story elements - the modern success story
                 "uniqueStory": "The newer SSRI that found its way to Japan's top-selling list, showing how approved medications simplify travel",
                 "culturalContext": "Japan approved escitalopram in 2011, making it one of the most sold antidepressants and normalizing SSRI import procedures",
                 "commonMisconception": "That all psychiatric medications require special permits - escitalopram follows standard prescription rules",
@@ -3945,7 +3817,6 @@
                 "status": "permitted",
                 "category": "Anticonvulsant (Nerve Pain Medication)",
                 
-                // Confirmed permitted anticonvulsant - not on restricted lists, standard prescription import
                 "maxQuantity": "Up to 1 month supply without advance permit",
                 "conditions": "Standard prescription drug rules apply. Available for epilepsy and nerve pain treatment in Japan. Keep in original packaging with prescription documentation.",
                 "notes": "Confirmed permitted - not classified as controlled substance in Japan. Available and prescribed in Japan for epilepsy and neuropathic pain. Standard prescription import procedures apply.",
@@ -3956,7 +3827,6 @@
                 "customsDeclaration": "Not required for personal use quantities (based on available evidence)",
                 "channelRequired": "Green Channel - standard prescription drug treatment",
                 
-                // Enhanced action steps for nerve pain medication travelers
                 "actionSteps": {
                     "title": "What You Need to Do: Gabapentin Import Checklist",
                     "steps": [
@@ -3999,7 +3869,6 @@
                     ]
                 },
                 
-                // Story elements - the nerve pain medication with clear regulatory status
                 "uniqueStory": "The nerve pain relief that proves not all medications live in gray areas - gabapentin's clear permitted status",
                 "culturalContext": "Available in Japan for both epilepsy and nerve pain treatment, showing broad medical acceptance and standard import procedures",
                 "commonMisconception": "That nerve pain medications are automatically controlled substances - gabapentin follows standard prescription rules",
@@ -4055,7 +3924,6 @@
                     "permitProcess": "Standard MHLW import certificate only needed for >1 month supply"
                 },
                 
-                // Granular citations for specific facts
                 "citations": {
                     "regulatory_status": {
                         "value": "Not classified as controlled substance in Japan",
@@ -4141,7 +4009,6 @@
                 "status": "permitted",
                 "category": "Thyroid Hormone (Endocrine Medication)",
                 
-                // Standard thyroid hormone replacement - not controlled substance
                 "maxQuantity": "Up to 30 days supply without advance permit",
                 "conditions": "Standard prescription drug rules apply. Available as Sandoz brand in Japan. Keep in original packaging with prescription documentation.",
                 "notes": "Not a controlled substance - standard thyroid hormone replacement therapy. Available and prescribed in Japan for hypothyroidism. Forum travelers report successful import.",
@@ -4152,7 +4019,6 @@
                 "customsDeclaration": "Not required for personal use quantities",
                 "channelRequired": "Green Channel - standard prescription drug treatment",
                 
-                // Story elements - the essential hormone that travels easily
                 "uniqueStory": "The daily essential that follows standard rules - proving not all hormones are complicated to import",
                 "culturalContext": "Thyroid treatment is well-established in Japan with familiar brands like Sandoz, making import straightforward",
                 "commonMisconception": "That all hormone medications require special permits - levothyroxine follows standard prescription rules",
@@ -4261,7 +4127,6 @@
                 "status": "restricted",
                 "category": "Antidepressant (Unapproved in Japan)",
                 
-                // Unapproved antidepressant requiring Yakkan Shoumei import permit
                 "maxQuantity": "Up to travel duration supply with valid Yakkan Shoumei import permit",
                 "conditions": "Advance Yakkan Shoumei certificate required from MHLW. Not approved for sale in Japan - import only for personal use.",
                 "notes": "NOT APPROVED in Japan due to amphetamine-like structure. Can be imported with advance permit but not available through Japanese doctors. Consider switching to approved alternatives.",
@@ -4272,7 +4137,6 @@
                 "customsDeclaration": "Required - must declare with import permit documentation",
                 "channelRequired": "Red Channel - must declare unapproved medication with permit",
                 
-                // Story elements - the antidepressant that Japan said no to
                 "uniqueStory": "The amphetamine-cousin that can visit but can't stay - when chemical similarity shapes regulatory destiny",
                 "culturalContext": "Japan's rejection reflects strict amphetamine policies post-WWII, prioritizing approved alternatives over controversial structures",
                 "commonMisconception": "That antidepressants are generally accepted - Wellbutrin's amphetamine-like structure makes it uniquely problematic",
@@ -4374,7 +4238,6 @@
                 }
             },
             
-            // Ativan (Lorazepam) - Restricted psychotropic benzodiazepine 
             {
                 "name": "Ativan (Lorazepam)",
                 "genericName": "lorazepam",
@@ -4446,7 +4309,6 @@
                     ]
                 },
                 
-                // Japan availability
                 "japanAvailability": {
                     "prescriptionRequired": true,
                     "costRange": "Covered by Japanese health insurance with psychiatric prescription",
@@ -4456,7 +4318,6 @@
                     "alternativeOptions": "Multiple benzodiazepines and non-benzodiazepine anxiolytics available; local prescription often easier than import"
                 },
                 
-                // Import details
                 "importDetails": {
                     "customsDeclaration": "Required - Red Channel",
                     "channelRequired": "Red Channel with psychotropic documentation",
@@ -4470,7 +4331,6 @@
                     "permitProcess": "Email yakkan@mhlw.go.jp or Regional Health Bureau application AT LEAST 2 weeks before travel"
                 },
                 
-                // Granular citations for specific facts
                 "citations": {
                     "threshold": {
                         "value": "≤1 month supply",
@@ -4504,7 +4364,6 @@
                     }
                 },
                 
-                // Research quality
                 "researchQuality": {
                     "primarySources": [
                         "MHLW Third Category Psychotropic Drug regulations",
@@ -4563,7 +4422,6 @@
                 }
             },
             
-            // Plan B (Emergency Contraception) - Permitted prescription medication requiring import certificate for larger quantities
             {
                 "name": "Plan B (Emergency Contraception)",
                 "genericName": "levonorgestrel",
@@ -4578,7 +4436,6 @@
                     "japanAvailability": "Available as NorLevo by prescription only (¥10,000-20,000)"
                 },
                 "riskLevel": "low-medium",
-                // Enhanced action steps with detailed guidance
                 "actionSteps": {
                     "title": "What You Need to Do: Plan B Import Strategy",
                     "steps": [
@@ -4621,12 +4478,10 @@
                     ]
                 },
                 
-                // Story elements emphasizing cultural context
                 "uniqueStory": "The emergency contraceptive that's easier to import than to access - revealing Japan's reproductive rights paradox",
                 "culturalContext": "Last G7 country requiring prescriptions despite 1999 contraceptive pill approval - cultural barriers persist even after 25 years",
                 "commonMisconception": "That emergency contraception is prohibited in Japan when it's legally available but culturally restricted",
                 "surpriseFactor": "Importing Plan B is legally straightforward while domestic access remains complex - showing policy vs practice gaps",
-                // Enhanced commentary with cultural insights
                 "commentary": {
                     "storyHook": "The morning-after pill that took 40 years to reach Japan - showing how cultural barriers outlast legal ones.",
                     "practicalTips": [
@@ -4706,7 +4561,6 @@
                     ]
                 },
                 
-                // Japan availability
                 "japanAvailability": {
                     "prescriptionRequired": true,
                     "costRange": "¥10,000-20,000 per dose (not covered by national health insurance)",
@@ -4716,7 +4570,6 @@
                     "alternativeOptions": "OTC access trial conducted 2023-2024; formal approval process ongoing for 2027 implementation"
                 },
                 
-                // Import details
                 "importDetails": {
                     "customsDeclaration": "Standard procedures for prescription medications",
                     "channelRequired": "Green Channel for normal quantities",
@@ -4729,7 +4582,6 @@
                     "permitProcess": "Email yakkan@mhlw.go.jp or apply through MHLW for quantities exceeding limits"
                 },
                 
-                // Granular citations for specific facts
                 "citations": {
                     "g7_status": {
                         "value": "Only G7 country requiring prescriptions for emergency contraception",
@@ -4768,7 +4620,6 @@
                     }
                 },
                 
-                // Research quality
                 "researchQuality": {
                     "primarySources": [
                         "MHLW Pharmaceutical Affairs Law import procedures",
@@ -4829,7 +4680,6 @@
                 }
             },
             
-            // Omeprazole (Prilosec) - Permitted prescription medication with one month supply limit
             {
                 "name": "Omeprazole (Prilosec)",
                 "genericName": "omeprazole",
@@ -4901,7 +4751,6 @@
                     ]
                 },
                 
-                // Japan availability
                 "japanAvailability": {
                     "prescriptionRequired": true,
                     "costRange": "Covered by Japanese health insurance with prescription",
@@ -4911,7 +4760,6 @@
                     "alternativeOptions": "Multiple PPI options available; famotidine (Pepcid) may be available as alternative"
                 },
                 
-                // Import details
                 "importDetails": {
                     "customsDeclaration": "Standard procedures for prescription medications",
                     "channelRequired": "Green Channel for normal quantities",
@@ -4924,7 +4772,6 @@
                     "permitProcess": "Email yakkan@mhlw.go.jp or apply through MHLW for quantities exceeding limits"
                 },
                 
-                // Granular citations for specific facts
                 "citations": {
                     "threshold": {
                         "value": "≤1 month supply",
@@ -4959,7 +4806,6 @@
                     }
                 },
                 
-                // Research quality
                 "researchQuality": {
                     "primarySources": [
                         "MHLW Pharmaceutical Affairs Law import procedures",
@@ -5017,7 +4863,6 @@
                 }
             },
 
-            // Melatonin - Sleep Hormone Supplement with Complex Import Status
             {
                 "name": "Melatonin",
                 "genericName": "melatonin",
@@ -5025,7 +4870,6 @@
                 "status": "restricted",
                 "category": "Hormone Supplement/Sleep Aid",
                 
-                // Complex regulatory status - prescription-only but enforcement varies
                 "maxQuantity": "1-month supply limit (prescription status) vs 2-month supply (supplement interpretation) - conflicting guidance",
                 "conditions": "Prescription-only in Japan. Classified under 'strict control' with morphine and amphetamines, but enforcement inconsistent for travelers.",
                 "notes": "REGULATORY PARADOX: Officially banned like controlled substances but widely ignored in practice. 'No one cares about melatonin' vs 'strict control' classification creates uncertainty.",
@@ -5036,7 +4880,6 @@
                 "customsDeclaration": "Red Channel recommended due to prescription-only status, though enforcement varies",
                 "channelRequired": "Red Channel (safer approach given prescription classification)",
                 
-                // Action steps acknowledging enforcement uncertainty
                 "actionSteps": {
                     "title": "What You Need to Do: Melatonin Import Strategy",
                     "steps": [
@@ -5079,13 +4922,11 @@
                     ]
                 },
                 
-                // Story elements capturing the paradox
                 "uniqueStory": "The sleep supplement paradox - banned like morphine but ignored like vitamins, creating uncertainty for jet-lagged travelers",
                 "culturalContext": "Japan's ultra-conservative pharmaceutical approach treats natural hormones as strictly controlled substances, contrasting with global supplement status",
                 "commonMisconception": "That prescription-only status means strict enforcement - reality shows inconsistent application creating traveler confusion",
                 "surpriseFactor": "Classified with morphine and amphetamines yet 'countless services' help Japanese residents import it legally",
                 
-                // Commentary acknowledging enforcement uncertainty
                 "commentary": {
                     "storyHook": "The jet lag remedy that's simultaneously banned and ignored.",
                     "practicalTips": [
@@ -5119,7 +4960,6 @@
                     ]
                 },
                 
-                // Japan availability - prescription only
                 "japanAvailability": {
                     "prescriptionRequired": true,
                     "costRange": "¥2,000-4,000 per month with prescription (1-3mg doses)",
@@ -5129,7 +4969,6 @@
                     "alternativeOptions": "OTC diphenhydramine sleep aids: Drewell (¥1,958), Neoday, Doriel available in all pharmacies"
                 },
                 
-                // Import details reflecting regulatory uncertainty
                 "importDetails": {
                     "customsDeclaration": "Recommended due to prescription-only status, though enforcement varies",
                     "channelRequired": "Red Channel (safer approach) or Green Channel (common practice)",
@@ -5142,7 +4981,6 @@
                     "permitProcess": "Email yakkan@mhlw.go.jp for >1 month supply or official clarification of status"
                 },
                 
-                // Granular citations for specific facts
                 "citations": {
                     "classification": {
                         "value": "Prescription-only, 'strict control' category",
@@ -5175,7 +5013,6 @@
                     }
                 },
                 
-                // Research quality acknowledging enforcement uncertainty
                 "researchQuality": {
                     "primarySources": [
                         "MHLW pharmaceutical import regulations",
@@ -5232,7 +5069,6 @@
                 }
             },
 
-            // Modafinil - Wakefulness Drug with Schedule I Psychotropic Classification
             {
                 "name": "Modafinil",
                 "genericName": "modafinil",
@@ -5240,7 +5076,6 @@
                 "status": "restricted",
                 "category": "Wakefulness Drug/Schedule I Psychotropic",
                 
-                // Complex regulatory status - Schedule I psychotropic with aggressive enforcement
                 "maxQuantity": "Personal use quantities permitted with proper documentation, but arrest risk high without advance permit",
                 "conditions": "Schedule I psychotropic substance. Requires prescription in Japan. Import without proper authorization can result in arrest and detention.",
                 "notes": "ENFORCEMENT PARADOX: Technically permitted for personal medical use but authorities investigate imports aggressively. Multiple arrest cases documented.",
@@ -5251,7 +5086,6 @@
                 "customsDeclaration": "Red Channel required - declare as Schedule I psychotropic substance",
                 "channelRequired": "Red Channel (Schedule I psychotropic)",
                 
-                // Action steps acknowledging arrest risk and enforcement aggression
                 "actionSteps": {
                     "title": "What You Need to Do: Modafinil Import Strategy",
                     "steps": [
@@ -5295,13 +5129,11 @@
                     ]
                 },
                 
-                // Story elements emphasizing enforcement paradox
                 "uniqueStory": "The alertness drug that escaped stimulant prohibition but triggered the enforcement paradox - technically legal but practically dangerous",
                 "culturalContext": "Japan's Schedule I psychotropic classification creates aggressive enforcement despite personal use allowances",
                 "commonMisconception": "That foreign prescriptions matter in Japan or that personal use exemptions provide meaningful protection",
                 "surpriseFactor": "Authorities investigate modafinil imports more aggressively than many harder drugs due to Schedule I status",
                 
-                // Commentary based on enforcement research
                 "commentary": {
                     "storyHook": "The wakefulness drug caught between legal technicality and enforcement reality.",
                     "practicalTips": [
@@ -5336,7 +5168,6 @@
                     ]
                 },
                 
-                // Japan availability with prescription requirements
                 "japanAvailability": {
                     "prescriptionRequired": true,
                     "costRange": "Covered under Japanese health insurance with narcolepsy diagnosis",
@@ -5346,7 +5177,6 @@
                     "alternativeOptions": "Armodafinil (Nuvigil) also available by prescription, caffeine supplements OTC"
                 },
                 
-                // Import details with aggressive enforcement warnings
                 "importDetails": {
                     "customsDeclaration": "Required - Red Channel for Schedule I psychotropic",
                     "channelRequired": "Red Channel (Schedule I psychotropic substance)",
@@ -5360,7 +5190,6 @@
                     "permitProcess": "Email yakkan@mhlw.go.jp with detailed application 2-3 weeks before travel"
                 },
                 
-                // Granular citations for specific facts
                 "citations": {
                     "classification": {
                         "value": "Schedule I psychotropic substance",
@@ -5393,7 +5222,6 @@
                     }
                 },
                 
-                // Research quality emphasizing enforcement risk
                 "researchQuality": {
                     "primarySources": [
                         "Japan MHLW controlled substances classification",
