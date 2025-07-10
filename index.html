@@ -2367,11 +2367,13 @@ function generateCitationLine(med, maxSources = 2, citationType = 'general', spe
     if (prioritizedSources.length === 0) return '';
     
     const citationLinks = prioritizedSources.map(source => {
-        const url = source.url || source.direct_url || '#';
+        const url = source.url || source.direct_url;
         const agency = source.agency || source.source;
         const date = source.verified_date || 'verified';
         
-        let citationText = `<a href="${url}" target="_blank" rel="noopener">${agency}</a>`;
+        let citationText = url ? 
+            `<a href="${url}" target="_blank" rel="noopener">${agency}</a>` : 
+            `${agency}`;
         
         // Add page reference if available
         if (source.page_reference) {
