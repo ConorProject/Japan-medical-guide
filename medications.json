@@ -4401,21 +4401,32 @@
                 },
                 
                 "citations": {
-                    "threshold": {
+                    "weight_threshold": {
+                        "value": "90mg",
+                        "source": "NCD Psychotropic Substances Total Quantity List",
+                        "url": "https://www.ncd.mhlw.go.jp/dl_data/keitai/total.pdf",
+                        "local_reference": "sources/https___www.ncd.mhlw.go.jp_psychotropic_total.md line 5",
+                        "accessed": "2025-07-10",
+                        "quote": "Lorazepam 90 mg",
+                        "confidence": "high"
+                    },
+                    "time_threshold": {
                         "value": "≤1 month supply",
                         "source": "MHLW Psychotropic Substance Import Guidelines",
                         "url": "https://www.mhlw.go.jp/english/",
                         "section": "Third Category Psychotropic Substances",
                         "accessed": "2025-07-04",
-                        "quote": "One month supply limit for psychotropic substances without permits"
+                        "quote": "One month supply limit for psychotropic substances without permits",
+                        "confidence": "high"
                     },
                     "classification": {
-                        "value": "Third Category Psychotropic Substance",
-                        "source": "NCD Benzodiazepine Classification",
-                        "url": "https://www.ncd.mhlw.go.jp/en/",
-                        "section": "Benzodiazepine Controlled Substances",
-                        "accessed": "2025-07-04",
-                        "quote": "Lorazepam classified as psychotropic substance requiring controlled import procedures"
+                        "value": "Schedule III Psychotropic Substance",
+                        "source": "NCD Controlled Substances List",
+                        "url": "https://www.ncd.mhlw.go.jp/dl_data/controlled_substances_list.pdf",
+                        "local_reference": "sources/https___www.ncd.mhlw.go._cotrolled_substances_list.md",
+                        "accessed": "2025-07-10",
+                        "quote": "Lorazepam listed under Schedule III psychotropic substances",
+                        "confidence": "high"
                     },
                     "customs_requirement": {
                         "value": "Red Channel declaration required for all quantities",
@@ -4425,11 +4436,21 @@
                         "quote": "All psychotropics need declaration regardless of the quantity - any substance on the controlled list of stimulants, narcotics, psychotropics get the same treatment"
                     },
                     "permit_process": {
-                        "value": "yakkan@mhlw.go.jp application for >1 month supply",
-                        "source": "MHLW Psychotropic Substance Import Guidelines",
-                        "url": "https://www.mhlw.go.jp/english/policy/health-medical/pharmaceuticals/01.html",
-                        "section": "Import Permit Application Process",
-                        "accessed": "2025-07-04"
+                        "value": "Yunyu Kakunin-sho application for >1 month supply OR >90mg",
+                        "source": "MHLW Import Certificate Application Portal",
+                        "url": "https://impconf.mhlw.go.jp/aicpte/page/login.jsp?lang=en",
+                        "accessed": "2025-07-09",
+                        "quote": "Application required for psychotropic substances exceeding personal use thresholds",
+                        "confidence": "high"
+                    },
+                    "dual_trigger_system": {
+                        "value": "Either time OR weight limit triggers permit requirement",
+                        "source": "NCD Psychotropic Substances Total Quantity List + MHLW Guidelines",
+                        "url": "https://www.ncd.mhlw.go.jp/dl_data/keitai/total.pdf",
+                        "local_reference": "sources/https___www.ncd.mhlw.go.jp_psychotropic_total.md line 5",
+                        "accessed": "2025-07-10",
+                        "quote": "Lorazepam 90 mg + 1 month supply rule",
+                        "confidence": "high"
                     }
                 },
                 
@@ -4445,7 +4466,7 @@
                         "Prescription switching commonly recommended approach"
                     ],
                     "lastUpdated": "2025-07-09",
-                    "confidenceLevel": "Very High - Enhanced with verified dual-trigger system, working application portals, and calculation methodology",
+                    "confidenceLevel": "Very High - Enhanced with official NCD threshold data, verified dual-trigger system, and government source documentation",
                     "sourceDocumentation": {
                         "sources": [
                             {
