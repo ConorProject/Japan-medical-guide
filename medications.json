@@ -846,7 +846,7 @@
                     "threshold": {
                         "value": "180mg threshold confirmed",
                         "source": "NCD Controlled Substances List",
-                        "url": "https://www.ncd.mhlw.go.jp/dl_data/controlled_substances_list.pdf",
+                        "url": "https://www.ncd.mhlw.go.jp/dl_data/keitai/total.pdf",
                         "local_reference": "sources/https___www.ncd.mhlw.go._cotrolled_substances_list.md",
                         "accessed": "2025-07-10",
                         "quote": "Clonazepam listed under Schedule III psychotropic substances with 180mg threshold",
@@ -855,7 +855,7 @@
                     "classification": {
                         "value": "Schedule III Psychotropic Substance",
                         "source": "NCD Controlled Substances List",
-                        "url": "https://www.ncd.mhlw.go.jp/dl_data/controlled_substances_list.pdf",
+                        "url": "https://www.ncd.mhlw.go.jp/dl_data/keitai/total.pdf",
                         "local_reference": "sources/https___www.ncd.mhlw.go._cotrolled_substances_list.md",
                         "accessed": "2025-07-10",
                         "quote": "Clonazepam listed under Schedule III psychotropic substances",
@@ -916,7 +916,7 @@
                                 "type": "official_regulation",
                                 "agency": "NCD",
                                 "verified_date": "2025-07-10",
-                                "url": "https://www.ncd.mhlw.go.jp/dl_data/controlled_substances_list.pdf",
+                                "url": "https://www.ncd.mhlw.go.jp/dl_data/keitai/total.pdf",
                                 "local_reference": "sources/https___www.ncd.mhlw.go._cotrolled_substances_list.md",
                                 "key_finding": "Clonazepam listed under Schedule III psychotropic substances with 180mg threshold"
                             },
@@ -1482,10 +1482,10 @@
                     "classification": {
                         "value": "Schedule III Psychotropic Substance",
                         "source": "NCD Controlled Substances List",
-                        "url": "https://www.ncd.mhlw.go.jp/dl_data/controlled_substances_list.pdf",
+                        "url": "https://www.ncd.mhlw.go.jp/dl_data/keitai/total.pdf",
                         "local_reference": "sources/https___www.ncd.mhlw.go._cotrolled_substances_list.md",
                         "accessed": "2025-07-10",
-                        "quote": "Alprazolam listed under Schedule III psychotropic substances",
+                        "quote": "Alprazolam 72 mg (Schedule III psychotropic substance)",
                         "confidence": "absolute"
                     },
                     "customs_requirement": {
@@ -4485,10 +4485,10 @@
                     "classification": {
                         "value": "Schedule III Psychotropic Substance",
                         "source": "NCD Controlled Substances List",
-                        "url": "https://www.ncd.mhlw.go.jp/dl_data/controlled_substances_list.pdf",
+                        "url": "https://www.ncd.mhlw.go.jp/dl_data/keitai/total.pdf",
                         "local_reference": "sources/https___www.ncd.mhlw.go._cotrolled_substances_list.md",
                         "accessed": "2025-07-10",
-                        "quote": "Lorazepam listed under Schedule III psychotropic substances",
+                        "quote": "Lorazepam 90 mg (Schedule III psychotropic substance)",
                         "confidence": "high"
                     },
                     "customs_requirement": {
