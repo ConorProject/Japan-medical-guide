@@ -2375,6 +2375,11 @@ function generateCitationLine(med, maxSources = 2, citationType = 'general', spe
             `<a href="${url}" target="_blank" rel="noopener">${agency}</a>` : 
             `${agency}`;
         
+        // Also add URL as clickable link if different from agency name
+        if (url && !agency.includes('http')) {
+            citationText += ` (<a href="${url}" target="_blank" rel="noopener">source</a>)`;
+        }
+        
         // Add page reference if available
         if (source.page_reference) {
             citationText += ` (p. ${source.page_reference})`;
