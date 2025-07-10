@@ -439,14 +439,14 @@
                         "accessed": "2025-07-04",
                         "quote": "Lisdexamfetamine classified as 'Stimulants' Raw Materials' (SRM), not prohibited substance"
                     },
-                    "customs_requirement": {
+                    "customs": {
                         "value": "Red Channel declaration required for all quantities",
                         "source": "Japan Customs Direct Confirmation",
                         "reference": "Direct correspondence with Japan Customs",
                         "accessed": "2025-07-07",
                         "quote": "All psychotropics need declaration regardless of the quantity - any substance on the controlled list of stimulants, narcotics, psychotropics get the same treatment"
                     },
-                    "permit_process": {
+                    "permit": {
                         "value": "NCD Stimulants' Raw Materials permit required 3-4 weeks before travel for ANY quantity",
                         "source": "NCD Import Application Guidelines",
                         "url": "https://www.ncd.mhlw.go.jp/en/application2.html",
@@ -653,14 +653,14 @@
                         "section": "Schedule III Psychotropic Substances",
                         "accessed": "2025-07-04"
                     },
-                    "customs_requirement": {
+                    "customs": {
                         "value": "Red Channel declaration required for all quantities",
                         "source": "Japan Customs Direct Confirmation",
                         "reference": "Direct correspondence with Japan Customs",
                         "accessed": "2025-07-07",
                         "quote": "All psychotropics need declaration regardless of the quantity - any substance on the controlled list of stimulants, narcotics, psychotropics get the same treatment"
                     },
-                    "permit_process": {
+                    "permit": {
                         "value": "NCD Regional Bureau application required for >2,160mg",
                         "source": "MHLW Psychotropic Substance Import Application",
                         "url": "https://www.ncd.mhlw.go.jp/en/application.html",
@@ -861,7 +861,7 @@
                         "quote": "Clonazepam listed under Schedule III psychotropic substances",
                         "confidence": "absolute"
                     },
-                    "customs_requirement": {
+                    "customs": {
                         "value": "Red Channel declaration required for all quantities",
                         "source": "Tokyo Customs Official Email Response",
                         "local_reference": "sources/Dear Sir-Madam,.md lines 7-10",
@@ -878,7 +878,7 @@
                         "quote": "please declare them by marking Yes to question 1.① of the following CUSTOMS DECLARATION",
                         "confidence": "absolute"
                     },
-                    "permit_process": {
+                    "permit": {
                         "value": "Yunyu Kakunin-sho required for quantities >180mg, apply at least 2 weeks in advance",
                         "source": "MHLW Official Import Requirements",
                         "url": "https://www.ncd.mhlw.go.jp/en/",
@@ -1117,14 +1117,14 @@
                         "section": "Medical Device Classification",
                         "accessed": "2025-07-04"
                     },
-                    "customs_requirement": {
+                    "customs": {
                         "value": "Red Channel declaration required for all quantities",
                         "source": "MHLW Medical Device Import Guidelines",
                         "reference": "Expert Analysis 2025-07-04",
                         "accessed": "2025-07-04",
                         "quote": "EpiPens require Red Channel declaration regardless of quantity - restricted items not controlled substances"
                     },
-                    "permit_process": {
+                    "permit": {
                         "value": "Yunyu Kakunin-sho required for 3+ devices",
                         "source": "MHLW Yunyu Kakunin-sho Application System",
                         "url": "https://impconf.mhlw.go.jp/",
@@ -1470,7 +1470,7 @@
                 },
 
                 "citations": {
-                    "weight_threshold": {
+                    "threshold": {
                         "value": "72mg",
                         "source": "NCD Psychotropic Substances Total Quantity List",
                         "url": "https://www.ncd.mhlw.go.jp/dl_data/keitai/total.pdf",
@@ -1488,7 +1488,7 @@
                         "quote": "Alprazolam 72 mg (Schedule III psychotropic substance)",
                         "confidence": "absolute"
                     },
-                    "customs_requirement": {
+                    "customs": {
                         "value": "Red Channel declaration required for all quantities",
                         "source": "Tokyo Customs Official Email Response",
                         "local_reference": "sources/Dear Sir-Madam,.md lines 7-10",
@@ -1496,16 +1496,7 @@
                         "quote": "Regardless of the quantity of psychotropic substances brought in, please declare them by marking Yes to question 1.① of the following CUSTOMS DECLARATION... Please proceed to the (manned) customs inspection desk",
                         "confidence": "absolute"
                     },
-                    "customs_form": {
-                        "value": "Form C-5360-B psychotropic declaration required",
-                        "source": "Tokyo Customs Official Email Response",
-                        "url": "http://www.customs.go.jp/kaisei/youshiki/form_C/C5360-B.pdf",
-                        "local_reference": "sources/Dear Sir-Madam,.md line 8",
-                        "accessed": "2025-07-10",
-                        "quote": "please declare them by marking Yes to question 1.① of the following CUSTOMS DECLARATION",
-                        "confidence": "absolute"
-                    },
-                    "permit_process": {
+                    "permit": {
                         "value": "Yunyu Kakunin-sho required for quantities >72mg, apply at least 2 weeks in advance",
                         "source": "MHLW Official Import Requirements",
                         "url": "https://www.ncd.mhlw.go.jp/en/",
@@ -2276,7 +2267,7 @@
                         "accessed": "2025-07-02",
                         "quote": "Tylenol listed among generally permitted OTC medications"
                     },
-                    "customs_requirement": {
+                    "customs": {
                         "value": "Green Channel - no declaration required",
                         "source": "Japanese Customs Personal Import Guidelines",
                         "url": "https://www.customs.go.jp/english/summary/passenger.htm",
@@ -3566,14 +3557,14 @@
                         "section": "Schedule III Psychotropic Substances",
                         "accessed": "2025-07-03"
                     },
-                    "customs_requirement": {
+                    "customs": {
                         "value": "Red Channel declaration required for all quantities",
                         "source": "Japan Customs Direct Confirmation",
                         "reference": "Direct correspondence with Japan Customs",
                         "accessed": "2025-07-07",
                         "quote": "All psychotropics need declaration regardless of the quantity - any substance on the controlled list of stimulants, narcotics, psychotropics get the same treatment"
                     },
-                    "permit_process": {
+                    "permit": {
                         "value": "NCD Regional Bureau application required for >2,160mg",
                         "source": "MHLW Psychotropic Substance Import Application",
                         "url": "https://www.ncd.mhlw.go.jp/en/application.html",
@@ -4464,7 +4455,7 @@
                 },
                 
                 "citations": {
-                    "weight_threshold": {
+                    "threshold": {
                         "value": "90mg",
                         "source": "NCD Psychotropic Substances Total Quantity List",
                         "url": "https://www.ncd.mhlw.go.jp/dl_data/keitai/total.pdf",
@@ -4491,7 +4482,7 @@
                         "quote": "Lorazepam 90 mg (Schedule III psychotropic substance)",
                         "confidence": "high"
                     },
-                    "customs_requirement": {
+                    "customs": {
                         "value": "Red Channel declaration required for all quantities",
                         "source": "Tokyo Customs Official Email Response",
                         "local_reference": "sources/Dear Sir-Madam,.md lines 7-10",
@@ -4508,7 +4499,7 @@
                         "quote": "please declare them by marking Yes to question 1.① of the following CUSTOMS DECLARATION",
                         "confidence": "absolute"
                     },
-                    "permit_process": {
+                    "permit": {
                         "value": "Yunyu Kakunin-sho application for >1 month supply OR >90mg",
                         "source": "MHLW Import Certificate Application Portal",
                         "url": "https://impconf.mhlw.go.jp/aicpte/page/login.jsp?lang=en",
@@ -5010,7 +5001,7 @@
                         "accessed": "2025-07-04",
                         "quote": "Omeprazole treated as standard prescription medication, not controlled substance"
                     },
-                    "customs_requirement": {
+                    "customs": {
                         "value": "Green Channel for standard quantities",
                         "source": "US Embassy Japan Medication Import Guidance",
                         "url": "https://jp.usembassy.gov/services/importing-medication/",
