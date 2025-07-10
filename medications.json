@@ -921,12 +921,13 @@
                                 "key_finding": "Clonazepam listed under Schedule III psychotropic substances with 180mg threshold"
                             },
                             {
-                                "source": "Tokyo Customs Official Email Response",
+                                "source": "Tokyo Customs Official Email Response (Private Correspondence)",
                                 "type": "official_regulation",
                                 "agency": "Tokyo Customs",
                                 "verified_date": "2025-07-10",
                                 "local_reference": "sources/Dear Sir-Madam,.md lines 7-10",
-                                "key_finding": "Red Channel declaration required for all psychotropics regardless of quantity"
+                                "key_finding": "Red Channel declaration required for all psychotropics regardless of quantity",
+                                "note": "Direct email response from Tokyo Customs Counselor's Office"
                             },
                             {
                                 "source": "Japan Customs Declaration Form C-5360-B",
@@ -1530,11 +1531,12 @@
                                 "key_finding": "Alprazolam 72mg threshold confirmed in official government threshold table"
                             },
                             {
-                                "source": "Tokyo Customs Official Email Response",
+                                "source": "Tokyo Customs Official Email Response (Private Correspondence)",
                                 "type": "official_regulation",
                                 "agency": "Tokyo Customs",
                                 "verified_date": "2025-07-10",
-                                "key_finding": "All psychotropics require Red Channel declaration regardless of quantity - Form C-5360-B required"
+                                "key_finding": "All psychotropics require Red Channel declaration regardless of quantity - Form C-5360-B required",
+                                "note": "Direct email response from Tokyo Customs Counselor's Office"
                             },
                             {
                                 "source": "MHLW Yunyu Kakunin-sho Application Portal",
