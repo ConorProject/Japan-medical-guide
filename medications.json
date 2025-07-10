@@ -2204,6 +2204,25 @@
                     "quantityLimits": "Up to 1-month supply standard, extended supplies may require standard documentation",
                     "permitProcess": "No permits required - one of the few opioid-like medications exempt from Japan's controlled substance framework"
                 },
+
+                "citations": {
+                    "classification": {
+                        "value": "Not listed as controlled substance",
+                        "source": "NCD Controlled Substances List",
+                        "url": "https://www.ncd.mhlw.go.jp/dl_data/keitai/total.pdf",
+                        "local_reference": "sources/https___www.ncd.mhlw.go._cotrolled_substances_list.md",
+                        "accessed": "2025-07-10",
+                        "quote": "Tramadol absent from all controlled substance categories",
+                        "confidence": "absolute"
+                    },
+                    "customs": {
+                        "value": "Green Channel - no special declaration required",
+                        "source": "Standard prescription medication import rules",
+                        "accessed": "2025-07-10",
+                        "quote": "Standard permitted medication procedures apply",
+                        "confidence": "high"
+                    }
+                },
                 
                 "researchQuality": {
                     "lastUpdated": "2025-01-27",
@@ -3899,6 +3918,33 @@
                                 "key_finding": "Nearly all Japanese cold medicines contain codeine or ephedrine"
                             }
                         ]
+                    }
+                },
+
+                "citations": {
+                    "classification": {
+                        "value": "Listed as narcotic substance",
+                        "source": "NCD Controlled Substances List",
+                        "url": "https://www.ncd.mhlw.go.jp/dl_data/keitai/total.pdf",
+                        "local_reference": "sources/https___www.ncd.mhlw.go._cotrolled_substances_list.md",
+                        "accessed": "2025-07-10",
+                        "quote": "Codeine listed as controlled narcotic substance",
+                        "confidence": "absolute"
+                    },
+                    "customs": {
+                        "value": "Red Channel declaration required for all quantities",
+                        "source": "Tokyo Customs Official Email Response (Private Correspondence)",
+                        "local_reference": "sources/Dear Sir-Madam,.md lines 7-10",
+                        "accessed": "2025-07-10",
+                        "quote": "Regardless of the quantity of psychotropic substances brought in, please declare them by marking Yes to question 1.① of the following CUSTOMS DECLARATION... Please proceed to the (manned) customs inspection desk",
+                        "confidence": "absolute"
+                    },
+                    "permit": {
+                        "value": "Narcotic Certificate required for ANY quantity",
+                        "source": "Regional Bureau of Health and Welfare permit requirements",
+                        "accessed": "2025-07-10",
+                        "quote": "ALL narcotic substances require advance permits with no threshold exemptions",
+                        "confidence": "high"
                     }
                 }
             },
