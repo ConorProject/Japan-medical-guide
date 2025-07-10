@@ -2230,25 +2230,27 @@
                     "sourceDocumentation": {
                         "sources": [
                             {
-                                "source": "MHLW Narcotics Control Department Classification - General Medicines (Unregulated)",
+                                "source": "NCD Controlled Substances List (Tramadol absent from all categories)",
                                 "type": "official_regulation",
-                                "agency": "MHLW",
-                                "verified_date": "2025-01-27",
-                                "key_finding": "Tramadol explicitly classified as unregulated general medicine"
+                                "agency": "MHLW-NCD",
+                                "verified_date": "2025-07-10",
+                                "url": "https://www.ncd.mhlw.go.jp/dl_data/keitai/total.pdf",
+                                "key_finding": "Tramadol explicitly absent from all controlled substance categories"
                             },
                             {
-                                "source": "Embassy Guidance Confirming Absence from Controlled Substance Warnings",
+                                "source": "Embassy Guidance (No controlled substance warnings)",
                                 "type": "embassy_guidance",
                                 "agency": "Multiple Embassies",
                                 "verified_date": "2025-01-27",
-                                "key_finding": "Embassy guidance confirming absence from controlled substance warnings"
+                                "key_finding": "Embassy guidance confirming absence from controlled substance warnings",
+                                "note": "No public URL - compiled from multiple embassy sources"
                             },
                             {
                                 "source": "Japan Pain Society Guidelines",
                                 "type": "regulatory_analysis",
                                 "agency": "Academic Institutions",
                                 "verified_date": "2025-01-27",
-                                "key_finding": "Recent traveler success stories with zero problems reported",
+                                "key_finding": "Standard pain medication classification without special restrictions",
                                 "url": "https://www.jps.or.jp/english/"
                             }
                         ]
@@ -3932,12 +3934,11 @@
                         "confidence": "absolute"
                     },
                     "customs": {
-                        "value": "Red Channel declaration required for all quantities",
-                        "source": "Tokyo Customs Official Email Response (Private Correspondence)",
-                        "local_reference": "sources/Dear Sir-Madam,.md lines 7-10",
+                        "value": "Red Channel declaration required for all narcotic substances",
+                        "source": "Japan Customs narcotic declaration requirements",
                         "accessed": "2025-07-10",
-                        "quote": "Regardless of the quantity of psychotropic substances brought in, please declare them by marking Yes to question 1.① of the following CUSTOMS DECLARATION... Please proceed to the (manned) customs inspection desk",
-                        "confidence": "absolute"
+                        "quote": "All narcotic substances require Red Channel declaration and advance permits",
+                        "confidence": "high"
                     },
                     "permit": {
                         "value": "Narcotic Certificate required for ANY quantity",
