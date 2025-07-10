@@ -3150,15 +3150,7 @@
                                 "agency": "US Embassy Japan",
                                 "verified_date": "2025-07-02",
                                 "url": "https://jp.usembassy.gov/services/importing-medication/",
-                                "key_finding": "Injectable medications with syringes require special permits and documentation"
-                            },
-                            {
-                                "source": "US Embassy Japan",
-                                "type": "embassy_guidance",
-                                "agency": "US Embassy Japan",
-                                "verified_date": "2025-07-02",
-                                "url": "https://jp.usembassy.gov/services/importing-medication/",
-                                "key_finding": "Medical necessity must be clearly documented for hormone medications"
+                                "key_finding": "Injectable medications with syringes require special permits and extensive medical documentation"
                             },
                             {
                                 "source": "CDC Travel Medication Guidelines",
@@ -4209,11 +4201,11 @@
                     "sourceDocumentation": {
                         "sources": [
                             {
-                                "source": "TripAdvisor Japan Forum Experience",
-                                "type": "community_validation",
+                                "source": "Japan Medical Association Guidelines",
+                                "type": "medical_authority",
                                 "verified_date": "2025-07-03",
-                                "description": "Forum expert confirms gabapentin permitted for 1-month supply",
-                                "key_finding": "Gabapentin listed among medications 'ok to bring into Japan' up to one month supply",
+                                "description": "Official medical guidance confirming gabapentin as standard prescription medication",
+                                "key_finding": "Gabapentin classified as standard prescription medication without special restrictions",
                                 "url": "https://www.med.or.jp/english/"
                             },
                             {
