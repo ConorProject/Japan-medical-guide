@@ -717,7 +717,7 @@
                     "permit": {
                         "value": "NCD Regional Bureau application required for >2,160mg, apply at least 2 weeks in advance",
                         "source": "MHLW Psychotropic Substance Import Application",
-                        "url": "https://www.ncd.mhlw.go.jp/en/application.html",
+                        "url": "https://www.ncd.mhlw.go.jp/en/application2.html",
                         "section": "Third Category Psychotropic Import Procedures",
                         "accessed": "2025-07-04",
                         "quote": "Quantities exceeding 2,160mg methylphenidate require NCD import certificate obtained through Regional Health Bureau with minimum 2-week advance application period",
@@ -755,7 +755,7 @@
                                 "verified_date": "2025-07-04",
                                 "description": "Comprehensive legal and procedural guide covering import thresholds, NCD permit process, and domestic prescription requirements",
                                 "key_finding": "2,160mg threshold allows substantial supply under psychotropic exemption; regional NCD offices handle >threshold permits",
-                                "url": "https://www.ncd.mhlw.go.jp/en/application.html"
+                                "url": "https://www.ncd.mhlw.go.jp/en/application2.html"
                             },
                             {
                                 "source": "Narcotics and Psychotropics Control Law",
@@ -3690,7 +3690,7 @@
                     "permit": {
                         "value": "NCD Regional Bureau application required for >2,160mg, apply at least 2 weeks in advance",
                         "source": "MHLW Psychotropic Substance Import Application",
-                        "url": "https://www.ncd.mhlw.go.jp/en/application.html",
+                        "url": "https://www.ncd.mhlw.go.jp/en/application2.html",
                         "section": "Third Category Psychotropic Import Procedures",
                         "accessed": "2025-07-10",
                         "quote": "Quantities exceeding 2,160mg methylphenidate require NCD import certificate obtained through Regional Health Bureau with minimum 2-week advance application period",
@@ -3744,7 +3744,7 @@
                                 "type": "official_regulation",
                                 "agency": "MHLW",
                                 "verified_date": "2025-07-10",
-                                "url": "https://www.ncd.mhlw.go.jp/en/application.html",
+                                "url": "https://www.ncd.mhlw.go.jp/en/application2.html",
                                 "key_finding": "Quantities exceeding 2,160mg methylphenidate require advance import permit application"
                             },
                             {
