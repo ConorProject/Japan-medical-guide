@@ -1517,8 +1517,35 @@
                         "Confirmed Red Channel requirement regardless of quantity",
                         "Multiple traveler confirmations of permit process timing requirements"
                     ],
-                    "lastUpdated": "2025-01-15",
-                    "confidenceLevel": "Absolute - direct customs authority guidance"
+                    "lastUpdated": "2025-07-10",
+                    "confidenceLevel": "Absolute - Enhanced with official NCD threshold data and Tokyo Customs email verification",
+                    "sourceDocumentation": {
+                        "sources": [
+                            {
+                                "source": "NCD Psychotropic Substances Total Quantity List",
+                                "type": "official_regulation",
+                                "agency": "MHLW-NCD",
+                                "verified_date": "2025-07-10",
+                                "url": "https://www.ncd.mhlw.go.jp/dl_data/keitai/total.pdf",
+                                "key_finding": "Alprazolam 72mg threshold confirmed in official government threshold table"
+                            },
+                            {
+                                "source": "Tokyo Customs Official Email Response",
+                                "type": "official_regulation",
+                                "agency": "Tokyo Customs",
+                                "verified_date": "2025-07-10",
+                                "key_finding": "All psychotropics require Red Channel declaration regardless of quantity - Form C-5360-B required"
+                            },
+                            {
+                                "source": "MHLW Yunyu Kakunin-sho Application Portal",
+                                "type": "official_regulation",
+                                "agency": "MHLW",
+                                "verified_date": "2025-07-10",
+                                "url": "https://impconf.mhlw.go.jp/aicpte/page/login.jsp?lang=en",
+                                "key_finding": "Quantities exceeding 72mg alprazolam require advance import permit application"
+                            }
+                        ]
+                    }
                 }
             },
 
