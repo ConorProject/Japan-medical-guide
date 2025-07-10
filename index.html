@@ -2396,7 +2396,9 @@ function generateCitationLine(med, maxSources = 2, citationType = 'general', spe
 function generateGranularCitation(citation, specificFact) {
     if (!citation) return '';
     
-    let citationHTML = `<a href="${citation.url}" target="_blank" rel="noopener">${citation.source}</a>`;
+    let citationHTML = citation.url ? 
+        `<a href="${citation.url}" target="_blank" rel="noopener">${citation.source}</a>` : 
+        `${citation.source}`;
     
     if (citation.page) citationHTML += `, ${citation.page}`;
     if (citation.section) citationHTML += `, ${citation.section}`;
