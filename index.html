@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="url-database.js"></script>
     <style>
         * {
             margin: 0;
@@ -2386,8 +2387,15 @@ function generateCitationLine(med, maxSources = 2, citationType = 'general', spe
     if (prioritizedSources.length === 0) return '';
     
     const citationLinks = prioritizedSources.map(source => {
-        // Fix broken URLs
+        // Get URL using the comprehensive database
         let url = source.url || source.direct_url;
+        
+        // Use the URL database for intelligent URL lookup
+        if (!url && window.JapanMedicationUrls) {
+            url = window.JapanMedicationUrls.findUrl(source.agency || source.source);
+        }
+        
+        // Legacy URL fixes (kept for backward compatibility)
         if (url === 'https://www.ncd.mhlw.go.jp/application.html') {
             url = 'https://www.ncd.mhlw.go.jp/application2.html';
         }
@@ -2395,11 +2403,10 @@ function generateCitationLine(med, maxSources = 2, citationType = 'general', spe
         const agency = source.agency || source.source;
         const date = source.verified_date || 'verified';
         
-        
         let citationText = '';
         
         // Create clickable link OR styled text citation
-        if (url) {
+        if (url && window.JapanMedicationUrls?.isValid(url)) {
             citationText = `<a href="${url}" target="_blank" rel="noopener">${agency}</a>`;
         } else {
             // For sources without URLs, style them as official citations with enhanced styling
