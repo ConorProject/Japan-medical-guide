@@ -995,6 +995,7 @@
                                 "source": "Tokyo Customs Official Email Response (Private Correspondence)",
                                 "type": "official_regulation",
                                 "agency": "Tokyo Customs",
+                                "url": "https://www.customs.go.jp/english/",
                                 "verified_date": "2025-07-10",
                                 "local_reference": "sources/Dear Sir-Madam,.md lines 7-10",
                                 "key_finding": "Red Channel declaration required for all psychotropics regardless of quantity",
@@ -1233,6 +1234,7 @@
                                 "source": "PMD Act Personal Import Regulations",
                                 "type": "official_regulation",
                                 "agency": "MHLW",
+                                "url": "https://www.mhlw.go.jp/english/policy/health-medical/pharmaceuticals/01.html",
                                 "verified_date": "2025-07-04",
                                 "description": "Act on Securing Quality, Efficacy and Safety of Products Including Pharmaceuticals and Medical Devices",
                                 "key_finding": "Injectable medications limited to one-month supply; EpiPens subject to two-pen rule"
