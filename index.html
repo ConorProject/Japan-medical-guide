@@ -2394,14 +2394,6 @@ function generateCitationLine(med, maxSources = 2, citationType = 'general', spe
         const agency = source.agency || source.source;
         const date = source.verified_date || 'verified';
         
-        // Debug log for Amoxicillin
-        if (med.name === 'Amoxicillin') {
-            console.log('Amoxicillin debug:', {
-                source,
-                url,
-                isValidUrl: validateCitationUrl(url)
-            });
-        }
         
         let citationText = '';
         
@@ -2436,10 +2428,6 @@ function generateCitationLine(med, maxSources = 2, citationType = 'general', spe
     const citationLabel = getCitationLabel(citationType, specificFact);
     const finalCitation = `<div class="citation-line citation-${citationType}">${citationLabel}: ${citationLinks.join('<span class="citation-separator"> | </span>')}</div>`;
     
-    // Debug the final citation output for Amoxicillin
-    if (med.name === 'Amoxicillin') {
-        console.log('Amoxicillin final citation:', finalCitation);
-    }
     
     return finalCitation;
 }
