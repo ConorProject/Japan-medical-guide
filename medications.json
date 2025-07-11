@@ -1864,7 +1864,7 @@
         "customsDeclaration": "Not required",
         "channelRequired": "Green Channel",
         "uniqueStory": "The psychotropic medication that's not a 'psychotropic' - SSRIs escape Japan's controlled substance net",
-        "culturalContext": "Japan distinguishes between medical psychotropics and regulatory 'Psychotropics' - sertraline approved since 2006 with 20% antidepressant market share",
+        "culturalContext": "Japan distinguishes between medical psychotropics and regulatory 'Psychotropics' - sertraline approved since 2006 and widely prescribed by Japanese physicians for depression, depressed states, panic disorder, and PTSD. Available from multiple manufacturers including generic versions.",
         "commonMisconception": "That all medications affecting mental health require Red Channel declaration - SSRIs follow standard prescription drug rules",
         "surpriseFactor": "While Xanax requires Red Channel declaration, Zoloft goes through Green Channel despite both treating mental health conditions",
         "commentary": {
@@ -1873,7 +1873,8 @@
                 "No special customs procedures - treat like any prescription medication",
                 "Bring prescription bottle and doctor's letter for documentation",
                 "30-day supply = no permits, longer stays need Yakkan Shoumei",
-                "Available in Japan if you need refills during extended stays"
+                "Available in Japan from multiple manufacturers - can transition to local care",
+                "Long-term residents can import initial supply then see Japanese psychiatrist for ongoing prescriptions"
             ],
             "commonMistakes": [
                 "Assuming all mental health medications need Red Channel declaration",
@@ -1896,11 +1897,12 @@
             "costRange": "¥500-2,000 per month",
             "insuranceCoverage": "Covered under national health insurance",
             "availableBrands": [
-                "Jzoloft (Japanese sertraline)",
-                "Generic sertraline"
+                "Sertraline \"Kyorin\"",
+                "Sertraline \"DSEP\"",
+                "Generic sertraline (multiple manufacturers)"
             ],
             "restrictions": "Requires psychiatrist/physician consultation, regular monitoring",
-            "alternativeOptions": "Other SSRIs available (fluoxetine, paroxetine, escitalopram)"
+            "alternativeOptions": "Other approved SSRIs available (paroxetine, escitalopram) - note that fluoxetine is NOT approved in Japan"
         },
         "importDetails": {
             "customsDeclaration": "Not required for standard amounts",
@@ -1955,13 +1957,13 @@
             "Sarafem",
             "Prozac Weekly"
         ],
-        "status": "restricted",
+        "status": "permitted",
         "category": "Antidepressants (SSRI - Not Approved in Japan)",
         "maxQuantity": "Up to 1-month supply without permits, longer requires Yunyu Kakunin-sho",
         "conditions": "Must apply for import permit for extended supplies. Keep original packaging with prescription.",
-        "notes": "Not approved for prescription in Japan but legally importable for personal use. Import permits typically approved within 1-2 days despite official warnings of longer processing.",
+        "notes": "Not approved for prescription in Japan but has identical import treatment as approved medications. Eli Lilly conducted Phase 3 clinical trials in Japan for Major Depressive Disorder but withdrew application after 'disappointing' results. Global discontinuation of brand-name Prozac by Eli Lilly in late 2024 means users must now source generic fluoxetine.",
         "permitRequired": "Not required for ≤30 days. Yunyu Kakunin-sho required for longer stays (faster approval than expected).",
-        "consequences": "Standard restricted medication - import procedures required but no criminal penalties for proper personal use",
+        "consequences": "Standard prescription drug rules apply - identical import treatment as approved medications like Zoloft",
         "alternatives": [
             "Zoloft (sertraline)",
             "Paxil (paroxetine)",
@@ -1976,8 +1978,8 @@
             "ssri",
             "mental health"
         ],
-        "customsDeclaration": "Standard procedure for short stays, permit documentation for longer",
-        "channelRequired": "Green Channel for short stays, declare permits for longer",
+        "customsDeclaration": "Not required for standard amounts",
+        "channelRequired": "Green Channel - same as all prescription drugs",
         "actionSteps": {
             "title": "What You Need to Do: Prozac Travel Checklist",
             "steps": [
@@ -2018,8 +2020,8 @@
                 }
             ]
         },
-        "uniqueStory": "The antidepressant that Japan said 'no' to - but you can still legally bring for personal use",
-        "culturalContext": "Japan's conservative psychiatric medication approval process requires proof of superiority over existing treatments, creating barriers for globally-accepted antidepressants",
+        "uniqueStory": "The antidepressant that survived clinical trials but failed Japan's approval process - yet remains legally importable for personal use",
+        "culturalContext": "Japan's historically stringent drug approval standards required new drugs to demonstrate superiority over existing treatments, not just efficacy against placebo. This caused Eli Lilly to withdraw their fluoxetine application despite conducting comprehensive Phase 3 trials in Japanese patients with Major Depressive Disorder in the 2010s.",
         "commonMisconception": "That 'not approved' means 'not importable' - Prozac has clear legal import pathways despite domestic unavailability",
         "surpriseFactor": "Import permits approved in 1-2 days despite official warnings of weeks, showing bureaucratic efficiency for personal medical needs",
         "commentary": {
@@ -2028,6 +2030,7 @@
                 "Real permit approval times (1-2 days) much faster than official warnings suggest",
                 "Short-term travelers report hassle-free entry with original prescription bottles",
                 "Customs officers focus on documentation quality rather than medication type",
+                "Brand-name Prozac discontinued globally by Eli Lilly - generic fluoxetine now required",
                 "Consider switching to Japan-approved alternatives for long-term residence"
             ],
             "commonMistakes": [
