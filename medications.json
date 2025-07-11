@@ -3878,6 +3878,7 @@
                                 "source": "MHLW Narcotics Control Department - Narcotic Import Requirements Framework",
                                 "type": "official_regulation",
                                 "agency": "MHLW Narcotics Control Department",
+                                "url": "https://www.ncd.mhlw.go.jp/",
                                 "verified_date": "2025-07-03",
                                 "key_finding": "Codeine classified as narcotic requiring permits for all quantities"
                             },
@@ -3885,6 +3886,7 @@
                                 "source": "Regional Bureau of Health and Welfare - Narcotic Certificate Application Process",
                                 "type": "official_regulation",
                                 "agency": "Regional Bureau of Health and Welfare",
+                                "url": "https://www.mhlw.go.jp/english/policy/health-medical/pharmaceuticals/01.html",
                                 "verified_date": "2025-07-03",
                                 "key_finding": "Minimum 14-day advance application required for all narcotic imports"
                             },
@@ -4031,6 +4033,7 @@
                                 "source": "MHLW Approved Antidepressant List",
                                 "type": "official_regulation",
                                 "agency": "MHLW",
+                                "url": "https://www.mhlw.go.jp/english/policy/health-medical/pharmaceuticals/01.html",
                                 "verified_date": "2025-07-03",
                                 "key_finding": "Escitalopram approved April 22, 2011, not on psychotropic control list"
                             },
