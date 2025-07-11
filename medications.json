@@ -1691,6 +1691,7 @@
                                 "source": "MHLW Medical Device Import Regulations",
                                 "type": "official_regulation",
                                 "agency": "MHLW",
+                                "url": "https://www.mhlw.go.jp/english/policy/health-medical/pharmaceuticals/01.html",
                                 "verified_date": "2025-01-15",
                                 "key_finding": "Inhaled bronchodilators permitted for personal use"
                             },
@@ -1698,6 +1699,7 @@
                                 "source": "UK Embassy in Japan Medication Guidance",
                                 "type": "embassy_guidance",
                                 "agency": "UK Embassy Japan",
+                                "url": "https://www.gov.uk/foreign-travel-advice/japan/health",
                                 "verified_date": "2025-01-15",
                                 "key_finding": "Consistent embassy guidance across multiple countries"
                             },
@@ -1705,6 +1707,7 @@
                                 "source": "Medical Device Personal Use Import Rules",
                                 "type": "regulatory_analysis",
                                 "agency": "MHLW",
+                                "url": "https://www.mhlw.go.jp/english/policy/health-medical/pharmaceuticals/dl/qa1.pdf",
                                 "verified_date": "2025-01-15",
                                 "key_finding": "Emergency medication status provides regulatory clarity"
                             }
@@ -1789,6 +1792,7 @@
                                 "source": "MHLW Approved Antidepressant List",
                                 "type": "official_regulation",
                                 "agency": "MHLW",
+                                "url": "https://www.mhlw.go.jp/english/policy/health-medical/pharmaceuticals/01.html",
                                 "verified_date": "2025-01-15",
                                 "key_finding": "Sertraline approved since 2006, not on psychotropic list"
                             },
@@ -1796,6 +1800,7 @@
                                 "source": "Japan NCD Regulatory Framework",
                                 "type": "official_regulation",
                                 "agency": "Japan NCD",
+                                "url": "https://www.ncd.mhlw.go.jp/",
                                 "verified_date": "2025-01-15",
                                 "key_finding": "MHLW controlled substances classification"
                             },
@@ -1935,6 +1940,7 @@
                                 "source": "MHLW Unapproved Drug Import Procedures",
                                 "type": "official_regulation",
                                 "agency": "MHLW",
+                                "url": "https://www.mhlw.go.jp/english/policy/health-medical/pharmaceuticals/01.html",
                                 "verified_date": "2025-01-27",
                                 "key_finding": "Fluoxetine import permits available for personal use"
                             },
