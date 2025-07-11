@@ -512,6 +512,7 @@
                             {
                                 "source": "Japan's Stimulants Control Act Historical Framework",
                                 "type": "legal_statute",
+                                "url": "https://www.japaneselawtranslation.go.jp/en/laws/view/2814/en",
                                 "verified_date": "2025-07-04",
                                 "description": "Legal foundation explaining prodrug vs direct stimulant classification differences",
                                 "key_finding": "Prodrug pharmacology allows controlled import pathway unlike direct amphetamines"
@@ -520,6 +521,7 @@
                                 "source": "PMDA Pharmaceutical Approval Records",
                                 "type": "regulatory_approval",
                                 "agency": "PMDA",
+                                "url": "https://www.pmda.go.jp/english/",
                                 "verified_date": "2025-07-04",
                                 "description": "Vyvanse approval for pediatric ADHD in Japan (March 2019)",
                                 "key_finding": "Pediatric-only domestic approval separate from import regulations - does not restrict personal importation"
@@ -535,6 +537,7 @@
                                 "source": "Tokyo Customs Official Email Response",
                                 "type": "official_regulation",
                                 "agency": "Japan Customs",
+                                "url": "https://www.customs.go.jp/english/",
                                 "verified_date": "2025-07-10",
                                 "local_reference": "sources/Dear Sir-Madam,.md",
                                 "description": "Direct customs confirmation on psychotropic substance declaration requirements",
@@ -761,6 +764,7 @@
                                 "source": "Narcotics and Psychotropics Control Law",
                                 "type": "legal_statute",
                                 "agency": "MHLW",
+                                "url": "https://www.japaneselawtranslation.go.jp/en/laws/view/2819/en",
                                 "verified_date": "2025-07-04",
                                 "description": "Official legal framework governing methylphenidate as Third Category Psychotropic Drug",
                                 "key_finding": "Methylphenidate classified as psychotropic, not stimulant - allows legal import pathway unlike amphetamines"
@@ -769,6 +773,7 @@
                                 "source": "NCD Regional Bureau Contact Directory",
                                 "type": "official_regulation",
                                 "agency": "MHLW/NCD",
+                                "url": "https://www.ncd.mhlw.go.jp/en/",
                                 "verified_date": "2025-07-04",
                                 "description": "Complete contact information for Regional NCD offices handling psychotropic import applications",
                                 "key_finding": "Decentralized system requires application to correct regional office based on arrival airport"
@@ -776,6 +781,7 @@
                             {
                                 "source": "Japan's Historical Stimulant Control Policy Analysis",
                                 "type": "regulatory_analysis",
+                                "url": "https://www.mhlw.go.jp/bunya/iyakuhin/yakubuturanyou/",
                                 "verified_date": "2025-07-04",
                                 "description": "Post-WWII methamphetamine epidemics and development of current drug control framework",
                                 "key_finding": "Historical trauma shapes current policy but methylphenidate receives different treatment than amphetamines"
@@ -784,6 +790,7 @@
                                 "source": "Concerta Card Registration System Requirements",
                                 "type": "regulatory_analysis",
                                 "agency": "MHLW/Janssen",
+                                "url": "https://www.pmda.go.jp/english/",
                                 "verified_date": "2025-07-04",
                                 "description": "Mandatory patient/doctor/pharmacy registration system for domestic Concerta prescriptions",
                                 "key_finding": "Domestic access requires complete re-diagnosis and registration in controlled distribution system"
