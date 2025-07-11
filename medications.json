@@ -2070,6 +2070,7 @@
                                 "source": "MHLW Antibiotic Import Guidelines",
                                 "type": "official_regulation",
                                 "agency": "MHLW",
+                                "url": "https://www.mhlw.go.jp/bunya/iyakuhin/yakubuturanyou/",
                                 "verified_date": "2025-01-15",
                                 "key_finding": "Beta-lactam antibiotics permitted for personal use"
                             },
@@ -2077,6 +2078,7 @@
                                 "source": "Japan NCD Regulatory Framework",
                                 "type": "official_regulation",
                                 "agency": "Japan NCD",
+                                "url": "https://www.ncd.mhlw.go.jp/",
                                 "verified_date": "2025-01-15",
                                 "key_finding": "MHLW controlled substances classification"
                             },
@@ -2084,6 +2086,7 @@
                                 "source": "Embassy Sources and Official Antibiotic Import Guidelines",
                                 "type": "embassy_guidance",
                                 "agency": "Multiple Embassies",
+                                "url": "https://www.us.emb-japan.go.jp/english/html/travel_and_visa/visa/bringing-medication.html",
                                 "verified_date": "2025-01-15",
                                 "key_finding": "Embassy sources confirm absence from controlled lists"
                             }
