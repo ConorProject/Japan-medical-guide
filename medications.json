@@ -4897,6 +4897,7 @@
             "Ativan",
             "Lorazepam",
             "Wypax",
+            "Lorazepam Tablets 0.5mg 'SAWAI'",
             "Anxiolytic"
         ],
         "status": "restricted",
@@ -4910,27 +4911,29 @@
             "panic"
         ],
         "uniqueStory": "The stealth benzodiazepine - while Valium gets specific warnings and quantity limits, lorazepam operates in the regulatory shadows despite being the same drug class",
-        "culturalContext": "Japan has one of the world's highest benzodiazepine prescribing rates yet maintains strict import controls, even implementing a national ID system to prevent misuse",
-        "commonMisconception": "Travelers assume all benzodiazepines have the same restrictions, but lorazepam's threshold limits are mysteriously undisclosed compared to diazepam's clear 1.2g limit",
-        "surpriseFactor": "The benzodiazepine that hides in plain sight - absent from embassy warning lists while its cousins get constant mentions",
+        "culturalContext": "Japan's regulatory hierarchy places psychotropic substances under NCD control rather than general MHLW rules. While Japan has high benzodiazepine prescribing rates domestically, import controls reflect the country's strict approach to controlled substances. The 90mg threshold represents a specific weight-based limit rather than the time-based 'one-month supply' rule that governs regular prescription drugs.",
+        "commonMisconception": "That all benzodiazepines have the same import limits - actually each has specific weight thresholds: Lorazepam 90mg, Alprazolam 72mg, Diazepam 1200mg, Clonazepam 180mg. Also that 'one-month supply' rule applies - psychotropics use weight-based limits that override time-based calculations.",
+        "surpriseFactor": "Despite being explicitly listed as a 'psychotropic substance' on customs declaration forms, many travelers incorrectly assume they can avoid declaring it. The customs form specifically asks about psychotropic substances - making 'Yes' the only legally accurate answer regardless of quantity.",
         "alternatives": [
             "Japanese-prescribed benzodiazepines",
             "Non-benzodiazepine anxiolytics",
             "SSRIs"
         ],
         "maxQuantity": "Dual-trigger system: Up to 1 month supply (MHLW rule) AND ≤90mg total weight; excess requires permits",
-        "conditions": "Must carry personally, cannot send separately. Dual-trigger system applies - check both time AND weight limits. Red Channel declaration required for all quantities.",
+        "conditions": "Must carry personally in accompanied luggage - cannot send by mail or have third party carry. Dual-trigger system: documentation required if you exceed EITHER 90mg weight threshold OR one-month supply. Red Channel customs declaration mandatory for all quantities due to psychotropic classification.",
         "permitRequired": "Required for quantities exceeding 1 month supply OR 90mg weight threshold OR injection forms",
         "consequences": "Arrest and detention for violations - Japan has strict psychotropic drug enforcement with zero tolerance",
         "customsDeclaration": true,
         "channelRequired": "Red Channel",
         "calculationGuide": {
             "formula": "Total mg = (Number of tablets) × (Dosage per tablet in mg)",
-            "example1": "60 tablets × 0.5mg = 30mg total (OK - under 90mg threshold)",
-            "example2": "40 tablets × 2.0mg = 80mg total (OK - under 90mg threshold)",
-            "example3": "50 tablets × 2.0mg = 100mg total (REQUIRES PERMITS - over 90mg threshold)",
-            "thresholdNote": "Must check your total mg against 90mg threshold (NCD Table 3 confirmed limit)",
-            "dualTrigger": "Exceeding EITHER time limit (1 month) OR 90mg weight limit triggers documentation requirements"
+            "example1": "60 tablets × 0.5mg = 30mg total (COMPLIANT - under 90mg threshold)",
+            "example2": "40 tablets × 2.0mg = 80mg total (COMPLIANT - under 90mg threshold)",
+            "example3": "50 tablets × 2.0mg = 100mg total (REQUIRES NCD MEDICAL CERTIFICATE - over 90mg threshold)",
+            "example4": "90 tablets × 1.0mg = 90mg total for 45-day supply (REQUIRES YUNYU KAKUNIN-SHO - over 1-month time limit)",
+            "thresholdNote": "90mg is the official NCD weight limit for lorazepam - not based on time but total active ingredient weight",
+            "dualTrigger": "Two separate triggers: NCD requires medical certificate for >90mg, MHLW requires import permit for >1-month supply",
+            "comparativeContext": "Other psychotropic limits: Alprazolam 72mg, Diazepam 1200mg, Clonazepam 180mg, Zolpidem 300mg"
         },
         "keyData": {
             "regulatoryCategory": "Third Category Psychotropic Substance (controlled benzodiazepine)",
@@ -4962,12 +4965,16 @@
                 {
                     "number": "4",
                     "title": "Obtain medical certificate",
-                    "action": "Get mandatory medical certificate from prescribing doctor if over 90mg threshold"
+                    "action": "Get mandatory NCD-specified medical certificate from prescribing doctor if over 90mg threshold",
+                    "requirements": "Certificate must include: patient name/address, medical condition, necessity statement, medication details with quantities, doctor signature, and issue date",
+                    "note": "This is a legal requirement under Narcotics and Psychotropics Control Law - not optional"
                 },
                 {
                     "number": "5",
                     "title": "Prepare customs declaration",
-                    "action": "Complete Visit Japan Web declaring 'Yes' to psychotropic substances question"
+                    "action": "Complete Visit Japan Web declaring 'Yes' to psychotropic substances question - this is legally required regardless of quantity",
+                    "reasoning": "Customs form explicitly asks about 'psychotropic substances' and lorazepam is definitively classified as such. 'No' answer could be construed as false declaration to customs officials.",
+                    "note": "Risk-mitigation analysis favors truthful 'Yes' declaration over potential false declaration charges"
                 },
                 {
                     "number": "6",
@@ -4976,7 +4983,7 @@
                 }
             ]
         },
-        "whyRestricted": "Classified as psychotropic substance under Japan's controlled substances framework. All benzodiazepines require customs declaration due to abuse potential and regulatory sensitivity, regardless of quantity.",
+        "whyRestricted": "Classified as Third Category Psychotropic Substance under Japan's Narcotics and Psychotropics Control Law. This places it under NCD jurisdiction rather than general MHLW prescription drug rules. The 90mg threshold represents a substance-specific weight limit that supersedes time-based 'one-month supply' calculations. All psychotropic substances require Red Channel declaration due to their controlled status and potential for misuse.",
         "comparisonNote": "Similar regulations to Xanax and Clonazepam - all benzodiazepines follow psychotropic substance protocols with Red Channel declaration requirements.",
         "helpfulTips": {
             "beforeTravel": [
