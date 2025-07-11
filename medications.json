@@ -1130,10 +1130,10 @@
         ],
         "status": "restricted",
         "category": "Emergency Medical Device (Combination Drug/Device)",
-        "maxQuantity": "Up to 2 auto-injectors without permit ('two-pen rule'), 3+ requires Yunyu Kakunin-sho",
+        "maxQuantity": "Up to 2 EpiPens without permit ('2-pen rule' confirmed by MHLW), 3+ requires Yunyu Kakunin-sho",
         "conditions": "Must declare at Red Channel regardless of quantity. Governed by PMD Act, not narcotics/stimulants laws.",
-        "notes": "CORRECTED: Must declare 'YES' for restricted items and use Red Channel. EpiPen available in Japan as エピペン with prescription.",
-        "permitRequired": "Not required for ≤2 EpiPens. Yunyu Kakunin-sho required 2-4 weeks in advance for 3+ devices.",
+        "notes": "Classified as 'Pre-filled Syringe/Self-injection Kit' under PMD Act - NOT narcotic/psychotropic. '2-pen rule' based on medical best practice for severe allergies (device misfire, biphasic reactions). EpiPens available in Japan but foreign prescriptions not honored.",
+        "permitRequired": "Not required for 1-2 EpiPens. Yunyu Kakunin-sho required 3-4 weeks in advance for 3+ devices.",
         "consequences": "False declaration carries penalties. Must use Red Channel for inspection.",
         "alternatives": [
             "EpiPen available in Japan by prescription",
@@ -1148,22 +1148,22 @@
             "emergency",
             "auto-injector"
         ],
-        "customsDeclaration": "Required - Red Channel with medical documentation",
+        "customsDeclaration": "Proactively declare by checking 'Yes' for restricted items - transparent disclosure strategy recommended",
         "channelRequired": "Red Channel",
         "actionSteps": {
             "title": "What You Need to Do: EpiPen Import Process",
             "steps": [
                 {
                     "number": "1",
-                    "title": "Verify your quantity - apply 'two-pen rule'",
-                    "action": "Count EpiPens: ≤2 auto-injectors = no permit needed, 3+ requires Yunyu Kakunin-sho",
-                    "critical": "Two-pen rule based on standard medical practice - second dose often needed for severe reactions"
+                    "title": "Verify your quantity and apply '2-pen rule'",
+                    "action": "Count EpiPens: 1-2 auto-injectors = no permit needed, 3+ requires Yunyu Kakunin-sho",
+                    "critical": "2-pen rule confirmed by MHLW based on medical best practice - second dose often needed for severe reactions"
                 },
                 {
                     "number": "2",
                     "title": "Apply for Yunyu Kakunin-sho if bringing 3+ EpiPens",
-                    "action": "Submit online application to MHLW 2-4 weeks before travel via impconf.mhlw.go.jp",
-                    "note": "Include: application form, doctor's letter, prescription, travel itinerary"
+                    "action": "Submit online application to MHLW 3-4 weeks before travel via impconf.mhlw.go.jp",
+                    "note": "Include: Import Report form, product explanation, prescription copy, flight itinerary"
                 },
                 {
                     "number": "3",
@@ -1180,8 +1180,8 @@
                 {
                     "number": "5",
                     "title": "Declare 'YES' on customs form for restricted items",
-                    "action": "Mark 'YES' on customs declaration form → Proceed to Red Channel for inspection",
-                    "critical": "False declaration carries severe penalties - must declare even with valid documentation"
+                    "action": "Check 'YES' for restricted items on customs declaration → Proceed to Red Channel for inspection",
+                    "critical": "Proactive transparent disclosure strategy - transforms potential conflict into cooperative compliance"
                 },
                 {
                     "number": "6",
@@ -1230,25 +1230,27 @@
         },
         "japanAvailability": {
             "prescriptionRequired": true,
-            "costRange": "Available through specialized allergy clinics and hospitals",
-            "insuranceCoverage": "Covered under Japanese health insurance with proper prescription",
+            "costRange": "Approximately ¥8,000 per device (30% co-payment for adults)",
+            "insuranceCoverage": "Covered under National Health Insurance since Sept 22, 2011 - free for children ≤15 with medical expense certificate",
             "availableBrands": [
-                "エピペン (EpiPen) - PMDA approved and available"
+                "エピペン (EpiPen) by Viatris - only auto-injector available in Japan",
+                "0.3mg formulation (approved Aug 1, 2003)",
+                "0.15mg formulation (approved Mar 4, 2005)"
             ],
-            "restrictions": "Foreign prescriptions not honored - requires new Japanese prescription",
-            "alternativeOptions": "English-speaking allergy specialists available in Tokyo, Osaka, other major cities"
+            "restrictions": "Foreign prescriptions not honored - requires new Japanese prescription from local physician",
+            "alternativeOptions": "EpiPens available in Japan - allergist clinics (アレルギー科) recommended for assessment"
         },
         "importDetails": {
-            "customsDeclaration": "Required - Red Channel with medical documentation",
+            "customsDeclaration": "Check 'YES' for restricted items - proactive transparent disclosure strategy",
             "channelRequired": "Red Channel for ALL quantities",
             "documentationNeeded": [
-                "Original prescription packaging with clear labels",
-                "Detailed doctor's letter with anaphylaxis diagnosis and medical necessity",
+                "Original prescription packaging with clear labels", 
+                "'Gold Standard' doctor's letter with patient info, diagnosis, medical necessity, exact quantities",
                 "Yunyu Kakunin-sho certificate (if bringing 3+ devices)",
-                "Travel itinerary"
+                "Travel itinerary with arrival details"
             ],
-            "quantityLimits": "≤2 EpiPens no permit needed, 3+ requires Yunyu Kakunin-sho",
-            "permitProcess": "Apply online via impconf.mhlw.go.jp 2-4 weeks before travel to correct Regional Health Bureau"
+            "quantityLimits": "1-2 EpiPens no permit needed ('2-pen rule'), 3+ requires Yunyu Kakunin-sho",
+            "permitProcess": "Modern online application at impconf.mhlw.go.jp minimum 1 month advance notice"
         },
         "citations": {
             "threshold": {
