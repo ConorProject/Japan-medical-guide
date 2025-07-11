@@ -2434,7 +2434,14 @@ function generateCitationLine(med, maxSources = 2, citationType = 'general', spe
     });
     
     const citationLabel = getCitationLabel(citationType, specificFact);
-    return `<div class="citation-line citation-${citationType}">${citationLabel}: ${citationLinks.join('<span class="citation-separator"> | </span>')}</div>`;
+    const finalCitation = `<div class="citation-line citation-${citationType}">${citationLabel}: ${citationLinks.join('<span class="citation-separator"> | </span>')}</div>`;
+    
+    // Debug the final citation output for Amoxicillin
+    if (med.name === 'Amoxicillin') {
+        console.log('Amoxicillin final citation:', finalCitation);
+    }
+    
+    return finalCitation;
 }
 
 // Simple URL validation function
