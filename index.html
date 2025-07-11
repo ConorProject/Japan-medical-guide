@@ -2307,6 +2307,13 @@ function generateQuickFacts(med) {
 
 // --- SIMPLIFIED CITATION HANDLER ---
 function generateCitationLine(med, maxSources = 2, citationType = 'general', specificFact = null) {
+    // Simple test to see if function is being called
+    if (med.name === 'Amoxicillin') {
+        console.log('generateCitationLine called for Amoxicillin with citationType:', citationType);
+        // Return a very obvious test citation to see if it displays
+        return '<div class="citation-line citation-test" style="background: red; color: white; padding: 10px; font-weight: bold;">TEST CITATION FOR AMOXICILLIN - IF YOU SEE THIS, THE FUNCTION IS WORKING!</div>';
+    }
+    
     // Check for new granular citation system first
     if (med.citations && citationType !== 'general' && med.citations[citationType]) {
         return generateGranularCitation(med.citations[citationType], specificFact);
