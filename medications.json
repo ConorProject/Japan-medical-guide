@@ -2807,8 +2807,8 @@
             "syringe",
             "blood sugar"
         ],
-        "customsDeclaration": "Green Channel for standard quantities",
-        "channelRequired": "Green Channel (≤1 month supply)",
+        "customsDeclaration": "Declare 'Yes' to restricted items - proactive transparency recommended",
+        "channelRequired": "Red Channel (Goods to Declare) - injectable prescription medication",
         "actionSteps": {
             "title": "What You Need to Do: Insulin Travel Checklist",
             "steps": [
@@ -2915,8 +2915,8 @@
             "specialCoverage": "Children with type 1 diabetes receive special coverage up to age 20"
         },
         "importDetails": {
-            "customsDeclaration": "Not required for ≤1 month supply",
-            "channelRequired": "Green Channel for standard quantities",
+            "customsDeclaration": "Declare 'Yes' to restricted items question - transparent disclosure recommended",
+            "channelRequired": "Red Channel (Goods to Declare) - injectable prescription requires declaration",
             "documentationNeeded": [
                 "Original prescription packaging with pharmacy labels",
                 "Doctor's letter confirming diabetes diagnosis and insulin necessity",
