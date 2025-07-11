@@ -2379,11 +2379,17 @@ function generateCitationLine(med, maxSources = 2, citationType = 'general', spe
         
         let citationText = '';
         
-        // Create clickable link
+        // Create clickable link OR styled text citation
         if (url) {
             citationText = `<a href="${url}" target="_blank" rel="noopener">${agency}</a>`;
         } else {
-            citationText = agency;
+            // For sources without URLs, style them as official citations
+            citationText = `<strong>${agency}</strong>`;
+        }
+        
+        // Add key finding if available and no URL (to provide more context)
+        if (!url && source.key_finding) {
+            citationText += ` - ${source.key_finding}`;
         }
         
         // Add page reference if available
