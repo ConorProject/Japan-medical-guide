@@ -2409,6 +2409,7 @@
                                 "source": "US Embassy Japan Importing Medication Guidance",
                                 "type": "embassy_guidance",
                                 "agency": "US Embassy Japan",
+                                "url": "https://www.us.emb-japan.go.jp/english/html/travel_and_visa/visa/bringing-medication.html",
                                 "verified_date": "2025-07-02",
                                 "key_finding": "Tylenol listed among generally permitted OTC medications"
                             },
@@ -2416,6 +2417,7 @@
                                 "source": "MHLW Personal Use Medicine Import Regulations",
                                 "type": "official_regulation",
                                 "agency": "MHLW",
+                                "url": "https://www.mhlw.go.jp/english/policy/health-medical/pharmaceuticals/01.html",
                                 "verified_date": "2025-07-02",
                                 "key_finding": "2-month supply limit for non-prescription medications"
                             },
@@ -2546,6 +2548,7 @@
                                 "source": "US Embassy Japan Prohibited Medication List",
                                 "type": "embassy_guidance",
                                 "agency": "US Embassy Japan",
+                                "url": "https://www.us.emb-japan.go.jp/english/html/travel_and_visa/visa/bringing-medication.html",
                                 "verified_date": "2025-07-02",
                                 "key_finding": "Advil Cold & Sinus specifically listed as prohibited, plain ibuprofen generally acceptable"
                             },
@@ -2553,6 +2556,7 @@
                                 "source": "MHLW Personal Use Medicine Import Regulations",
                                 "type": "official_regulation",
                                 "agency": "MHLW",
+                                "url": "https://www.mhlw.go.jp/english/policy/health-medical/pharmaceuticals/01.html",
                                 "verified_date": "2025-07-02",
                                 "key_finding": "2-month supply limit for non-prescription medications"
                             },
