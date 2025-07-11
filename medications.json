@@ -2068,16 +2068,16 @@
             "alternativeOptions": "Zoloft (sertraline), Paxil (paroxetine), Lexapro (escitalopram) - all require psychiatric consultation"
         },
         "importDetails": {
-            "customsDeclaration": "Standard for short stays, permit documentation for extended stays",
-            "channelRequired": "Green Channel for ≤30 days, declare permits for longer",
+            "customsDeclaration": "Not required for standard amounts",
+            "channelRequired": "Green Channel - standard prescription drug treatment",
             "documentationNeeded": [
                 "Original prescription bottles with pharmacy labels",
                 "Doctor's letter explaining depression treatment and medical necessity",
                 "Yunyu Kakunin-sho permit (for stays >30 days)",
                 "Medical history documentation supporting continued treatment"
             ],
-            "quantityLimits": "Up to 1-month supply permit-free, longer supplies require advance approval",
-            "permitProcess": "Email yakkan@mhlw.go.jp or apply through online portal with medical documentation"
+            "quantityLimits": "Up to 1-month supply permit-free, longer supplies require Yunyu Kakunin-sho",
+            "permitProcess": "Standard MHLW import certificate process - same as all prescription drugs"
         },
         "researchQuality": {
             "lastUpdated": "2025-01-27",
