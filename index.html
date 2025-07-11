@@ -2334,17 +2334,34 @@ function generateCitationLine(med, maxSources = 2, citationType = 'general', spe
         'community_research': 11
     };
     
-    // Filter sources by citation type if specified
+    // Filter sources by citation type if specified - with robust fallbacks
     let filteredSources = sources;
-    if (citationType !== 'general' && specificFact) {
-        filteredSources = sources.filter(source => {
-            const content = (source.key_finding || '') + ' ' + (source.description || '');
-            return content.toLowerCase().includes(specificFact.toLowerCase()) ||
-                   matchesCitationType(source, citationType);
-        });
-        
-        if (filteredSources.length === 0) {
-            filteredSources = sources.filter(source => matchesCitationType(source, citationType));
+    
+    // Only filter if we have a specific citation type and it's not general
+    if (citationType && citationType !== 'general') {
+        try {
+            // First try: filter by specific fact if provided
+            if (specificFact) {
+                const factFiltered = sources.filter(source => {
+                    const content = (source.key_finding || '') + ' ' + (source.description || '');
+                    return content.toLowerCase().includes(specificFact.toLowerCase());
+                });
+                if (factFiltered.length > 0) {
+                    filteredSources = factFiltered;
+                }
+            }
+            
+            // Second try: filter by citation type using helper function
+            if (filteredSources === sources) {
+                const typeFiltered = sources.filter(source => matchesCitationType(source, citationType));
+                if (typeFiltered.length > 0) {
+                    filteredSources = typeFiltered;
+                }
+            }
+        } catch (error) {
+            // If any filtering fails, fall back to all sources
+            console.warn('Citation filtering failed, using all sources:', error);
+            filteredSources = sources;
         }
     }
     
