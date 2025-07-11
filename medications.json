@@ -2785,10 +2785,10 @@
             "Toujeo"
         ],
         "status": "permitted",
-        "category": "Injectable Diabetes Medication",
+        "category": "Prescription Drug + Medical Device (PMD Act)",
         "maxQuantity": "≤1 month supply without permits. >1 month requires Yunyu Kakunin-sho",
-        "conditions": "Pre-filled syringes/self-injection kits only. Must be in original packaging with prescription documentation.",
-        "notes": "Life-essential medication with flexible import procedures. Insulin pumps allowed without permits. Available in Japan with prescription.",
+        "conditions": "Must be 'Pre-filled Syringe' or 'Self-injection Kit' format only. Vials with separate syringes require Yunyu Kakunin-sho regardless of quantity. Dual regulatory status as prescription drug + medical device under PMD Act.",
+        "notes": "EXPERT ENHANCED: Life-essential medication governed by PMD Act with pragmatic enforcement. Dual regulatory status: prescription drug + medical device. Modern online Yunyu Kakunin-sho process via https://impconf.mhlw.go.jp/aicpte/page/login.jsp?lang=en (replaced obsolete postal applications). Insulin pumps/CGMs permitted but multi-month disposables need permits. Visit Japan Web electronic customs declaration recommended. Different insulin types treated separately for quantity calculations - basal + bolus each get 1-month allowance.",
         "permitRequired": "Not required for ≤1 month supply. Yunyu Kakunin-sho required for >1 month supply",
         "consequences": "Standard permitted medication with injectable safeguards",
         "alternatives": [
@@ -2814,13 +2814,14 @@
             "steps": [
                 {
                     "number": "1",
-                    "title": "Calculate your supply needs",
-                    "action": "Count total insulin needed for trip duration - ≤1 month supply qualifies for permit-free import",
+                    "title": "Calculate your supply needs using PMD Act framework",
+                    "action": "Count each insulin type separately - basal and bolus each get 1-month allowance under dual drug+device classification",
                     "examples": [
-                        "Short trip: 2-3 weeks supply",
-                        "Longer stay: Apply for Yunyu Kakunin-sho if >1 month needed"
+                        "Example: 1-month Lantus + 1-month Humalog = both permit-free",
+                        "45-day basal + 20-day bolus = only basal needs Yunyu Kakunin-sho",
+                        "CGM/pump disposables >1 month = permit required for supplies"
                     ],
-                    "note": "Include backup supplies but stay within 1-month limit to avoid permits"
+                    "critical": "PMD Act treats each insulin product separately for quantity calculations"
                 },
                 {
                     "number": "2",
@@ -2842,9 +2843,9 @@
                 },
                 {
                     "number": "5",
-                    "title": "Proceed through Green Channel",
-                    "action": "Use standard customs procedures for standard quantities - no special declaration required",
-                    "phrase": "If questioned: 'Prescribed insulin for diabetes management with medical documentation'"
+                    "title": "Use Visit Japan Web for customs declaration",
+                    "action": "Complete electronic customs declaration online before arrival - generates QR code for faster processing",
+                    "recommended": "Answer 'Yes' to restricted items question to proactively declare diabetes supplies"
                 },
                 {
                     "number": "6",
@@ -2861,12 +2862,14 @@
         "commentary": {
             "storyHook": "The injectable medication that proves Japan's medication rules have heart - diabetes management transcends bureaucracy.",
             "practicalTips": [
-                "Insulin pumps allowed without permits - bring manufacturer documentation",
-                "Pre-filled pens are easier than vials for customs processing",
+                "PMD Act dual classification means each insulin type gets separate 1-month allowance",
+                "Online Yunyu Kakunin-sho application via https://impconf.mhlw.go.jp/aicpte/page/login.jsp?lang=en (replaced email process)",
+                "Visit Japan Web electronic declaration recommended - generates QR code for faster customs",
+                "Insulin pumps allowed without permits but multi-month disposables need certificates",
+                "Pre-filled pens avoid 'vials + separate syringes' permit requirements",
                 "Maintain 36°F-46°F (2°C-8°C) for unopened insulin, room temp OK for opened insulin under 77°F",
-                "Use insulin travel fridges not ice packs - temperature fluctuations damage insulin",
-                "ANA/JAL airlines allow insulin syringes and autoinjectors without MEDIF forms",
-                "Japanese insulin brands identical to US versions - easy transition if needed"
+                "CGM/pump users: assume certificate needed for >1 month disposables (regulatory gray area)",
+                "Japanese insulin brands identical to US versions - seamless transition if needed"
             ],
             "commonMistakes": [
                 "Assuming injectable medications automatically require permits",
@@ -2887,9 +2890,11 @@
                 "Consider backup glucose tablets from Japanese convenience stores"
             ],
             "warningFlags": [
-                "Vials with separate syringes may require permits unlike pre-filled systems",
-                "Quantities over 1-month supply need advance Yunyu Kakunin-sho approval",
-                "Temperature-damaged insulin may be questioned at customs"
+                "PMD Act requires permits for vials + separate syringes regardless of quantity",
+                "Each insulin type calculated separately - combining types doesn't extend 1-month limit",
+                "CGM/insulin pump disposables >1 month need permits (regulatory gray area requires caution)",
+                "Obsolete guides describing email applications are outdated - online portal mandatory since 2023",
+                "Temperature-damaged insulin may trigger enhanced customs scrutiny"
             ]
         },
         "japanAvailability": {
@@ -2919,9 +2924,23 @@
                 "Insulin pump documentation if applicable"
             ],
             "quantityLimits": "≤1 month supply no permits needed, >1 month requires advance Yunyu Kakunin-sho",
-            "permitProcess": "Email yakkan@mhlw.go.jp at least 2 weeks before travel for extended supplies"
+            "permitProcess": "MODERNIZED: Online application via https://impconf.mhlw.go.jp/aicpte/page/login.jsp?lang=en (replaced email process). Submit 2-4 weeks before travel. Create account → upload documents → receive PDF certificate. Contact yakkan@mhlw.go.jp for Tokyo arrivals only if questions arise."
         },
         "citations": {
+            "pmd_act_framework": {
+                "value": "PMD Act dual classification: prescription drug + medical device. Each insulin type gets separate 1-month allowance",
+                "source": "Comprehensive Guide to Importing Insulin and Diabetes Medications into Japan",
+                "url": "Diabetes Medication Importation Japan Rules",
+                "accessed": "2025-07-11",
+                "quote": "The regulations are agnostic to the specific pharmacological properties of the insulin. A person using both a basal and a bolus insulin must treat them as two separate products. They can bring up to a one-month supply of each without a certificate."
+            },
+            "online_application_process": {
+                "value": "Modernized online Yunyu Kakunin-sho application portal replaced obsolete email process",
+                "source": "MHLW Official Import Confirmation Portal",
+                "url": "https://impconf.mhlw.go.jp/aicpte/page/login.jsp?lang=en",
+                "accessed": "2025-07-11",
+                "quote": "As of February 1, 2023, the application process for the Yunyu Kakunin-sho has been significantly modernized and moved to a dedicated online portal"
+            },
             "device_permissions": {
                 "value": "Insulin pumps and syringes allowed without permits",
                 "source": "US Embassy Japan Medical Equipment Guidance",
@@ -2960,7 +2979,10 @@
         },
         "researchQuality": {
             "primarySources": [
-                "MHLW injectable medication import regulations",
+                "PMD Act (Act on Securing Quality, Efficacy and Safety of Products Including Pharmaceuticals and Medical Devices)",
+                "MHLW injectable medication import regulations and dual drug+device classification framework",
+                "Modernized online Yunyu Kakunin-sho application portal (replaced obsolete email process)",
+                "Visit Japan Web electronic customs declaration system",
                 "US Embassy diabetes medication guidance and emergency support",
                 "ANA/JAL airline medical device policies",
                 "T1International Japan healthcare system analysis"
