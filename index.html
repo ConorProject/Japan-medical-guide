@@ -2305,99 +2305,211 @@ function generateQuickFacts(med) {
     return facts.join('');
 }
 
-// --- ENHANCED CITATION GENERATOR WITH GRANULAR SUPPORT ---
+// --- UNIFIED CITATION HANDLER ---
 function generateCitationLine(med, maxSources = 2, citationType = 'general', specificFact = null) {
-    // Check for new granular citation system first
+    // Debug logging
+    if (window.debugCitations) {
+        console.log(`Citation request: ${med.name}, type: ${citationType}, fact: ${specificFact}`);
+        console.log('Med citations:', med.citations);
+        console.log('Med researchQuality:', med.researchQuality);
+    }
+    
+    // Priority 1: New granular citation system
     if (med.citations && citationType !== 'general' && med.citations[citationType]) {
         return generateGranularCitation(med.citations[citationType], specificFact);
     }
     
+    // Priority 2: Legacy system with enhanced URL handling
+    if (med.researchQuality?.sourceDocumentation?.sources) {
+        const sources = med.researchQuality.sourceDocumentation.sources;
+        
+        // Enhanced priority system
+        const typePriority = {
+            'official_regulation': 1,
+            'legal_statute': 2,
+            'embassy_guidance': 3,
+            'expert_analysis': 4,
+            'documented_case': 5,
+            'legal_precedent': 6,
+            'medical_research': 7,
+            'policy_research': 8,
+            'regulatory_analysis': 9,
+            'traveler_experience': 10,
+            'community_research': 11
+        };
+        
+        // Filter sources by citation type if specified
+        let filteredSources = sources;
+        if (citationType !== 'general' && specificFact) {
+            filteredSources = sources.filter(source => {
+                const content = (source.key_finding || '') + ' ' + (source.description || '');
+                return content.toLowerCase().includes(specificFact.toLowerCase()) ||
+                       matchesCitationType(source, citationType);
+            });
+            
+            if (filteredSources.length === 0) {
+                filteredSources = sources.filter(source => matchesCitationType(source, citationType));
+            }
+        }
+        
+        // Sort sources by priority and quality
+        const prioritizedSources = filteredSources
+            .sort((a, b) => {
+                const priorityA = typePriority[a.type] || 99;
+                const priorityB = typePriority[b.type] || 99;
+                
+                if (priorityA === priorityB) {
+                    // Prefer sources with direct URLs and page references
+                    const qualityA = (a.url ? 10 : 0) + (a.page_reference ? 5 : 0);
+                    const qualityB = (b.url ? 10 : 0) + (b.page_reference ? 5 : 0);
+                    return qualityB - qualityA;
+                }
+                
+                return priorityA - priorityB;
+            })
+            .slice(0, maxSources);
+        
+        if (prioritizedSources.length === 0) return '';
+        
+        const citationLinks = prioritizedSources.map(source => {
+            // Enhanced URL mapping
+            const originalUrl = source.url || source.direct_url;
+            const mappedUrl = mapBrokenUrls(originalUrl);
+            
+            const agency = source.agency || source.source;
+            const date = source.verified_date || 'verified';
+            
+            let citationText = mappedUrl ? 
+                `<a href="${mappedUrl}" target="_blank" rel="noopener">${agency}</a>` : 
+                `${agency}`;
+            
+            // Add secondary source link if URL exists but agency doesn't contain URL
+            if (mappedUrl && !agency.includes('http')) {
+                citationText += ` (<a href="${mappedUrl}" target="_blank" rel="noopener">source</a>)`;
+            }
+            
+            // Add page reference if available
+            if (source.page_reference) {
+                citationText += ` (p. ${source.page_reference})`;
+            }
+            
+            // Add section reference if available  
+            if (source.section_reference) {
+                citationText += ` §${source.section_reference}`;
+            }
+            
+            citationText += ` (${date})`;
+            
+            return citationText;
+        });
+        
+        const citationLabel = getCitationLabel(citationType, specificFact);
+        return `<div class="citation-line citation-${citationType}">${citationLabel}: ${citationLinks.join('<span class="citation-separator"> | </span>')}</div>`;
+    }
+    
+    // Priority 3: Fallback for medications without proper citation structure
+    if (window.debugCitations) {
+        console.warn(`No citation sources found for ${med.name}, generating fallback`);
+    }
+    
+    return `<div class="citation-line citation-fallback"><em>Source: Medical import regulations research</em></div>`;
+}
+
+// Enhanced URL mapping function
+function mapBrokenUrls(url) {
+    if (!url) return null;
+    
+    // Known broken URL mappings
+    const urlMappings = {
+        'https://www.ncd.mhlw.go.jp/application.html': 'https://www.ncd.mhlw.go.jp/application2.html',
+        'https://www.mhlw.go.jp/bunya/iyakuhin/yakuji/dl/application.html': 'https://www.ncd.mhlw.go.jp/application2.html',
+        // Add more mappings as needed
+    };
+    
+    return urlMappings[url] || url;
+}
+
+// Debug function to analyze citation structure
+function debugCitationStructure(medName) {
+    const med = medications.find(m => m.name.toLowerCase() === medName.toLowerCase());
+    if (!med) {
+        console.log(`Medication '${medName}' not found`);
+        return;
+    }
+    
+    console.log(`\n=== Citation Analysis for ${med.name} ===`);
+    console.log('New citation system:', med.citations ? 'YES' : 'NO');
+    if (med.citations) {
+        console.log('Citation types available:', Object.keys(med.citations));
+    }
+    
+    console.log('Legacy system:', med.researchQuality?.sourceDocumentation?.sources ? 'YES' : 'NO');
+    if (med.researchQuality?.sourceDocumentation?.sources) {
+        console.log('Legacy sources count:', med.researchQuality.sourceDocumentation.sources.length);
+        console.log('Legacy source types:', med.researchQuality.sourceDocumentation.sources.map(s => s.type));
+    }
+    
+    console.log('\nGenerated citation (general):', generateCitationLine(med));
+    console.log('Generated citation (classification):', generateCitationLine(med, 2, 'classification'));
+    console.log('Generated citation (threshold):', generateCitationLine(med, 2, 'threshold'));
+}
+
+// Migration helper function
+function migrateLegacyToNewCitations(med) {
     if (!med.researchQuality?.sourceDocumentation?.sources) {
-        return '';
+        return null;
     }
     
     const sources = med.researchQuality.sourceDocumentation.sources;
+    const newCitations = {};
     
-    // Enhanced priority system
-    const typePriority = {
-        'official_regulation': 1,
-        'legal_statute': 2,
-        'embassy_guidance': 3,
-        'expert_analysis': 4,
-        'documented_case': 5,
-        'legal_precedent': 6,
-        'medical_research': 7,
-        'policy_research': 8,
-        'regulatory_analysis': 9,
-        'traveler_experience': 10,
-        'community_research': 11
-    };
-    
-    // Filter sources by citation type if specified
-    let filteredSources = sources;
-    if (citationType !== 'general' && specificFact) {
-        filteredSources = sources.filter(source => {
-            const content = (source.key_finding || '') + ' ' + (source.description || '');
-            return content.toLowerCase().includes(specificFact.toLowerCase()) ||
-                   matchesCitationType(source, citationType);
-        });
-        
-        if (filteredSources.length === 0) {
-            filteredSources = sources.filter(source => matchesCitationType(source, citationType));
-        }
-    }
-    
-    // Sort sources by priority and quality
-    const prioritizedSources = filteredSources
-        .sort((a, b) => {
-            const priorityA = typePriority[a.type] || 99;
-            const priorityB = typePriority[b.type] || 99;
-            
-            if (priorityA === priorityB) {
-                // Prefer sources with direct URLs and page references
-                const qualityA = (a.url ? 10 : 0) + (a.page_reference ? 5 : 0);
-                const qualityB = (b.url ? 10 : 0) + (b.page_reference ? 5 : 0);
-                return qualityB - qualityA;
+    // Map legacy sources to new citation types
+    sources.forEach(source => {
+        const types = determineCitationTypes(source);
+        types.forEach(type => {
+            if (!newCitations[type]) {
+                newCitations[type] = [];
             }
-            
-            return priorityA - priorityB;
-        })
-        .slice(0, maxSources);
-    
-    if (prioritizedSources.length === 0) return '';
-    
-    const citationLinks = prioritizedSources.map(source => {
-        const url = source.url || source.direct_url;
-        const agency = source.agency || source.source;
-        const date = source.verified_date || 'verified';
-        
-        let citationText = url ? 
-            `<a href="${url}" target="_blank" rel="noopener">${agency}</a>` : 
-            `${agency}`;
-        
-        // Also add URL as clickable link if different from agency name
-        if (url && !agency.includes('http')) {
-            citationText += ` (<a href="${url}" target="_blank" rel="noopener">source</a>)`;
-        }
-        
-        // Add page reference if available
-        if (source.page_reference) {
-            citationText += ` (p. ${source.page_reference})`;
-        }
-        
-        // Add section reference if available  
-        if (source.section_reference) {
-            citationText += ` §${source.section_reference}`;
-        }
-        
-        citationText += ` (${date})`;
-        
-        return citationText;
+            newCitations[type].push({
+                source: source.agency || source.source,
+                url: mapBrokenUrls(source.url || source.direct_url),
+                page: source.page_reference,
+                section: source.section_reference,
+                quote: source.key_finding,
+                accessed: source.verified_date,
+                type: source.type
+            });
+        });
     });
     
-    const citationLabel = getCitationLabel(citationType, specificFact);
-    return `<div class="citation-line citation-${citationType}">${citationLabel}: ${citationLinks.join('<span class="citation-separator"> | </span>')}</div>`;
+    return newCitations;
 }
+
+function determineCitationTypes(source) {
+    const content = ((source.key_finding || '') + ' ' + (source.description || '')).toLowerCase();
+    const types = ['general']; // Always include general
+    
+    if (content.includes('threshold') || content.includes('limit') || content.includes('mg')) {
+        types.push('threshold');
+    }
+    if (content.includes('schedule') || content.includes('classification') || content.includes('controlled')) {
+        types.push('classification');
+    }
+    if (content.includes('customs') || content.includes('declaration') || content.includes('channel')) {
+        types.push('customs');
+    }
+    if (content.includes('permit') || content.includes('certificate') || content.includes('application')) {
+        types.push('permit');
+    }
+    if (content.includes('available') || content.includes('prescription') || content.includes('pharmacy')) {
+        types.push('availability');
+    }
+    
+    return types;
+}
+
+// Enable debug mode
+window.debugCitations = false; // Set to true to enable debug logging
 
 // Generate granular citation from new citation structure
 function generateGranularCitation(citation, specificFact) {
