@@ -3270,13 +3270,13 @@
             "TRT",
             "Hormone replacement therapy"
         ],
-        "status": "restricted",
+        "status": "regulated_prescription_drug",
         "category": "Injectable Hormone / TRT Medication",
-        "maxQuantity": "≤1 month supply with extensive documentation. >1 month requires Yunyu Kakunin-sho",
-        "conditions": "Injectable hormone requiring medical necessity documentation. Syringes/vials need special permits. Must distinguish TRT from performance enhancement.",
-        "notes": "Complex regulatory status due to anabolic potential. Medical TRT permitted with extensive documentation. Available in Japan through specialized clinics.",
-        "permitRequired": "Yunyu Kakunin-sho recommended for any quantity due to injectable nature and hormone classification",
-        "consequences": "High scrutiny due to anabolic steroid concerns - arrest/detention risk if improperly documented",
+        "maxQuantity": "Injectable: Yunyu Kakunin-sho REQUIRED for ANY quantity. Oral/topical: ≤1 month supply without permit, >1 month requires Yunyu Kakunin-sho",
+        "conditions": "Classification varies by formulation under PMD Act: Injectable testosterone requires Yunyu Kakunin-sho for any quantity due to self-administration equipment regulations. Oral/topical forms follow standard prescription drug rules with 1-month exemption.",
+        "notes": "REGULATORY UPDATE: Comprehensive PMD Act analysis reveals testosterone likely classified as standard 'Prescription Drug' rather than narcotic/psychotropic, but injectable delivery method triggers strictest permit requirements under medical device regulations. The 'unapproved but importable' paradox allows personal import while domestic prescription requires specialized men's health clinics.",
+        "permitRequired": "Injectable formulations: Yunyu Kakunin-sho MANDATORY for any quantity (apply via impconf.mhlw.go.jp 3-4 weeks before travel). Oral/topical: Optional for ≤1 month, required for >1 month",
+        "consequences": "Injectable testosterone faces highest customs scrutiny due to anabolic steroid concerns and medical device regulations. Risk of detention/prosecution if undocumented, with particular focus on distinguishing legitimate medical TRT from performance enhancement use",
         "alternatives": [
             "Japanese TRT prescription (testosterone enanthate)",
             "Specialized men's health clinics in Japan",
@@ -3291,8 +3291,8 @@
             "injection",
             "male hormone"
         ],
-        "customsDeclaration": "Red Channel required - injectable hormone with medical documentation",
-        "channelRequired": "Red Channel (injectable hormone medication)",
+        "customsDeclaration": "Injectable: Red Channel MANDATORY - declare as 'injectable hormone medication with medical permit'. Oral/topical: Green Channel acceptable with prescription documentation",
+        "channelRequired": "Injectable: Red Channel MANDATORY. Oral/topical: Green Channel acceptable",
         "actionSteps": {
             "title": "What You Need to Do: Testosterone TRT Import Checklist",
             "steps": [
@@ -3345,12 +3345,12 @@
                 }
             ]
         },
-        "uniqueStory": "The hormone where medical necessity meets anabolic suspicion - TRT navigates Japan's performance enhancement fears",
-        "culturalContext": "Japan's strict anabolic steroid controls create intense scrutiny for legitimate medical testosterone use",
-        "commonMisconception": "That all testosterone is treated as anabolic steroids when legitimate TRT has documented medical pathways",
-        "surpriseFactor": "Medical testosterone faces more scrutiny than many controlled substances due to performance enhancement concerns",
+        "uniqueStory": "The hormone trapped between medicine and muscle - legitimate TRT faces Japan's injectable equipment regulations more than anabolic steroid laws",
+        "culturalContext": "Japan's risk-averse PMD Act creates a regulatory paradox where testosterone import depends more on delivery method (injectable vs oral) than substance classification, reflecting post-war pharmaceutical conservatism",
+        "commonMisconception": "That testosterone is automatically classified as a narcotic or psychotropic - it's likely a standard prescription drug whose injectable form triggers medical device permit requirements",
+        "surpriseFactor": "Injectable testosterone requires permits for any quantity while oral testosterone follows standard 1-month rules - the syringe matters more than the hormone",
         "commentary": {
-            "storyHook": "The male hormone caught between medicine and muscle - testosterone's legitimate medical use faces anabolic assumptions.",
+            "storyHook": "The delivery method determines the destination - injectable testosterone navigates medical device regulations while oral forms follow standard prescription rules.",
             "practicalTips": [
                 "Emphasize 'hormone replacement therapy' and 'medical deficiency' in all documentation",
                 "Bring comprehensive lab results showing testosterone deficiency diagnosis",
