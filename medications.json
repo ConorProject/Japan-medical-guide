@@ -6000,10 +6000,10 @@
                 },
                 {
                     "number": "2",
-                    "title": "Obtain Yunyu Kakunin-sho import certificate",
-                    "action": "Apply for official import permit from MHLW at least 2-3 weeks before travel",
-                    "contact": "Email yakkan@mhlw.go.jp with detailed medical documentation",
-                    "critical": "Only safe legal pathway given aggressive enforcement"
+                    "title": "Determine documentation requirements based on quantity",
+                    "action": "≤6g: No permits needed. >6g: Obtain doctor's certificate. >1-month supply: Apply for Yunyu Kakunin-sho 2-3 weeks before travel",
+                    "contact": "Email yakkan@mhlw.go.jp for Yunyu Kakunin-sho applications only",
+                    "legal": "NCD rules permit ≤6g without documentation under Narcotics and Psychotropics Control Law"
                 },
                 {
                     "number": "3",
@@ -6090,8 +6090,8 @@
                 "Doctor's letter detailing medical necessity",
                 "Medical records supporting sleep disorder diagnosis"
             ],
-            "quantityLimits": "Personal use quantities technically permitted but enforcement aggressive regardless of quantity",
-            "permitProcess": "Email yakkan@mhlw.go.jp with detailed application 2-3 weeks before travel"
+            "quantityLimits": "≤6g: No permits required. >6g: Doctor's certificate required. >1-month supply: Yunyu Kakunin-sho required.",
+            "permitProcess": "Only for >1-month supplies: Email yakkan@mhlw.go.jp 2-3 weeks before travel. ≤6g requires no advance process."
         },
         "citations": {
             "regulatory_classification": {
