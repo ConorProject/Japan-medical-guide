@@ -5960,17 +5960,17 @@
         ],
         "status": "restricted",
         "category": "Wakefulness Drug/Schedule I Psychotropic",
-        "maxQuantity": "Personal use quantities permitted with proper documentation, but arrest risk high without advance permit",
+        "maxQuantity": "≤6 grams without doctor's certificate. >6g requires doctor's note. >1-month supply needs Yunyu Kakunin-sho. All quantities carry enforcement risk.",
         "conditions": "Schedule I psychotropic substance. Requires prescription in Japan. Import without proper authorization can result in arrest and detention.",
-        "notes": "ENFORCEMENT PARADOX: Technically permitted for personal medical use but authorities investigate imports aggressively. Multiple arrest cases documented.",
+        "notes": "EXPERT ENHANCED: Schedule I Psychotropic under dual PMD Act + Narcotics Control Law framework. Clinically preferred first-line narcolepsy treatment but highest-risk psychotropic category. 6-gram quantity threshold triggers doctor's certificate requirement. Multi-tiered system: <6g needs no docs, >6g needs doctor's note, >1-month supply needs Yunyu Kakunin-sho. Available domestically as Modiodal through registered specialists only.",
         "permitRequired": "Strongly recommended for any quantity. Yunyu Kakunin-sho import certificate required for safe entry.",
         "consequences": "Arrest and detention possible even with foreign prescription. 'They will track you down, question you, and might even arrest you.'",
         "alternatives": [
-            "Armodafinil (Nuvigil) - similar restrictions",
-            "Adrafinil - possibly less restricted",
-            "Japanese prescription Modiodal",
-            "Caffeine supplements",
-            "Natural alertness aids"
+            "Modiodal (domestic prescription) - approved by PMDA through registered specialists",
+            "Pitolisant - Phase III completed 2025, non-stimulant H3 antagonist",
+            "Methylphenidate (Ritalin/Concerta) - Schedule I but declining use, 2.16g limit",
+            "Orexin agonists (TAK-861) - Phase 2 trials for disease-modifying approach",
+            "Armodafinil (Nuvigil) - similar Schedule I restrictions"
         ],
         "searchTerms": [
             "modafinil",
@@ -5989,9 +5989,14 @@
             "steps": [
                 {
                     "number": "1",
-                    "title": "Understand the enforcement reality",
-                    "action": "Modafinil is Schedule I psychotropic in Japan - authorities investigate imports aggressively despite technical personal use allowances",
-                    "warning": "Multiple documented arrest cases even for personal medical use"
+                    "title": "Calculate quantity using NCD threshold system",
+                    "action": "Determine if carrying ≤6g (no certificate), >6g (doctor's note required), or >1-month supply (Yunyu Kakunin-sho required)",
+                    "examples": [
+                        "15-day supply of 200mg = 3g (no certificate needed)",
+                        "25-day supply of 300mg = 7.5g (doctor's note required)",
+                        "45-day supply = both doctor's note + Yunyu Kakunin-sho"
+                    ],
+                    "critical": "Multi-tiered system based on grams AND duration"
                 },
                 {
                     "number": "2",
@@ -6033,10 +6038,12 @@
         "commentary": {
             "storyHook": "The wakefulness drug caught between legal technicality and enforcement reality.",
             "practicalTips": [
-                "Obtain MHLW import permit before travel - only safe legal pathway",
-                "Consider switching to Japanese Modiodal prescription to avoid import risks",
-                "Bring minimal quantity with comprehensive medical documentation",
-                "Adrafinil may be less restricted alternative for alertness needs"
+                "6-gram NCD threshold: calculate total weight, not pill count",
+                "Dual regulatory system: PMD Act for approval + Narcotics Control Law for handling",
+                "Registered prescriber requirement: only sleep disorder specialists can prescribe Modiodal",
+                "Emerging alternatives: Pitolisant (Phase III complete) offers non-stimulant option",
+                "Clinical preference: first-line narcolepsy treatment despite Schedule I status",
+                "CBD precedent: science-based quantitative approach may influence future psychotropic reforms"
             ],
             "commonMistakes": [
                 "Assuming personal use exemption provides meaningful protection",
@@ -6065,13 +6072,14 @@
         },
         "japanAvailability": {
             "prescriptionRequired": true,
-            "costRange": "Covered under Japanese health insurance with narcolepsy diagnosis",
-            "insuranceCoverage": "National Health Insurance covers 70% for approved sleep disorders",
+            "costRange": "Standard dosing: 200mg once daily (max 300mg). Covered under National Health Insurance",
+            "insuranceCoverage": "70% coverage for approved indications: narcolepsy, idiopathic hypersomnia, OSAS adjunctive therapy",
             "availableBrands": [
-                "Modiodal (Mitsubishi Tanabe Pharma) - licensed from Cephalon"
+                "Modiodal 100mg tablets (Mitsubishi Tanabe Pharma/Alfresa Pharma)"
             ],
-            "restrictions": "Schedule I psychotropic classification. Only certified physicians for narcolepsy/sleep disorders can prescribe.",
-            "alternativeOptions": "Armodafinil (Nuvigil) also available by prescription, caffeine supplements OTC"
+            "restrictions": "PMDA-approved only for registered specialists. Schedule I psychotropic requires strict record-keeping and authorized prescribers/pharmacists.",
+            "alternativeOptions": "Pitolisant (Phase III complete), methylphenidate (declining use), orexin agonists (development), SSRIs for cataplexy",
+            "clinicalGuidelines": "First-line treatment for narcolepsy EDS, preferred over methylphenidate due to lower abuse potential"
         },
         "importDetails": {
             "customsDeclaration": "Required - Red Channel for Schedule I psychotropic",
@@ -6086,12 +6094,26 @@
             "permitProcess": "Email yakkan@mhlw.go.jp with detailed application 2-3 weeks before travel"
         },
         "citations": {
-            "classification": {
-                "value": "Schedule I psychotropic substance",
-                "source": "Japan Controlled Substances Classification",
-                "url": "https://corpina.com/modafinil-japan/",
-                "accessed": "2025-07-08",
-                "quote": "Modafinil is considered a Schedule I Psychotropic Drug, meaning it is quite illegal if you don't have a prescription"
+            "regulatory_classification": {
+                "value": "Schedule I Psychotropic Drug under Narcotics and Psychotropics Control Law since September 8, 2006",
+                "source": "MHLW Official Designation and Modafinil Regulatory Analysis",
+                "url": "Modafinil Importation Japan Regulatory Analysis",
+                "accessed": "2025-07-11",
+                "quote": "Modafinil (モダフィニル) is classified as a Schedule I Psychotropic Drug (第一種向精神薬) under Japan's Narcotics and Psychotropics Control Law. This is the most restrictive category for psychotropic substances."
+            },
+            "quantity_thresholds": {
+                "value": "6-gram threshold for doctor's certificate requirement",
+                "source": "NCD Narcotics Control Department Guidelines",
+                "url": "Modafinil Importation Japan Regulatory Analysis",
+                "accessed": "2025-07-11",
+                "quote": "For Modafinil, this limit is 6 grams. A traveler carrying a total amount of Modafinil equal to or less than 6g does not require special permission under the Narcotics and Psychotropics Control Law."
+            },
+            "clinical_preference": {
+                "value": "First-line treatment for narcolepsy, preferred over methylphenidate",
+                "source": "Japanese Clinical Guidelines and Prescription Trend Analysis",
+                "url": "Modafinil Importation Japan Regulatory Analysis",
+                "accessed": "2025-07-11",
+                "quote": "Japanese clinical guidelines for the treatment of narcolepsy position Modafinil as a first-line treatment for EDS. This preference highlights the regulatory paradox: the medical community values Modafinil for its relative safety compared to other stimulants."
             },
             "enforcement_aggression": {
                 "value": "Authorities investigate imports aggressively",
