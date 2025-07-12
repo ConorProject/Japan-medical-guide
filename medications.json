@@ -5963,7 +5963,7 @@
         "maxQuantity": "≤6 grams without doctor's certificate. >6g requires doctor's note. >1-month supply needs Yunyu Kakunin-sho. All quantities carry enforcement risk.",
         "conditions": "Schedule I psychotropic substance. Requires prescription in Japan. Import without proper authorization can result in arrest and detention.",
         "notes": "EXPERT ENHANCED: Schedule I Psychotropic under dual PMD Act + Narcotics Control Law framework. Clinically preferred first-line narcolepsy treatment but highest-risk psychotropic category. 6-gram quantity threshold triggers doctor's certificate requirement. Multi-tiered system: <6g needs no docs, >6g needs doctor's note, >1-month supply needs Yunyu Kakunin-sho. Available domestically as Modiodal through registered specialists only.",
-        "permitRequired": "Strongly recommended for any quantity. Yunyu Kakunin-sho import certificate required for safe entry.",
+        "permitRequired": "Not required for ≤6g personal supply. Doctor's certificate required >6g. Yunyu Kakunin-sho required >1-month supply.",
         "consequences": "Arrest and detention possible even with foreign prescription. 'They will track you down, question you, and might even arrest you.'",
         "alternatives": [
             "Modiodal (domestic prescription) - approved by PMDA through registered specialists",
