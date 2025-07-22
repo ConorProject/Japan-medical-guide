@@ -1,0 +1,8 @@
+
+
+| Table (List of Psychotropics) |  |
+| ----- | ----- |
+| Schedule I  Zipeprol 9 g  Secobarbital 6 g  Fenetylline 3 g  Phenmetrazine 2.25 g  Mecloqualone 9 g  Methylphenidate 2.16 g  Modafinil 6 g | Schedule III  Tetrazepam 12 g  Temazepam 900 mg  Delorazepam 180 mg  Triazolam 15 mg            Nitrazepam 450 mg  Nimetazepam 150 mg  Nordazepam 450 mg  Halazepam 4.8 g  Barbital 18 g  Haloxazolam 300 mg  Pinazepam 600 mg  Vinylbital 4.5 g  Pipradrol 180 mg  Pyrovalerone 2.4 g  Phenazepam 300 mg  Phenobarbital 6 g  Fencamfamine 1.8 g  Phentermine 1.125 g  Fenproporex 360 mg  Butobarbital 6 g  Prazepam 600 mg  Fludiazepam 22.5 mg  Flurazepam 900 mg  Propylhexedrine 2.25 g  Brotizolam 15 mg  Bromazepam 450 mg  Pemoline 6 g  Benzfetamine 1.5 g  Mazindol 90 mg  Midazolam 450 mg  Mesocarb 900 mg  Medazepam 900 mg  Methyprylon 12 g  Methylphenobarbital 12 g  Mefenorex 1.41 g  Meprobamate 18 g  Lefetamine 3 g  Ethyl loflazepate 60 mg  Loprazolam 60 mg  Lorazepam 90 mg  Lormetazepam 60 mg |
+| Schedule II  Amobarbital 9 g  Cathine 1.5 g  Glutethimide 15 g  Cyclobarbital 6.75 g  Flunitrazepam 60 mg  Butalbital 4.5 g  Buprenorphine 80 mg  Pentazocine 18 g  Pentobarbital 4.5 g |  |
+| Schedule III  Alprazolam 72 mg  Aminorex 300 mg  Allobarbital 3 g  Amfepramone 2.25 g  Ethchlorvynol 22.5 g  Estazolam 120 mg  Etizolam 90 mg  Ethinamate 30 g  Etilamfetamine 1.8 g  Oxazepam 2.7 g  Oxazolam 1.8 g  Camazepam 1.8 g  Quazepam 900 mg  Cloxazolam 360 mg  Clotiazepam 900 mg  Clonazepam 180 mg  Clobazam 2.4 g  Clorazepate 900 mg  Chlordiazepoxide 1.8 g  Ketazolam 1.8 g  Diazepam 1.2 g  Secbutabarbital 3.6 g  Zopiclone 300 mg  Zolpidem 300 mg |  |
+
