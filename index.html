@@ -1347,12 +1347,14 @@
             </button>
             
             <div class="search-bar">
-                <input type="text" 
-                       class="search-input" 
-                       placeholder="Enter medication name (e.g., Adderall, Birth Control, Tylenol)..." 
-                       id="medicationSearch"
-                       onkeypress="if(event.key==='Enter') searchMedications()">
-                <button class="search-btn" onclick="searchMedications()">
+                <div class="search-container">
+                    <input type="text" 
+                           class="search-input" 
+                           placeholder="Enter medication name (e.g., Adderall, Birth Control, Tylenol)..." 
+                           id="medicationSearch"
+                           onkeypress="if(event.key==='Enter') enhancedSearchMedications()">
+                </div>
+                <button class="search-btn" onclick="enhancedSearchMedications()">
                     Check Status
                 </button>
             </div>
@@ -2678,7 +2680,7 @@ function addPermitButtons() {
                 
                 inputs.forEach(input => {
                     input.addEventListener('input', () => {
-                        calculateMedicationQuantity(calculator, medication, medName, genericName);
+                        enhancedCalculateMedicationQuantity(calculator, medication, medName, genericName);
                     });
                 });
             }
@@ -3042,6 +3044,9 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 </div>
+
+<!-- Enhanced Search and Calculator Functions -->
+<script src="enhanced_functions.js"></script>
 
 </body>
 </html>
