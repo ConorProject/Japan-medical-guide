@@ -1460,7 +1460,7 @@
         // Load medications when page loads
         document.addEventListener('DOMContentLoaded', loadMedications);
 
-        // --- MAIN SEARCH FUNCTION ---
+        // --- ENHANCED SEARCH FUNCTION (Uses enhanced_functions.js) ---
 function searchMedications() {
     const searchTerm = document.getElementById('medicationSearch').value.toLowerCase().trim();
     const resultsGrid = document.getElementById('searchResults');
@@ -1480,12 +1480,8 @@ function searchMedications() {
     categoryOverview.style.display = 'none';
     resultsGrid.style.display = 'grid';
 
-    // Filter meds by name, genericName, or any searchTerm
-    const results = medications.filter(med => {
-        return med.name.toLowerCase().includes(searchTerm) ||
-               (med.genericName && med.genericName.toLowerCase().includes(searchTerm)) ||
-               (med.searchTerms && med.searchTerms.some(term => term.includes(searchTerm)));
-    });
+    // Use enhanced search from enhanced_functions.js with smart ranking
+    const results = window.searchMedications ? window.searchMedications(searchTerm) : [];
 
     if (results.length === 0) {
         resultsGrid.innerHTML = '';
@@ -2688,8 +2684,15 @@ function addPermitButtons() {
     }, 100);
 }
 
-// Calculate medication quantity and show recommendations
+// Enhanced Calculator - Uses enhanced_functions.js for simplified, accurate calculations
 function calculateMedicationQuantity(calculator, medication, medName, genericName) {
+    // Use enhanced calculator from enhanced_functions.js if available
+    if (window.enhancedCalculateMedicationQuantity) {
+        window.enhancedCalculateMedicationQuantity(calculator, medication, medName, genericName);
+        return;
+    }
+    
+    // Fallback to basic calculation if enhanced functions aren't loaded
     const strength = parseFloat(calculator.querySelector('.calc-strength').value);
     const tablets = parseInt(calculator.querySelector('.calc-tablets').value);
     const days = parseInt(calculator.querySelector('.calc-days').value);
@@ -2701,39 +2704,14 @@ function calculateMedicationQuantity(calculator, medication, medName, genericNam
     }
     
     const totalMg = strength * tablets;
-    const dailyDose = tablets / days;
-    
-    // Get threshold data (you'll need to add this to medication data)
-    const threshold = getThresholdForMedication(medication);
-    const percentageOfLimit = threshold > 0 ? (totalMg / threshold * 100) : 0;
-    
-    // Show calculation results
     const resultDiv = calculator.querySelector('.calculation-result');
     resultDiv.innerHTML = `
         <div style="background: white; padding: 15px; border-radius: 5px; margin: 10px 0;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
-                <div><strong>Total:</strong> ${totalMg}mg (${tablets} tablets)</div>
-                <div><strong>Daily:</strong> ${dailyDose.toFixed(1)} tablets</div>
-            </div>
-            ${threshold > 0 ? `
-                <div style="margin: 15px 0;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                        <span>Japan's Limit: ${threshold}mg</span>
-                        <span>${percentageOfLimit.toFixed(0)}% of limit</span>
-                    </div>
-                    <div style="background: #e9ecef; height: 20px; border-radius: 10px; overflow: hidden;">
-                        <div style="background: ${getProgressColor(percentageOfLimit)}; width: ${Math.min(percentageOfLimit, 100)}%; height: 100%; transition: width 0.5s ease;"></div>
-                    </div>
-                </div>
-            ` : ''}
+            <div><strong>Total:</strong> ${totalMg}mg (${tablets} tablets)</div>
+            <p>Using enhanced calculator for accurate Japan import guidance...</p>
         </div>
     `;
     resultDiv.style.display = 'block';
-    
-    // Show permit options
-    showPermitOptions(calculator, percentageOfLimit, threshold, medName, genericName, {
-        strength, tablets, days, totalMg, dailyDose
-    });
 }
 
 // Show flexible permit options based on calculation

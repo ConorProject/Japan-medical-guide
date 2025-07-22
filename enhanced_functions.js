@@ -311,6 +311,12 @@ function generateTravelLetter(medName, quantityData) {
     alert(`Travel Documentation Letter for ${medName}\n\nThis feature will generate:\n- Customs declaration letter\n- Medication details summary\n- Legal basis statement\n- Contact information\n\nComing soon!`);
 }
 
+// Expose functions globally for HTML integration
+window.searchMedications = searchMedications;
+window.findMedicationGuidance = findMedicationGuidance;
+window.enhancedCalculateMedicationQuantity = enhancedCalculateMedicationQuantity;
+window.generateTravelLetter = generateTravelLetter;
+
 // Add CSS when page loads
 document.addEventListener('DOMContentLoaded', function() {
     const style = document.createElement('style');
