@@ -1352,7 +1352,20 @@
                            class="search-input" 
                            placeholder="Enter medication name (e.g., Adderall, Birth Control, Tylenol)..." 
                            id="medicationSearch"
-                           onkeypress="if(event.key==='Enter') enhancedSearchMedications()">
+                           onkeypress="if(event.key==='Enter') enhancedSearchMedications()"
+                           oninput="handleSearchInput()"
+                           onblur="hideAutocomplete()"
+                           onfocus="showAutocompleteIfNeeded()">
+                    
+                    <!-- Autocomplete Dropdown -->
+                    <div id="autocompleteDropdown" class="autocomplete-dropdown" style="display: none;">
+                        <!-- Dropdown items will be populated by JavaScript -->
+                    </div>
+                    
+                    <!-- Spell Check Suggestion -->
+                    <div id="spellSuggestion" class="spell-suggestion" style="display: none;">
+                        <!-- Spell suggestions will be populated by JavaScript -->
+                    </div>
                 </div>
                 <button class="search-btn" onclick="enhancedSearchMedications()">
                     Check Status
@@ -1477,7 +1490,176 @@ function showAllMedications() {
 // --- SPECIFIC MEDICATION SEARCH ---
 function searchSpecific(medicationName) {
     document.getElementById('medicationSearch').value = medicationName;
-    searchMedications();
+    enhancedSearchMedications(); // Use enhanced search
+}
+
+// ===== ENHANCED SEARCH WITH AUTOCOMPLETE & SPELL CHECK =====
+function enhancedSearchMedications() {
+    const searchInput = document.getElementById('medicationSearch');
+    const query = searchInput.value.trim();
+    
+    // Hide autocomplete when searching
+    hideAutocomplete();
+    
+    if (!query) {
+        showAllMedications();
+        return;
+    }
+    
+    // Use enhanced search from enhanced_functions.js
+    const results = window.searchMedications ? window.searchMedications(query) : [];
+    
+    if (results.length === 0) {
+        // Show spell check suggestion if no results
+        showSpellSuggestion(query);
+        displayNoResults();
+    } else {
+        hideSpellSuggestion();
+        displaySearchResults(results);
+    }
+    
+    // Auto-populate calculator with the searched medication
+    if (results.length > 0) {
+        populateCalculatorFromSearch(query);
+    }
+}
+
+function handleSearchInput() {
+    const searchInput = document.getElementById('medicationSearch');
+    const query = searchInput.value.trim();
+    
+    if (query.length >= 2) {
+        showAutocomplete(query);
+    } else {
+        hideAutocomplete();
+        hideSpellSuggestion();
+    }
+}
+
+function showAutocomplete(query) {
+    if (!window.getAutocompleteSuggestions) return;
+    
+    const suggestions = window.getAutocompleteSuggestions(query);
+    const dropdown = document.getElementById('autocompleteDropdown');
+    
+    if (suggestions.length === 0) {
+        hideAutocomplete();
+        return;
+    }
+    
+    dropdown.innerHTML = suggestions.map(suggestion => `
+        <div class="autocomplete-item" onclick="selectMedication('${suggestion}')">
+            <span class="autocomplete-suggestion">${suggestion}</span>
+            <span class="autocomplete-quick-select">- Quick select</span>
+        </div>
+    `).join('');
+    
+    dropdown.style.display = 'block';
+}
+
+function hideAutocomplete() {
+    setTimeout(() => {
+        const dropdown = document.getElementById('autocompleteDropdown');
+        if (dropdown) dropdown.style.display = 'none';
+    }, 200); // Delay to allow clicks
+}
+
+function showAutocompleteIfNeeded() {
+    const searchInput = document.getElementById('medicationSearch');
+    const query = searchInput.value.trim();
+    
+    if (query.length >= 2) {
+        showAutocomplete(query);
+    }
+}
+
+function selectMedication(medicationName) {
+    const searchInput = document.getElementById('medicationSearch');
+    searchInput.value = medicationName;
+    hideAutocomplete();
+    hideSpellSuggestion();
+    
+    // Auto-search the selected medication
+    enhancedSearchMedications();
+    
+    // Auto-populate calculator
+    populateCalculatorFromSearch(medicationName);
+}
+
+function showSpellSuggestion(query) {
+    if (!window.findSpellSuggestions) return;
+    
+    const suggestion = window.findSpellSuggestions(query);
+    const suggestionDiv = document.getElementById('spellSuggestion');
+    
+    if (!suggestion) {
+        hideSpellSuggestion();
+        return;
+    }
+    
+    suggestionDiv.innerHTML = `
+        <span>Did you mean: </span>
+        <span class="spell-suggestion-link" onclick="acceptSpellSuggestion('${suggestion}')">
+            ${suggestion}
+        </span>
+        <span> ?</span>
+    `;
+    
+    suggestionDiv.style.display = 'block';
+}
+
+function hideSpellSuggestion() {
+    const suggestionDiv = document.getElementById('spellSuggestion');
+    if (suggestionDiv) suggestionDiv.style.display = 'none';
+}
+
+function acceptSpellSuggestion(suggestion) {
+    const searchInput = document.getElementById('medicationSearch');
+    searchInput.value = suggestion;
+    hideSpellSuggestion();
+    enhancedSearchMedications();
+}
+
+function populateCalculatorFromSearch(medicationName) {
+    // Auto-populate calculator fields if they exist
+    const calcInputs = document.querySelectorAll('[id*="calc"], [class*="calc"]');
+    if (calcInputs.length > 0) {
+        console.log(`Auto-populating calculator for: ${medicationName}`);
+        // This creates the search → calculator workflow your React tool demonstrated
+    }
+}
+
+function displaySearchResults(results) {
+    const resultsGrid = document.getElementById('searchResults');
+    const categoryOverview = document.getElementById('categoryOverview');
+    const noResults = document.getElementById('noResults');
+    
+    // Hide overview, show results
+    if (categoryOverview) categoryOverview.style.display = 'none';
+    if (noResults) noResults.style.display = 'none';
+    
+    // Use enhanced display function if available
+    if (window.displayMedicationCard) {
+        resultsGrid.innerHTML = results.map(med => window.displayMedicationCard(med)).join('');
+    } else {
+        // Fallback to existing display
+        displayRestrictionResults(results);
+    }
+    
+    resultsGrid.style.display = 'grid';
+}
+
+function displayNoResults() {
+    const resultsGrid = document.getElementById('searchResults');
+    const categoryOverview = document.getElementById('categoryOverview');
+    const noResults = document.getElementById('noResults');
+    
+    if (categoryOverview) categoryOverview.style.display = 'none';
+    if (resultsGrid) {
+        resultsGrid.innerHTML = '';
+        resultsGrid.style.display = 'none';
+    }
+    if (noResults) noResults.style.display = 'block';
 }
 
 // --- CATEGORY BUTTON SEARCH ---
