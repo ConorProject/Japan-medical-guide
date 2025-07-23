@@ -311,11 +311,86 @@ function generateTravelLetter(medName, quantityData) {
     alert(`Travel Documentation Letter for ${medName}\n\nThis feature will generate:\n- Customs declaration letter\n- Medication details summary\n- Legal basis statement\n- Contact information\n\nComing soon!`);
 }
 
+// ===== DYNAMIC CATEGORY CARDS GENERATION =====
+function generateCategoryCards() {
+    if (!window.medications || medications.length === 0) return '';
+    
+    // Get unique medications grouped by status
+    const uniqueMeds = getUniqueMedicationsByStatus();
+    
+    return `
+        <div class="category-card category-prohibited">
+            <h3>Prohibited (${uniqueMeds.prohibited.length})</h3>
+            <p>Cannot enter Japan under any circumstances</p>
+            <div class="med-buttons">
+                ${uniqueMeds.prohibited.map(med => 
+                    `<button class="med-button" style="color: #dc3545;" onclick="searchSpecific('${med.name}')">${getDisplayName(med.name)}</button>`
+                ).join('')}
+            </div>
+        </div>
+
+        <div class="category-card category-restricted">
+            <h3>Restricted (${uniqueMeds.restricted.length})</h3>
+            <p>Requires permits or customs declaration</p>
+            <div class="med-buttons">
+                ${uniqueMeds.restricted.map(med => 
+                    `<button class="med-button" style="color: #856404;" onclick="searchSpecific('${med.name}')">${getDisplayName(med.name)}</button>`
+                ).join('')}
+            </div>
+        </div>
+
+        <div class="category-card category-permitted">
+            <h3>Permitted (${uniqueMeds.permitted.length})</h3>
+            <p>Allowed with standard requirements</p>
+            <div class="med-buttons">
+                ${uniqueMeds.permitted.map(med => 
+                    `<button class="med-button" style="color: #155724;" onclick="searchSpecific('${med.name}')">${getDisplayName(med.name)}</button>`
+                ).join('')}
+            </div>
+        </div>
+    `;
+}
+
+function getUniqueMedicationsByStatus() {
+    const uniqueMedications = {};
+    const statusGroups = {
+        prohibited: [],
+        restricted: [],
+        permitted: []
+    };
+    
+    // Get unique medications (avoid duplicates from threshold scenarios)
+    medications.forEach(med => {
+        const key = med.name.toLowerCase();
+        if (!uniqueMedications[key]) {
+            uniqueMedications[key] = med;
+            
+            if (statusGroups[med.status]) {
+                statusGroups[med.status].push(med);
+            }
+        }
+    });
+    
+    // Sort medications alphabetically within each category
+    Object.keys(statusGroups).forEach(status => {
+        statusGroups[status].sort((a, b) => a.name.localeCompare(b.name));
+    });
+    
+    return statusGroups;
+}
+
+function getDisplayName(fullName) {
+    // Convert "Advil (Ibuprofen, Motrin, Nurofen)" to "Advil"
+    // Convert "Birth Control Pills (Yaz, etc.)" to "Birth Control"
+    return fullName.split('(')[0].trim().replace(' Pills', '');
+}
+
 // Expose functions globally for HTML integration
 window.searchMedications = searchMedications;
 window.findMedicationGuidance = findMedicationGuidance;
 window.enhancedCalculateMedicationQuantity = enhancedCalculateMedicationQuantity;
 window.generateTravelLetter = generateTravelLetter;
+window.generateCategoryCards = generateCategoryCards;
 
 // Add CSS when page loads
 document.addEventListener('DOMContentLoaded', function() {
