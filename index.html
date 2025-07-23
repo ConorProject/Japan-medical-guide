@@ -1374,6 +1374,60 @@
         </div>
         <div id="searchResults"></div>
 
+        <!-- Trip Planner Section -->
+        <div class="trip-planner-container" id="tripPlannerContainer" style="display: none;">
+            <h2 style="color: #2c3e50; margin-bottom: 20px;">✈️ Multi-Medication Trip Planner</h2>
+            <p style="color: #6c757d; margin-bottom: 20px;">Plan your trip with multiple medications and get comprehensive customs guidance.</p>
+            
+            <div id="medicationInputs">
+                <div class="trip-medication-input">
+                    <input type="text" placeholder="Medication name" class="trip-med-name" style="flex: 2; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                    <input type="number" placeholder="Quantity (mg)" class="trip-med-quantity" style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                    <button onclick="addMedicationInput()" style="background: #28a745; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
+                        + Add More
+                    </button>
+                </div>
+            </div>
+            
+            <div style="margin: 20px 0;">
+                <button onclick="planTrip()" style="background: #007bff; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-size: 16px; margin-right: 10px;">
+                    📋 Plan My Trip
+                </button>
+                <button onclick="clearTripPlanner()" style="background: #6c757d; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-size: 16px;">
+                    Clear All
+                </button>
+            </div>
+            
+            <!-- Trip Results -->
+            <div id="tripResults" class="trip-results" style="display: none;">
+                <!-- Results will be populated by JavaScript -->
+            </div>
+            
+            <!-- VJW Declaration Helper -->
+            <div id="vjwHelper" class="trip-results" style="display: none;">
+                <h3 style="color: #2c3e50;">🏛️ VJW (Customs Form) Declaration Guidance</h3>
+                <div id="vjwResults">
+                    <!-- VJW results will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Permit Timeline -->
+            <div id="permitTimeline" class="trip-results" style="display: none;">
+                <h3 style="color: #2c3e50;">⏰ Permit Application Timeline</h3>
+                <div id="timelineResults">
+                    <!-- Timeline results will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Show/Hide Trip Planner Button -->
+        <div style="text-align: center; margin: 30px 0;">
+            <button id="tripPlannerToggle" onclick="toggleTripPlanner()" 
+                    style="background: #17a2b8; color: white; border: none; padding: 15px 30px; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 500;">
+                ✈️ Open Trip Planner
+            </button>
+        </div>
+
         <!-- Search Results Area -->
         <div id="resultsArea">
             <!-- Dynamic Category Overview - Generated from medications.json -->
@@ -1663,6 +1717,275 @@ function displayNoResults() {
 }
 
 // --- CATEGORY BUTTON SEARCH ---
+
+// ===== TRIP PLANNER FUNCTIONALITY =====
+function toggleTripPlanner() {
+    const container = document.getElementById('tripPlannerContainer');
+    const toggleBtn = document.getElementById('tripPlannerToggle');
+    
+    if (container.style.display === 'none') {
+        container.style.display = 'block';
+        toggleBtn.textContent = '✈️ Close Trip Planner';
+        toggleBtn.style.background = '#dc3545';
+    } else {
+        container.style.display = 'none';
+        toggleBtn.textContent = '✈️ Open Trip Planner';
+        toggleBtn.style.background = '#17a2b8';
+    }
+}
+
+function addMedicationInput() {
+    const inputsContainer = document.getElementById('medicationInputs');
+    const newInput = document.createElement('div');
+    newInput.className = 'trip-medication-input';
+    newInput.innerHTML = `
+        <input type="text" placeholder="Medication name" class="trip-med-name" style="flex: 2; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+        <input type="number" placeholder="Quantity (mg)" class="trip-med-quantity" style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+        <button onclick="removeMedicationInput(this)" style="background: #dc3545; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
+            ✕ Remove
+        </button>
+    `;
+    inputsContainer.appendChild(newInput);
+}
+
+function removeMedicationInput(button) {
+    button.parentElement.remove();
+}
+
+function planTrip() {
+    // Collect all medication inputs
+    const medicationInputs = document.querySelectorAll('.trip-medication-input');
+    const medications = [];
+    
+    medicationInputs.forEach(input => {
+        const name = input.querySelector('.trip-med-name').value.trim();
+        const quantity = parseFloat(input.querySelector('.trip-med-quantity').value);
+        
+        if (name && quantity) {
+            medications.push({ name, quantity });
+        }
+    });
+    
+    if (medications.length === 0) {
+        alert('Please add at least one medication with quantity.');
+        return;
+    }
+    
+    // Use comprehensive trip planner from enhanced_functions.js
+    if (window.planMedicationTrip) {
+        const tripPlan = window.planMedicationTrip(medications);
+        displayTripResults(tripPlan);
+        
+        // Generate VJW declaration guidance
+        if (window.getVJWDeclarationGuidance) {
+            const vjwGuidance = window.getVJWDeclarationGuidance(medications);
+            displayVJWResults(vjwGuidance);
+        }
+        
+        // Generate permit timeline
+        if (window.calculatePermitTimeline) {
+            const timeline = window.calculatePermitTimeline(medications);
+            displayTimelineResults(timeline);
+        }
+    } else {
+        alert('Trip planner functions not loaded. Please refresh the page.');
+    }
+}
+
+function displayTripResults(tripPlan) {
+    const resultsDiv = document.getElementById('tripResults');
+    
+    let html = `
+        <h3 style="color: #2c3e50;">📋 Trip Planning Results</h3>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 15px 0;">
+            <div class="trip-success">
+                <strong>✅ Permitted:</strong> ${tripPlan.summary.permitted}
+            </div>
+            <div style="background: #fff3cd; color: #856404; padding: 10px; border-radius: 6px; border: 1px solid #ffeaa7;">
+                <strong>⚠️ Restricted:</strong> ${tripPlan.summary.restricted}
+            </div>
+            <div class="trip-warning">
+                <strong>🚫 Prohibited:</strong> ${tripPlan.summary.prohibited}
+            </div>
+        </div>
+        
+        <div style="margin: 15px 0;">
+            <p><strong>Customs Declaration Required:</strong> 
+                <span style="color: ${tripPlan.customsDeclarationRequired ? '#dc3545' : '#28a745'}; font-weight: bold;">
+                    ${tripPlan.customsDeclarationRequired ? 'YES' : 'NO'}
+                </span>
+            </p>
+            <p><strong>Permits Needed:</strong> ${tripPlan.totalPermitsNeeded}</p>
+        </div>
+    `;
+    
+    // Add warnings if any
+    if (tripPlan.warnings.length > 0) {
+        html += `
+            <div style="margin: 15px 0;">
+                <h4 style="color: #dc3545;">⚠️ Important Warnings:</h4>
+                ${tripPlan.warnings.map(warning => `
+                    <div class="trip-warning">${warning}</div>
+                `).join('')}
+            </div>
+        `;
+    }
+    
+    // Add medication details
+    html += `
+        <div style="margin: 15px 0;">
+            <h4 style="color: #2c3e50;">💊 Medication Details:</h4>
+            ${tripPlan.medications.map(med => `
+                <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 6px; border: 1px solid #ddd;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <strong>${med.name}</strong>
+                        <span style="background: ${getStatusColor(med.status)}; color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px;">
+                            ${med.status.toUpperCase()}
+                        </span>
+                    </div>
+                    <p><strong>Quantity:</strong> ${med.quantity}mg</p>
+                    <p><strong>Action:</strong> ${med.actionRequired}</p>
+                    <p><strong>Channel:</strong> ${med.channel}</p>
+                    <p><strong>Permit Required:</strong> ${med.permitNeeded ? 'Yes' : 'No'}</p>
+                </div>
+            `).join('')}
+        </div>
+    `;
+    
+    resultsDiv.innerHTML = html;
+    resultsDiv.style.display = 'block';
+}
+
+function displayVJWResults(vjwGuidance) {
+    const vjwDiv = document.getElementById('vjwHelper');
+    const resultsDiv = document.getElementById('vjwResults');
+    
+    const html = `
+        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid ${vjwGuidance.vjw_answer === 'YES' ? '#dc3545' : '#28a745'};">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h2 style="color: ${vjwGuidance.vjw_answer === 'YES' ? '#dc3545' : '#28a745'}; margin: 0;">
+                    VJW Declaration Answer: ${vjwGuidance.vjw_answer}
+                </h2>
+                <p style="color: #6c757d; margin: 10px 0 0 0;">${vjwGuidance.reasoning}</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 20px 0;">
+                <div class="trip-warning">
+                    <strong>Prohibited:</strong> ${vjwGuidance.prohibited_count}
+                </div>
+                <div style="background: #fff3cd; color: #856404; padding: 10px; border-radius: 6px; border: 1px solid #ffeaa7;">
+                    <strong>Restricted:</strong> ${vjwGuidance.restricted_count}
+                </div>
+                <div class="trip-success">
+                    <strong>Permitted:</strong> ${vjwGuidance.permitted_count}
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <h4>Individual Medication Declarations:</h4>
+                ${vjwGuidance.details.map(detail => `
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px; margin: 5px 0; background: #f8f9fa; border-radius: 4px;">
+                        <span><strong>${detail.medication}</strong> (${detail.quantity}mg)</span>
+                        <span style="color: ${detail.declaration === 'required' ? '#dc3545' : '#28a745'}; font-weight: bold;">
+                            ${detail.declaration === 'required' ? 'DECLARE' : 'NO DECLARATION'}
+                        </span>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+    
+    resultsDiv.innerHTML = html;
+    vjwDiv.style.display = 'block';
+}
+
+function displayTimelineResults(timeline) {
+    const timelineDiv = document.getElementById('permitTimeline');
+    const resultsDiv = document.getElementById('timelineResults');
+    
+    if (!timeline.permitRequired) {
+        resultsDiv.innerHTML = `
+            <div class="trip-success">
+                <h4>🎉 No Permits Required!</h4>
+                <p>${timeline.message}</p>
+            </div>
+        `;
+    } else {
+        const urgencyColor = timeline.urgencyLevel === 'high' ? '#dc3545' : 
+                            timeline.urgencyLevel === 'medium' ? '#ffc107' : '#28a745';
+        
+        const html = `
+            <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid ${urgencyColor};">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h4 style="margin: 0;">Permit Application Required</h4>
+                    <span style="background: ${urgencyColor}; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">
+                        ${timeline.urgencyLevel.toUpperCase()} PRIORITY
+                    </span>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                    <div>
+                        <p><strong>Apply By:</strong> ${timeline.recommendedApplicationDate}</p>
+                        <p><strong>Expected Completion:</strong> ${timeline.deadlineDate}</p>
+                    </div>
+                    <div>
+                        <p><strong>Max Processing Time:</strong> ${timeline.maxProcessingDays} days</p>
+                        <p><strong>Buffer Days Included:</strong> ${timeline.bufferDays} days</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <h4>Medications Requiring Permits:</h4>
+                    ${timeline.medications.map(med => `
+                        <div style="background: #f8f9fa; padding: 15px; margin: 10px 0; border-radius: 6px; border-left: 4px solid ${urgencyColor};">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <strong>${med.name}</strong>
+                                <span style="color: #6c757d;">${med.processingDaysMin}-${med.processingDaysMax} days</span>
+                            </div>
+                            <p style="margin: 5px 0 0 0; color: #6c757d;">${med.documentation}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+        
+        resultsDiv.innerHTML = html;
+    }
+    
+    timelineDiv.style.display = 'block';
+}
+
+function getStatusColor(status) {
+    const colors = {
+        prohibited: '#dc3545',
+        restricted: '#ffc107',
+        permitted: '#28a745'
+    };
+    return colors[status] || '#6c757d';
+}
+
+function clearTripPlanner() {
+    // Clear all medication inputs except the first one
+    const inputsContainer = document.getElementById('medicationInputs');
+    const inputs = inputsContainer.querySelectorAll('.trip-medication-input');
+    
+    // Keep first input, clear its values
+    if (inputs.length > 0) {
+        inputs[0].querySelector('.trip-med-name').value = '';
+        inputs[0].querySelector('.trip-med-quantity').value = '';
+    }
+    
+    // Remove additional inputs
+    for (let i = 1; i < inputs.length; i++) {
+        inputs[i].remove();
+    }
+    
+    // Hide all results
+    document.getElementById('tripResults').style.display = 'none';
+    document.getElementById('vjwHelper').style.display = 'none';
+    document.getElementById('permitTimeline').style.display = 'none';
+}
 
 // --- ENHANCED RESTRICTION RESULTS DISPLAY ---
 function displayRestrictionResults(results) {
