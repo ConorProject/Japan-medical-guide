@@ -365,38 +365,42 @@ function displayMedicationCard(medication) {
     
     return `
         <div class="medication-card status-${medication.status}">
-            <div class="medication-header">
-                <h3 class="medication-name">${medication.name}</h3>
-                <span class="status-badge ${medication.status}">${medication.status.toUpperCase()}</span>
-            </div>
-            
-            <div class="medication-details">
-                <p><strong>Generic:</strong> ${medication.genericName}</p>
-                <p><strong>Threshold:</strong> ${medication.thresholdDescription}</p>
-                <p><strong>Action Required:</strong> ${medication.actionRequired}</p>
-                <p><strong>Customs Declaration:</strong> ${medication.customsDeclaration}</p>
-                
-                ${medication.processingDaysMin > 0 ? 
-                    `<p><strong>Permit Processing:</strong> ${medication.processingDaysMin}-${medication.processingDaysMax} days</p>` 
-                    : ''}
-                
-                <div class="reasoning">
-                    <strong>Why:</strong> ${medication.reasonForClassification}
+            <div class="handy-guide">
+                <div class="guide-header">
+                    <div class="medication-title">
+                        <h3 class="medication-name">${medication.name}</h3>
+                        <div class="medication-generic">${medication.genericName}</div>
+                    </div>
+                    <span class="status-badge ${medication.status}">${medication.status.toUpperCase()}</span>
                 </div>
-            </div>
-            
-            <div class="tool-actions">
-                <button onclick="openQuantityCalculator('${medication.name}')" class="tool-btn">
-                    📊 Calculate Quantity
-                </button>
-                ${medication.processingDaysMin > 0 ? 
-                    `<button onclick="openPermitWizard('${medication.name}')" class="tool-btn">
-                        📋 Permit Application
-                    </button>` 
-                    : ''}
-                <button onclick="addToTripPlanner('${medication.name}')" class="tool-btn">
-                    ✈️ Add to Trip
-                </button>
+                
+                <div class="medication-details">
+                    <p><strong>Threshold:</strong> ${medication.thresholdDescription}</p>
+                    <p><strong>Action Required:</strong> ${medication.actionRequired}</p>
+                    <p><strong>Customs Declaration:</strong> ${medication.customsDeclaration}</p>
+                    
+                    ${medication.processingDaysMin > 0 ? 
+                        `<p><strong>Permit Processing:</strong> ${medication.processingDaysMin}-${medication.processingDaysMax} days</p>` 
+                        : ''}
+                    
+                    <div class="reasoning" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee; font-style: italic; color: #6c757d;">
+                        <strong>Reasoning:</strong> ${medication.reasonForClassification}
+                    </div>
+                </div>
+                
+                <div class="tool-actions">
+                    <button onclick="openQuantityCalculator('${medication.name}')" class="tool-btn">
+                        📊 Calculate Quantity
+                    </button>
+                    ${medication.processingDaysMin > 0 ? 
+                        `<button onclick="openPermitWizard('${medication.name}')" class="tool-btn">
+                            📋 Permit Application
+                        </button>` 
+                        : ''}
+                    <button onclick="addToTripPlanner('${medication.name}')" class="tool-btn">
+                        ✈️ Add to Trip
+                    </button>
+                </div>
             </div>
         </div>
     `;
@@ -479,41 +483,41 @@ function generateCalculatorResultsHTML(results) {
     };
     
     return `
-        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid ${statusColors[results.status]};">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                <h4 style="margin: 0;">${results.medication}</h4>
-                <span style="background: ${statusColors[results.status]}; color: white; padding: 5px 10px; border-radius: 15px; font-size: 12px; font-weight: bold;">
+        <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid ${statusColors[results.status]}; margin: 20px 0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h4 style="margin: 0; font-size: 1.3rem;">${results.medication}</h4>
+                <span style="background: ${statusColors[results.status]}; color: white; padding: 8px 14px; border-radius: 15px; font-size: 12px; font-weight: bold;">
                     ${results.status.toUpperCase()}
                 </span>
             </div>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
-                <div>
-                    <strong>Total Quantity:</strong> ${results.totalQuantity}mg<br>
-                    <strong>Threshold:</strong> ${results.thresholdDescription}<br>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                <div style="padding: 15px; background: #f8f9fa; border-radius: 6px;">
+                    <strong>Total Quantity:</strong> ${results.totalQuantity}mg<br><br>
+                    <strong>Threshold:</strong> ${results.thresholdDescription}<br><br>
                     ${results.dailyDose ? `<strong>Daily Dose:</strong> ${results.dailyDose} tablets<br>` : ''}
                 </div>
-                <div>
-                    <strong>Within Limit:</strong> ${results.withinLimit ? '✅ Yes' : '❌ No'}<br>
-                    <strong>Customs Channel:</strong> ${results.channelRequired}<br>
+                <div style="padding: 15px; background: #f8f9fa; border-radius: 6px;">
+                    <strong>Within Limit:</strong> ${results.withinLimit ? '✅ Yes' : '❌ No'}<br><br>
+                    <strong>Customs Channel:</strong> ${results.channelRequired}<br><br>
                     <strong>Permit Required:</strong> ${results.permitRequired ? '✅ Yes' : '❌ No'}
                 </div>
             </div>
             
-            <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
-                <strong>Action Required:</strong><br>
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                <strong style="font-size: 1.1rem;">Action Required:</strong><br><br>
                 ${results.actionRequired}
             </div>
             
             ${results.permitRequired ? `
-                <div style="background: #fff3cd; padding: 15px; border-radius: 5px;">
-                    <strong>📋 Permit Information:</strong><br>
-                    <strong>Processing Time:</strong> ${results.processingTime}<br>
+                <div style="background: #fff3cd; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+                    <strong style="font-size: 1.1rem;">📋 Permit Information:</strong><br><br>
+                    <strong>Processing Time:</strong> ${results.processingTime}<br><br>
                     <strong>Documentation:</strong> ${results.documentationNeeded}
                 </div>
             ` : ''}
             
-            <div style="margin-top: 15px; font-size: 14px; color: #6c757d;">
+            <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 6px; font-size: 14px; color: #6c757d;">
                 <strong>Reasoning:</strong> ${results.reasoning}
             </div>
         </div>
