@@ -3394,25 +3394,7 @@ function generateTravelLetter(medName, genericName, quantityData) {
     }, 500);
 }
 
-// Search for specific medication by name
-function searchSpecific(medicationName) {
-    const results = medications.filter(med => 
-        med.name.toLowerCase().includes(medicationName.toLowerCase()) ||
-        (med.genericName && med.genericName.toLowerCase().includes(medicationName.toLowerCase())) ||
-        (med.alternateNames && med.alternateNames.some(name => 
-            name.toLowerCase().includes(medicationName.toLowerCase())
-        ))
-    );
-    
-    // Hide category overview and show search results
-    document.getElementById('categoryOverview').style.display = 'none';
-    document.getElementById('searchResults').style.display = 'grid';
-    
-    displayRestrictionResults(results);
-    
-    // Update search input to show what was searched
-    document.getElementById('medicationSearch').value = medicationName;
-}
+// Duplicate searchSpecific function removed - now uses enhanced version with tool buttons
 
 // Call after displaying results
 const originalDisplayResults = displayRestrictionResults;
