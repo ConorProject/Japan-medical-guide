@@ -386,6 +386,12 @@ function displayMedicationCard(medication) {
                     <div class="reasoning" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee; font-style: italic; color: #6c757d;">
                         <strong>Reasoning:</strong> ${medication.reasonForClassification}
                     </div>
+                    
+                    ${medication.officialSource ? `
+                        <div class="source-citation" style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 4px; font-size: 12px; color: #495057;">
+                            <strong>Source:</strong> <a href="${medication.officialSource}" target="_blank" style="color: #007bff; text-decoration: none;">${medication.officialSource.includes('mhlw.go.jp') ? 'MHLW Official Documentation' : 'Official Source'}</a>
+                        </div>
+                    ` : ''}
                 </div>
                 
                 <div class="tool-actions">
