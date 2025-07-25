@@ -398,7 +398,7 @@ function displayMedicationCard(medication) {
                     <button onclick="openQuantityCalculator('${medication.name}')" class="tool-btn">
                         📊 Calculate Quantity
                     </button>
-                    ${(medication.processingDaysMin > 0 || medication.status === 'restricted') ? 
+                    ${medication.processingDaysMin > 0 ? 
                         `<button onclick="openPermitWizard('${medication.name}', '${medication.itemId}')" class="tool-btn">
                             📋 Permit Application
                         </button>` 
