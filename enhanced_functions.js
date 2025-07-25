@@ -398,8 +398,8 @@ function displayMedicationCard(medication) {
                     <button onclick="openQuantityCalculator('${medication.name}')" class="tool-btn">
                         📊 Calculate Quantity
                     </button>
-                    ${medication.processingDaysMin > 0 ? 
-                        `<button onclick="openPermitWizard('${medication.name}')" class="tool-btn">
+                    ${(medication.processingDaysMin > 0 || medication.status === 'restricted') ? 
+                        `<button onclick="openPermitWizard('${medication.name}', '${medication.itemId}')" class="tool-btn">
                             📋 Permit Application
                         </button>` 
                         : ''}
@@ -429,9 +429,17 @@ function openQuantityCalculator(medicationName) {
     console.log(`Opening calculator for: ${medicationName}`);
 }
 
-function openPermitWizard(medicationName) {
-    // Get complete medication guidance from CSV data
-    const guidance = findMedicationGuidance(medicationName);
+function openPermitWizard(medicationName, itemId = null) {
+    // Get the specific medication scenario if itemId provided
+    let guidance;
+    if (itemId) {
+        // Find the exact medication scenario by itemId
+        guidance = window.medications.find(med => med.itemId === itemId);
+    } else {
+        // Fallback to general search
+        guidance = findMedicationGuidance(medicationName);
+    }
+    
     if (!guidance) {
         alert('Medication data not found. Please try searching again.');
         return;
@@ -478,7 +486,8 @@ function openPermitWizard(medicationName) {
         // Launch permit wizard
         window.open('permit-wizard.html', '_blank');
         
-        console.log(`Permit wizard launched for: ${medicationName} with complete CSV data`);
+        console.log(`Permit wizard launched for: ${medicationName} (${guidance.itemId}) with complete CSV data`);
+        console.log('Threshold:', guidance.thresholdDescription, '- Processing days:', guidance.processingDaysMin);
     } catch (error) {
         console.error('Failed to pass medication data to permit wizard:', error);
         alert('Unable to launch permit wizard. Please try again.');
