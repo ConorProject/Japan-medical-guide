@@ -239,6 +239,17 @@
         <div class="header">
             <h1>📋 Permit Application Wizard</h1>
             <p>Generate all required documents for your medication import permit</p>
+            
+            <div class="privacy-badge" style="background: #e8f5e8; border: 1px solid #4caf50; border-radius: 8px; padding: 15px; margin-top: 20px; display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 20px;">🔒</span>
+                <div style="flex: 1; text-align: left;">
+                    <strong style="color: #2e7d32;">100% Private & Secure</strong><br>
+                    <small style="color: #388e3c;">All your personal information stays on your device. Nothing is sent to our servers.</small>
+                </div>
+                <a href="privacy.html" target="_blank" style="color: #2e7d32; text-decoration: none; font-size: 12px; border: 1px solid #4caf50; padding: 5px 10px; border-radius: 4px; background: white;">
+                    Privacy Policy
+                </a>
+            </div>
         </div>
 
         <div id="selectedMedication" class="medication-info">
@@ -250,6 +261,24 @@
                 <div class="step-header">
                     <div class="step-number">1</div>
                     <div class="step-title">Travel Information</div>
+                </div>
+                
+                <div class="privacy-explanation" style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px; margin-bottom: 25px;">
+                    <h4 style="margin: 0 0 10px 0; color: #495057; display: flex; align-items: center; gap: 8px;">
+                        <span>🔒</span> Your Privacy is Protected
+                    </h4>
+                    <p style="margin: 0 0 15px 0; font-size: 14px; line-height: 1.5; color: #6c757d;">
+                        <strong>All information you enter stays completely private:</strong>
+                    </p>
+                    <ul style="margin: 0; padding-left: 20px; font-size: 14px; color: #6c757d;">
+                        <li><strong>Local processing:</strong> All forms and documents are generated in your browser</li>
+                        <li><strong>No data collection:</strong> We don't store, track, or transmit your personal information</li>
+                        <li><strong>No accounts required:</strong> No registration, no passwords, no data profiles</li>
+                        <li><strong>You control sharing:</strong> Only you decide what to send to Japanese authorities</li>
+                    </ul>
+                    <p style="margin: 15px 0 0 0; font-size: 13px; color: #868e96;">
+                        <em>This wizard works entirely offline after the page loads. Your medical and travel details never leave your device.</em>
+                    </p>
                 </div>
                 
                 <div class="form-group">
@@ -346,6 +375,11 @@
                 </div>
                 
                 <p>Once all information is complete and documents are ready, generate your permit application package:</p>
+                
+                <div class="privacy-reminder" style="background: #e3f2fd; border: 1px solid #90caf9; border-radius: 6px; padding: 15px; margin: 15px 0; font-size: 14px;">
+                    <strong style="color: #1565c0;">🔒 Privacy Note:</strong> 
+                    <span style="color: #1976d2;">Documents are generated locally in your browser. Your personal information is not transmitted to our servers during this process.</span>
+                </div>
                 
                 <button class="generate-btn" onclick="generateDocuments()">
                     Generate My Documents →
@@ -1326,6 +1360,11 @@ ${wizardData.travelInfo.email}</div>
                                 <li>Keep file sizes under 10MB total</li>
                                 <li>Name files clearly (e.g., "John_Smith_YunyuForm.pdf")</li>
                             </ul>
+                        </div>
+                        
+                        <div style="background: #e8f5e8; padding: 15px; border-radius: 5px; margin: 20px 0; font-size: 13px; text-align: center;">
+                            <strong style="color: #2e7d32;">🔒 Your documents contain your personal information.</strong><br>
+                            <span style="color: #388e3c;">Only share them with Japanese authorities or trusted medical professionals.</span>
                         </div>
                         
                         <button onclick="closeDownloadModal()" style="width: 100%; padding: 12px; background: #6c757d; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
