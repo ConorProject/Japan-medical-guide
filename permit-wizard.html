@@ -174,6 +174,62 @@
         .back-link:hover {
             text-decoration: underline;
         }
+
+        .status-badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-badge.prohibited {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-badge.restricted {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-badge.permitted {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .permit-status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .permit-not-required {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+
+        .permit-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 2px solid #ffeaa7;
+        }
+
+        .permit-required {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+
+        .permit-prohibited {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #dc3545;
+        }
     </style>
 </head>
 <body>
@@ -301,22 +357,49 @@
     <script>
         let wizardData = {};
 
-        // Load medication from sessionStorage
+        // Load medication from sessionStorage (enhanced with CSV data)
         document.addEventListener('DOMContentLoaded', function() {
-            const storedMedication = sessionStorage.getItem('permitMedication');
+            const storedMedication = sessionStorage.getItem('permitMedicationData');
             if (storedMedication) {
-                const medication = JSON.parse(storedMedication);
-                wizardData.medication = medication;
-                
-                document.getElementById('selectedMedication').innerHTML = `
-                    <h3>Selected Medication: ${medication.name}</h3>
-                    <p><strong>Generic Name:</strong> ${medication.generic}</p>
-                    <p>Complete the form below to generate your permit application documents.</p>
-                `;
+                try {
+                    const medication = JSON.parse(storedMedication);
+                    wizardData.medication = medication;
+                    
+                    // Enhanced medication display with CSV data
+                    document.getElementById('selectedMedication').innerHTML = `
+                        <h3>Selected Medication: ${medication.name}</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                            <div>
+                                <p><strong>Generic Name:</strong> ${medication.genericName}</p>
+                                <p><strong>Category:</strong> ${medication.category}</p>
+                                <p><strong>Status:</strong> <span class="status-badge ${medication.status}">${medication.status.toUpperCase()}</span></p>
+                            </div>
+                            <div>
+                                <p><strong>Threshold:</strong> ${medication.thresholdDescription}</p>
+                                <p><strong>Processing Time:</strong> ${medication.processingDaysMin > 0 ? 
+                                    `${medication.processingDaysMin}-${medication.processingDaysMax} days` : 'No permit needed'}</p>
+                                ${medication.officialSource ? `<p><strong>Source:</strong> <a href="${medication.officialSource}" target="_blank">Official Documentation</a></p>` : ''}
+                            </div>
+                        </div>
+                        <div style="background: #e3f2fd; padding: 15px; border-radius: 6px; margin-top: 15px;">
+                            <strong>Action Required:</strong> ${medication.actionRequired}
+                        </div>
+                    `;
+                    
+                    console.log('Loaded medication data from CSV:', medication);
+                } catch (error) {
+                    console.error('Error parsing medication data:', error);
+                    showNoMedicationError();
+                }
             } else {
+                showNoMedicationError();
+            }
+            
+            function showNoMedicationError() {
                 document.getElementById('selectedMedication').innerHTML = `
                     <h3>⚠️ No medication selected</h3>
-                    <p><a href="index.html">Return to medication guide</a> and select a restricted medication first.</p>
+                    <p><a href="index.html">Return to medication guide</a> and select a medication first.</p>
+                    <p><small>Make sure to click the "📋 Permit Application" button from a medication card.</small></p>
                 `;
             }
 
@@ -351,22 +434,28 @@
                 dailyDose
             };
 
-            // Check threshold and calculate percentage
-            const threshold = wizardData.medication ? wizardData.medication.threshold : null;
-            const percentageOfLimit = threshold ? (totalMg / threshold * 100) : 0;
+            // Use real CSV threshold data
+            const thresholdNumeric = wizardData.medication ? wizardData.medication.thresholdNumeric : null;
+            const medicationStatus = wizardData.medication ? wizardData.medication.status : null;
+            const percentageOfLimit = thresholdNumeric && thresholdNumeric > 0 ? (totalMg / thresholdNumeric * 100) : 0;
             
-            // Determine permit requirement and recommendation
+            // Determine permit requirement using CSV data
             let permitStatus, recommendation, nextAction;
             
-            if (threshold === null) {
-                // No restrictions
-                permitStatus = 'no-restrictions';
-                recommendation = 'No special requirements for this medication';
+            // Use actual medication status from CSV
+            if (medicationStatus === 'prohibited') {
+                permitStatus = 'prohibited';
+                recommendation = 'This medication is prohibited in Japan and cannot be imported';
+                nextAction = 'show-alternatives';
+            } else if (medicationStatus === 'permitted' && (!thresholdNumeric || thresholdNumeric === 0 || totalMg <= thresholdNumeric)) {
+                // Under limit for permitted medication
+                permitStatus = 'no-permit-needed';
+                recommendation = 'No permit required - within personal use limits';
                 nextAction = 'travel-letter';
-            } else if (threshold === 0) {
-                // Always requires permit
+            } else if (thresholdNumeric === 0 || medicationStatus === 'restricted') {
+                // Always requires permit OR is restricted status
                 permitStatus = 'permit-required';
-                recommendation = 'This medication always requires a permit';
+                recommendation = wizardData.medication.actionRequired || 'This medication requires an import permit';
                 nextAction = 'continue-application';
             } else if (percentageOfLimit <= 50) {
                 // Well under limit
@@ -399,7 +488,8 @@
 
         function displayQuantityResults(permitStatus, recommendation, nextAction, percentageOfLimit) {
             const resultDiv = document.getElementById('quantityCalculation');
-            const threshold = wizardData.medication ? wizardData.medication.threshold : null;
+            const thresholdNumeric = wizardData.medication ? wizardData.medication.thresholdNumeric : null;
+            const thresholdDescription = wizardData.medication ? wizardData.medication.thresholdDescription : null;
             
             let resultHTML = `
                 <div class="result-header">Calculation Results</div>
@@ -413,15 +503,25 @@
                 </div>
             `;
 
-            if (threshold !== null) {
+            if (thresholdNumeric !== null && thresholdNumeric !== undefined) {
                 resultHTML += `
                     <div class="result-item">
                         <span class="result-label">Japan's limit:</span>
-                        <span class="result-value">${threshold === 0 ? 'No exemption' : threshold + 'mg'}</span>
+                        <span class="result-value">${thresholdNumeric === 0 ? 'No exemption (Always requires permit)' : thresholdNumeric + 'mg'}</span>
                     </div>
                 `;
+                
+                // Show descriptive threshold from CSV
+                if (thresholdDescription) {
+                    resultHTML += `
+                        <div class="result-item">
+                            <span class="result-label">Threshold details:</span>
+                            <span class="result-value">${thresholdDescription}</span>
+                        </div>
+                    `;
+                }
 
-                if (threshold > 0) {
+                if (thresholdNumeric > 0) {
                     // Add visual progress bar
                     resultHTML += `
                         <div style="margin: 20px 0;">
@@ -439,12 +539,13 @@
 
             // Add status-specific styling and message
             const statusStyles = {
-                'no-restrictions': 'permit-not-required',
-                'well-under': 'permit-not-required',
+                'no-permit-needed': 'permit-not-required',
+                'well-under': 'permit-not-required', 
                 'getting-close': 'permit-warning',
                 'very-close': 'permit-warning',
                 'over-limit': 'permit-required',
-                'permit-required': 'permit-required'
+                'permit-required': 'permit-required',
+                'prohibited': 'permit-prohibited'
             };
 
             resultHTML += `
@@ -464,12 +565,14 @@
 
         function getStatusIcon(status) {
             const icons = {
-                'no-restrictions': '✅',
+                'no-permit-needed': '✅',
                 'well-under': '✅',
                 'getting-close': '⚠️',
                 'very-close': '🟡',
                 'over-limit': '📋',
-                'permit-required': '📋'
+                'permit-required': '📋',
+                'prohibited': '🚫',
+                'show-alternatives': '🚫'
             };
             return icons[status] || '📋';
         }
@@ -700,7 +803,7 @@
             <tbody>
                 <tr>
                     <td>${wizardData.medication.name}</td>
-                    <td>${wizardData.medication.name.match(/\(([^)]+)\)/)?.[1] || wizardData.medication.name}</td>
+                    <td>${wizardData.medication.genericName}</td>
                     <td>${wizardData.quantity.strength}mg</td>
                     <td>${wizardData.quantity.tabletCount} tablets</td>
                     <td>${wizardData.quantity.totalMg}mg</td>
@@ -727,7 +830,11 @@
             <li>This form has been pre-filled based on your information</li>
             <li>Print this form and sign it before scanning</li>
             <li>Submit along with other required documents</li>
-            <li>Processing time: 14-21 business days</li>
+            <li>Processing time: ${wizardData.medication.processingDaysMin > 0 ? 
+                `${wizardData.medication.processingDaysMin}-${wizardData.medication.processingDaysMax} business days` : 
+                'varies by case'}</li>
+            ${wizardData.medication.officialSource ? 
+                `<li><strong>Reference:</strong> Based on <a href="${wizardData.medication.officialSource}" target="_blank">official MHLW guidance</a></li>` : ''}
         </ul>
     </div>
 
@@ -909,10 +1016,13 @@
     <div class="medication-details">
         <strong>Prescribed Medication:</strong><br>
         Medication: ${wizardData.medication.name}<br>
+        Generic Name: ${wizardData.medication.genericName}<br>
+        Category: ${wizardData.medication.category}<br>
         Dosage: ${wizardData.quantity.strength}mg per tablet<br>
         Quantity: ${wizardData.quantity.tabletCount} tablets<br>
         Total Amount: ${wizardData.quantity.totalMg}mg<br>
-        Daily Dose: Approximately ${wizardData.quantity.dailyDose.toFixed(1)} tablets per day
+        Daily Dose: Approximately ${wizardData.quantity.dailyDose.toFixed(1)} tablets per day<br>
+        Classification: ${wizardData.medication.status.charAt(0).toUpperCase() + wizardData.medication.status.slice(1)} medication
     </div>
 
     <p>This medication is medically necessary for the patient's health and well-being. The quantity 
@@ -925,10 +1035,22 @@
         <strong>日本語要約 / Japanese Summary:</strong><br>
         患者名: ${wizardData.travelInfo.fullName}<br>
         薬品名: ${wizardData.medication.name}<br>
+        一般名: ${wizardData.medication.genericName}<br>
         処方量: ${wizardData.quantity.totalMg}mg (${wizardData.quantity.tabletCount}錠)<br>
         使用目的: 個人使用、医療上必要<br>
-        滞在期間: ${wizardData.quantity.tripDays}日間
+        滞在期間: ${wizardData.quantity.tripDays}日間<br>
+        分類: ${wizardData.medication.status === 'restricted' ? '制限薬物' : 
+              wizardData.medication.status === 'permitted' ? '許可薬物' : '薬物'}
     </div>
+
+    <p>This medical assessment is consistent with current Japanese import regulations. 
+    ${wizardData.medication.reasonForClassification ? 
+        `Classification rationale: ${wizardData.medication.reasonForClassification}` : ''}</p>
+
+    ${wizardData.medication.officialSource ? 
+        `<p style="font-size: 12px; color: #666; margin-top: 20px;"><strong>Reference:</strong> 
+        This letter follows guidelines from the Japanese Ministry of Health, Labour and Welfare. 
+        <a href="${wizardData.medication.officialSource}" target="_blank">View official source</a></p>` : ''}
 
     <p>Should you require any additional information, please do not hesitate to contact me at the above address.</p>
 
@@ -1070,8 +1192,11 @@ I would like to apply for import confirmation for my personal medication.
 
 医薬品情報 / Medication Information:
 薬品名 / Medication Name: ${wizardData.medication.name}
+一般名 / Generic Name: ${wizardData.medication.genericName}
+分類 / Category: ${wizardData.medication.category}
 数量 / Quantity: ${wizardData.quantity.tabletCount} tablets (${wizardData.quantity.totalMg}mg)
 使用目的 / Purpose: 個人使用 / Personal medical use
+状態 / Status: ${wizardData.medication.status.charAt(0).toUpperCase() + wizardData.medication.status.slice(1)}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 添付書類 / Attached Documents:

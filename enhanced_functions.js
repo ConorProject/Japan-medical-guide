@@ -430,12 +430,59 @@ function openQuantityCalculator(medicationName) {
 }
 
 function openPermitWizard(medicationName) {
-    // Integration point for permit wizard
+    // Get complete medication guidance from CSV data
     const guidance = findMedicationGuidance(medicationName);
-    if (guidance) {
-        alert(`Permit Wizard for ${medicationName}\n\nProcessing Time: ${guidance.processingDaysMin}-${guidance.processingDaysMax} days\nDocumentation: ${guidance.documentationNeeded}\n\nFull permit wizard coming soon!`);
+    if (!guidance) {
+        alert('Medication data not found. Please try searching again.');
+        return;
     }
-    console.log(`Opening permit wizard for: ${medicationName}`);
+    
+    // Prepare comprehensive data package for permit wizard
+    const permitData = {
+        // Core medication info
+        name: guidance.name,
+        genericName: guidance.genericName,
+        category: guidance.category,
+        
+        // Permit logic data
+        status: guidance.status,
+        thresholdDescription: guidance.thresholdDescription,
+        thresholdNumeric: guidance.thresholdNumeric,
+        
+        // Requirements and actions
+        actionRequired: guidance.actionRequired,
+        customsDeclaration: guidance.customsDeclaration,
+        channelRequired: guidance.channelRequired,
+        
+        // Processing info
+        processingDaysMin: guidance.processingDaysMin,
+        processingDaysMax: guidance.processingDaysMax,
+        documentationNeeded: guidance.documentationNeeded,
+        
+        // Reasoning and sources
+        reasonForClassification: guidance.reasonForClassification,
+        officialSource: guidance.officialSource,
+        itemId: guidance.itemId,
+        
+        // Search terms for reference
+        searchTerms: guidance.searchTerms || [],
+        
+        // Timestamp for data freshness
+        passedAt: Date.now()
+    };
+    
+    // Store data for permit wizard to consume
+    try {
+        sessionStorage.setItem('permitMedicationData', JSON.stringify(permitData));
+        
+        // Launch permit wizard
+        window.open('permit-wizard.html', '_blank');
+        
+        console.log(`Permit wizard launched for: ${medicationName} with complete CSV data`);
+    } catch (error) {
+        console.error('Failed to pass medication data to permit wizard:', error);
+        alert('Unable to launch permit wizard. Please try again.');
+    }
 }
 
 function addToTripPlanner(medicationName) {
