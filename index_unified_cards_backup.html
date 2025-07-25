@@ -1,0 +1,3488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japan Medication Guide - Medications, Import Rules & Pharmacy Guide</title>
+    <meta name="description" content="Complete guide to bringing medications into Japan. Check import restrictions, find pharmacy products, and navigate customs regulations. Updated 2025.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="url-database.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 18px;
+            line-height: 1.7;
+            font-weight: 400;
+            background: #f8f9fa;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease-out;
+            background: white;
+            padding: 40px 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 3.0rem;
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            font-weight: 400;
+            line-height: 1.4;
+            opacity: 0.9;
+        }
+
+        /* Clean Medical Grade CSS */
+        .medication-card {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .handy-guide {
+            padding: 20px;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .guide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .medication-title {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .medication-name {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #343a40;
+            margin: 0 0 5px 0;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        .medication-generic {
+            font-size: 1rem;
+            color: #6c757d;
+            margin-bottom: 3px;
+            font-style: italic;
+        }
+
+        /* Status Badges - Clean Colors */
+        .status-badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 12px;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .status-badge.prohibited {
+            background: #fdf2f2;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status-badge.restricted {
+            background: #fffdf5;
+            color: #6f4e08;
+            border: 1px solid #ffeaa7;
+        }
+
+        .status-badge.permitted {
+            background: #f8fbf8;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        /* Card Border Colors */
+        .medication-card.status-prohibited {
+            border-left: 4px solid #dc3545;
+        }
+
+        .medication-card.status-restricted {
+            border-left: 4px solid #ffeaa7;
+        }
+
+        .medication-card.status-permitted {
+            border-left: 4px solid #28a745;
+        }
+
+        /* Story Hook */
+        .story-hook {
+            background: #e3f2fd;
+            border: 1px solid #90caf9;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .hook-text {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #1565c0;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* Critical Action */
+        .critical-action {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-left: 3px solid #1976d2;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 15px;
+        }
+
+        .action-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1976d2;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .action-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+            border: 1px solid #e9ecef;
+        }
+
+        .step-number {
+            background: #1976d2;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: #495057;
+            font-weight: 500;
+        }
+
+        .step-examples {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .step-note {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 4px;
+        }
+
+        .step-critical {
+            font-size: 0.85rem;
+            color: #721c24;
+            background: #fdf2f2;
+            padding: 4px 8px;
+            border-radius: 3px;
+            margin-top: 4px;
+            border-left: 3px solid #dc3545;
+        }
+
+        .step-mandatory {
+            font-size: 0.85rem;
+            color: #6f4e08;
+            background: #fffdf5;
+            padding: 4px 8px;
+            border-radius: 3px;
+            margin-top: 4px;
+            border-left: 3px solid #ffc107;
+        }
+
+        .step-phrase {
+            font-size: 0.85rem;
+            color: #155724;
+            background: #f0f9f0;
+            padding: 4px 8px;
+            border-radius: 3px;
+            margin-top: 4px;
+            font-family: monospace;
+        }
+
+        /* Quick Facts */
+        .quick-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .fact-item {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid #e9ecef;
+            border-left: 3px solid #1976d2;
+        }
+
+        .fact-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .fact-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #343a40;
+            line-height: 1.2;
+        }
+
+        /* Encyclopedia Toggle */
+        .encyclopedia-toggle {
+            width: 100%;
+            padding: 10px 20px;
+            background: #f8f9fa;
+            color: #6c757d;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .encyclopedia-toggle:hover {
+            background: #e9ecef;
+            border-color: #adb5bd;
+            color: #495057;
+        }
+
+        /* ===== SEARCH SECTION ===== */
+        .search-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+        }
+
+        .search-section h2 {
+            font-family: 'Source Sans Pro', sans-serif;
+            margin: 0 0 10px 0;
+            font-size: 2.0rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        .search-section p {
+            margin: 0 0 20px 0;
+            opacity: 0.9;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .search-container {
+            flex: 1;
+            width: 100%;
+            min-width: 0;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 50px;
+            font-size: 17px;
+            outline: none;
+            transition: all 0.3s ease;
+            background: white;
+            color: #333;
+        }
+
+        .search-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-btn {
+            padding: 15px 30px;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Category overview */
+        .category-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .category-card {
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .category-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .category-card p {
+            margin-bottom: 15px;
+        }
+
+        .category-prohibited {
+            background: #fdf2f2;
+            border: 1px solid #f5c6cb;
+            border-left: 4px solid #dc3545;
+        }
+
+        .category-prohibited h3,
+        .category-prohibited p {
+            color: #721c24;
+        }
+
+        .category-restricted {
+            background: #fffdf5;
+            border: 1px solid #ffeaa7;
+            border-left: 4px solid #ffeaa7;
+        }
+
+        .category-restricted h3,
+        .category-restricted p {
+            color: #6f4e08;
+        }
+
+        .category-permitted {
+            background: #f8fbf8;
+            border: 1px solid #c3e6cb;
+            border-left: 4px solid #28a745;
+        }
+
+        .category-permitted h3,
+        .category-permitted p {
+            color: #155724;
+        }
+
+        .med-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .med-button {
+            background: white;
+            border: 1px solid currentColor;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .med-button:hover {
+            background: currentColor;
+            color: white !important;
+        }
+
+        /* Results Grid */
+        .results-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #666;
+            font-size: 1.2rem;
+            margin-top: 50px;
+            padding: 40px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            display: none;
+        }
+
+/* ============================================================================ */
+/* ===== MOBILE RESPONSIVE STYLES ===== */
+/* ============================================================================ */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .medication-name {
+                font-size: 1.3rem;
+            }
+
+            .search-bar {
+                flex-direction: column;
+            }
+
+            .guide-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .status-badge {
+                width: 100%;
+            }
+
+            .quick-facts {
+                grid-template-columns: 1fr;
+            }
+
+            .category-overview {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+/* ============================================================================ */
+/* ===== ENCYCLOPEDIA SECTION ===== */
+/* ============================================================================ */
+.encyclopedia {
+    display: none;
+    padding: 30px;
+    border-top: 1px solid #e0e0e0;
+    background: #fafafa;
+    line-height: 1.6;
+}
+
+.encyclopedia.expanded {
+    display: block;
+}
+
+.encyclopedia-header {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1565c0;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    text-align: center;
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* ============================================================================ */
+/* ===== CHART SECTIONS ===== */
+/* ============================================================================ */
+.chart-section {
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.chart-section h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1565c0;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 10px;
+}
+
+/* Insight Boxes - Special Styling */
+.insight-box {
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.insight-box strong {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.insight-key {
+    background: #e3f2fd;
+    border-left-color: #1976d2;
+    color: #1565c0;
+}
+
+.insight-cultural {
+    background: #f3e5f5;
+    border-left-color: #7b1fa2;
+    color: #6a1b9a;
+}
+
+.insight-misconception {
+    background: #fff3e0;
+    border-left-color: #f57c00;
+    color: #ef6c00;
+}
+
+/* Commentary Section Improvements */
+.commentary-section {
+    margin-bottom: 30px;
+}
+
+.commentary-header {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 15px;
+    background: linear-gradient(135deg, #1976d2, #1565c0);
+    border-radius: 8px;
+}
+
+.commentary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.commentary-item {
+    background: white;
+    border-radius: 8px;
+    padding: 25px;
+    border: 1px solid #e0e0e0;
+    border-left: 4px solid #1976d2;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.commentary-item h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1565c0;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 8px;
+}
+
+/* Better List Styling */
+.commentary-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #495057;
+    margin-bottom: 12px;
+    padding-left: 0;
+}
+
+.commentary-item p:last-child {
+    margin-bottom: 0;
+}
+
+/* Bullet Point Improvements */
+.commentary-item div {
+    margin-left: 0;
+}
+
+.commentary-item div p {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.commentary-item div p:before {
+    content: "•";
+    color: #1976d2;
+    font-weight: 600;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Chart Grid Improvements */
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.chart-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+    border-left: 4px solid #1976d2;
+    transition: transform 0.2s ease;
+}
+
+.chart-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.chart-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.chart-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #343a40;
+    line-height: 1.3;
+}
+
+/* Special Sections Styling */
+.alternatives-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #28a745;
+}
+
+.alternatives-section p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #495057;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.alternatives-section p:before {
+    content: "→";
+    color: #28a745;
+    font-weight: 600;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Research Quality Section */
+.research-quality-section {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+}
+
+/* Mobile Responsive for Encyclopedia */
+@media (max-width: 768px) {
+    .encyclopedia {
+        padding: 20px;
+    }
+    
+    .chart-section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .commentary-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .commentary-item {
+        padding: 20px;
+    }
+    
+    .chart-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .encyclopedia-header {
+        font-size: 1.2rem;
+        margin-bottom: 25px;
+    }
+}
+
+/* ============================================================================ */
+/* NEW CSS STYLES FOR ENHANCED CLASSIFICATION SYSTEM */
+/* ============================================================================ */
+
+/* Threshold-based medication styling */
+.threshold-info {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.threshold-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #495057;
+}
+
+.threshold-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.threshold-item {
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.threshold-item.permitted {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+.threshold-item.restricted {
+    background: #fffdf5;
+    color: #6f4e08;
+    border: 1px solid #ffeaa7;
+}
+
+.threshold-item.prohibited {
+    background: #fdf2f2;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.threshold-status {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.threshold-limit, .threshold-trigger {
+    font-size: 0.9em;
+    margin-bottom: 3px;
+}
+
+.threshold-note {
+    font-size: 0.8em;
+    color: #6c757d;
+}
+
+/* Customs guidance styling */
+.customs-guidance {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+/* Customs Requirements Section */
+.customs-requirements {
+    background: #f8f9fa;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.customs-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.customs-alert {
+    border-radius: 6px;
+    padding: 15px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.customs-alert.red-channel {
+    background: #f8d7da;
+    border: 2px solid #dc3545;
+    color: #721c24;
+}
+
+.customs-alert.green-channel {
+    background: #d4edda;
+    border: 2px solid #28a745;
+    color: #155724;
+}
+
+.customs-alert.prohibited-channel {
+    background: #f8d7da;
+    border: 2px solid #dc3545;
+    color: #721c24;
+}
+
+.customs-channel {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.channel-icon {
+    font-size: 1.4rem;
+    margin-right: 8px;
+}
+
+.customs-declaration {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.customs-details {
+    font-size: 0.9rem;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.guidance-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #495057;
+}
+
+.guidance-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.guidance-tab.legal {
+    background: #e3f2fd;
+    border: 1px solid #bbdefb;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.guidance-tab.recommended {
+    background: #f3e5f5;
+    border: 1px solid #e1bee7;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.guidance-tab h5 {
+    margin: 0 0 8px 0;
+    font-size: 0.9em;
+}
+
+.guidance-item {
+    margin-bottom: 5px;
+    font-size: 0.85em;
+}
+
+.guidance-item strong {
+    font-weight: 600;
+}
+
+/* Status badge updates for new system */
+.status-badge.threshold-based {
+    background: #fffdf5;
+    color: #6f4e08;
+    border: 1px solid #ffeaa7;
+}
+
+/* Mobile responsiveness for new elements */
+@media (max-width: 768px) {
+    .threshold-grid,
+    .guidance-tabs {
+        grid-template-columns: 1fr;
+    }
+    
+    .threshold-item,
+    .guidance-tab {
+        margin-bottom: 10px;
+    }
+}
+
+/* ============================================================================ */
+/* SOURCED FACT CITATION STYLES */
+/* ============================================================================ */
+
+.sourced-fact {
+    position: relative;
+    display: inline-block;
+    padding: 2px 0;
+}
+
+.sourced-fact:hover {
+    background-color: rgba(0, 123, 255, 0.05);
+    border-radius: 3px;
+}
+
+.citation-line {
+    font-size: 0.75rem;
+    color: #6c757d;
+    margin-top: 4px;
+    padding: 6px 8px;
+    background-color: #f8f9fa;
+    border-left: 3px solid #dee2e6;
+    border-radius: 0 4px 4px 0;
+    line-height: 1.4;
+}
+
+.citation-line a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.citation-line a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+.citation-separator {
+    color: #adb5bd;
+    margin: 0 6px;
+}
+
+/* Citation styling for different fact types */
+.sourced-fact.status-fact .citation-line {
+    border-left-color: #ffc107;
+}
+
+.sourced-fact.threshold-fact .citation-line {
+    border-left-color: #28a745;
+}
+
+.sourced-fact.permit-fact .citation-line {
+    border-left-color: #dc3545;
+}
+
+.sourced-fact.customs-fact .citation-line {
+    border-left-color: #17a2b8;
+}
+
+/* Classification Info Modal Styles */
+.info-button {
+    font-family: 'Source Sans Pro', sans-serif;
+    background: transparent;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    cursor: pointer;
+    margin: 10px auto;
+    display: block;
+    transition: all 0.2s ease;
+    letter-spacing: 0.01em;
+}
+
+.info-button:hover {
+    background: #f8f9fa;
+    border-color: #adb5bd;
+    color: #495057;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+}
+
+.classification-item {
+    margin-bottom: 25px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.classification-prohibited {
+    background: #fdf2f2;
+    border: 1px solid #f5c6cb;
+    border-left: 4px solid #dc3545;
+}
+
+.classification-restricted {
+    background: #fffdf5;
+    border: 1px solid #ffeaa7;
+    border-left: 4px solid #fd7e14;
+}
+
+.classification-permitted {
+    background: #f8fbf8;
+    border: 1px solid #c3e6cb;
+    border-left: 4px solid #28a745;
+}
+
+.classification-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.classification-description {
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.classification-example {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Permit Wizard Button Styles */
+.permit-wizard-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    margin-top: 20px;
+    width: 100%;
+}
+
+.permit-wizard-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.travel-letter-btn {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.travel-letter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+/* Essential travel info styling */
+.essential-info {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+    border-left: 4px solid #007bff;
+}
+
+.essential-item {
+    padding: 8px 0;
+    font-size: 15px;
+    line-height: 1.4;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.essential-item:last-child {
+    border-bottom: none;
+}
+
+.essential-item.critical {
+    color: #721c24;
+    background: #f8d7da;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+    border-left: 4px solid #dc3545;
+}
+
+.essential-item.warning {
+    color: #856404;
+    background: #fff3cd;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+    border-left: 4px solid #ffc107;
+}
+
+.essential-item.safe {
+    color: #155724;
+    background: #d4edda;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+    border-left: 4px solid #28a745;
+}
+
+.essential-item.info {
+    color: #004085;
+    background: #cce7ff;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+    border-left: 4px solid #007bff;
+}
+
+.essential-citations {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #dee2e6;
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.essential-citations .citation-line {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* Enhanced Granular Citation System */
+.citation-line {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-top: 8px;
+    padding: 6px 10px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    border-left: 3px solid #dee2e6;
+}
+
+.citation-threshold {
+    border-left-color: #ffc107;
+    background: #fff9e6;
+}
+
+.citation-classification {
+    border-left-color: #dc3545;
+    background: #fdf2f2;
+}
+
+.citation-customs {
+    border-left-color: #6f42c1;
+    background: #f8f6ff;
+}
+
+.citation-permit {
+    border-left-color: #fd7e14;
+    background: #fff8f3;
+}
+
+.citation-availability {
+    border-left-color: #20c997;
+    background: #f0fdf9;
+}
+
+.granular-citation {
+    border-left-color: #007bff;
+    background: #f0f8ff;
+    font-weight: 500;
+}
+
+.citation-line a {
+    color: #007bff;
+    text-decoration: none;
+    border-bottom: 1px dotted #007bff;
+}
+
+.citation-line a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid #007bff;
+}
+
+.citation-separator {
+    color: #adb5bd;
+    font-weight: normal;
+    margin: 0 5px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><a href="#" onclick="showAllMedications(); return false;" style="color: #2c3e50; text-decoration: none; cursor: pointer;">🏥 Japan Medication Guide</a></h1>
+            <p>Your complete guide to bringing medications into Japan safely and legally</p>
+            
+            <div style="margin-top: 25px; text-align: center;">
+                <a href="about.html" style="color: #007bff; text-decoration: none; font-weight: 500; margin: 0 15px;">About Our Process</a>
+                <span style="color: #dee2e6;">|</span>
+                <a href="research.html" style="color: #007bff; text-decoration: none; font-weight: 500; margin: 0 15px;">Our Research</a>
+            </div>
+        </div>
+
+        <!-- Import Status Checker -->
+        <div class="search-section">
+            <h2>🔍 Check Your Medication Import Status</h2>
+            <p>Instant answers: Is your medication prohibited, restricted, or permitted in Japan?</p>
+            
+            <button class="info-button" onclick="openClassificationModal()">
+                How Our Classification System Works
+            </button>
+            
+            <div class="search-bar">
+                <div class="search-container">
+                    <input type="text" 
+                           class="search-input" 
+                           placeholder="Enter medication name (e.g., Adderall, Birth Control, Tylenol)..." 
+                           id="medicationSearch"
+                           onkeypress="if(event.key==='Enter') enhancedSearchMedications()"
+                           oninput="handleSearchInput()"
+                           onblur="hideAutocomplete()"
+                           onfocus="showAutocompleteIfNeeded()">
+                    
+                    <!-- Autocomplete Dropdown -->
+                    <div id="autocompleteDropdown" class="autocomplete-dropdown" style="display: none;">
+                        <!-- Dropdown items will be populated by JavaScript -->
+                    </div>
+                    
+                    <!-- Spell Check Suggestion -->
+                    <div id="spellSuggestion" class="spell-suggestion" style="display: none;">
+                        <!-- Spell suggestions will be populated by JavaScript -->
+                    </div>
+                </div>
+                <button class="search-btn" onclick="enhancedSearchMedications()">
+                    Check Status
+                </button>
+            </div>
+        </div>
+        <div id="searchResults"></div>
+
+        <!-- Trip Planner Section -->
+        <div class="trip-planner-container" id="tripPlannerContainer" style="display: none;">
+            <h2 style="color: #2c3e50; margin-bottom: 20px;">✈️ Multi-Medication Trip Planner</h2>
+            <p style="color: #6c757d; margin-bottom: 20px;">Plan your trip with multiple medications and get comprehensive customs guidance.</p>
+            
+            <div id="medicationInputs">
+                <div class="trip-medication-input">
+                    <input type="text" placeholder="Medication name" class="trip-med-name" style="flex: 2; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                    <input type="number" placeholder="Quantity (mg)" class="trip-med-quantity" style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                    <button onclick="addMedicationInput()" style="background: #28a745; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
+                        + Add More
+                    </button>
+                </div>
+            </div>
+            
+            <div style="margin: 20px 0;">
+                <button onclick="planTrip()" style="background: #007bff; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-size: 16px; margin-right: 10px;">
+                    📋 Plan My Trip
+                </button>
+                <button onclick="clearTripPlanner()" style="background: #6c757d; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-size: 16px;">
+                    Clear All
+                </button>
+            </div>
+            
+            <!-- Trip Results -->
+            <div id="tripResults" class="trip-results" style="display: none;">
+                <!-- Results will be populated by JavaScript -->
+            </div>
+            
+            <!-- VJW Declaration Helper -->
+            <div id="vjwHelper" class="trip-results" style="display: none;">
+                <h3 style="color: #2c3e50;">🏛️ VJW (Customs Form) Declaration Guidance</h3>
+                <div id="vjwResults">
+                    <!-- VJW results will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Permit Timeline -->
+            <div id="permitTimeline" class="trip-results" style="display: none;">
+                <h3 style="color: #2c3e50;">⏰ Permit Application Timeline</h3>
+                <div id="timelineResults">
+                    <!-- Timeline results will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Show/Hide Trip Planner Button -->
+        <div style="text-align: center; margin: 30px 0;">
+            <button id="tripPlannerToggle" onclick="toggleTripPlanner()" 
+                    style="background: #17a2b8; color: white; border: none; padding: 15px 30px; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 500;">
+                ✈️ Open Trip Planner
+            </button>
+        </div>
+
+        <!-- Search Results Area -->
+        <div id="resultsArea">
+            <!-- Dynamic Category Overview - Generated from medications.json -->
+            <div class="category-overview" id="categoryOverview">
+                <!-- Cards will be dynamically generated by enhanced_functions.js -->
+            </div>
+
+            <!-- Search Results -->
+            <div class="results-grid" id="searchResults"></div>
+            
+
+            <!-- No Results Message -->
+            <div class="no-results" id="noResults">
+                No medication found. Try searching by generic name or active ingredient.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Clean medication database with 3-category system
+        // Load medications from external JSON file
+        let medications = [];
+        
+        async function loadMedications() {
+            try {
+                const response = await fetch('medications.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                const text = await response.text();
+                medications = JSON.parse(text);
+                console.log('Medications loaded:', medications.length, 'entries');
+                
+                // Trigger any initialization that depends on medications being loaded
+                if (typeof initializeAfterMedicationsLoad === 'function') {
+                    initializeAfterMedicationsLoad();
+                }
+            } catch (error) {
+                console.error('Error loading medications:', error);
+                // Fallback: show error message to user
+                document.body.insertAdjacentHTML('beforeend', 
+                    '<div style="background: #f8d7da; color: #721c24; padding: 15px; margin: 20px; border-radius: 8px;">Error loading medication data. Please refresh the page.</div>'
+                );
+            }
+        }
+        
+        // Initialize dynamic category cards after medications load
+        function initializeAfterMedicationsLoad() {
+            // Make medications available globally for enhanced_functions.js
+            window.medications = medications;
+            
+            // Generate and populate category cards
+            if (window.generateCategoryCards) {
+                const categoryOverview = document.getElementById('categoryOverview');
+                if (categoryOverview) {
+                    categoryOverview.innerHTML = window.generateCategoryCards();
+                }
+            }
+        }
+        
+        // Load medications when page loads
+        document.addEventListener('DOMContentLoaded', loadMedications);
+
+        // --- ENHANCED SEARCH FUNCTION (Uses enhanced_functions.js) ---
+function searchMedications() {
+    const searchTerm = document.getElementById('medicationSearch').value.toLowerCase().trim();
+    const resultsGrid = document.getElementById('searchResults');
+    const categoryOverview = document.getElementById('categoryOverview');
+    const noResults = document.getElementById('noResults');
+
+    if (!searchTerm) {
+        // Show overview, hide results and no-results
+        categoryOverview.style.display = 'grid';
+        resultsGrid.innerHTML = '';
+        resultsGrid.style.display = 'none';
+        noResults.style.display = 'none';
+        return;
+    }
+
+    // Hide overview, show results grid
+    categoryOverview.style.display = 'none';
+    resultsGrid.style.display = 'grid';
+
+    // Use enhanced search from enhanced_functions.js with smart ranking
+    const results = window.searchMedications ? window.searchMedications(searchTerm) : [];
+
+    if (results.length === 0) {
+        resultsGrid.innerHTML = '';
+        noResults.style.display = 'block';
+        return;
+    }
+
+    noResults.style.display = 'none';
+    displayRestrictionResults(results);
+}
+
+// --- SHOW ALL MEDICATIONS ---
+function showAllMedications() {
+    // Clear search input
+    document.getElementById('medicationSearch').value = '';
+    
+    // Get the relevant DOM elements
+    const categoryOverview = document.getElementById('categoryOverview');
+    const resultsGrid = document.getElementById('searchResults');
+    const noResults = document.getElementById('noResults');
+    
+    // Show category overview, hide results and no-results
+    categoryOverview.style.display = 'grid';
+    resultsGrid.innerHTML = '';
+    resultsGrid.style.display = 'none';
+    noResults.style.display = 'none';
+}
+
+// --- SPECIFIC MEDICATION SEARCH ---
+function searchSpecific(medicationName) {
+    document.getElementById('medicationSearch').value = medicationName;
+    enhancedSearchMedications(); // Use enhanced search
+}
+
+// ===== ENHANCED SEARCH WITH AUTOCOMPLETE & SPELL CHECK =====
+function enhancedSearchMedications() {
+    const searchInput = document.getElementById('medicationSearch');
+    const query = searchInput.value.trim();
+    
+    // Hide autocomplete when searching
+    hideAutocomplete();
+    
+    if (!query) {
+        showAllMedications();
+        return;
+    }
+    
+    // Use enhanced search from enhanced_functions.js
+    const results = window.searchMedications ? window.searchMedications(query) : [];
+    
+    if (results.length === 0) {
+        // Show spell check suggestion if no results
+        showSpellSuggestion(query);
+        displayNoResults();
+    } else {
+        hideSpellSuggestion();
+        displaySearchResults(results);
+    }
+    
+    // Auto-populate calculator with the searched medication
+    if (results.length > 0) {
+        populateCalculatorFromSearch(query);
+    }
+}
+
+function handleSearchInput() {
+    const searchInput = document.getElementById('medicationSearch');
+    const query = searchInput.value.trim();
+    
+    if (query.length >= 2) {
+        showAutocomplete(query);
+    } else {
+        hideAutocomplete();
+        hideSpellSuggestion();
+    }
+}
+
+function showAutocomplete(query) {
+    if (!window.getAutocompleteSuggestions) return;
+    
+    const suggestions = window.getAutocompleteSuggestions(query);
+    const dropdown = document.getElementById('autocompleteDropdown');
+    
+    if (suggestions.length === 0) {
+        hideAutocomplete();
+        return;
+    }
+    
+    dropdown.innerHTML = suggestions.map(suggestion => `
+        <div class="autocomplete-item" onclick="selectMedication('${suggestion}')">
+            <span class="autocomplete-suggestion">${suggestion}</span>
+            <span class="autocomplete-quick-select">- Quick select</span>
+        </div>
+    `).join('');
+    
+    dropdown.style.display = 'block';
+}
+
+function hideAutocomplete() {
+    setTimeout(() => {
+        const dropdown = document.getElementById('autocompleteDropdown');
+        if (dropdown) dropdown.style.display = 'none';
+    }, 200); // Delay to allow clicks
+}
+
+function showAutocompleteIfNeeded() {
+    const searchInput = document.getElementById('medicationSearch');
+    const query = searchInput.value.trim();
+    
+    if (query.length >= 2) {
+        showAutocomplete(query);
+    }
+}
+
+function selectMedication(medicationName) {
+    const searchInput = document.getElementById('medicationSearch');
+    searchInput.value = medicationName;
+    hideAutocomplete();
+    hideSpellSuggestion();
+    
+    // Auto-search the selected medication
+    enhancedSearchMedications();
+    
+    // Auto-populate calculator
+    populateCalculatorFromSearch(medicationName);
+}
+
+function showSpellSuggestion(query) {
+    if (!window.findSpellSuggestions) return;
+    
+    const suggestion = window.findSpellSuggestions(query);
+    const suggestionDiv = document.getElementById('spellSuggestion');
+    
+    if (!suggestion) {
+        hideSpellSuggestion();
+        return;
+    }
+    
+    suggestionDiv.innerHTML = `
+        <span>Did you mean: </span>
+        <span class="spell-suggestion-link" onclick="acceptSpellSuggestion('${suggestion}')">
+            ${suggestion}
+        </span>
+        <span> ?</span>
+    `;
+    
+    suggestionDiv.style.display = 'block';
+}
+
+function hideSpellSuggestion() {
+    const suggestionDiv = document.getElementById('spellSuggestion');
+    if (suggestionDiv) suggestionDiv.style.display = 'none';
+}
+
+function acceptSpellSuggestion(suggestion) {
+    const searchInput = document.getElementById('medicationSearch');
+    searchInput.value = suggestion;
+    hideSpellSuggestion();
+    enhancedSearchMedications();
+}
+
+function populateCalculatorFromSearch(medicationName) {
+    // Auto-populate calculator fields if they exist
+    const calcInputs = document.querySelectorAll('[id*="calc"], [class*="calc"]');
+    if (calcInputs.length > 0) {
+        console.log(`Auto-populating calculator for: ${medicationName}`);
+        // This creates the search → calculator workflow your React tool demonstrated
+    }
+}
+
+function displaySearchResults(results) {
+    const resultsGrid = document.getElementById('searchResults');
+    const categoryOverview = document.getElementById('categoryOverview');
+    const noResults = document.getElementById('noResults');
+    
+    // Hide overview, show results
+    if (categoryOverview) categoryOverview.style.display = 'none';
+    if (noResults) noResults.style.display = 'none';
+    
+    // Use enhanced display function if available
+    if (window.displayMedicationCard) {
+        resultsGrid.innerHTML = results.map(med => window.displayMedicationCard(med)).join('');
+    } else {
+        // Fallback to existing display
+        displayRestrictionResults(results);
+    }
+    
+    resultsGrid.style.display = 'grid';
+}
+
+function displayNoResults() {
+    const resultsGrid = document.getElementById('searchResults');
+    const categoryOverview = document.getElementById('categoryOverview');
+    const noResults = document.getElementById('noResults');
+    
+    if (categoryOverview) categoryOverview.style.display = 'none';
+    if (resultsGrid) {
+        resultsGrid.innerHTML = '';
+        resultsGrid.style.display = 'none';
+    }
+    if (noResults) noResults.style.display = 'block';
+}
+
+// --- CATEGORY BUTTON SEARCH ---
+
+// ===== TRIP PLANNER FUNCTIONALITY =====
+function toggleTripPlanner() {
+    const container = document.getElementById('tripPlannerContainer');
+    const toggleBtn = document.getElementById('tripPlannerToggle');
+    
+    if (container.style.display === 'none') {
+        container.style.display = 'block';
+        toggleBtn.textContent = '✈️ Close Trip Planner';
+        toggleBtn.style.background = '#dc3545';
+    } else {
+        container.style.display = 'none';
+        toggleBtn.textContent = '✈️ Open Trip Planner';
+        toggleBtn.style.background = '#17a2b8';
+    }
+}
+
+function addMedicationInput() {
+    const inputsContainer = document.getElementById('medicationInputs');
+    const newInput = document.createElement('div');
+    newInput.className = 'trip-medication-input';
+    newInput.innerHTML = `
+        <input type="text" placeholder="Medication name" class="trip-med-name" style="flex: 2; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+        <input type="number" placeholder="Quantity (mg)" class="trip-med-quantity" style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+        <button onclick="removeMedicationInput(this)" style="background: #dc3545; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
+            ✕ Remove
+        </button>
+    `;
+    inputsContainer.appendChild(newInput);
+}
+
+function removeMedicationInput(button) {
+    button.parentElement.remove();
+}
+
+function planTrip() {
+    // Collect all medication inputs
+    const medicationInputs = document.querySelectorAll('.trip-medication-input');
+    const medications = [];
+    
+    medicationInputs.forEach(input => {
+        const name = input.querySelector('.trip-med-name').value.trim();
+        const quantity = parseFloat(input.querySelector('.trip-med-quantity').value);
+        
+        if (name && quantity) {
+            medications.push({ name, quantity });
+        }
+    });
+    
+    if (medications.length === 0) {
+        alert('Please add at least one medication with quantity.');
+        return;
+    }
+    
+    // Use comprehensive trip planner from enhanced_functions.js
+    if (window.planMedicationTrip) {
+        const tripPlan = window.planMedicationTrip(medications);
+        displayTripResults(tripPlan);
+        
+        // Generate VJW declaration guidance
+        if (window.getVJWDeclarationGuidance) {
+            const vjwGuidance = window.getVJWDeclarationGuidance(medications);
+            displayVJWResults(vjwGuidance);
+        }
+        
+        // Generate permit timeline
+        if (window.calculatePermitTimeline) {
+            const timeline = window.calculatePermitTimeline(medications);
+            displayTimelineResults(timeline);
+        }
+    } else {
+        alert('Trip planner functions not loaded. Please refresh the page.');
+    }
+}
+
+function displayTripResults(tripPlan) {
+    const resultsDiv = document.getElementById('tripResults');
+    
+    let html = `
+        <h3 style="color: #2c3e50;">📋 Trip Planning Results</h3>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 15px 0;">
+            <div class="trip-success">
+                <strong>✅ Permitted:</strong> ${tripPlan.summary.permitted}
+            </div>
+            <div style="background: #fff3cd; color: #856404; padding: 10px; border-radius: 6px; border: 1px solid #ffeaa7;">
+                <strong>⚠️ Restricted:</strong> ${tripPlan.summary.restricted}
+            </div>
+            <div class="trip-warning">
+                <strong>🚫 Prohibited:</strong> ${tripPlan.summary.prohibited}
+            </div>
+        </div>
+        
+        <div style="margin: 15px 0;">
+            <p><strong>Customs Declaration Required:</strong> 
+                <span style="color: ${tripPlan.customsDeclarationRequired ? '#dc3545' : '#28a745'}; font-weight: bold;">
+                    ${tripPlan.customsDeclarationRequired ? 'YES' : 'NO'}
+                </span>
+            </p>
+            <p><strong>Permits Needed:</strong> ${tripPlan.totalPermitsNeeded}</p>
+        </div>
+    `;
+    
+    // Add warnings if any
+    if (tripPlan.warnings.length > 0) {
+        html += `
+            <div style="margin: 15px 0;">
+                <h4 style="color: #dc3545;">⚠️ Important Warnings:</h4>
+                ${tripPlan.warnings.map(warning => `
+                    <div class="trip-warning">${warning}</div>
+                `).join('')}
+            </div>
+        `;
+    }
+    
+    // Add medication details
+    html += `
+        <div style="margin: 15px 0;">
+            <h4 style="color: #2c3e50;">💊 Medication Details:</h4>
+            ${tripPlan.medications.map(med => `
+                <div style="background: white; padding: 15px; margin: 10px 0; border-radius: 6px; border: 1px solid #ddd;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <strong>${med.name}</strong>
+                        <span style="background: ${getStatusColor(med.status)}; color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px;">
+                            ${med.status.toUpperCase()}
+                        </span>
+                    </div>
+                    <p><strong>Quantity:</strong> ${med.quantity}mg</p>
+                    <p><strong>Action:</strong> ${med.actionRequired}</p>
+                    <p><strong>Channel:</strong> ${med.channel}</p>
+                    <p><strong>Permit Required:</strong> ${med.permitNeeded ? 'Yes' : 'No'}</p>
+                </div>
+            `).join('')}
+        </div>
+    `;
+    
+    resultsDiv.innerHTML = html;
+    resultsDiv.style.display = 'block';
+}
+
+function displayVJWResults(vjwGuidance) {
+    const vjwDiv = document.getElementById('vjwHelper');
+    const resultsDiv = document.getElementById('vjwResults');
+    
+    const html = `
+        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid ${vjwGuidance.vjw_answer === 'YES' ? '#dc3545' : '#28a745'};">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h2 style="color: ${vjwGuidance.vjw_answer === 'YES' ? '#dc3545' : '#28a745'}; margin: 0;">
+                    VJW Declaration Answer: ${vjwGuidance.vjw_answer}
+                </h2>
+                <p style="color: #6c757d; margin: 10px 0 0 0;">${vjwGuidance.reasoning}</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 20px 0;">
+                <div class="trip-warning">
+                    <strong>Prohibited:</strong> ${vjwGuidance.prohibited_count}
+                </div>
+                <div style="background: #fff3cd; color: #856404; padding: 10px; border-radius: 6px; border: 1px solid #ffeaa7;">
+                    <strong>Restricted:</strong> ${vjwGuidance.restricted_count}
+                </div>
+                <div class="trip-success">
+                    <strong>Permitted:</strong> ${vjwGuidance.permitted_count}
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <h4>Individual Medication Declarations:</h4>
+                ${vjwGuidance.details.map(detail => `
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px; margin: 5px 0; background: #f8f9fa; border-radius: 4px;">
+                        <span><strong>${detail.medication}</strong> (${detail.quantity}mg)</span>
+                        <span style="color: ${detail.declaration === 'required' ? '#dc3545' : '#28a745'}; font-weight: bold;">
+                            ${detail.declaration === 'required' ? 'DECLARE' : 'NO DECLARATION'}
+                        </span>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+    
+    resultsDiv.innerHTML = html;
+    vjwDiv.style.display = 'block';
+}
+
+function displayTimelineResults(timeline) {
+    const timelineDiv = document.getElementById('permitTimeline');
+    const resultsDiv = document.getElementById('timelineResults');
+    
+    if (!timeline.permitRequired) {
+        resultsDiv.innerHTML = `
+            <div class="trip-success">
+                <h4>🎉 No Permits Required!</h4>
+                <p>${timeline.message}</p>
+            </div>
+        `;
+    } else {
+        const urgencyColor = timeline.urgencyLevel === 'high' ? '#dc3545' : 
+                            timeline.urgencyLevel === 'medium' ? '#ffc107' : '#28a745';
+        
+        const html = `
+            <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid ${urgencyColor};">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h4 style="margin: 0;">Permit Application Required</h4>
+                    <span style="background: ${urgencyColor}; color: white; padding: 6px 12px; border-radius: 15px; font-size: 12px; font-weight: bold;">
+                        ${timeline.urgencyLevel.toUpperCase()} PRIORITY
+                    </span>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                    <div>
+                        <p><strong>Apply By:</strong> ${timeline.recommendedApplicationDate}</p>
+                        <p><strong>Expected Completion:</strong> ${timeline.deadlineDate}</p>
+                    </div>
+                    <div>
+                        <p><strong>Max Processing Time:</strong> ${timeline.maxProcessingDays} days</p>
+                        <p><strong>Buffer Days Included:</strong> ${timeline.bufferDays} days</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <h4>Medications Requiring Permits:</h4>
+                    ${timeline.medications.map(med => `
+                        <div style="background: #f8f9fa; padding: 15px; margin: 10px 0; border-radius: 6px; border-left: 4px solid ${urgencyColor};">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <strong>${med.name}</strong>
+                                <span style="color: #6c757d;">${med.processingDaysMin}-${med.processingDaysMax} days</span>
+                            </div>
+                            <p style="margin: 5px 0 0 0; color: #6c757d;">${med.documentation}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+        
+        resultsDiv.innerHTML = html;
+    }
+    
+    timelineDiv.style.display = 'block';
+}
+
+function getStatusColor(status) {
+    const colors = {
+        prohibited: '#dc3545',
+        restricted: '#ffc107',
+        permitted: '#28a745'
+    };
+    return colors[status] || '#6c757d';
+}
+
+function clearTripPlanner() {
+    // Clear all medication inputs except the first one
+    const inputsContainer = document.getElementById('medicationInputs');
+    const inputs = inputsContainer.querySelectorAll('.trip-medication-input');
+    
+    // Keep first input, clear its values
+    if (inputs.length > 0) {
+        inputs[0].querySelector('.trip-med-name').value = '';
+        inputs[0].querySelector('.trip-med-quantity').value = '';
+    }
+    
+    // Remove additional inputs
+    for (let i = 1; i < inputs.length; i++) {
+        inputs[i].remove();
+    }
+    
+    // Hide all results
+    document.getElementById('tripResults').style.display = 'none';
+    document.getElementById('vjwHelper').style.display = 'none';
+    document.getElementById('permitTimeline').style.display = 'none';
+}
+
+// --- ENHANCED RESTRICTION RESULTS DISPLAY ---
+function displayRestrictionResults(results) {
+    const resultsGrid = document.getElementById('searchResults');
+    resultsGrid.innerHTML = results.map(med => {
+        // Determine primary status and styling
+        let statusIcon, statusClass, statusText, statusBadges = null;
+        
+        // Handle threshold-based medications with dual badges
+        if (med.regulatoryThresholds) {
+            // Create dual badge display
+            statusBadges = `
+                <div class="status-badge restricted">
+                    ⚠️ RESTRICTED (${med.regulatoryThresholds.restrictedPermitted.limit})
+                </div>
+                <div class="status-badge prohibited" style="margin-left: 8px;">
+                    🚫 PROHIBITED (${med.regulatoryThresholds.prohibited.trigger})
+                </div>
+            `;
+        } else {
+            switch(med.status) {
+                case 'prohibited':
+                    statusIcon = '';
+                    statusClass = 'prohibited';
+                    statusText = 'PROHIBITED';
+                    break;
+                case 'restricted':
+                    statusIcon = '';
+                    statusClass = 'restricted';
+                    statusText = 'RESTRICTED';
+                    break;
+                case 'permitted':
+                    statusIcon = '';
+                    statusClass = 'permitted';
+                    statusText = 'PERMITTED';
+                    break;
+                default:
+                    statusIcon = '';
+                    statusClass = 'unknown';
+                    statusText = 'UNKNOWN';
+            }
+        }
+
+        const cardId = `med-${med.name.replace(/\s+/g, '-').toLowerCase()}`;
+
+        return `
+        <div class="medication-card status-${med.status}">
+            <!-- HANDY GUIDE LAYER -->
+            <div class="handy-guide">
+                <div class="guide-header">
+                    <div class="medication-title">
+                        <h2 class="medication-name">${med.name}</h2>
+                        <div class="medication-generic">${med.genericName || ''}</div>
+                    </div>
+                    ${statusBadges || `
+                    <div class="sourced-fact status-fact">
+                        <div class="status-badge ${statusClass}">
+                            ${statusIcon} ${statusText}
+                        </div>
+                        ${generateCitationLine(med)}
+                    </div>
+                    `}
+                </div>
+
+                <!-- ESSENTIAL TRAVEL INFO - Prime real estate -->
+                <div class="essential-info">
+                    ${generateEssentialTravelInfo(med)}
+                </div>
+
+                <!-- Threshold Information for Dual-Status Medications -->
+                ${med.regulatoryThresholds ? `
+                    <div class="threshold-info">
+                        <div class="threshold-title">📊 Quantity-Based Requirements</div>
+                        <div class="threshold-grid">
+                            <div class="threshold-item restricted">
+                                <div class="threshold-status">⚠️ RESTRICTED</div>
+                                <div class="threshold-limit">${med.regulatoryThresholds.restrictedPermitted.limit}</div>
+                                <div class="threshold-note">${med.regulatoryThresholds.restrictedPermitted.typical_duration}</div>
+                            </div>
+                            <div class="threshold-item prohibited">
+                                <div class="threshold-status">🚫 PROHIBITED</div>
+                                <div class="threshold-trigger">${med.regulatoryThresholds.prohibited.trigger}</div>
+                                <div class="threshold-note">No permits available</div>
+                            </div>
+                        </div>
+                    </div>
+                ` : ''}
+
+                <!-- Story Hook -->
+                ${med.uniqueStory ? `
+                    <div class="story-hook">
+                        <div class="hook-text">${med.uniqueStory}</div>
+                    </div>
+                ` : ''}
+
+                <!-- Critical Action Box -->
+                <div class="critical-action">
+                    <div class="action-title">🎯 What You Need to Do</div>
+                    <div class="action-steps">
+                        ${generateActionSteps(med)}
+                    </div>
+                </div>
+
+                <!-- Customs Requirements Section -->
+                ${med.customsDeclaration ? `
+                    <div class="customs-requirements">
+                        <div class="customs-title">🛂 Customs Declaration Requirements</div>
+                        <div class="customs-content">
+                            ${generateCustomsRequirements(med)}
+                        </div>
+                    </div>
+                ` : ''}
+
+                <!-- Quick Facts Grid -->
+                <div class="quick-facts">
+                    ${generateQuickFacts(med)}
+                </div>
+
+                ${med.consequences && med.status === 'prohibited' ? `
+                    <div style="background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 6px; padding: 15px; margin-bottom: 15px;">
+                        <div style="font-weight: 600; color: #721c24; margin-bottom: 8px;">🚨 Critical Warning</div>
+                        <div style="color: #721c24;">${med.consequences}</div>
+                    </div>
+                ` : ''}
+
+                <!-- Toggle to Encyclopedia -->
+                <button class="encyclopedia-toggle" onclick="toggleEncyclopedia('${cardId}')">
+                    View Complete Details
+                </button>
+            </div>
+
+            <!-- ENCYCLOPEDIA LAYER -->
+            <div class="encyclopedia" id="${cardId}-encyclopedia">
+                <div class="encyclopedia-header">
+                    📚 Complete ${med.name} Import Guide
+                </div>
+                ${med.uniqueStory || med.culturalContext || med.commonMisconception ? `
+                    <div class="chart-section">
+                        <h4>🎯 Key Insights</h4>
+                        ${med.uniqueStory ? `
+                            <div class="insight-box insight-key">
+                                <strong>Key Insight</strong>
+                                ${med.uniqueStory}
+                            </div>
+                        ` : ''}
+                        ${med.culturalContext ? `
+                            <div class="insight-box insight-cultural">
+                                <strong>Cultural Context</strong>
+                                ${med.culturalContext}
+                            </div>
+                        ` : ''}
+                        ${med.commonMisconception ? `
+                            <div class="insight-box insight-misconception">
+                                <strong>Common Misconception</strong>
+                                ${med.commonMisconception}
+                            </div>
+                        ` : ''}
+                    </div>
+                ` : ''}
+                <div class="chart-section">
+                    <h4>📋 Import Requirements</h4>
+                    <div class="chart-grid">
+                        ${generateCompleteChart(med)}
+                    </div>
+                </div>
+                ${med.japanAvailability ? `
+                    <div class="chart-section">
+                        <h4>🏥 Availability in Japan</h4>
+                        <div class="chart-grid">
+                            ${med.japanAvailability.prescriptionRequired !== undefined ? `
+                                <div class="chart-item"><div class="chart-label">Prescription Required</div>
+                                <div class="chart-value">${med.japanAvailability.prescriptionRequired ? 'Yes' : 'No'}</div></div>
+                            ` : ''}
+                            ${med.japanAvailability.costRange ? `
+                                <div class="chart-item"><div class="chart-label">Cost Range</div>
+                                <div class="chart-value">${med.japanAvailability.costRange}</div></div>
+                            ` : ''}
+                            ${med.japanAvailability.insuranceCoverage ? `
+                                <div class="chart-item"><div class="chart-label">Insurance Coverage</div>
+                                <div class="chart-value">${med.japanAvailability.insuranceCoverage}</div></div>
+                            ` : ''}
+                            ${med.japanAvailability.availableBrands && med.japanAvailability.availableBrands.length > 0 ? `
+                                <div class="chart-item"><div class="chart-label">Available Brands</div>
+                                <div class="chart-value">${med.japanAvailability.availableBrands.join(', ')}</div></div>
+                            ` : ''}
+                            ${med.japanAvailability.restrictions ? `
+                                <div class="chart-item"><div class="chart-label">Local Restrictions</div>
+                                <div class="chart-value">${med.japanAvailability.restrictions}</div></div>
+                            ` : ''}
+                        </div>
+                    </div>
+                ` : ''}
+                ${med.commentary ? `
+                    <div class="commentary-section">
+                        <div class="commentary-header">
+                            💡 Commentary & Practical Insights
+                        </div>
+                        <div class="commentary-grid">
+                            ${med.commentary.practicalTips && med.commentary.practicalTips.length > 0 ? `
+                                <div class="commentary-item">
+                                    <h5>🎯 Practical Tips</h5>
+                                    <div>
+                                        ${Array.isArray(med.commentary.practicalTips) 
+                                            ? med.commentary.practicalTips.map(tip => `<p>${tip}</p>`).join('') 
+                                            : `<p>${med.commentary.practicalTips}</p>`
+                                        }
+                                    </div>
+                                </div>
+                            ` : ''}
+                            ${med.commentary.commonMistakes && med.commentary.commonMistakes.length > 0 ? `
+                                <div class="commentary-item">
+                                    <h5>❌ Common Mistakes</h5>
+                                    <div>
+                                        ${Array.isArray(med.commentary.commonMistakes) 
+                                            ? med.commentary.commonMistakes.map(mistake => `<p>${mistake}</p>`).join('') 
+                                            : `<p>${med.commentary.commonMistakes}</p>`
+                                        }
+                                    </div>
+                                </div>
+                            ` : ''}
+                            ${med.commentary.realWorldInsights && med.commentary.realWorldInsights.length > 0 ? `
+                                <div class="commentary-item">
+                                    <h5>🌍 Real-World Insights</h5>
+                                    <div>
+                                        ${Array.isArray(med.commentary.realWorldInsights) 
+                                            ? med.commentary.realWorldInsights.map(insight => `<p>${insight}</p>`).join('') 
+                                            : `<p>${med.commentary.realWorldInsights}</p>`
+                                        }
+                                    </div>
+                                </div>
+                            ` : ''}
+                            ${med.commentary.proTips && med.commentary.proTips.length > 0 ? `
+                                <div class="commentary-item">
+                                    <h5>✨ Pro Tips</h5>
+                                    <div>
+                                        ${Array.isArray(med.commentary.proTips) 
+                                            ? med.commentary.proTips.map(tip => `<p>${tip}</p>`).join('') 
+                                            : `<p>${med.commentary.proTips}</p>`
+                                        }
+                                    </div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                ` : ''}
+                ${med.alternatives && med.alternatives.length > 0 ? `
+                    <div class="chart-section">
+                        <h4>🔄 Alternatives</h4>
+                        <div class="alternatives-section">
+                            ${med.alternatives.map(alt => `<p>${alt}</p>`).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+                ${med.researchQuality ? `
+                    <div class="chart-section research-quality-section">
+                        <h4>📊 Research Quality</h4>
+                        <div class="chart-grid">
+                            ${med.researchQuality.primarySources && med.researchQuality.primarySources.length > 0 ? `
+                                <div class="chart-item">
+                                    <div class="chart-label">Primary Sources</div>
+                                    <div class="chart-value">${med.researchQuality.primarySources.length} official sources</div>
+                                </div>
+                            ` : ''}
+                            ${med.researchQuality.confidenceLevel ? `
+                                <div class="chart-item">
+                                    <div class="chart-label">Confidence Level</div>
+                                    <div class="chart-value">${med.researchQuality.confidenceLevel}</div>
+                                </div>
+                            ` : ''}
+                            ${med.researchQuality.lastUpdated ? `
+                                <div class="chart-item">
+                                    <div class="chart-label">Last Updated</div>
+                                    <div class="chart-value">${med.researchQuality.lastUpdated}</div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                ` : ''}
+                <button class="encyclopedia-toggle" onclick="toggleEncyclopedia('${cardId}')" style="margin-top: 30px;">
+                    ↑ Hide Complete Details
+                </button>
+            </div>
+        </div>
+        `;
+    }).join('');
+}
+
+// --- ACTION STEPS ---
+// Default action step configurations by medication status
+const DEFAULT_ACTION_STEPS = {
+    prohibited: [
+        {
+            number: "❌",
+            title: "DO NOT BRING",
+            action: "This medication is illegal in Japan",
+            hasAlternatives: true
+        }
+    ],
+    restricted_with_permit: [
+        {
+            number: "1",
+            title: "Apply",
+            action: "for import permit AT LEAST 2 weeks before travel"
+        },
+        {
+            number: "2", 
+            title: "Prepare",
+            action: "original prescription containers + doctor's letter + permit"
+        },
+        {
+            number: "3",
+            title: "Declare", 
+            action: "at Red Channel with all documentation"
+        }
+    ],
+    restricted_without_permit: [
+        {
+            number: "1",
+            title: "Prepare",
+            action: "original prescription containers + doctor's letter"
+        },
+        {
+            number: "2",
+            title: "Declare",
+            action: "at Red Channel (mandatory for restricted medications)"
+        }
+    ],
+    permitted: [
+        {
+            number: "✓",
+            title: "Travel",
+            action: "with original prescription containers. Use Green Channel - no special procedures required"
+        }
+    ]
+};
+
+function getDefaultActionSteps(med) {
+    switch(med.status) {
+        case 'prohibited':
+            return DEFAULT_ACTION_STEPS.prohibited;
+        case 'restricted':
+            if (med.permitRequired && med.permitRequired.toUpperCase().includes('YES')) {
+                return DEFAULT_ACTION_STEPS.restricted_with_permit;
+            } else {
+                return DEFAULT_ACTION_STEPS.restricted_without_permit;
+            }
+        default:
+            return DEFAULT_ACTION_STEPS.permitted;
+    }
+}
+
+// Generate essential travel info for prime real estate under medication name
+function generateEssentialTravelInfo(med) {
+    const threshold = getThresholdForMedication(med);
+    let essentialInfo = '';
+    
+    // Quantity limits with complete information
+    if (threshold === 0) {
+        essentialInfo += '<div class="essential-item critical">🚫 <strong>Always Requires Permit</strong> - No quantity exemptions available</div>';
+    } else if (threshold === null) {
+        essentialInfo += '<div class="essential-item safe">✅ <strong>Standard Personal Use</strong> - Up to 1-month supply without permits</div>';
+    } else {
+        essentialInfo += `<div class="essential-item warning">⚠️ <strong>Permit-Free Limit: ${threshold}mg</strong> - Must not exceed 1-month supply</div>`;
+    }
+    
+    // Customs declaration requirements using centralized logic
+    const declaration = getCustomsDeclaration(med);
+    if (declaration.channel === 'Red Channel') {
+        if (declaration.reason === 'Research template psychotropic classification') {
+            essentialInfo += '<div class="essential-item critical">🔴 <strong>Customs Declaration Required</strong> - ALL quantities must be declared regardless of amount (Japan Customs official requirement)</div>';
+        } else {
+            essentialInfo += '<div class="essential-item critical">🔴 <strong>Red Channel Required</strong> - Must declare at customs</div>';
+        }
+    } else if (declaration.channel === 'Green Channel') {
+        essentialInfo += '<div class="essential-item safe">🟢 <strong>Green Channel</strong> - Standard customs procedure</div>';
+    } else if (declaration.channel === 'Prohibited') {
+        essentialInfo += '<div class="essential-item critical">🚫 <strong>Import Prohibited</strong> - Cannot enter Japan under any circumstances</div>';
+    }
+    
+    // Additional restrictions or requirements
+    if (med.status === 'prohibited') {
+        essentialInfo += '<div class="essential-item critical">🚫 <strong>Import Prohibited</strong> - Cannot enter Japan under any circumstances</div>';
+    } else if (med.status === 'restricted' || threshold === 0) {
+        essentialInfo += '<div class="essential-item info">⏱️ <strong>Permit Processing:</strong> 14-21 business days advance notice required</div>';
+    }
+    
+    // Prescription requirements
+    if (med.status !== 'prohibited') {
+        essentialInfo += '<div class="essential-item info">📋 <strong>Documentation:</strong> Original prescription + doctor\'s letter required</div>';
+    }
+    
+    // Add citations for the essential info
+    if (essentialInfo) {
+        essentialInfo += '<div class="essential-citations">' + generateCitationLine(med, 2) + '</div>';
+    }
+    
+    return essentialInfo;
+}
+
+// Centralized customs declaration logic using research template data
+function getCustomsDeclaration(med) {
+    if (!med) return { required: false, channel: 'Green Channel', reason: 'No medication data' };
+    
+    // First priority: Check research template structure
+    if (med.importDetails?.customsDeclaration) {
+        const required = med.importDetails.customsDeclaration.toLowerCase().includes('required');
+        
+        // Normalize channel to standard values
+        let channel = med.importDetails.channelRequired;
+        if (channel) {
+            if (channel.toLowerCase().includes('red')) {
+                channel = 'Red Channel';
+            } else if (channel.toLowerCase().includes('green')) {
+                channel = 'Green Channel';
+            } else if (channel.toLowerCase().includes('prohibited')) {
+                channel = 'Prohibited';
+            }
+        } else {
+            channel = required ? 'Red Channel' : 'Green Channel';
+        }
+        
+        return {
+            required: required,
+            channel: channel,
+            reason: 'Research template data',
+            details: med.importDetails.customsDeclaration
+        };
+    }
+    
+    // Second priority: Check direct customs fields
+    if (med.customsDeclaration) {
+        const declarationText = typeof med.customsDeclaration === 'object' 
+            ? med.customsDeclaration.legal?.formDeclaration || med.customsDeclaration.required || ''
+            : med.customsDeclaration;
+        
+        const required = declarationText.toLowerCase().includes('required') ||
+                        declarationText.toLowerCase().includes('red channel');
+        // Normalize channel to standard values
+        let channel = med.channelRequired || med.customsDeclaration.legal?.channel;
+        if (channel) {
+            if (channel.toLowerCase().includes('red')) {
+                channel = 'Red Channel';
+            } else if (channel.toLowerCase().includes('green')) {
+                channel = 'Green Channel';
+            } else if (channel.toLowerCase().includes('prohibited')) {
+                channel = 'Prohibited';
+            }
+        } else {
+            channel = required ? 'Red Channel' : 'Green Channel';
+        }
+        
+        return {
+            required: required,
+            channel: channel,
+            reason: 'Direct customs field',
+            details: declarationText
+        };
+    }
+    
+    // Third priority: Unified classification system
+    const classification = getUnifiedClassification(med);
+    if (classification.status === 'prohibited') {
+        return {
+            required: true,
+            channel: 'Prohibited',
+            reason: classification.reason,
+            details: 'Cannot be legally imported'
+        };
+    }
+    
+    if (classification.status === 'restricted') {
+        return {
+            required: true,
+            channel: 'Red Channel',
+            reason: classification.reason,
+            details: 'Must declare restricted medication with documentation'
+        };
+    }
+    
+    // Fourth priority: Check research template classification data
+    if (med.researchQuality?.primarySources) {
+        const psychotropicSources = med.researchQuality.primarySources.filter(source => 
+            source.toLowerCase().includes('psychotropic') ||
+            source.toLowerCase().includes('customs') ||
+            source.toLowerCase().includes('red channel')
+        );
+        
+        if (psychotropicSources.length > 0) {
+            return {
+                required: true,
+                channel: 'Red Channel',
+                reason: 'Research template psychotropic classification',
+                details: 'Classified as controlled substance requiring declaration'
+            };
+        }
+    }
+    
+    // Default for permitted medications
+    return {
+        required: false,
+        channel: 'Green Channel',
+        reason: 'Default permitted medication',
+        details: 'Standard processing - No special declaration required'
+    };
+}
+
+// Unified classification system using research template data
+function getUnifiedClassification(med) {
+    if (!med) return { status: 'unknown', reason: 'No medication data' };
+    
+    // First priority: Research template status
+    if (med.status) {
+        return {
+            status: med.status,
+            reason: 'Research template classification',
+            confidence: 'high'
+        };
+    }
+    
+    // Second priority: Import details analysis
+    if (med.importDetails) {
+        if (med.importDetails.customsDeclaration?.toLowerCase().includes('prohibited')) {
+            return {
+                status: 'prohibited',
+                reason: 'Import details prohibition',
+                confidence: 'high'
+            };
+        }
+        
+        if (med.importDetails.permitProcess || med.importDetails.quantityLimits?.includes('permit')) {
+            return {
+                status: 'restricted',
+                reason: 'Import details permit requirement',
+                confidence: 'medium'
+            };
+        }
+    }
+    
+    // Third priority: Research quality sources
+    if (med.researchQuality?.primarySources) {
+        const prohibitedSources = med.researchQuality.primarySources.filter(source => 
+            source.toLowerCase().includes('prohibited') ||
+            source.toLowerCase().includes('banned') ||
+            source.toLowerCase().includes('illegal')
+        );
+        
+        if (prohibitedSources.length > 0) {
+            return {
+                status: 'prohibited',
+                reason: 'Research sources indicate prohibition',
+                confidence: 'medium'
+            };
+        }
+        
+        const restrictedSources = med.researchQuality.primarySources.filter(source => 
+            source.toLowerCase().includes('controlled') ||
+            source.toLowerCase().includes('narcotic') ||
+            source.toLowerCase().includes('psychotropic') ||
+            source.toLowerCase().includes('stimulant')
+        );
+        
+        if (restrictedSources.length > 0) {
+            return {
+                status: 'restricted',
+                reason: 'Research sources indicate controlled status',
+                confidence: 'medium'
+            };
+        }
+    }
+    
+    // Fourth priority: Legacy field analysis
+    if (med.permitRequired) {
+        const permitText = med.permitRequired.toLowerCase();
+        if (permitText.includes('prohibited') || permitText.includes('cannot')) {
+            return {
+                status: 'prohibited',
+                reason: 'Permit field indicates prohibition',
+                confidence: 'low'
+            };
+        }
+        
+        if (permitText.includes('required') || permitText.includes('yes')) {
+            return {
+                status: 'restricted',
+                reason: 'Permit field indicates restriction',
+                confidence: 'low'
+            };
+        }
+    }
+    
+    // Default classification
+    return {
+        status: 'permitted',
+        reason: 'Default classification - no restrictions found',
+        confidence: 'low'
+    };
+}
+
+// Template compliance checking to ensure research template structure
+function checkTemplateCompliance(med) {
+    if (!med) return { compliant: false, missing: ['No medication data'] };
+    
+    const missing = [];
+    const warnings = [];
+    
+    // Core fields from research template
+    if (!med.name) missing.push('name');
+    if (!med.genericName) missing.push('genericName');
+    if (!med.status) missing.push('status');
+    if (!med.category) missing.push('category');
+    
+    // Import details section
+    if (!med.importDetails) {
+        missing.push('importDetails');
+    } else {
+        if (!med.importDetails.customsDeclaration) warnings.push('importDetails.customsDeclaration');
+        if (!med.importDetails.channelRequired) warnings.push('importDetails.channelRequired');
+        if (!med.importDetails.documentationNeeded) warnings.push('importDetails.documentationNeeded');
+        if (!med.importDetails.quantityLimits) warnings.push('importDetails.quantityLimits');
+    }
+    
+    // Research quality section
+    if (!med.researchQuality) {
+        missing.push('researchQuality');
+    } else {
+        if (!med.researchQuality.primarySources) warnings.push('researchQuality.primarySources');
+        if (!med.researchQuality.lastUpdated) warnings.push('researchQuality.lastUpdated');
+        if (!med.researchQuality.confidenceLevel) warnings.push('researchQuality.confidenceLevel');
+    }
+    
+    // Japan availability section
+    if (!med.japanAvailability) {
+        warnings.push('japanAvailability - missing local context');
+    } else {
+        if (med.japanAvailability.prescriptionRequired === undefined) warnings.push('japanAvailability.prescriptionRequired');
+        if (!med.japanAvailability.availableBrands) warnings.push('japanAvailability.availableBrands');
+    }
+    
+    // Story elements for engagement
+    if (!med.uniqueStory) warnings.push('uniqueStory - missing story hook');
+    if (!med.culturalContext) warnings.push('culturalContext - missing cultural insight');
+    if (!med.commonMisconception) warnings.push('commonMisconception - missing traveler guidance');
+    
+    return {
+        compliant: missing.length === 0,
+        missing: missing,
+        warnings: warnings,
+        score: Math.max(0, 100 - (missing.length * 20) - (warnings.length * 5)),
+        dataSource: med.researchQuality?.primarySources ? 'Research template' : 'Legacy data'
+    };
+}
+
+// Function to extract standardized data from research template structure
+function getStandardizedData(med, field) {
+    if (!med) return null;
+    
+    // Use template compliance to guide data extraction
+    const compliance = checkTemplateCompliance(med);
+    
+    switch (field) {
+        case 'threshold':
+            return getThresholdForMedication(med);
+        
+        case 'customs':
+            return getCustomsDeclaration(med);
+        
+        case 'classification':
+            return getUnifiedClassification(med);
+        
+        case 'compliance':
+            return compliance;
+        
+        default:
+            return med[field] || null;
+    }
+}
+
+// Comprehensive research methodology alignment system
+function getResearchMethodologyStatus(med) {
+    if (!med) return { aligned: false, issues: ['No medication data'] };
+    
+    const compliance = checkTemplateCompliance(med);
+    const classification = getUnifiedClassification(med);
+    const customs = getCustomsDeclaration(med);
+    const threshold = getThresholdForMedication(med);
+    
+    const alignment = {
+        template_compliance: compliance.compliant,
+        classification_unified: classification.confidence === 'high',
+        customs_standardized: customs.reason.includes('Research template') || customs.reason.includes('Direct customs field'),
+        threshold_extracted: threshold !== undefined,
+        data_sources_validated: med.researchQuality?.primarySources?.length > 0,
+        
+        overall_score: Math.round((
+            (compliance.compliant ? 25 : 0) +
+            (classification.confidence === 'high' ? 25 : classification.confidence === 'medium' ? 15 : 5) +
+            (customs.reason.includes('Research template') ? 25 : 15) +
+            (threshold !== undefined ? 15 : 0) +
+            (med.researchQuality?.primarySources?.length > 0 ? 10 : 0)
+        )),
+        
+        improvements_made: [
+            '✅ Standardized data structure using research template',
+            '✅ Unified classification hierarchy implemented',
+            '✅ Centralized customs declaration logic',
+            '✅ Template compliance checking added',
+            '✅ Research methodology validation system'
+        ],
+        
+        remaining_issues: [
+            ...compliance.missing.map(field => `Missing required field: ${field}`),
+            ...compliance.warnings.map(field => `Warning: ${field}`)
+        ]
+    };
+    
+    return {
+        aligned: alignment.overall_score >= 75,
+        score: alignment.overall_score,
+        details: alignment,
+        recommendation: alignment.overall_score >= 75 ? 
+            'Research methodology fully aligned' : 
+            'Consider updating medication entry to follow research template structure'
+    };
+}
+
+// Legacy function for backward compatibility - now uses centralized logic
+function checkIfPsychotropic(med) {
+    const declaration = getCustomsDeclaration(med);
+    return declaration.required && declaration.channel === 'Red Channel';
+}
+
+function generateActionSteps(med) {
+    // Use custom action steps if available, otherwise use defaults
+    const actionSteps = med.actionSteps && med.actionSteps.steps ? med.actionSteps.steps : getDefaultActionSteps(med);
+    
+    return actionSteps.map(step => `
+        <div class="step-item">
+            <div class="step-number">${step.number}</div>
+            <div class="step-content">
+                <strong>${step.title}:</strong> ${step.action}
+                ${step.hasAlternatives && med.alternatives ? `Consider alternatives: ${med.alternatives[0]}` : ''}
+                ${!step.hasAlternatives && step.title === 'DO NOT BRING' && !med.alternatives ? 'Consult your doctor about legal alternatives before travel.' : ''}
+                ${step.examples ? `<div class="step-examples">Examples: ${step.examples.join(', ')}</div>` : ''}
+                ${step.note ? `<div class="step-note">Note: ${step.note}</div>` : ''}
+                ${step.critical ? `<div class="step-critical">Critical: ${step.critical}</div>` : ''}
+                ${step.mandatory ? `<div class="step-mandatory">Mandatory: ${step.mandatory}</div>` : ''}
+                ${step.phrase ? `<div class="step-phrase">Suggested phrase: "${step.phrase}"</div>` : ''}
+            </div>
+        </div>
+    `).join('');
+}
+
+// --- QUICK FACTS ---
+function generateQuickFacts(med) {
+    let facts = [];
+    if (med.maxQuantity) facts.push(`
+        <div class="fact-item">
+            <div class="fact-label">Max Quantity</div>
+            <div class="fact-value">
+                <div class="sourced-fact threshold-fact">
+                    ${med.maxQuantity}
+                    ${generateCitationLine(med, 2, 'threshold', med.maxQuantity)}
+                </div>
+            </div>
+        </div>
+    `);
+    const declaration = getCustomsDeclaration(med);
+    facts.push(`
+        <div class="fact-item">
+            <div class="fact-label">Customs Declaration</div>
+            <div class="fact-value">
+                <div class="sourced-fact customs-fact">
+                    ${declaration.required ? 'Required' : 'Not required'} - ${declaration.details}
+                    ${generateCitationLine(med, 2, 'customs', 'customs declaration')}
+                </div>
+            </div>
+        </div>
+    `);
+    facts.push(`
+        <div class="fact-item">
+            <div class="fact-label">Airport Channel</div>
+            <div class="fact-value">${declaration.channel}</div>
+        </div>
+    `);
+    return facts.join('');
+}
+
+// --- SIMPLIFIED CITATION HANDLER ---
+function generateCitationLine(med, maxSources = 2, citationType = 'general', specificFact = null) {
+    
+    // Check for new granular citation system first
+    if (med.citations && citationType !== 'general' && med.citations[citationType]) {
+        return generateGranularCitation(med.citations[citationType], specificFact);
+    }
+    
+    // Main citation handler - legacy system
+    if (!med.researchQuality?.sourceDocumentation?.sources) {
+        return '<div class="citation-line citation-fallback"><em>Source: Medical import regulations research</em></div>';
+    }
+    
+    const sources = med.researchQuality.sourceDocumentation.sources;
+    
+    // Simple priority system
+    const typePriority = {
+        'official_regulation': 1,
+        'legal_statute': 2,
+        'embassy_guidance': 3,
+        'expert_analysis': 4,
+        'documented_case': 5,
+        'legal_precedent': 6,
+        'medical_research': 7,
+        'policy_research': 8,
+        'regulatory_analysis': 9,
+        'traveler_experience': 10,
+        'community_research': 11
+    };
+    
+    // Filter sources by citation type if specified - with robust fallbacks
+    let filteredSources = sources;
+    
+    // Only filter if we have a specific citation type and it's not general
+    if (citationType && citationType !== 'general') {
+        try {
+            // First try: filter by specific fact if provided
+            if (specificFact) {
+                const factFiltered = sources.filter(source => {
+                    const content = (source.key_finding || '') + ' ' + (source.description || '');
+                    return content.toLowerCase().includes(specificFact.toLowerCase());
+                });
+                if (factFiltered.length > 0) {
+                    filteredSources = factFiltered;
+                }
+            }
+            
+            // Second try: filter by citation type using helper function
+            if (filteredSources === sources) {
+                const typeFiltered = sources.filter(source => matchesCitationType(source, citationType));
+                if (typeFiltered.length > 0) {
+                    filteredSources = typeFiltered;
+                }
+            }
+        } catch (error) {
+            // If any filtering fails, fall back to all sources
+            console.warn('Citation filtering failed, using all sources:', error);
+            filteredSources = sources;
+        }
+    }
+    
+    // Sort sources by priority and quality
+    const prioritizedSources = filteredSources
+        .sort((a, b) => {
+            const priorityA = typePriority[a.type] || 99;
+            const priorityB = typePriority[b.type] || 99;
+            
+            if (priorityA === priorityB) {
+                // Prefer sources with direct URLs and page references
+                const qualityA = (a.url ? 10 : 0) + (a.page_reference ? 5 : 0);
+                const qualityB = (b.url ? 10 : 0) + (b.page_reference ? 5 : 0);
+                return qualityB - qualityA;
+            }
+            
+            return priorityA - priorityB;
+        })
+        .slice(0, maxSources);
+    
+    if (prioritizedSources.length === 0) return '';
+    
+    const citationLinks = prioritizedSources.map(source => {
+        // Get URL using the comprehensive database
+        let url = source.url || source.direct_url;
+        
+        // Use the URL database for intelligent URL lookup
+        if (!url && window.JapanMedicationUrls) {
+            url = window.JapanMedicationUrls.findUrl(source.agency || source.source);
+        }
+        
+        // Legacy URL fixes (kept for backward compatibility)
+        if (url === 'https://www.ncd.mhlw.go.jp/application.html') {
+            url = 'https://www.ncd.mhlw.go.jp/application2.html';
+        }
+        
+        const agency = source.agency || source.source;
+        const date = source.verified_date || 'verified';
+        
+        let citationText = '';
+        
+        // Create clickable link OR styled text citation
+        if (url && window.JapanMedicationUrls?.isValid(url)) {
+            citationText = `<a href="${url}" target="_blank" rel="noopener">${agency}</a>`;
+        } else {
+            // For sources without URLs, style them as official citations with enhanced styling
+            citationText = `<strong style="font-weight: bold; color: #007bff;">${agency}</strong>`;
+        }
+        
+        // Add key finding if available and no URL (to provide more context)
+        if (!url && source.key_finding) {
+            citationText += ` - ${source.key_finding}`;
+        }
+        
+        // Add page reference if available
+        if (source.page_reference) {
+            citationText += ` (p. ${source.page_reference})`;
+        }
+        
+        // Add section reference if available  
+        if (source.section_reference) {
+            citationText += ` §${source.section_reference}`;
+        }
+        
+        citationText += ` (${date})`;
+        
+        return citationText;
+    });
+    
+    const citationLabel = getCitationLabel(citationType, specificFact);
+    const finalCitation = `<div class="citation-line citation-${citationType}">${citationLabel}: ${citationLinks.join('<span class="citation-separator"> | </span>')}</div>`;
+    
+    
+    return finalCitation;
+}
+
+// Simple URL validation function
+function validateCitationUrl(url) {
+    if (!url) return false;
+    try {
+        new URL(url);
+        return url.startsWith('http://') || url.startsWith('https://');
+    } catch {
+        return false;
+    }
+}
+
+// Generate granular citation from new citation structure
+function generateGranularCitation(citation, specificFact) {
+    if (!citation) return '';
+    
+    let citationHTML = citation.url ? 
+        `<a href="${citation.url}" target="_blank" rel="noopener">${citation.source}</a>` : 
+        `${citation.source}`;
+    
+    if (citation.page) citationHTML += `, ${citation.page}`;
+    if (citation.section) citationHTML += `, ${citation.section}`;
+    if (citation.quote) citationHTML += `: "${citation.quote}"`;
+    if (citation.accessed) citationHTML += ` (accessed ${citation.accessed})`;
+    
+    return `<div class="citation-line granular-citation"><strong>Direct Source:</strong> ${citationHTML}</div>`;
+}
+
+// Helper function to match citation type to source content
+function matchesCitationType(source, citationType) {
+    const content = ((source.key_finding || '') + ' ' + (source.description || '')).toLowerCase();
+    
+    const typeKeywords = {
+        'threshold': ['threshold', 'limit', 'mg', 'quantity', 'exemption'],
+        'classification': ['classification', 'schedule', 'category', 'controlled', 'psychotropic', 'narcotic'],
+        'customs': ['customs', 'declaration', 'channel', 'airport', 'import'],
+        'permit': ['permit', 'certificate', 'application', 'yunyu', 'kakunin'],
+        'availability': ['available', 'prescription', 'pharmacy', 'domestic', 'local']
+    };
+    
+    const keywords = typeKeywords[citationType] || [];
+    return keywords.some(keyword => content.includes(keyword));
+}
+
+// Helper function to get appropriate citation label
+function getCitationLabel(citationType, specificFact) {
+    const labels = {
+        'threshold': 'Threshold Source',
+        'classification': 'Classification Source', 
+        'customs': 'Customs Source',
+        'permit': 'Permit Source',
+        'availability': 'Availability Source',
+        'general': 'Source'
+    };
+    
+    return labels[citationType] || 'Source';
+}
+
+// --- CUSTOMS REQUIREMENTS GENERATOR ---
+function generateCustomsRequirements(med) {
+    // Use centralized customs declaration logic
+    const declaration = getCustomsDeclaration(med);
+    
+    let channelType, channelIcon, channelClass, declarationText;
+    
+    if (declaration.channel === 'Prohibited') {
+        channelType = 'Prohibited';
+        channelIcon = '🚫';
+        channelClass = 'prohibited-channel';
+        declarationText = declaration.details;
+    } else if (declaration.channel === 'Red Channel') {
+        channelType = 'Red Channel';
+        channelIcon = '🔴';
+        channelClass = 'red-channel';
+        declarationText = declaration.required ? 
+            'REQUIRED - Must declare at customs with documentation' : 
+            declaration.details;
+    } else if (declaration.channel === 'Green Channel') {
+        channelType = 'Green Channel';
+        channelIcon = '🟢';
+        channelClass = 'green-channel';
+        declarationText = declaration.details;
+    } else {
+        // Fallback for edge cases
+        channelType = 'Consult Authorities';
+        channelIcon = '❓';
+        channelClass = 'unknown-channel';
+        declarationText = declaration.details || 'Verify requirements with Japanese customs';
+    }
+    
+    return `
+        <div class="customs-alert ${channelClass}">
+            <div class="customs-channel">
+                <span class="channel-icon">${channelIcon}</span>
+                <span class="channel-text">${channelType}</span>
+            </div>
+            <div class="customs-declaration">
+                ${declarationText}
+            </div>
+            <div class="customs-details">
+                ${declaration.reason ? `Source: ${declaration.reason}` : ''}
+            </div>
+        </div>
+    `;
+}
+
+// --- IMPORT REQUIREMENTS CHART ---
+function generateCompleteChart(med) {
+    let chartItems = [];
+    if (med.maxQuantity) chartItems.push(`
+        <div class="chart-item">
+            <div class="chart-label">Max Quantity</div>
+            <div class="chart-value">${med.maxQuantity}</div>
+        </div>
+    `);
+    if (med.permitRequired) chartItems.push(`
+        <div class="chart-item">
+            <div class="chart-label">Import Permit</div>
+            <div class="chart-value">${med.permitRequired}</div>
+        </div>
+    `);
+    if (med.conditions) chartItems.push(`
+        <div class="chart-item">
+            <div class="chart-label">Conditions</div>
+            <div class="chart-value">${med.conditions}</div>
+        </div>
+    `);
+    const declaration = getCustomsDeclaration(med);
+    chartItems.push(`
+        <div class="chart-item">
+            <div class="chart-label">Customs Declaration</div>
+            <div class="chart-value">${declaration.required ? 'Required' : 'Not required'} - ${declaration.details}</div>
+        </div>
+    `);
+    chartItems.push(`
+        <div class="chart-item">
+            <div class="chart-label">Airport Channel</div>
+            <div class="chart-value">${declaration.channel}</div>
+        </div>
+    `);
+    if (med.consequences) chartItems.push(`
+        <div class="chart-item">
+            <div class="chart-label">Consequences</div>
+            <div class="chart-value">${med.consequences}</div>
+        </div>
+    `);
+    return chartItems.join('');
+}
+
+// --- TOGGLE DETAILS ---
+function toggleEncyclopedia(cardId) {
+    const encyclopedia = document.getElementById(`${cardId}-encyclopedia`);
+    const buttons = document.querySelectorAll(`[onclick="toggleEncyclopedia('${cardId}')"]`);
+
+    if (encyclopedia.classList.contains('expanded')) {
+        encyclopedia.classList.remove('expanded');
+        buttons.forEach(button => {
+            button.textContent = 'View Complete Details';
+        });
+    } else {
+        encyclopedia.classList.add('expanded');
+        buttons.forEach(button => {
+            button.textContent = 'Hide Details';
+        });
+        encyclopedia.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+// --- CLASSIFICATION MODAL FUNCTIONS ---
+function openClassificationModal() {
+    document.getElementById('classificationModal').style.display = 'block';
+}
+
+function closeClassificationModal() {
+    document.getElementById('classificationModal').style.display = 'none';
+}
+
+// Close modal when clicking outside of it
+window.onclick = function(event) {
+    const modal = document.getElementById('classificationModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// --- PERMIT WIZARD INTEGRATION ---
+// Add quantity calculator and smart permit buttons to medication cards
+function addPermitButtons() {
+    // Wait for cards to be rendered
+    setTimeout(() => {
+        document.querySelectorAll('.medication-card').forEach(card => {
+            const actionSection = card.querySelector('.critical-action');
+            if (actionSection && !actionSection.querySelector('.quantity-calculator')) {
+                // Get medication data
+                const medName = card.querySelector('.medication-name').textContent;
+                const genericName = card.querySelector('.medication-generic').textContent;
+                
+                // Find medication in data array
+                const medication = medications.find(med => 
+                    med.name === medName || med.genericName === genericName
+                );
+                
+                // Skip prohibited medications - they don't need calculators
+                if (medication && medication.status === 'prohibited') {
+                    return;
+                }
+                
+                // Add quantity calculator
+                const calculatorHTML = `
+                    <div class="quantity-calculator" style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                        <h4 style="margin-bottom: 10px; color: #2c3e50;">📊 Permit Application Tool - Check Your Quantity</h4>
+                        <p style="margin-bottom: 15px; font-size: 14px; color: #6c757d;">Enter your medication details to see if you need a permit or just a travel letter</p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; margin-bottom: 15px;">
+                            <div>
+                                <label style="display: block; font-weight: 500; margin-bottom: 5px;">Strength (mg)</label>
+                                <input type="number" class="calc-strength" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" placeholder="10">
+                            </div>
+                            <div>
+                                <label style="display: block; font-weight: 500; margin-bottom: 5px;">Tablets</label>
+                                <input type="number" class="calc-tablets" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" placeholder="30">
+                            </div>
+                            <div>
+                                <label style="display: block; font-weight: 500; margin-bottom: 5px;">Trip Days</label>
+                                <input type="number" class="calc-days" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" placeholder="14">
+                            </div>
+                        </div>
+                        <div class="calculation-result" style="display: none;"></div>
+                        <div class="permit-options" style="display: none;"></div>
+                    </div>
+                `;
+                
+                actionSection.insertAdjacentHTML('afterbegin', calculatorHTML);
+                
+                // Add event listeners for real-time calculation
+                const calculator = actionSection.querySelector('.quantity-calculator');
+                const inputs = calculator.querySelectorAll('input');
+                
+                inputs.forEach(input => {
+                    input.addEventListener('input', () => {
+                        enhancedCalculateMedicationQuantity(calculator, medication, medName, genericName);
+                    });
+                });
+            }
+        });
+    }, 100);
+}
+
+// Enhanced Calculator - Uses enhanced_functions.js for simplified, accurate calculations
+function calculateMedicationQuantity(calculator, medication, medName, genericName) {
+    // Use enhanced calculator from enhanced_functions.js if available
+    if (window.enhancedCalculateMedicationQuantity) {
+        window.enhancedCalculateMedicationQuantity(calculator, medication, medName, genericName);
+        return;
+    }
+    
+    // Fallback to basic calculation if enhanced functions aren't loaded
+    const strength = parseFloat(calculator.querySelector('.calc-strength').value);
+    const tablets = parseInt(calculator.querySelector('.calc-tablets').value);
+    const days = parseInt(calculator.querySelector('.calc-days').value);
+    
+    if (!strength || !tablets || !days) {
+        calculator.querySelector('.calculation-result').style.display = 'none';
+        calculator.querySelector('.permit-options').style.display = 'none';
+        return;
+    }
+    
+    const totalMg = strength * tablets;
+    const resultDiv = calculator.querySelector('.calculation-result');
+    resultDiv.innerHTML = `
+        <div style="background: white; padding: 15px; border-radius: 5px; margin: 10px 0;">
+            <div><strong>Total:</strong> ${totalMg}mg (${tablets} tablets)</div>
+            <p>Using enhanced calculator for accurate Japan import guidance...</p>
+        </div>
+    `;
+    resultDiv.style.display = 'block';
+}
+
+// Show flexible permit options based on calculation
+function showPermitOptions(calculator, percentageOfLimit, threshold, medName, genericName, quantityData) {
+    const optionsDiv = calculator.querySelector('.permit-options');
+    let optionsHTML = '';
+    
+    if (threshold === null || threshold === 0) {
+        // Prohibited or always requires permit
+        optionsHTML = `
+            <div class="permit-status permit-required" style="background: #f8d7da; color: #721c24; border: 2px solid #f5c6cb; padding: 15px; border-radius: 8px; text-align: center; margin: 10px 0;">
+                📋 Permit Required
+            </div>
+            <button class="permit-wizard-btn" onclick="startPermitApplication('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})">
+                Start Permit Application →
+            </button>
+        `;
+    } else if (percentageOfLimit >= 100) {
+        // Over limit - permit required
+        optionsHTML = `
+            <div class="permit-status permit-required" style="background: #f8d7da; color: #721c24; border: 2px solid #f5c6cb; padding: 15px; border-radius: 8px; text-align: center; margin: 10px 0;">
+                📋 Over Limit - Permit Required
+            </div>
+            <button class="permit-wizard-btn" onclick="startPermitApplication('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})">
+                Start Permit Application →
+            </button>
+        `;
+    } else if (percentageOfLimit >= 90) {
+        // Very close - recommend permit
+        optionsHTML = `
+            <div class="permit-status permit-warning" style="background: #fff3cd; color: #856404; border: 2px solid #ffeaa7; padding: 15px; border-radius: 8px; text-align: center; margin: 10px 0;">
+                🟡 Very Close to Limit - Permit Strongly Recommended
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">
+                <button class="permit-wizard-btn" onclick="startPermitApplication('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})">
+                    Get Permit (Recommended) →
+                </button>
+                <button class="travel-letter-btn" onclick="generateTravelLetter('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})" style="background: #6c757d;">
+                    Travel Letter (Higher Risk)
+                </button>
+            </div>
+        `;
+    } else if (percentageOfLimit >= 75) {
+        // Getting close - offer both options
+        optionsHTML = `
+            <div class="permit-status permit-warning" style="background: #fff3cd; color: #856404; border: 2px solid #ffeaa7; padding: 15px; border-radius: 8px; text-align: center; margin: 10px 0;">
+                ⚠️ Approaching Limit - Consider Permit for Peace of Mind
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;">
+                <button class="travel-letter-btn" onclick="generateTravelLetter('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})" style="background: #28a745;">
+                    Travel Letter →
+                </button>
+                <button class="permit-wizard-btn" onclick="startPermitApplication('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})">
+                    Get Permit (Extra Safe) →
+                </button>
+            </div>
+        `;
+    } else if (percentageOfLimit >= 50) {
+        // Moderate amount - travel letter recommended
+        optionsHTML = `
+            <div class="permit-status permit-not-required" style="background: #d4edda; color: #155724; border: 2px solid #c3e6cb; padding: 15px; border-radius: 8px; text-align: center; margin: 10px 0;">
+                ✅ Under Limit - Travel Letter Recommended
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr auto; gap: 10px; margin: 10px 0;">
+                <button class="travel-letter-btn" onclick="generateTravelLetter('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})" style="background: #28a745;">
+                    Generate Travel Letter →
+                </button>
+                <button class="permit-wizard-btn" onclick="startPermitApplication('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})" style="background: #6c757d; font-size: 14px;">
+                    Get Permit (Cautious)
+                </button>
+            </div>
+        `;
+    } else {
+        // Well under limit
+        optionsHTML = `
+            <div class="permit-status permit-not-required" style="background: #d4edda; color: #155724; border: 2px solid #c3e6cb; padding: 15px; border-radius: 8px; text-align: center; margin: 10px 0;">
+                ✅ Well Under Limit - No Permit Needed
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr auto; gap: 10px; margin: 10px 0;">
+                <button class="travel-letter-btn" onclick="generateTravelLetter('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})" style="background: #28a745;">
+                    Generate Travel Letter →
+                </button>
+                <button class="permit-wizard-btn" onclick="startPermitApplication('${medName}', '${genericName}', ${JSON.stringify(quantityData).replace(/"/g, '&quot;')})" style="background: #6c757d; font-size: 14px;">
+                    Get Permit (Very Cautious)
+                </button>
+            </div>
+            <div style="font-size: 12px; color: #6c757d; text-align: center; margin-top: 5px;">
+                For cautious travelers who prefer maximum documentation
+            </div>
+        `;
+    }
+    
+    optionsDiv.innerHTML = optionsHTML;
+    optionsDiv.style.display = 'block';
+}
+
+// Helper functions
+function getThresholdForMedication(medication) {
+    if (!medication) return 1000; // Default threshold
+    
+    // First try to extract threshold from research template structure
+    if (medication.importDetails?.quantityLimits) {
+        const limitText = medication.importDetails.quantityLimits;
+        
+        // Extract numeric threshold from text like "≤2,160mg" or "Up to 30-day supply"
+        const mgMatch = limitText.match(/≤?(\d+(?:,\d+)?)mg/);
+        if (mgMatch) {
+            return parseInt(mgMatch[1].replace(/,/g, ''));
+        }
+        
+        // Look for "30-day" or "1-month" patterns
+        if (limitText.includes('30-day') || limitText.includes('1-month')) {
+            // Return null to indicate "standard 1-month rule" 
+            return null;
+        }
+    }
+    
+    // Check maxQuantity field for threshold info
+    if (medication.maxQuantity) {
+        const mgMatch = medication.maxQuantity.match(/≤?(\d+(?:,\d+)?)mg/);
+        if (mgMatch) {
+            return parseInt(mgMatch[1].replace(/,/g, ''));
+        }
+    }
+    
+    // Status-based defaults following research methodology
+    if (medication.status === 'prohibited') {
+        return 0; // Always prohibited
+    } else if (medication.status === 'restricted') {
+        // Check if it's psychotropic (requires permits for any amount)
+        const isPsychotropic = checkIfPsychotropic(medication);
+        return isPsychotropic ? 0 : 1000; // Psychotropics need permits, others have thresholds
+    } else if (medication.status === 'permitted') {
+        return null; // Standard 1-month rule applies
+    }
+    
+    // Fallback to hardcoded values only for missing data
+    const fallbackThresholds = {
+        'Concerta': 2160,
+        'Xanax': 60,
+        'Ativan': 120,
+        'Modafinil': 6000
+    };
+    
+    return fallbackThresholds[medication.name] || null; // Default to 1-month rule
+}
+
+function getProgressColor(percentage) {
+    if (percentage <= 50) return '#28a745';
+    if (percentage <= 75) return '#ffc107';
+    if (percentage <= 90) return '#fd7e14';
+    return '#dc3545';
+}
+
+function startPermitApplication(medName, genericName, quantityData) {
+    sessionStorage.setItem('permitMedication', JSON.stringify({
+        name: medName,
+        generic: genericName,
+        quantity: quantityData,
+        timestamp: Date.now()
+    }));
+    window.location.href = 'permit-wizard.html';
+}
+
+function generateTravelLetter(medName, genericName, quantityData) {
+    // Generate a simple travel letter
+    const letterWindow = window.open('', '_blank');
+    const currentDate = new Date().toLocaleDateString();
+    const dailyDose = quantityData.dailyDose.toFixed(1);
+    
+    letterWindow.document.write(
+        '<!DOCTYPE html>' +
+        '<html>' +
+        '<head>' +
+        '<title>Travel Letter - ' + medName + '</title>' +
+        '<style>' +
+        'body { font-family: Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; line-height: 1.6; }' +
+        '.header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #333; padding-bottom: 20px; }' +
+        '.content { margin: 20px 0; }' +
+        '</style>' +
+        '</head>' +
+        '<body>' +
+        '<div class="header">' +
+        '<h2>Medical Travel Documentation</h2>' +
+        '<p>For Entry into Japan</p>' +
+        '</div>' +
+        '<div class="content">' +
+        '<p><strong>Date:</strong> ' + currentDate + '</p>' +
+        '<p><strong>To Whom It May Concern:</strong></p>' +
+        '<p>This letter confirms that the bearer is carrying <strong>' + medName + '</strong> (' + quantityData.tablets + ' tablets, ' + quantityData.totalMg + 'mg total) for personal medical use during their ' + quantityData.days + '-day trip to Japan.</p>' +
+        '<p>This quantity is within Japan\'s personal use allowance and does not require an import permit.</p>' +
+        '<p><strong>Medication Details:</strong></p>' +
+        '<ul>' +
+        '<li>Medication: ' + medName + ' (' + genericName + ')</li>' +
+        '<li>Strength: ' + quantityData.strength + 'mg per tablet</li>' +
+        '<li>Quantity: ' + quantityData.tablets + ' tablets</li>' +
+        '<li>Total Amount: ' + quantityData.totalMg + 'mg</li>' +
+        '<li>Daily Dose: ' + dailyDose + ' tablets</li>' +
+        '<li>Trip Duration: ' + quantityData.days + ' days</li>' +
+        '</ul>' +
+        '<p>This medication is for personal medical use only and will not be distributed, sold, or given to others.</p>' +
+        '<p>Sincerely,<br><br>_________________________<br>Traveler Signature</p>' +
+        '</div>' +
+        '</body>' +
+        '</html>'
+    );
+    
+    // Add print functionality after document is written
+    setTimeout(() => {
+        letterWindow.print();
+    }, 500);
+}
+
+// Duplicate searchSpecific function removed - now uses enhanced version with tool buttons
+
+// Call after displaying results
+const originalDisplayResults = displayRestrictionResults;
+displayRestrictionResults = function(results) {
+    originalDisplayResults(results);
+    addPermitButtons();
+};
+
+// Also add on category button clicks
+document.querySelectorAll('.restriction-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        setTimeout(addPermitButtons, 200);
+    });
+});
+
+// --- INITIALIZE ---
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('categoryOverview').style.display = 'grid';
+    document.getElementById('searchResults').style.display = 'none';
+    document.getElementById('noResults').style.display = 'none';
+});
+ 
+</script>
+
+<!-- Classification Modal -->
+<div id="classificationModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeClassificationModal()">&times;</span>
+        <h2 style="margin-bottom: 25px; color: #1976d2;">🏥 Understanding Our Classification System</h2>
+        
+        <p style="margin-bottom: 25px; line-height: 1.6; color: #555;">
+            Japan has a two-agency system for medication imports: the <strong>Ministry of Health, Labour and Welfare (MHLW)</strong> determines if you need permits, while <strong>Japan Customs</strong> handles declaration requirements at the border. Our classification reflects both agencies' requirements to give you clear, actionable guidance.
+        </p>
+
+        <div class="classification-item classification-prohibited">
+            <div class="classification-title">PROHIBITED</div>
+            <div class="classification-description">
+                These substances are illegal to bring into Japan under any circumstances. Possession can result in arrest, detention, and deportation.
+            </div>
+            <div class="classification-example">
+                <strong>Examples:</strong> Adderall (amphetamine), Sudafed (pseudoephedrine)
+            </div>
+        </div>
+
+        <div class="classification-item classification-restricted">
+            <div class="classification-title">RESTRICTED</div>
+            <div class="classification-description">
+                These medications require specific action at customs. You <strong>must</strong> use the Red Channel and declare them, even if no advance permit is needed. This includes all psychotropic substances.
+            </div>
+            <div class="classification-example">
+                <strong>Examples:</strong> Xanax (alprazolam), Clonazepam, Vyvanse (requires permit)
+            </div>
+        </div>
+
+        <div class="classification-item classification-permitted">
+            <div class="classification-title">PERMITTED</div>
+            <div class="classification-description">
+                These medications can be brought through the Green Channel with standard documentation (prescription bottle, doctor's letter recommended). No special permits or declarations required.
+            </div>
+            <div class="classification-example">
+                <strong>Examples:</strong> Birth control pills, Tramadol, most antibiotics
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; padding: 20px; background: #e3f2fd; border-radius: 8px; border-left: 4px solid #1976d2;">
+            <h3 style="margin-bottom: 15px; color: #1976d2;">🎯 Key Insight</h3>
+            <p style="line-height: 1.6; margin: 0;">
+                A medication can be "permitted" by MHLW (no advance permit needed) but still "restricted" in our system because Customs requires mandatory declaration. This prevents the confusion that causes problems for travelers who assume "permitted" means "no customs action needed."
+            </p>
+        </div>
+
+        <div style="margin-top: 20px; text-align: center;">
+            <p style="font-style: italic; color: #666; font-size: 0.9rem;">
+                Our classifications are based on direct correspondence with Japanese authorities and official government guidance.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Enhanced Search and Calculator Functions -->
+<script src="enhanced_functions.js"></script>
+
+</body>
+</html>

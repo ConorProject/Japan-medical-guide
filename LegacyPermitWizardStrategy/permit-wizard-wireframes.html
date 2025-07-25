@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permit Wizard UI Wireframes</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f0f2f5;
+            color: #333;
+        }
+        .wireframe-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #1a1a1a;
+            margin-bottom: 40px;
+        }
+        .device-section {
+            margin-bottom: 60px;
+        }
+        .device-type {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .screens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .screen {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .screen-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .screen-title {
+            font-weight: 600;
+            font-size: 18px;
+            margin: 0;
+        }
+        .screen-body {
+            padding: 20px;
+        }
+        .mobile-frame {
+            max-width: 375px;
+            margin: 0 auto;
+            border: 3px solid #333;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .mobile-status {
+            background: #333;
+            color: white;
+            padding: 5px;
+            text-align: center;
+            font-size: 12px;
+        }
+        
+        /* Component Styles */
+        .progress-bar {
+            height: 4px;
+            background: #e9ecef;
+            border-radius: 2px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #28a745;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        .step-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #e9ecef;
+            color: #6c757d;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .step.active .step-number {
+            background: #007bff;
+            color: white;
+        }
+        .step.completed .step-number {
+            background: #28a745;
+            color: white;
+        }
+        .step-label {
+            font-size: 12px;
+            color: #6c757d;
+        }
+        
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #495057;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 5px;
+            font-size: 16px;
+            background: #fff;
+        }
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        .search-box {
+            position: relative;
+        }
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }
+        .search-input {
+            padding-left: 40px;
+        }
+        
+        /* Medication Cards */
+        .medication-card {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .medication-icon {
+            width: 50px;
+            height: 50px;
+            background: #e3f2fd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .medication-info {
+            flex: 1;
+        }
+        .medication-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .medication-details {
+            font-size: 14px;
+            color: #6c757d;
+        }
+        .medication-status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .status-permitted {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status-restricted {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        /* Action Buttons */
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        .btn-outline {
+            background: white;
+            border: 2px solid #007bff;
+            color: #007bff;
+        }
+        .btn-block {
+            width: 100%;
+            display: block;
+        }
+        
+        /* Alert Components */
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: start;
+            gap: 12px;
+        }
+        .alert-icon {
+            font-size: 20px;
+            line-height: 1;
+        }
+        .alert-info {
+            background: #e3f2fd;
+            color: #0c5460;
+        }
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        /* Insurance Widget */
+        .insurance-widget {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .insurance-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .insurance-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .insurance-features {
+            display: flex;
+            gap: 20px;
+            margin: 15px 0;
+        }
+        .insurance-feature {
+            flex: 1;
+            text-align: center;
+            font-size: 14px;
+        }
+        .insurance-cta {
+            background: white;
+            color: #667eea;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        
+        /* Document Checklist */
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .checklist-item:hover {
+            border-color: #007bff;
+            background: #f8f9fa;
+        }
+        .checklist-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #dee2e6;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .checklist-item.completed .checklist-checkbox {
+            background: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+        .checklist-content {
+            flex: 1;
+        }
+        .checklist-title {
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        .checklist-subtitle {
+            font-size: 14px;
+            color: #6c757d;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e9ecef;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .timeline-marker {
+            position: absolute;
+            left: -20px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #007bff;
+        }
+        .timeline-content {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .timeline-date {
+            font-weight: 600;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+        
+        /* Mobile Specific */
+        .mobile-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #e9ecef;
+            display: flex;
+            padding: 10px;
+            gap: 10px;
+            z-index: 100;
+        }
+        .mobile-nav .btn {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="wireframe-container">
+        <h1>Japan Medication Permit Wizard - UI Wireframes</h1>
+        
+        <!-- Desktop Wireframes -->
+        <div class="device-section">
+            <div class="device-type">Desktop Interface</div>
+            
+            <div class="screens-grid">
+                <!-- Screen 1: Entry/Landing -->
+                <div class="screen">
+                    <div class="screen-header">
+                        <h3 class="screen-title">Entry Screen - Medication Selection</h3>
+                    </div>
+                    <div class="screen-body">
+                        <div class="step-indicator">
+                            <div class="step active">
+                                <div class="step-number">1</div>
+                                <div class="step-label">Medications</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-label">Quantities</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-label">Travel Info</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">4</div>
+                                <div class="step-label">Permits</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">5</div>
+                                <div class="step-label">Documents</div>
+                            </div>
+                        </div>
+                        
+                        <h2>Which medications will you bring to Japan?</h2>
+                        <p style="color: #6c757d;">Search our database of 31+ researched medications</p>
+                        
+                        <div class="form-group">
+                            <div class="search-box">
+                                <span class="search-icon">🔍</span>
+                                <input type="text" class="form-control search-input" placeholder="Type medication name or active ingredient...">
+                            </div>
+                        </div>
+                        
+                        <div class="medication-card">
+                            <div class="medication-icon">💊</div>
+                            <div class="medication-info">
+                                <div class="medication-name">Clonazepam (Klonopin)</div>
+                                <div class="medication-details">Benzodiazepine • Anti-anxiety</div>
+                            </div>
+                            <span class="medication-status status-restricted">Restricted</span>
+                        </div>
+                        
+                        <div class="medication-card">
+                            <div class="medication-icon">💊</div>
+                            <div class="medication-info">
+                                <div class="medication-name">Sertraline (Zoloft)</div>
+                                <div class="medication-details">SSRI • Antidepressant</div>
+                            </div>
+                            <span class="medication-status status-permitted">Permitted</span>
+                        </div>
+                        
+                        <button class="btn btn-outline btn-block" style="margin-top: 20px;">+ Add Another Medication</button>
+                        
+                        <div style="display: flex; gap: 10px; margin-top: 30px;">
+                            <button class="btn btn-secondary">Save & Exit</button>
+                            <button class="btn btn-primary" style="flex: 1;">Continue to Quantities</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Screen 2: Permit Determination -->
+                <div class="screen">
+                    <div class="screen-header">
+                        <h3 class="screen-title">Permit Requirements Analysis</h3>
+                    </div>
+                    <div class="screen-body">
+                        <div class="alert alert-warning">
+                            <span class="alert-icon">⚠️</span>
+                            <div>
+                                <strong>Import Permit Required</strong><br>
+                                Your medication quantities exceed Japan's limits for personal use.
+                            </div>
+                        </div>
+                        
+                        <h2>Your Permit Requirements</h2>
+                        
+                        <div class="medication-card">
+                            <div class="medication-icon">📋</div>
+                            <div class="medication-info">
+                                <div class="medication-name">Yunyu Kakunin-sho (Import Confirmation)</div>
+                                <div class="medication-details">Standard import permit for restricted medications</div>
+                            </div>
+                        </div>
+                        
+                        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                            <h3 style="margin-top: 0;">Permit Details</h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                <div>
+                                    <strong>Processing Time:</strong><br>
+                                    14-21 business days
+                                </div>
+                                <div>
+                                    <strong>Bureau:</strong><br>
+                                    Kanto-Shinetsu (Narita/Haneda)
+                                </div>
+                                <div>
+                                    <strong>Application Method:</strong><br>
+                                    Email submission
+                                </div>
+                                <div>
+                                    <strong>Success Rate:</strong><br>
+                                    95% with proper documents
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="insurance-widget">
+                            <button class="insurance-close">×</button>
+                            <div class="insurance-title">⚡ Complex permit process?</div>
+                            <p>Travel insurance can help if your permit is delayed or medications are questioned at customs.</p>
+                            <div class="insurance-features">
+                                <div class="insurance-feature">
+                                    <div style="font-size: 24px;">🏥</div>
+                                    <div>24/7 Medical Support</div>
+                                </div>
+                                <div class="insurance-feature">
+                                    <div style="font-size: 24px;">💊</div>
+                                    <div>Prescription Coverage</div>
+                                </div>
+                                <div class="insurance-feature">
+                                    <div style="font-size: 24px;">✈️</div>
+                                    <div>Trip Protection</div>
+                                </div>
+                            </div>
+                            <button class="insurance-cta">Compare Coverage Options</button>
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px; margin-top: 20px;">
+                            <button class="btn btn-secondary">Back</button>
+                            <button class="btn btn-primary" style="flex: 1;">Start Document Preparation</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Screen 3: Document Preparation -->
+                <div class="screen">
+                    <div class="screen-header">
+                        <h3 class="screen-title">Document Preparation Checklist</h3>
+                    </div>
+                    <div class="screen-body">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%;"></div>
+                        </div>
+                        
+                        <h2>Required Documents</h2>
+                        <p style="color: #6c757d;">Click each item to prepare or upload</p>
+                        
+                        <div class="checklist-item completed">
+                            <div class="checklist-checkbox">✓</div>
+                            <div class="checklist-content">
+                                <div class="checklist-title">Yunyu Kakunin-sho Application Form</div>
+                                <div class="checklist-subtitle">Auto-filled with your information</div>
+                            </div>
+                            <button class="btn btn-outline" style="padding: 6px 12px; font-size: 14px;">View</button>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox"></div>
+                            <div class="checklist-content">
+                                <div class="checklist-title">Doctor's Letter</div>
+                                <div class="checklist-subtitle">Template ready - needs doctor signature</div>
+                            </div>
+                            <button class="btn btn-primary" style="padding: 6px 12px; font-size: 14px;">Generate</button>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox"></div>
+                            <div class="checklist-content">
+                                <div class="checklist-title">Prescription Copy</div>
+                                <div class="checklist-subtitle">Clear photo or scan required</div>
+                            </div>
+                            <button class="btn btn-outline" style="padding: 6px 12px; font-size: 14px;">Upload</button>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox"></div>
+                            <div class="checklist-content">
+                                <div class="checklist-title">Itinerary</div>
+                                <div class="checklist-subtitle">Flight details and accommodation</div>
+                            </div>
+                            <button class="btn btn-outline" style="padding: 6px 12px; font-size: 14px;">Add Info</button>
+                        </div>
+                        
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox"></div>
+                            <div class="checklist-content">
+                                <div class="checklist-title">Passport Copy</div>
+                                <div class="checklist-subtitle">Photo page only</div>
+                            </div>
+                            <button class="btn btn-outline" style="padding: 6px 12px; font-size: 14px;">Upload</button>
+                        </div>
+                        
+                        <div class="alert alert-info" style="margin-top: 20px;">
+                            <span class="alert-icon">💡</span>
+                            <div>
+                                <strong>Pro Tip:</strong> Japanese authorities prefer documents in PDF format with clear, high-contrast scans.
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-block" style="margin-top: 20px;">Continue to Submission Guide</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Wireframes -->
+        <div class="device-section">
+            <div class="device-type">Mobile Interface (375px)</div>
+            
+            <div class="screens-grid">
+                <!-- Mobile Screen 1: Simplified Entry -->
+                <div class="screen">
+                    <div class="mobile-frame">
+                        <div class="mobile-status">9:41 AM</div>
+                        <div class="screen-body" style="padding-bottom: 80px;">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 20%;"></div>
+                            </div>
+                            
+                            <h2 style="font-size: 24px; margin-bottom: 10px;">Your Medications</h2>
+                            <p style="color: #6c757d; font-size: 14px; margin-bottom: 20px;">What will you bring to Japan?</p>
+                            
+                            <div class="search-box">
+                                <span class="search-icon">🔍</span>
+                                <input type="text" class="form-control search-input" placeholder="Search medications...">
+                            </div>
+                            
+                            <div style="margin-top: 20px;">
+                                <div class="medication-card" style="padding: 12px;">
+                                    <div class="medication-icon" style="width: 40px; height: 40px; font-size: 20px;">💊</div>
+                                    <div class="medication-info">
+                                        <div class="medication-name" style="font-size: 14px;">Clonazepam</div>
+                                        <div class="medication-details" style="font-size: 12px;">Anti-anxiety</div>
+                                    </div>
+                                    <span class="medication-status status-restricted" style="font-size: 11px;">Restricted</span>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-outline btn-block" style="margin-top: 15px; font-size: 14px;">+ Add Medication</button>
+                        </div>
+                        
+                        <div class="mobile-nav">
+                            <button class="btn btn-secondary" style="font-size: 14px;">Save</button>
+                            <button class="btn btn-primary" style="font-size: 14px;">Next</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Screen 2: Quantity Calculator -->
+                <div class="screen">
+                    <div class="mobile-frame">
+                        <div class="mobile-status">9:41 AM</div>
+                        <div class="screen-body" style="padding-bottom: 80px;">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 40%;"></div>
+                            </div>
+                            
+                            <h2 style="font-size: 24px; margin-bottom: 20px;">Calculate Quantities</h2>
+                            
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                    <div class="medication-icon" style="width: 35px; height: 35px; font-size: 18px;">💊</div>
+                                    <div>
+                                        <div style="font-weight: 600;">Clonazepam</div>
+                                        <div style="font-size: 12px; color: #6c757d;">0.5mg tablets</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Daily dosage</label>
+                                <div style="display: flex; gap: 10px;">
+                                    <input type="number" class="form-control" value="2" style="width: 80px;">
+                                    <span style="line-height: 44px;">tablets per day</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Trip duration</label>
+                                <div style="display: flex; gap: 10px;">
+                                    <input type="number" class="form-control" value="30" style="width: 80px;">
+                                    <span style="line-height: 44px;">days</span>
+                                </div>
+                            </div>
+                            
+                            <div class="alert alert-info">
+                                <span class="alert-icon">📊</span>
+                                <div>
+                                    <strong>Total needed: 60 tablets (30mg)</strong><br>
+                                    <span style="font-size: 14px;">Within personal use limit ✓</span>
+                                </div>
+                            </div>
+                            
+                            <div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                                <div style="font-weight: 600; color: #2e7d32; margin-bottom: 5px;">💡 Smart Tip</div>
+                                <div style="font-size: 14px; color: #2e7d32;">We recommend bringing 20% extra (72 tablets) to account for travel delays.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mobile-nav">
+                            <button class="btn btn-secondary" style="font-size: 14px;">Back</button>
+                            <button class="btn btn-primary" style="font-size: 14px;">Continue</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Screen 3: Results with Insurance -->
+                <div class="screen">
+                    <div class="mobile-frame">
+                        <div class="mobile-status">9:41 AM</div>
+                        <div class="screen-body" style="padding-bottom: 80px;">
+                            <div class="alert alert-warning" style="margin-bottom: 20px;">
+                                <span class="alert-icon">📋</span>
+                                <div>
+                                    <strong>Permit Required</strong><br>
+                                    <span style="font-size: 14px;">Your medications need import approval</span>
+                                </div>
+                            </div>
+                            
+                            <h2 style="font-size: 20px; margin-bottom: 15px;">Your Timeline</h2>
+                            
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-date">Today</div>
+                                        <div style="font-size: 14px;">Prepare documents</div>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-date">Nov 15</div>
+                                        <div style="font-size: 14px;">Submit application</div>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-date">Dec 3-10</div>
+                                        <div style="font-size: 14px;">Receive permit</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px; border-radius: 10px; margin-top: 20px;">
+                                <div style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">⏰ Tight timeline?</div>
+                                <div style="font-size: 14px; margin-bottom: 12px;">Get coverage for permit delays or customs issues</div>
+                                <button style="background: white; color: #667eea; border: none; padding: 8px 16px; border-radius: 5px; font-weight: 600; width: 100%;">View Insurance Options</button>
+                            </div>
+                        </div>
+                        
+                        <div class="mobile-nav">
+                            <button class="btn btn-primary btn-block" style="font-size: 14px;">Start Application</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

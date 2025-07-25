@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japan Medication Permit Wizard Flow</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .flow-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .flow-stage {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        .flow-stage h2 {
+            color: #007bff;
+            margin-top: 0;
+        }
+        .decision-tree {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .decision-box {
+            flex: 1;
+            min-width: 250px;
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            border: 2px solid #e0e0e0;
+        }
+        .decision-box.critical {
+            border-color: #dc3545;
+            background: #fff5f5;
+        }
+        .decision-box.success {
+            border-color: #28a745;
+            background: #f5fff5;
+        }
+        .decision-box.monetization {
+            border-color: #ffc107;
+            background: #fffdf5;
+        }
+        .flow-arrow {
+            text-align: center;
+            font-size: 24px;
+            color: #6c757d;
+            margin: 20px 0;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+        .alert {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border-left: 4px solid;
+        }
+        .alert-info {
+            background: #e3f2fd;
+            border-color: #2196f3;
+            color: #1565c0;
+        }
+        .alert-warning {
+            background: #fff3cd;
+            border-color: #ffc107;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="flow-container">
+        <h1>Japan Medication Import Permit Wizard - User Flow</h1>
+        
+        <div class="flow-stage">
+            <h2>Stage 1: Initial Assessment (Entry Point)</h2>
+            <div class="decision-tree">
+                <div class="decision-box">
+                    <h3>Medication Lookup</h3>
+                    <p>User searches or selects their medication from the existing database</p>
+                    <ul class="feature-list">
+                        <li>Auto-complete search</li>
+                        <li>Common names + generics</li>
+                        <li>Visual pill identifier</li>
+                    </ul>
+                </div>
+                <div class="decision-box critical">
+                    <h3>Quantity Calculator</h3>
+                    <p>Smart calculation based on:</p>
+                    <ul class="feature-list">
+                        <li>Dosage strength</li>
+                        <li>Daily usage</li>
+                        <li>Trip duration</li>
+                        <li>Safety buffer (+20%)</li>
+                    </ul>
+                </div>
+                <div class="decision-box">
+                    <h3>Travel Details</h3>
+                    <p>Essential information:</p>
+                    <ul class="feature-list">
+                        <li>Entry airport/port</li>
+                        <li>Stay duration</li>
+                        <li>Visa status</li>
+                        <li>Previous visits</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-stage">
+            <h2>Stage 2: Permit Determination</h2>
+            <div class="alert alert-info">
+                <strong>Decision Engine:</strong> Algorithm determines permit requirements based on medication classification + quantity thresholds + regional rules
+            </div>
+            <div class="decision-tree">
+                <div class="decision-box success">
+                    <h3>Path A: No Permit Required</h3>
+                    <p>Under threshold limits</p>
+                    <ul class="feature-list">
+                        <li>Generate travel letter</li>
+                        <li>Packing instructions</li>
+                        <li>Customs declaration prep</li>
+                    </ul>
+                </div>
+                <div class="decision-box">
+                    <h3>Path B: Yunyu Kakunin-sho</h3>
+                    <p>Standard import permit</p>
+                    <ul class="feature-list">
+                        <li>Most common scenario</li>
+                        <li>2-3 week processing</li>
+                        <li>Regional variations</li>
+                    </ul>
+                </div>
+                <div class="decision-box critical">
+                    <h3>Path C: Narcotic/Psychotropic</h3>
+                    <p>Special permits required</p>
+                    <ul class="feature-list">
+                        <li>Longer processing (3-4 weeks)</li>
+                        <li>Additional documentation</li>
+                        <li>Doctor coordination needed</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-stage">
+            <h2>Stage 3: Document Preparation</h2>
+            <div class="decision-tree">
+                <div class="decision-box">
+                    <h3>Form Auto-Population</h3>
+                    <p>Smart form filling:</p>
+                    <ul class="feature-list">
+                        <li>Name formatting (Western → Japanese style)</li>
+                        <li>Address conversion</li>
+                        <li>Date formatting (Japanese era)</li>
+                        <li>Medication details auto-fill</li>
+                    </ul>
+                </div>
+                <div class="decision-box">
+                    <h3>Doctor's Letter Generator</h3>
+                    <p>Template system:</p>
+                    <ul class="feature-list">
+                        <li>Pre-formatted for Japanese authorities</li>
+                        <li>Required medical terminology</li>
+                        <li>Bilingual sections</li>
+                        <li>Digital signature guidance</li>
+                    </ul>
+                </div>
+                <div class="decision-box monetization">
+                    <h3>Insurance Check Point</h3>
+                    <p><strong>Natural integration:</strong></p>
+                    <ul class="feature-list">
+                        <li>"Complex permits = higher risk"</li>
+                        <li>Medical coverage verification</li>
+                        <li>Prescription replacement options</li>
+                        <li>Emergency assistance benefits</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-stage">
+            <h2>Stage 4: Submission Process</h2>
+            <div class="decision-tree">
+                <div class="decision-box">
+                    <h3>Pre-Submission Checklist</h3>
+                    <p>Final verification:</p>
+                    <ul class="feature-list">
+                        <li>Document completeness check</li>
+                        <li>Common error scanner</li>
+                        <li>Translation verification</li>
+                        <li>Timeline calculator</li>
+                    </ul>
+                </div>
+                <div class="decision-box">
+                    <h3>Submission Guide</h3>
+                    <p>Step-by-step instructions:</p>
+                    <ul class="feature-list">
+                        <li>Email templates (Japanese/English)</li>
+                        <li>Bureau contact finder</li>
+                        <li>Follow-up timeline</li>
+                        <li>Response interpretation</li>
+                    </ul>
+                </div>
+                <div class="decision-box critical">
+                    <h3>Tracking Dashboard</h3>
+                    <p>Post-submission support:</p>
+                    <ul class="feature-list">
+                        <li>Expected response dates</li>
+                        <li>Status indicators</li>
+                        <li>Reminder system</li>
+                        <li>Escalation guidance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-stage">
+            <h2>Stage 5: Contingency Planning</h2>
+            <div class="alert alert-warning">
+                <strong>Risk Mitigation:</strong> Every user gets a backup plan regardless of permit status
+            </div>
+            <div class="decision-tree">
+                <div class="decision-box monetization">
+                    <h3>Insurance Integration</h3>
+                    <p><strong>Peak conversion point:</strong></p>
+                    <ul class="feature-list">
+                        <li>"What if permit is delayed?"</li>
+                        <li>Prescription assistance coverage</li>
+                        <li>Medical emergency scenarios</li>
+                        <li>24/7 support benefits</li>
+                    </ul>
+                </div>
+                <div class="decision-box">
+                    <h3>Alternative Strategies</h3>
+                    <p>Backup options:</p>
+                    <ul class="feature-list">
+                        <li>Local doctor finder</li>
+                        <li>Embassy assistance guide</li>
+                        <li>Medication splitting strategy</li>
+                        <li>Emergency refill process</li>
+                    </ul>
+                </div>
+                <div class="decision-box success">
+                    <h3>Success Package</h3>
+                    <p>Final deliverables:</p>
+                    <ul class="feature-list">
+                        <li>Customs declaration card</li>
+                        <li>Travel folder checklist</li>
+                        <li>Emergency contact card</li>
+                        <li>Digital backup system</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="flow-stage">
+            <h2>Exit Points & Re-engagement</h2>
+            <div class="decision-tree">
+                <div class="decision-box">
+                    <h3>Save Progress</h3>
+                    <ul class="feature-list">
+                        <li>Browser local storage</li>
+                        <li>Email draft option</li>
+                        <li>PDF download</li>
+                        <li>Return tracking code</li>
+                    </ul>
+                </div>
+                <div class="decision-box">
+                    <h3>Share Feature</h3>
+                    <ul class="feature-list">
+                        <li>Travel companion access</li>
+                        <li>Doctor sharing link</li>
+                        <li>Social proof widget</li>
+                        <li>Success stories</li>
+                    </ul>
+                </div>
+                <div class="decision-box monetization">
+                    <h3>Follow-up Sequence</h3>
+                    <ul class="feature-list">
+                        <li>Pre-trip reminders</li>
+                        <li>Last-minute insurance offer</li>
+                        <li>Post-trip feedback</li>
+                        <li>Renewal notifications</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
