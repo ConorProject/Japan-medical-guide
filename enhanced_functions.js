@@ -25,12 +25,27 @@ function findMedicationGuidance(medicationName, userQuantityMg = null) {
         return medicationRows[0];
     }
     
-    // Find the right threshold scenario - THIS IS THE KEY BREAKTHROUGH
-    const matchingRow = medicationRows.find(row => 
-        userQuantityMg <= (row.thresholdNumeric || Infinity)
-    );
+    // Find the right threshold scenario based on quantity comparison
+    // Look for the appropriate row based on whether user quantity is above or below threshold
+    for (const row of medicationRows) {
+        const threshold = row.thresholdNumeric || 0;
+        const description = row.thresholdDescription.toLowerCase();
+        
+        if (userQuantityMg <= threshold) {
+            // User is at or below threshold - look for "up to" or "below" row
+            if (description.includes('up to') || description.includes('below') || description.includes('under')) {
+                return row;
+            }
+        } else {
+            // User exceeds threshold - look for "more than" or "above" row  
+            if (description.includes('more than') || description.includes('above') || description.includes('exceeds') || description.includes('over')) {
+                return row;
+            }
+        }
+    }
     
-    return matchingRow || medicationRows[medicationRows.length - 1]; // Fallback to highest threshold
+    // Fallback to first row if no specific match
+    return medicationRows[0];
 }
 
 // ===== ENHANCED SEARCH WITH SMART RANKING =====
@@ -133,7 +148,7 @@ function findSpellSuggestions(query) {
 
 // ===== COMPREHENSIVE QUANTITY CALCULATOR =====
 function calculateMedicationStatus(medicationName, strengthMg, tablets, days = null) {
-    const totalMg = strengthMg * tablets;
+    const totalMg = strengthMg * tablets * days;
     const guidance = findMedicationGuidance(medicationName, totalMg);
     
     if (!guidance) {
@@ -145,15 +160,29 @@ function calculateMedicationStatus(medicationName, strengthMg, tablets, days = n
         };
     }
     
-    // Determine more accurate status for user display
-    let displayStatus = guidance.status;
-    if (guidance.status === 'permitted' && guidance.customsDeclaration === 'required') {
-        displayStatus = 'declaration_required';
+    // Use CSV data as authoritative source for declaration requirements
+    let declarationStatus;
+    let declarationGuidance;
+    
+    if (guidance.status === 'prohibited') {
+        declarationStatus = 'prohibited';
+        declarationGuidance = 'Cannot import to Japan';
+    } else if (guidance.customsDeclaration === 'required') {
+        declarationStatus = 'declaration_required';
+        if (guidance.processingDaysMin > 0) {
+            declarationGuidance = 'Check "Yes" on Visit Japan Web - Permit required, inspection likely but routine';
+        } else {
+            declarationGuidance = 'Check "Yes" on Visit Japan Web - Inspection likely but routine';
+        }
+    } else {
+        declarationStatus = 'exempt';
+        declarationGuidance = 'Check "No" - Personal use exemption applies';
     }
     
     return {
-        status: guidance.status, // Original CSV status
-        displayStatus: displayStatus, // More accurate user-facing status
+        status: guidance.status, // Original CSV status (for drug classification)
+        declarationStatus: declarationStatus, // VJW declaration category
+        declarationGuidance: declarationGuidance, // User guidance text
         medication: medicationName,
         totalQuantity: totalMg,
         threshold: guidance.thresholdNumeric,
@@ -169,7 +198,7 @@ function calculateMedicationStatus(medicationName, strengthMg, tablets, days = n
         processingDaysMax: guidance.processingDaysMax,
         documentationNeeded: guidance.documentationNeeded,
         reasoning: guidance.reasonForClassification,
-        dailyDose: days ? (tablets / days).toFixed(1) : null
+        dailyDose: days ? tablets.toFixed(1) : null
     };
 }
 
@@ -380,20 +409,80 @@ function getDisplayName(fullName) {
 function displayMedicationCard(medication) {
     const uniqueId = `calc-${medication.name.replace(/[^a-zA-Z0-9]/g, '')}`;
     
+    // Detect threshold type from description
+    const thresholdType = detectThresholdType(medication);
+    
     return `
         <div class="medication-card unified-card">
             <div class="handy-guide">
+                <!-- Header -->
                 <div class="guide-header">
                     <div class="medication-title">
                         <h3 class="medication-name">${medication.name}</h3>
                         <div class="medication-generic">${medication.genericName}</div>
                     </div>
-                    <span class="status-badge info">CALCULATE NEEDED</span>
+                    <span class="status-badge ${medication.status}">${medication.status.toUpperCase()}</span>
                 </div>
                 
-                <div class="medication-calculator" id="${uniqueId}">
+                <!-- Primary Information Section -->
+                <div class="medication-info">
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <strong>Threshold:</strong> ${medication.thresholdDescription}
+                        </div>
+                        <div class="info-item">
+                            <strong>Action Required:</strong> ${medication.actionRequired}
+                        </div>
+                        <div class="info-item">
+                            <strong>Customs Declaration:</strong> ${medication.customsDeclaration}
+                        </div>
+                        ${medication.processingDaysMin > 0 ? 
+                            `<div class="info-item">
+                                <strong>Permit Processing:</strong> ${medication.processingDaysMin}-${medication.processingDaysMax} days
+                            </div>` 
+                            : ''}
+                    </div>
+                    
+                    <div class="reasoning-section">
+                        <p><strong>Why:</strong> ${medication.reasonForClassification}</p>
+                    </div>
+                </div>
+                
+                <!-- Interactive Tool Section -->
+                ${generateToolSection(medication, thresholdType, uniqueId)}
+                
+                <!-- Source Citation -->
+                ${medication.officialSource ? `
+                    <div class="source-citation">
+                        <strong>Source:</strong> <a href="${medication.officialSource}" target="_blank">${medication.officialSource.includes('mhlw.go.jp') ? 'MHLW Official Documentation' : 'Official Source'}</a>
+                    </div>
+                ` : ''}
+            </div>
+        </div>
+    `;
+}
+
+// Helper function to detect threshold type
+function detectThresholdType(medication) {
+    const desc = medication.thresholdDescription.toLowerCase();
+    if (desc.includes('mg') || desc.includes('gram')) {
+        return 'quantity';
+    } else if (desc.includes('unit') || desc.includes('device')) {
+        return 'units';
+    } else if (desc.includes('month') || desc.includes('supply') || desc.includes('day')) {
+        return 'duration';
+    }
+    return 'quantity'; // default fallback
+}
+
+// Generate appropriate tool section based on threshold type
+function generateToolSection(medication, thresholdType, uniqueId) {
+    switch(thresholdType) {
+        case 'quantity':
+            return `
+                <div class="tool-section" id="${uniqueId}">
+                    <h4>Calculate Your Total Quantity</h4>
                     <div class="calculator-inputs">
-                        <h4>📊 Quantity Calculator</h4>
                         <div class="calc-row">
                             <div class="calc-field">
                                 <label>Strength per pill/dose (mg):</label>
@@ -409,24 +498,41 @@ function displayMedicationCard(medication) {
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="calculation-result" style="display: none;">
-                        <!-- Results will be populated by calculateForCard() -->
-                    </div>
-                    
-                    <div class="permit-options" style="display: none;">
-                        <!-- Permit options will be populated by calculateForCard() -->
-                    </div>
+                    <div class="calculation-result" style="display: none;"></div>
+                    <div class="permit-options" style="display: none;"></div>
                 </div>
-                
-                ${medication.officialSource ? `
-                    <div class="source-citation" style="margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 4px; font-size: 12px; color: #495057;">
-                        <strong>Source:</strong> <a href="${medication.officialSource}" target="_blank" style="color: #007bff; text-decoration: none;">${medication.officialSource.includes('mhlw.go.jp') ? 'MHLW Official Documentation' : 'Official Source'}</a>
+            `;
+        case 'units':
+            return `
+                <div class="tool-section" id="${uniqueId}">
+                    <h4>How Many Units Are You Bringing?</h4>
+                    <div class="unit-counter">
+                        <input type="number" class="unit-count" min="1" placeholder="Number of units" oninput="calculateUnitsForCard('${medication.name}', '${uniqueId}')">
+                        <span class="unit-label">units</span>
                     </div>
-                ` : ''}
-            </div>
-        </div>
-    `;
+                    <div class="calculation-result" style="display: none;"></div>
+                    <div class="permit-options" style="display: none;"></div>
+                </div>
+            `;
+        case 'duration':
+            return `
+                <div class="tool-section" id="${uniqueId}">
+                    <h4>Select Your Scenario</h4>
+                    <div class="scenario-buttons">
+                        <button class="scenario-btn" onclick="selectScenario('${medication.name}', '${uniqueId}', 'under')">
+                            Up to 1-month supply
+                        </button>
+                        <button class="scenario-btn" onclick="selectScenario('${medication.name}', '${uniqueId}', 'over')">
+                            More than 1-month supply
+                        </button>
+                    </div>
+                    <div class="calculation-result" style="display: none;"></div>
+                    <div class="permit-options" style="display: none;"></div>
+                </div>
+            `;
+        default:
+            return '';
+    }
 }
 
 // ===== TOOL LAUNCHER FUNCTIONS =====
@@ -538,11 +644,11 @@ function calculateForCard(medicationName, calculatorId) {
     // Use comprehensive calculator
     const results = calculateMedicationStatus(medicationName, strength, tablets, days);
     
-    // Update status badge with more accurate display status
+    // Update status badge to show drug classification (not declaration status)
     const card = calculator.closest('.medication-card');
     const badge = card.querySelector('.status-badge');
-    badge.textContent = results.displayStatus.toUpperCase().replace('_', ' ');
-    badge.className = `status-badge ${results.displayStatus.replace('_', '-')}`;
+    badge.textContent = results.status.toUpperCase();
+    badge.className = `status-badge ${results.status}`;
     
     // Display enhanced results
     const resultDiv = calculator.querySelector('.calculation-result');
@@ -554,6 +660,131 @@ function calculateForCard(medicationName, calculatorId) {
     if (optionsDiv) {
         optionsDiv.innerHTML = generatePermitOptionsHTML(results);
         optionsDiv.style.display = 'block';
+    }
+}
+
+// ===== UNITS CALCULATOR =====
+function calculateUnitsForCard(medicationName, calculatorId) {
+    const calculator = document.getElementById(calculatorId);
+    const units = parseInt(calculator.querySelector('.unit-count').value);
+
+    if (!units || units < 1) {
+        calculator.querySelector('.calculation-result').style.display = 'none';
+        calculator.querySelector('.permit-options').style.display = 'none';
+        return;
+    }
+
+    // Find the appropriate CSV row based on unit count
+    const guidance = findMedicationGuidanceByUnits(medicationName, units);
+    if (!guidance) return;
+
+    const results = {
+        status: guidance.status,
+        declarationStatus: guidance.customsDeclaration === 'required' ? 'declaration_required' : 'exempt',
+        declarationGuidance: guidance.customsDeclaration === 'required' ? 
+            `Check "Yes" on Visit Japan Web - Inspection likely but routine` :
+            `Check "No" - Personal use exemption applies`,
+        medication: medicationName,
+        totalQuantity: `${units} units`,
+        threshold: guidance.thresholdNumeric,
+        thresholdDescription: guidance.thresholdDescription,
+        withinLimit: units <= guidance.thresholdNumeric,
+        actionRequired: guidance.actionRequired,
+        customsDeclaration: guidance.customsDeclaration,
+        channelRequired: guidance.channelRequired,
+        permitRequired: guidance.processingDaysMin > 0,
+        processingTime: guidance.processingDaysMin > 0 ? 
+            `${guidance.processingDaysMin}-${guidance.processingDaysMax} days` : 'No permit needed',
+        processingDaysMin: guidance.processingDaysMin,
+        processingDaysMax: guidance.processingDaysMax,
+        documentationNeeded: guidance.documentationNeeded,
+        reasoning: guidance.reasonForClassification
+    };
+
+    // Display results
+    const resultDiv = calculator.querySelector('.calculation-result');
+    resultDiv.innerHTML = generateCalculatorResultsHTML(results);
+    resultDiv.style.display = 'block';
+    
+    const optionsDiv = calculator.querySelector('.permit-options');
+    optionsDiv.innerHTML = generatePermitOptionsHTML(results);
+    optionsDiv.style.display = 'block';
+}
+
+// ===== SCENARIO SELECTOR =====
+function selectScenario(medicationName, calculatorId, scenario) {
+    const calculator = document.getElementById(calculatorId);
+    
+    // Find the appropriate CSV row based on scenario
+    const guidance = findMedicationGuidanceByScenario(medicationName, scenario);
+    if (!guidance) return;
+
+    const results = {
+        status: guidance.status,
+        declarationStatus: guidance.customsDeclaration === 'required' ? 'declaration_required' : 'exempt',
+        declarationGuidance: guidance.customsDeclaration === 'required' ? 
+            `Check "Yes" on Visit Japan Web - Inspection likely but routine` :
+            `Check "No" - Personal use exemption applies`,
+        medication: medicationName,
+        totalQuantity: guidance.thresholdDescription,
+        threshold: guidance.thresholdNumeric,
+        thresholdDescription: guidance.thresholdDescription,
+        withinLimit: scenario === 'under',
+        actionRequired: guidance.actionRequired,
+        customsDeclaration: guidance.customsDeclaration,
+        channelRequired: guidance.channelRequired,
+        permitRequired: guidance.processingDaysMin > 0,
+        processingTime: guidance.processingDaysMin > 0 ? 
+            `${guidance.processingDaysMin}-${guidance.processingDaysMax} days` : 'No permit needed',
+        processingDaysMin: guidance.processingDaysMin,
+        processingDaysMax: guidance.processingDaysMax,
+        documentationNeeded: guidance.documentationNeeded,
+        reasoning: guidance.reasonForClassification
+    };
+
+    // Highlight selected scenario
+    calculator.querySelectorAll('.scenario-btn').forEach(btn => btn.classList.remove('selected'));
+    event.target.classList.add('selected');
+
+    // Display results
+    const resultDiv = calculator.querySelector('.calculation-result');
+    resultDiv.innerHTML = generateCalculatorResultsHTML(results);
+    resultDiv.style.display = 'block';
+    
+    const optionsDiv = calculator.querySelector('.permit-options');
+    optionsDiv.innerHTML = generatePermitOptionsHTML(results);
+    optionsDiv.style.display = 'block';
+}
+
+// Helper functions for finding CSV data
+function findMedicationGuidanceByUnits(medicationName, units) {
+    const medicationRows = window.medications.filter(med => 
+        med.name.toLowerCase().includes(medicationName.toLowerCase())
+    );
+    
+    // Find appropriate row based on units
+    return medicationRows.find(row => 
+        units <= (row.thresholdNumeric || Infinity)
+    ) || medicationRows[medicationRows.length - 1];
+}
+
+function findMedicationGuidanceByScenario(medicationName, scenario) {
+    const medicationRows = window.medications.filter(med => 
+        med.name.toLowerCase().includes(medicationName.toLowerCase())
+    );
+    
+    // Find row based on scenario (under/over threshold)
+    if (scenario === 'under') {
+        return medicationRows.find(row => 
+            row.thresholdDescription.toLowerCase().includes('up to') ||
+            row.thresholdDescription.toLowerCase().includes('below')
+        );
+    } else {
+        return medicationRows.find(row => 
+            row.thresholdDescription.toLowerCase().includes('more than') ||
+            row.thresholdDescription.toLowerCase().includes('above') ||
+            row.thresholdDescription.toLowerCase().includes('exceeds')
+        );
     }
 }
 
@@ -595,24 +826,83 @@ function generateCalculatorResultsHTML(results) {
         `;
     }
     
-    const statusColors = {
-        prohibited: '#dc3545',
-        restricted: '#ffc107', 
-        permitted: '#28a745',
-        declaration_required: '#fd7e14'
+    // Muted professional colors for declaration status
+    const declarationColors = {
+        exempt: '#28a745',
+        declaration_required: '#fd7e14', 
+        prohibited: '#dc3545'
     };
     
-    const borderColor = statusColors[results.displayStatus] || statusColors[results.status];
-    const displayText = results.displayStatus.toUpperCase().replace('_', ' ');
+    const declarationBackgrounds = {
+        exempt: 'rgba(40, 167, 69, 0.1)',
+        declaration_required: 'rgba(253, 126, 20, 0.1)',
+        prohibited: 'rgba(220, 53, 69, 0.1)'
+    };
+    
+    const borderColor = declarationColors[results.declarationStatus];
+    const backgroundColor = declarationBackgrounds[results.declarationStatus];
+    const statusText = results.declarationStatus.toUpperCase().replace('_', ' ');
+    
+    // Drug classification colors (primary status)
+    const drugColors = {
+        prohibited: '#dc3545',
+        restricted: '#fd7e14',
+        permitted: '#28a745'
+    };
+    
+    const drugColor = drugColors[results.status];
+    const drugStatusText = results.status.toUpperCase();
+    
+    // Determine most important status to highlight
+    const isPermanentlyProhibited = results.status === 'prohibited';
+    const needsPermit = results.permitRequired;
+    
+    let primaryStatus, primaryColor, primaryMessage;
+    
+    if (isPermanentlyProhibited) {
+        primaryStatus = "PROHIBITED";
+        primaryColor = "#dc3545";
+        primaryMessage = "Cannot import to Japan";
+    } else if (needsPermit) {
+        primaryStatus = "PERMIT REQUIRED";
+        primaryColor = "#dc3545";
+        primaryMessage = `Processing time: ${results.processingTime}`;
+    } else {
+        primaryStatus = statusText;
+        primaryColor = borderColor;
+        primaryMessage = results.declarationGuidance;
+    }
     
     return `
-        <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid ${borderColor}; margin: 20px 0;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h4 style="margin: 0; font-size: 1.3rem;">${results.medication}</h4>
-                <span style="background: ${borderColor}; color: white; padding: 8px 14px; border-radius: 15px; font-size: 12px; font-weight: bold;">
-                    ${displayText}
-                </span>
+        <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid ${primaryColor}; margin: 20px 0;">
+            <!-- Primary Action Status -->
+            <div style="text-align: center; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 2px solid #f0f0f0;">
+                <h3 style="margin: 0 0 10px 0; font-size: 1.4rem; color: ${primaryColor}; font-weight: 600;">
+                    ${primaryStatus}
+                </h3>
+                <p style="margin: 0; color: #6c757d; font-size: 14px;">
+                    ${results.medication} - ${results.totalQuantity}mg total
+                </p>
+                <p style="margin: 8px 0 0 0; color: #5a5a5a; font-size: 14px; font-weight: 500;">
+                    ${primaryMessage}
+                </p>
             </div>
+            
+            <!-- Declaration Guidance -->
+            <div style="background: ${backgroundColor}; padding: 18px; border-radius: 6px; margin-bottom: 20px; border: 1px solid rgba(${borderColor.slice(1).match(/.{2}/g).map(hex => parseInt(hex, 16)).join(', ')}, 0.2);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <h4 style="margin: 0; font-size: 1.1rem; color: ${borderColor};">${statusText}</h4>
+                    <span style="background: ${borderColor}; color: white; padding: 4px 10px; border-radius: 10px; font-size: 10px; font-weight: 600;">
+                        VISIT JAPAN WEB
+                    </span>
+                </div>
+                <p style="margin: 0; color: #5a5a5a; font-size: 14px; line-height: 1.4;">
+                    ${results.declarationGuidance}
+                </p>
+            </div>
+            
+            <!-- Quantity Details -->
+            <h4 style="margin: 0 0 15px 0; font-size: 1.0rem; color: #6c757d;">Calculation Details</h4>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
                 <div style="padding: 15px; background: #f8f9fa; border-radius: 6px;">
@@ -622,7 +912,7 @@ function generateCalculatorResultsHTML(results) {
                 </div>
                 <div style="padding: 15px; background: #f8f9fa; border-radius: 6px;">
                     <strong>Within Limit:</strong> ${results.withinLimit ? '✅ Yes' : '❌ No'}<br><br>
-                    <strong>Customs Channel:</strong> ${results.channelRequired}<br><br>
+                    <strong>Digital Declaration:</strong> Via Visit Japan Web QR code<br><br>
                     <strong>Permit Required:</strong> ${results.permitRequired ? '✅ Yes' : '❌ No'}
                 </div>
             </div>
@@ -649,21 +939,25 @@ function generateCalculatorResultsHTML(results) {
 
 function generatePermitOptionsHTML(results) {
     return `
-        <div style="margin-top: 15px;">
-            ${results.permitRequired ? 
-                `<button onclick="openPermitWizard('${results.medication}')" 
-                        style="background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px; margin-right: 10px; cursor: pointer;">
-                    📋 Permit Application
-                </button>` 
-                : ''}
-            <button onclick="generateTravelLetter('${results.medication}', ${JSON.stringify(results).replace(/"/g, '&quot;')})" 
-                    style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; margin-right: 10px; cursor: pointer;">
-                📄 Generate Travel Letter
-            </button>
-            <button onclick="addToTripPlanner('${results.medication}')" 
-                    style="background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
-                ✈️ Add to Trip Planner
-            </button>
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #dee2e6;">
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                ${results.permitRequired ? 
+                    `<button onclick="openPermitWizard('${results.medication}')" 
+                            style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 14px;">
+                        Permit Application
+                    </button>` 
+                    : ''}
+                ${results.declarationStatus !== 'prohibited' ?
+                    `<button onclick="generateTravelLetter('${results.medication}', ${JSON.stringify(results).replace(/"/g, '&quot;')})" 
+                            style="background: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 14px;">
+                        Travel Documentation
+                    </button>` 
+                    : ''}
+                <button onclick="addToTripPlanner('${results.medication}')" 
+                        style="background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 14px;">
+                    Add to Trip Planner
+                </button>
+            </div>
         </div>
     `;
 }
@@ -684,6 +978,8 @@ window.planMedicationTrip = planMedicationTrip;
 window.generateCategoryCards = generateCategoryCards;
 window.displayMedicationCard = displayMedicationCard;
 window.calculateForCard = calculateForCard;
+window.calculateUnitsForCard = calculateUnitsForCard;
+window.selectScenario = selectScenario;
 window.openQuantityCalculator = openQuantityCalculator;
 window.openPermitWizard = openPermitWizard;
 window.addToTripPlanner = addToTripPlanner;
@@ -861,6 +1157,25 @@ const enhancedCSS = `
         font-weight: bold;
     }
     
+    /* Three-Category Declaration Status Styling */
+    .declaration-status-exempt {
+        background: rgba(40, 167, 69, 0.1);
+        color: #28a745;
+        border: 1px solid rgba(40, 167, 69, 0.2);
+    }
+    
+    .declaration-status-required {
+        background: rgba(253, 126, 20, 0.1);
+        color: #fd7e14;
+        border: 1px solid rgba(253, 126, 20, 0.2);
+    }
+    
+    .declaration-status-prohibited {
+        background: rgba(220, 53, 69, 0.1);
+        color: #dc3545;
+        border: 1px solid rgba(220, 53, 69, 0.2);
+    }
+    
     /* Calculator Form Styling */
     .calculator-inputs {
         background: #f8f9fa;
@@ -906,6 +1221,150 @@ const enhancedCSS = `
         .calc-row {
             grid-template-columns: 1fr;
             gap: 10px;
+        }
+    }
+    
+    /* Information-First Card Design */
+    .medication-info {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 6px;
+        margin: 15px 0;
+        border: 1px solid #dee2e6;
+    }
+    
+    .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .info-item {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    
+    .info-item strong {
+        color: #495057;
+        display: block;
+        margin-bottom: 2px;
+    }
+    
+    .reasoning-section {
+        padding-top: 15px;
+        border-top: 1px solid #dee2e6;
+        margin-top: 15px;
+    }
+    
+    .reasoning-section p {
+        margin: 0;
+        font-size: 14px;
+        color: #6c757d;
+        font-style: italic;
+    }
+    
+    /* Tool Section Styling */
+    .tool-section {
+        background: white;
+        padding: 20px;
+        border-radius: 6px;
+        margin: 15px 0;
+        border: 2px solid #e9ecef;
+    }
+    
+    .tool-section h4 {
+        margin: 0 0 15px 0;
+        color: #495057;
+        font-size: 1.1rem;
+    }
+    
+    /* Unit Counter */
+    .unit-counter {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .unit-count {
+        width: 120px;
+        padding: 10px 12px;
+        border: 2px solid #dee2e6;
+        border-radius: 6px;
+        font-size: 16px;
+        text-align: center;
+    }
+    
+    .unit-label {
+        font-weight: 500;
+        color: #6c757d;
+    }
+    
+    /* Scenario Buttons */
+    .scenario-buttons {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+    }
+    
+    .scenario-btn {
+        padding: 12px 20px;
+        border: 2px solid #dee2e6;
+        background: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.2s ease;
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    .scenario-btn:hover {
+        border-color: #007bff;
+        background: #f8f9fa;
+    }
+    
+    .scenario-btn.selected {
+        border-color: #007bff;
+        background: #e3f2fd;
+        color: #1565c0;
+        font-weight: 500;
+    }
+    
+    /* Source Citation */
+    .source-citation {
+        margin-top: 15px;
+        padding: 10px;
+        background: #f8f9fa;
+        border-radius: 4px;
+        font-size: 12px;
+        color: #495057;
+        border-left: 3px solid #007bff;
+    }
+    
+    .source-citation a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    
+    .source-citation a:hover {
+        text-decoration: underline;
+    }
+    
+    @media (max-width: 768px) {
+        .info-grid {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        
+        .scenario-buttons {
+            flex-direction: column;
+        }
+        
+        .scenario-btn {
+            min-width: auto;
         }
     }
 `;

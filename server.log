@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1320, in <module>
+    test(
+    ~~~~^
+        HandlerClass=handler_class,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        protocol=args.protocol,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1267, in test
+    with ServerClass(addr, HandlerClass) as httpd:
+         ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socketserver.py", line 457, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 1314, in server_bind
+    return super().server_bind()
+           ~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/server.py", line 136, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+::1 - - [26/Jul/2025 12:01:11] "GET /?v=1753498864 HTTP/1.1" 200 -
+::1 - - [26/Jul/2025 12:01:11] "GET /enhanced_functions.js HTTP/1.1" 304 -
+::1 - - [26/Jul/2025 12:03:12] "GET /?v=1753498864 HTTP/1.1" 200 -
+::1 - - [26/Jul/2025 12:03:12] "GET /enhanced_functions.js HTTP/1.1" 304 -
+::1 - - [26/Jul/2025 12:06:11] "GET /?v=1753498864 HTTP/1.1" 200 -
+::1 - - [26/Jul/2025 12:06:11] "GET /enhanced_functions.js HTTP/1.1" 304 -
+::1 - - [26/Jul/2025 12:06:11] "GET /medications.json HTTP/1.1" 200 -
+::1 - - [26/Jul/2025 12:15:59] "GET /?v=1753498864 HTTP/1.1" 200 -
+::1 - - [26/Jul/2025 12:15:59] "GET /enhanced_functions.js HTTP/1.1" 200 -
+::1 - - [26/Jul/2025 12:15:59] "GET /medications.json HTTP/1.1" 200 -
+::1 - - [26/Jul/2025 12:25:41] "GET /?v=1753498864 HTTP/1.1" 200 -
+::1 - - [26/Jul/2025 12:25:41] "GET /enhanced_functions.js HTTP/1.1" 200 -
+::1 - - [26/Jul/2025 12:25:41] "GET /medications.json HTTP/1.1" 200 -
+::1 - - [26/Jul/2025 12:31:32] "GET /?v=1753498864 HTTP/1.1" 200 -
+::1 - - [26/Jul/2025 12:31:32] "GET /enhanced_functions.js HTTP/1.1" 200 -
+::1 - - [26/Jul/2025 12:31:32] "GET /medications.json HTTP/1.1" 200 -
+::1 - - [26/Jul/2025 12:41:19] "GET /?v=1753498864 HTTP/1.1" 200 -
+::1 - - [26/Jul/2025 12:41:19] "GET /enhanced_functions.js HTTP/1.1" 200 -
+::1 - - [26/Jul/2025 12:41:19] "GET /medications.json HTTP/1.1" 200 -
