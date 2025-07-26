@@ -444,7 +444,7 @@ function displayMedicationCard(medication) {
                     </div>
                     
                     <div class="reasoning-section">
-                        <p><strong>Why:</strong> ${medication.reasonForClassification}</p>
+                        <p><strong>Reasoning:</strong> ${medication.reasonForClassification}</p>
                     </div>
                 </div>
                 
