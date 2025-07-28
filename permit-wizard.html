@@ -610,6 +610,11 @@
             wizardData.permitRequired = (percentageOfLimit >= 100 || thresholdNumeric === 0);
             wizardData.percentageOfLimit = percentageOfLimit;
 
+            // Update the medication card with correct threshold info
+            if (correctMedication) {
+                updateMedicationCard(correctMedication);
+            }
+
             // Display enhanced results
             displayQuantityResults(permitStatus, recommendation, nextAction, percentageOfLimit);
         }
@@ -683,6 +688,37 @@
             `;
 
             resultDiv.innerHTML = resultHTML;
+        }
+
+        function updateMedicationCard(correctMedication) {
+            // Update the medication display card with the correct threshold information
+            const medicationDiv = document.getElementById('selectedMedication');
+            if (medicationDiv && correctMedication) {
+                console.log('DEBUG: Updating medication card with:', correctMedication.thresholdDescription);
+                
+                medicationDiv.innerHTML = `
+                    <h3>Selected Medication: ${correctMedication.name}</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                        <div>
+                            <p><strong>Generic Name:</strong> ${correctMedication.genericName}</p>
+                            <p><strong>Category:</strong> ${correctMedication.category}</p>
+                            <p><strong>Status:</strong> <span class="status-badge ${correctMedication.status}">${correctMedication.status.toUpperCase()}</span></p>
+                        </div>
+                        <div>
+                            <p><strong>Threshold:</strong> ${correctMedication.thresholdDescription}</p>
+                            <p><strong>Processing Time:</strong> ${correctMedication.processingDaysMin > 0 ? 
+                                `${correctMedication.processingDaysMin}-${correctMedication.processingDaysMax} days` : 'No permit needed'}</p>
+                            ${correctMedication.officialSource ? `<p><strong>Source:</strong> <a href="${correctMedication.officialSource}" target="_blank">Official Documentation</a></p>` : ''}
+                        </div>
+                    </div>
+                    <div style="background: #e3f2fd; padding: 15px; border-radius: 6px; margin-top: 15px;">
+                        <strong>Action Required:</strong> ${correctMedication.actionRequired}
+                    </div>
+                `;
+                
+                // Also update the wizardData.medication so other functions use the correct data
+                wizardData.medication = correctMedication;
+            }
         }
 
         function getProgressColor(percentage) {
