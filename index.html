@@ -435,6 +435,17 @@
             color: #6f4e08;
         }
 
+        .category-controlled {
+            background: #fffdf5;
+            border: 1px solid #ffeaa7;
+            border-left: 4px solid #ffeaa7;
+        }
+
+        .category-controlled h3,
+        .category-controlled p {
+            color: #6f4e08;
+        }
+
         .category-permitted {
             background: #f8fbf8;
             border: 1px solid #c3e6cb;
@@ -1460,7 +1471,7 @@
         
         async function loadMedications() {
             try {
-                const response = await fetch('medications.json');
+                const response = await fetch(`medications.json?v=${Date.now()}`);
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
@@ -1810,7 +1821,7 @@ function displayTripResults(tripPlan) {
                 <strong>✅ Permitted:</strong> ${tripPlan.summary.permitted}
             </div>
             <div style="background: #fff3cd; color: #856404; padding: 10px; border-radius: 6px; border: 1px solid #ffeaa7;">
-                <strong>⚠️ Restricted:</strong> ${tripPlan.summary.restricted}
+                <strong>⚠️ Controlled:</strong> ${tripPlan.summary.controlled}
             </div>
             <div class="trip-warning">
                 <strong>🚫 Prohibited:</strong> ${tripPlan.summary.prohibited}
@@ -1882,7 +1893,7 @@ function displayVJWResults(vjwGuidance) {
                     <strong>Prohibited:</strong> ${vjwGuidance.prohibited_count}
                 </div>
                 <div style="background: #fff3cd; color: #856404; padding: 10px; border-radius: 6px; border: 1px solid #ffeaa7;">
-                    <strong>Restricted:</strong> ${vjwGuidance.restricted_count}
+                    <strong>Controlled:</strong> ${vjwGuidance.controlled_count}
                 </div>
                 <div class="trip-success">
                     <strong>Permitted:</strong> ${vjwGuidance.permitted_count}
