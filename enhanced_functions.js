@@ -873,9 +873,10 @@ function generateCalculatorResultsHTML(results) {
         primaryColor = "#dc3545";
         primaryMessage = `Processing time: ${results.processingTime}`;
     } else {
-        primaryStatus = statusText;
-        primaryColor = borderColor;
-        primaryMessage = results.declarationGuidance;
+        // For sub-threshold amounts, prioritize "No permit required" over declaration status
+        primaryStatus = "NO PERMIT REQUIRED";
+        primaryColor = "#28a745";
+        primaryMessage = "Personal use exemption - declaration still required";
     }
     
     return `
