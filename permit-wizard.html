@@ -260,6 +260,32 @@
             <div class="wizard-step">
                 <div class="step-header">
                     <div class="step-number">1</div>
+                    <div class="step-title">Medication Quantity</div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Tablet Strength (mg per tablet)</label>
+                    <input type="number" class="form-control" id="strength" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Number of Tablets</label>
+                    <input type="number" class="form-control" id="tabletCount" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Trip Duration (days)</label>
+                    <input type="number" class="form-control" id="tripDays" required>
+                </div>
+                
+                <div id="quantityCalculation" style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="wizard-step">
+                <div class="step-header">
+                    <div class="step-number">2</div>
                     <div class="step-title">Travel Information</div>
                 </div>
                 
@@ -307,32 +333,6 @@
                         <option value="CTS">New Chitose Airport (CTS)</option>
                         <option value="FUK">Fukuoka Airport (FUK)</option>
                     </select>
-                </div>
-            </div>
-
-            <div class="wizard-step">
-                <div class="step-header">
-                    <div class="step-number">2</div>
-                    <div class="step-title">Medication Quantity</div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Tablet Strength (mg per tablet)</label>
-                    <input type="number" class="form-control" id="strength" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Number of Tablets</label>
-                    <input type="number" class="form-control" id="tabletCount" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label">Trip Duration (days)</label>
-                    <input type="number" class="form-control" id="tripDays" required>
-                </div>
-                
-                <div id="quantityCalculation" style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 15px;">
-                    <!-- Will be populated by JavaScript -->
                 </div>
             </div>
 
