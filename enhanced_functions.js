@@ -834,7 +834,7 @@ function generateCalculatorResultsHTML(results) {
     // Muted professional colors for declaration status
     const declarationColors = {
         exempt: '#28a745',
-        declaration_required: '#ffeaa7', 
+        declaration_required: '#856404', 
         prohibited: '#dc3545'
     };
     
@@ -1154,8 +1154,8 @@ const enhancedCSS = `
     }
     
     .status-badge.declaration-required {
-        background: #ffeaa7;
-        color: #6f4e08;
+        background: #856404;
+        color: white;
         padding: 4px 8px;
         border-radius: 12px;
         font-size: 11px;
@@ -1170,9 +1170,9 @@ const enhancedCSS = `
     }
     
     .declaration-status-required {
-        background: rgba(255, 234, 167, 0.1);
-        color: #6f4e08;
-        border: 1px solid rgba(255, 234, 167, 0.2);
+        background: rgba(133, 100, 4, 0.1);
+        color: #856404;
+        border: 1px solid rgba(133, 100, 4, 0.2);
     }
     
     .declaration-status-prohibited {
