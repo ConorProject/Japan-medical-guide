@@ -469,7 +469,7 @@
             };
 
             // Use real CSV threshold data
-            const thresholdNumeric = wizardData.medication ? wizardData.medication.thresholdNumeric : null;
+            const thresholdNumeric = wizardData.medication ? parseFloat(wizardData.medication.thresholdNumeric) : null;
             const medicationStatus = wizardData.medication ? wizardData.medication.status : null;
             const percentageOfLimit = thresholdNumeric && thresholdNumeric > 0 ? (totalMg / thresholdNumeric * 100) : 0;
             
@@ -522,7 +522,7 @@
 
         function displayQuantityResults(permitStatus, recommendation, nextAction, percentageOfLimit) {
             const resultDiv = document.getElementById('quantityCalculation');
-            const thresholdNumeric = wizardData.medication ? wizardData.medication.thresholdNumeric : null;
+            const thresholdNumeric = wizardData.medication ? parseFloat(wizardData.medication.thresholdNumeric) : null;
             const thresholdDescription = wizardData.medication ? wizardData.medication.thresholdDescription : null;
             
             let resultHTML = `
