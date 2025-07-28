@@ -1496,13 +1496,22 @@
         function initializeAfterMedicationsLoad() {
             // Make medications available globally for enhanced_functions.js
             window.medications = medications;
+            console.log('DEBUG: Loaded', medications.length, 'medications');
+            console.log('DEBUG: First medication status:', medications[0]?.status);
             
             // Generate and populate category cards
             if (window.generateCategoryCards) {
+                console.log('DEBUG: generateCategoryCards function exists');
                 const categoryOverview = document.getElementById('categoryOverview');
                 if (categoryOverview) {
-                    categoryOverview.innerHTML = window.generateCategoryCards();
+                    const cardsHTML = window.generateCategoryCards();
+                    console.log('DEBUG: Generated cards HTML length:', cardsHTML.length);
+                    categoryOverview.innerHTML = cardsHTML;
+                } else {
+                    console.log('DEBUG: categoryOverview element not found');
                 }
+            } else {
+                console.log('DEBUG: generateCategoryCards function not found');
             }
         }
         
