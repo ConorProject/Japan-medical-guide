@@ -167,7 +167,7 @@ function calculateMedicationStatus(medicationName, strengthMg, tablets, days = n
     if (guidance.status === 'prohibited') {
         declarationStatus = 'prohibited';
         declarationGuidance = 'Cannot import to Japan';
-    } else if (guidance.customsDeclaration === 'required') {
+    } else if (guidance.status === 'controlled' || guidance.customsDeclaration.includes('Answer "Yes"')) {
         declarationStatus = 'declaration_required';
         if (guidance.processingDaysMin > 0) {
             declarationGuidance = 'Check "Yes" on Visit Japan Web - Permit required, inspection likely but routine';
@@ -314,7 +314,7 @@ function planMedicationTrip(medications_list, tripDurationDays = null) {
             plan.summary.permitted++;
         }
         
-        if (guidance.customsDeclaration === 'required') {
+        if (guidance.status === 'controlled' || guidance.customsDeclaration.includes('Answer "Yes"')) {
             plan.customsDeclarationRequired = true;
         }
         
@@ -685,8 +685,8 @@ function calculateUnitsForCard(medicationName, calculatorId) {
 
     const results = {
         status: guidance.status,
-        declarationStatus: guidance.customsDeclaration === 'required' ? 'declaration_required' : 'exempt',
-        declarationGuidance: guidance.customsDeclaration === 'required' ? 
+        declarationStatus: (guidance.status === 'controlled' || guidance.customsDeclaration.includes('Answer "Yes"')) ? 'declaration_required' : 'exempt',
+        declarationGuidance: (guidance.status === 'controlled' || guidance.customsDeclaration.includes('Answer "Yes"')) ? 
             `Check "Yes" on Visit Japan Web - Inspection likely but routine` :
             `Check "No" - Personal use exemption applies`,
         medication: medicationName,
@@ -726,8 +726,8 @@ function selectScenario(medicationName, calculatorId, scenario) {
 
     const results = {
         status: guidance.status,
-        declarationStatus: guidance.customsDeclaration === 'required' ? 'declaration_required' : 'exempt',
-        declarationGuidance: guidance.customsDeclaration === 'required' ? 
+        declarationStatus: (guidance.status === 'controlled' || guidance.customsDeclaration.includes('Answer "Yes"')) ? 'declaration_required' : 'exempt',
+        declarationGuidance: (guidance.status === 'controlled' || guidance.customsDeclaration.includes('Answer "Yes"')) ? 
             `Check "Yes" on Visit Japan Web - Inspection likely but routine` :
             `Check "No" - Personal use exemption applies`,
         medication: medicationName,
