@@ -408,12 +408,16 @@
                 const threshold = parseFloat(row.thresholdNumeric) || 0;
                 const description = row.thresholdDescription.toLowerCase();
                 
+                console.log('DEBUG: Checking row:', description, 'threshold:', threshold, 'vs user:', userQuantityMg);
+                
                 if (userQuantityMg <= threshold) {
                     if (description.includes('up to') || description.includes('below') || description.includes('under')) {
+                        console.log('DEBUG: MATCHED under threshold row:', description);
                         return row;
                     }
                 } else {
                     if (description.includes('more than') || description.includes('above') || description.includes('exceeds') || description.includes('over')) {
+                        console.log('DEBUG: MATCHED over threshold row:', description);
                         return row;
                     }
                 }
@@ -434,6 +438,7 @@
                     // Check if we have pre-calculated quantity data
                     if (medication.preCalculated) {
                         console.log('DEBUG: Pre-calculated data found:', medication.preCalculated);
+                        console.log('DEBUG: Should pre-populate with:', medication.preCalculated.strengthMg, 'mg,', medication.preCalculated.tablets, 'tablets,', medication.preCalculated.days, 'days');
                         // Pre-populate the quantity form if we have calculated results
                         setTimeout(() => {
                             const strengthInput = document.getElementById('strength');
@@ -574,7 +579,7 @@
                 nextAction = 'continue-application';
             }
 
-            wizardData.permitRequired = (percentageOfLimit >= 100 || threshold === 0);
+            wizardData.permitRequired = (percentageOfLimit >= 100 || thresholdNumeric === 0);
             wizardData.percentageOfLimit = percentageOfLimit;
 
             // Display enhanced results
