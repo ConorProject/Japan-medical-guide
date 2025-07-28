@@ -188,6 +188,10 @@ function calculateMedicationStatus(medicationName, strengthMg, tablets, days = n
         declarationGuidance: declarationGuidance, // User guidance text
         medication: medicationName,
         totalQuantity: totalMg,
+        // Individual calculation inputs for permit wizard auto-population
+        strengthMg: strengthMg,
+        tablets: tablets,
+        days: days,
         threshold: guidance.thresholdNumeric,
         thresholdDescription: guidance.thresholdDescription,
         withinLimit: totalMg <= (guidance.thresholdNumeric || Infinity),

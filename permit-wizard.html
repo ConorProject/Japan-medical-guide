@@ -447,30 +447,23 @@
                         // Pre-populate the quantity form if we have calculated results
                         setTimeout(() => {
                             const strengthInput = document.getElementById('strength');
-                            const tabletsInput = document.getElementById('tablets');
-                            const daysInput = document.getElementById('days');
+                            const tabletsInput = document.getElementById('tabletCount');
+                            const daysInput = document.getElementById('tripDays');
                             
                             console.log('DEBUG: Found inputs:', !!strengthInput, !!tabletsInput, !!daysInput);
                             
-                            // Try to extract values from the totalQuantity if individual fields don't exist
-                            if (calc.totalQuantity && calc.totalQuantity === 12000) {
-                                // Reverse engineer: if we know 12000mg total, guess reasonable values
-                                if (strengthInput) strengthInput.value = 37.5; // common Adipex strength
-                                if (tabletsInput) tabletsInput.value = 2; // 2 per day
-                                if (daysInput) daysInput.value = 160; // 12000 / (37.5 * 2) = 160 days
-                                console.log('DEBUG: Pre-populated with reverse-engineered values');
-                            } else {
-                                // Use actual calculated values if available
-                                if (strengthInput && calc.strengthMg) {
-                                    strengthInput.value = calc.strengthMg;
-                                }
-                                if (tabletsInput && calc.tablets) {
-                                    tabletsInput.value = calc.tablets;
-                                }
-                                if (daysInput && calc.days) {
-                                    daysInput.value = calc.days;
-                                }
-                                console.log('DEBUG: Pre-populated with actual calculated values');
+                            // Use actual calculated values for auto-population
+                            if (strengthInput && calc.strengthMg) {
+                                strengthInput.value = calc.strengthMg;
+                                console.log('DEBUG: Set strength to:', calc.strengthMg);
+                            }
+                            if (tabletsInput && calc.tablets) {
+                                tabletsInput.value = calc.tablets;
+                                console.log('DEBUG: Set tablets to:', calc.tablets);
+                            }
+                            if (daysInput && calc.days) {
+                                daysInput.value = calc.days;
+                                console.log('DEBUG: Set days to:', calc.days);
                             }
                             
                             // Auto-calculate with the pre-filled values
@@ -522,9 +515,9 @@
             }
 
             // Add event listeners for calculations
-            document.getElementById('strength').addEventListener('input', updateCalculations);
-            document.getElementById('tabletCount').addEventListener('input', updateCalculations);
-            document.getElementById('tripDays').addEventListener('input', updateCalculations);
+            document.getElementById('strength').addEventListener('input', calculateQuantity);
+            document.getElementById('tabletCount').addEventListener('input', calculateQuantity);
+            document.getElementById('tripDays').addEventListener('input', calculateQuantity);
         });
 
         function updateCalculations() {
