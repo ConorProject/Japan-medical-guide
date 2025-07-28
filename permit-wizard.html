@@ -497,17 +497,11 @@
                             <div>
                                 <p><strong>Generic Name:</strong> ${medication.genericName}</p>
                                 <p><strong>Category:</strong> ${medication.category}</p>
-                                <p><strong>Status:</strong> <span class="status-badge ${medication.status}">${medication.status.toUpperCase()}</span></p>
                             </div>
                             <div>
-                                <p><strong>Threshold:</strong> ${medication.thresholdDescription}</p>
-                                <p><strong>Processing Time:</strong> ${medication.processingDaysMin > 0 ? 
-                                    `${medication.processingDaysMin}-${medication.processingDaysMax} days` : 'No permit needed'}</p>
+                                <p><strong>Status:</strong> <span class="status-badge ${medication.status}">${medication.status.toUpperCase()}</span></p>
                                 ${medication.officialSource ? `<p><strong>Source:</strong> <a href="${medication.officialSource}" target="_blank">Official Documentation</a></p>` : ''}
                             </div>
-                        </div>
-                        <div style="background: #e3f2fd; padding: 15px; border-radius: 6px; margin-top: 15px;">
-                            <strong>Action Required:</strong> ${medication.actionRequired}
                         </div>
                     `;
                     
@@ -691,34 +685,12 @@
         }
 
         function updateMedicationCard(correctMedication) {
-            // Update the medication display card with the correct threshold information
-            const medicationDiv = document.getElementById('selectedMedication');
-            if (medicationDiv && correctMedication) {
-                console.log('DEBUG: Updating medication card with:', correctMedication.thresholdDescription);
-                
-                medicationDiv.innerHTML = `
-                    <h3>Selected Medication: ${correctMedication.name}</h3>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
-                        <div>
-                            <p><strong>Generic Name:</strong> ${correctMedication.genericName}</p>
-                            <p><strong>Category:</strong> ${correctMedication.category}</p>
-                            <p><strong>Status:</strong> <span class="status-badge ${correctMedication.status}">${correctMedication.status.toUpperCase()}</span></p>
-                        </div>
-                        <div>
-                            <p><strong>Threshold:</strong> ${correctMedication.thresholdDescription}</p>
-                            <p><strong>Processing Time:</strong> ${correctMedication.processingDaysMin > 0 ? 
-                                `${correctMedication.processingDaysMin}-${correctMedication.processingDaysMax} days` : 'No permit needed'}</p>
-                            ${correctMedication.officialSource ? `<p><strong>Source:</strong> <a href="${correctMedication.officialSource}" target="_blank">Official Documentation</a></p>` : ''}
-                        </div>
-                    </div>
-                    <div style="background: #e3f2fd; padding: 15px; border-radius: 6px; margin-top: 15px;">
-                        <strong>Action Required:</strong> ${correctMedication.actionRequired}
-                    </div>
-                `;
-                
-                // Also update the wizardData.medication so other functions use the correct data
+            // Update wizardData.medication so other functions use the correct threshold data
+            if (correctMedication) {
+                console.log('DEBUG: Updating wizardData with correct medication entry:', correctMedication.thresholdDescription);
                 wizardData.medication = correctMedication;
             }
+            // Note: Blue card stays simple with static info, dynamic results go in calculator section
         }
 
         function getProgressColor(percentage) {
