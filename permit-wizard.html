@@ -431,6 +431,32 @@
                     const medication = JSON.parse(storedMedication);
                     wizardData.medication = medication;
                     
+                    // Check if we have pre-calculated quantity data
+                    if (medication.preCalculated) {
+                        console.log('DEBUG: Pre-calculated data found:', medication.preCalculated);
+                        // Pre-populate the quantity form if we have calculated results
+                        setTimeout(() => {
+                            const strengthInput = document.getElementById('strength');
+                            const tabletsInput = document.getElementById('tablets');
+                            const daysInput = document.getElementById('days');
+                            
+                            if (strengthInput && medication.preCalculated.strengthMg) {
+                                strengthInput.value = medication.preCalculated.strengthMg;
+                            }
+                            if (tabletsInput && medication.preCalculated.tablets) {
+                                tabletsInput.value = medication.preCalculated.tablets;
+                            }
+                            if (daysInput && medication.preCalculated.days) {
+                                daysInput.value = medication.preCalculated.days;
+                            }
+                            
+                            // Auto-calculate with the pre-filled values
+                            if (strengthInput?.value && tabletsInput?.value && daysInput?.value) {
+                                calculateQuantity();
+                            }
+                        }, 100);
+                    }
+                    
                     // Enhanced medication display with CSV data
                     document.getElementById('selectedMedication').innerHTML = `
                         <h3>Selected Medication: ${medication.name}</h3>
@@ -501,7 +527,9 @@
             };
 
             // Find the correct threshold entry based on calculated quantity
+            console.log('DEBUG: Looking for correct threshold for', wizardData.medication.name, 'with quantity', totalMg);
             const correctMedication = findCorrectThresholdEntry(wizardData.medication.name, totalMg);
+            console.log('DEBUG: Found medication entry:', correctMedication?.thresholdDescription, 'with processing days:', correctMedication?.processingDaysMin);
             const thresholdNumeric = correctMedication ? parseFloat(correctMedication.thresholdNumeric) : null;
             const medicationStatus = correctMedication ? correctMedication.status : null;
             const percentageOfLimit = thresholdNumeric && thresholdNumeric > 0 ? (totalMg / thresholdNumeric * 100) : 0;

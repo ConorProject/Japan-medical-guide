@@ -560,7 +560,7 @@ function openQuantityCalculator(medicationName) {
     console.log(`Opening calculator for: ${medicationName}`);
 }
 
-function openPermitWizard(medicationName, itemId = null) {
+function openPermitWizard(medicationName, itemId = null, calculatedResults = null) {
     // Get the specific medication scenario if itemId provided
     let guidance;
     if (itemId) {
@@ -607,7 +607,10 @@ function openPermitWizard(medicationName, itemId = null) {
         searchTerms: guidance.searchTerms || [],
         
         // Timestamp for data freshness
-        passedAt: Date.now()
+        passedAt: Date.now(),
+        
+        // Pre-calculated quantity data if available
+        preCalculated: calculatedResults
     };
     
     // Store data for permit wizard to consume
@@ -954,7 +957,7 @@ function generatePermitOptionsHTML(results) {
         <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #dee2e6;">
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                 ${results.permitRequired ? 
-                    `<button onclick="openPermitWizard('${results.medication}')" 
+                    `<button onclick="openPermitWizard('${results.medication}', null, ${JSON.stringify(results).replace(/"/g, '&quot;')})" 
                             style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 14px;">
                         Permit Application
                     </button>` 
