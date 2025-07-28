@@ -490,7 +490,17 @@
                         }, 100);
                     }
                     
-                    // Enhanced medication display with CSV data
+                    // Enhanced medication display with CSV data - find permit processing time
+                    const allMedications = JSON.parse(sessionStorage.getItem('allMedicationsData') || '[]');
+                    const permitEntry = allMedications.find(med => 
+                        (med.name.toLowerCase() === medication.name.toLowerCase() || 
+                         med.genericName.toLowerCase() === medication.genericName.toLowerCase()) &&
+                        med.processingDaysMin > 0
+                    );
+                    const permitProcessingTime = permitEntry ? 
+                        `${permitEntry.processingDaysMin}-${permitEntry.processingDaysMax} days` : 
+                        'Varies by case';
+                    
                     document.getElementById('selectedMedication').innerHTML = `
                         <h3>Selected Medication: ${medication.name}</h3>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
@@ -501,8 +511,7 @@
                             </div>
                             <div>
                                 <p><strong>Threshold:</strong> ${parseFloat(medication.thresholdNumeric) / 1000}g</p>
-                                <p><strong>Processing Time:</strong> ${medication.processingDaysMin > 0 ? 
-                                    `${medication.processingDaysMin}-${medication.processingDaysMax} days` : 'No permit needed'}</p>
+                                <p><strong>Processing Time:</strong> ${permitProcessingTime}</p>
                                 ${medication.officialSource ? `<p><strong>Source:</strong> <a href="${medication.officialSource}" target="_blank">Official Documentation</a></p>` : ''}
                             </div>
                         </div>
