@@ -2017,7 +2017,7 @@ function displayRestrictionResults(results) {
             // Create dual badge display
             statusBadges = `
                 <div class="status-badge restricted">
-                    ⚠️ RESTRICTED (${med.regulatoryThresholds.restrictedPermitted.limit})
+                    ⚠️ CONTROLLED (${med.regulatoryThresholds.restrictedPermitted.limit})
                 </div>
                 <div class="status-badge prohibited" style="margin-left: 8px;">
                     🚫 PROHIBITED (${med.regulatoryThresholds.prohibited.trigger})
@@ -2033,7 +2033,7 @@ function displayRestrictionResults(results) {
                 case 'restricted':
                     statusIcon = '';
                     statusClass = 'restricted';
-                    statusText = 'RESTRICTED';
+                    statusText = 'CONTROLLED';
                     break;
                 case 'permitted':
                     statusIcon = '';
@@ -2079,7 +2079,7 @@ function displayRestrictionResults(results) {
                         <div class="threshold-title">📊 Quantity-Based Requirements</div>
                         <div class="threshold-grid">
                             <div class="threshold-item restricted">
-                                <div class="threshold-status">⚠️ RESTRICTED</div>
+                                <div class="threshold-status">⚠️ CONTROLLED</div>
                                 <div class="threshold-limit">${med.regulatoryThresholds.restrictedPermitted.limit}</div>
                                 <div class="threshold-note">${med.regulatoryThresholds.restrictedPermitted.typical_duration}</div>
                             </div>
@@ -2386,7 +2386,7 @@ function generateEssentialTravelInfo(med) {
     // Additional restrictions or requirements
     if (med.status === 'prohibited') {
         essentialInfo += '<div class="essential-item critical">🚫 <strong>Import Prohibited</strong> - Cannot enter Japan under any circumstances</div>';
-    } else if (med.status === 'restricted' || threshold === 0) {
+    } else if (med.status === 'controlled' || threshold === 0) {
         essentialInfo += '<div class="essential-item info">⏱️ <strong>Permit Processing:</strong> 14-21 business days advance notice required</div>';
     }
     
@@ -2474,7 +2474,7 @@ function getCustomsDeclaration(med) {
         };
     }
     
-    if (classification.status === 'restricted') {
+    if (classification.status === 'controlled') {
         return {
             required: true,
             channel: 'Red Channel',
@@ -3327,7 +3327,7 @@ function getThresholdForMedication(medication) {
     // Status-based defaults following research methodology
     if (medication.status === 'prohibited') {
         return 0; // Always prohibited
-    } else if (medication.status === 'restricted') {
+    } else if (medication.status === 'controlled') {
         // Check if it's psychotropic (requires permits for any amount)
         const isPsychotropic = checkIfPsychotropic(medication);
         return isPsychotropic ? 0 : 1000; // Psychotropics need permits, others have thresholds
@@ -3458,7 +3458,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
 
         <div class="classification-item classification-restricted">
-            <div class="classification-title">RESTRICTED</div>
+            <div class="classification-title">CONTROLLED</div>
             <div class="classification-description">
                 These medications require specific action at customs. You <strong>must</strong> use the Red Channel and declare them, even if no advance permit is needed. This includes all psychotropic substances.
             </div>
