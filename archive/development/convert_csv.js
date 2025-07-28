@@ -51,7 +51,7 @@ const medications = parsed.data.map((row, index) => {
 function convertStatus(classification) {
     if (!classification) return 'unknown';
     if (classification.includes('🔴')) return 'prohibited';
-    if (classification.includes('🟡')) return 'restricted';  
+    if (classification.includes('🟡')) return 'controlled';  
     if (classification.includes('🟢')) return 'permitted';
     return 'unknown';
 }
@@ -59,7 +59,7 @@ function convertStatus(classification) {
 function extractCustomsDeclaration(action) {
     if (!action) return 'unknown';
     const actionLower = action.toLowerCase();
-    if (actionLower.includes("check 'yes'")) return 'required';
+    if (actionLower.includes("check 'yes'")) return 'Answer "Yes" to controlled substances and prohibited item questions on the Visit Japan Web customs form. This ensures proper routing and prevents delays at the airport.';
     if (actionLower.includes("check 'no'")) return 'not_required';
     return 'see_action';
 }
