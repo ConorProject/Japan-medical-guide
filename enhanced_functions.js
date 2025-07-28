@@ -28,7 +28,7 @@ function findMedicationGuidance(medicationName, userQuantityMg = null) {
     // Find the right threshold scenario based on quantity comparison
     // Look for the appropriate row based on whether user quantity is above or below threshold
     for (const row of medicationRows) {
-        const threshold = row.thresholdNumeric || 0;
+        const threshold = parseFloat(row.thresholdNumeric) || 0;
         const description = row.thresholdDescription.toLowerCase();
         
         if (userQuantityMg <= threshold) {
