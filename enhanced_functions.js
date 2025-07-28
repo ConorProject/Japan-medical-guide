@@ -614,6 +614,9 @@ function openPermitWizard(medicationName, itemId = null) {
     try {
         sessionStorage.setItem('permitMedicationData', JSON.stringify(permitData));
         
+        // Also store all medications for threshold matching
+        sessionStorage.setItem('allMedicationsData', JSON.stringify(window.medications));
+        
         // Launch permit wizard
         window.open('permit-wizard.html', '_blank');
         

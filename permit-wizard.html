@@ -391,6 +391,38 @@
     <script>
         let wizardData = {};
 
+        // Function to find the correct threshold entry based on quantity
+        function findCorrectThresholdEntry(medicationName, userQuantityMg) {
+            const allMedications = JSON.parse(sessionStorage.getItem('allMedicationsData') || '[]');
+            const medicationRows = allMedications.filter(med => 
+                med.name.toLowerCase().includes(medicationName.toLowerCase()) ||
+                med.genericName.toLowerCase().includes(medicationName.toLowerCase())
+            );
+            
+            if (medicationRows.length === 0) {
+                return wizardData.medication; // fallback to original
+            }
+            
+            // Find the right threshold scenario - same logic as main calculator
+            for (const row of medicationRows) {
+                const threshold = parseFloat(row.thresholdNumeric) || 0;
+                const description = row.thresholdDescription.toLowerCase();
+                
+                if (userQuantityMg <= threshold) {
+                    if (description.includes('up to') || description.includes('below') || description.includes('under')) {
+                        return row;
+                    }
+                } else {
+                    if (description.includes('more than') || description.includes('above') || description.includes('exceeds') || description.includes('over')) {
+                        return row;
+                    }
+                }
+            }
+            
+            // Fallback to first row
+            return medicationRows[0];
+        }
+
         // Load medication from sessionStorage (enhanced with CSV data)
         document.addEventListener('DOMContentLoaded', function() {
             const storedMedication = sessionStorage.getItem('permitMedicationData');
@@ -468,9 +500,10 @@
                 dailyDose
             };
 
-            // Use real CSV threshold data
-            const thresholdNumeric = wizardData.medication ? parseFloat(wizardData.medication.thresholdNumeric) : null;
-            const medicationStatus = wizardData.medication ? wizardData.medication.status : null;
+            // Find the correct threshold entry based on calculated quantity
+            const correctMedication = findCorrectThresholdEntry(wizardData.medication.name, totalMg);
+            const thresholdNumeric = correctMedication ? parseFloat(correctMedication.thresholdNumeric) : null;
+            const medicationStatus = correctMedication ? correctMedication.status : null;
             const percentageOfLimit = thresholdNumeric && thresholdNumeric > 0 ? (totalMg / thresholdNumeric * 100) : 0;
             
             // Determine permit requirement using CSV data
