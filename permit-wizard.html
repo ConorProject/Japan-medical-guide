@@ -403,27 +403,41 @@
                 return wizardData.medication; // fallback to original
             }
             
-            // Find the right threshold scenario - same logic as main calculator
+            console.log('DEBUG: Found', medicationRows.length, 'medication entries for', medicationName);
+            console.log('DEBUG: User quantity:', userQuantityMg, 'mg');
+            
+            // First pass: Look for exact match based on quantity comparison
+            let underThresholdRow = null;
+            let overThresholdRow = null;
+            
             for (const row of medicationRows) {
                 const threshold = parseFloat(row.thresholdNumeric) || 0;
                 const description = row.thresholdDescription.toLowerCase();
                 
-                console.log('DEBUG: Checking row:', description, 'threshold:', threshold, 'vs user:', userQuantityMg);
+                console.log('DEBUG: Row -', description, '| threshold:', threshold, 'mg');
                 
-                if (userQuantityMg <= threshold) {
-                    if (description.includes('up to') || description.includes('below') || description.includes('under')) {
-                        console.log('DEBUG: MATCHED under threshold row:', description);
-                        return row;
-                    }
-                } else {
-                    if (description.includes('more than') || description.includes('above') || description.includes('exceeds') || description.includes('over')) {
-                        console.log('DEBUG: MATCHED over threshold row:', description);
-                        return row;
-                    }
+                if (description.includes('up to') || description.includes('below') || description.includes('under')) {
+                    underThresholdRow = row;
+                    console.log('DEBUG: Found under-threshold row:', description);
+                } else if (description.includes('more than') || description.includes('above') || description.includes('exceeds') || description.includes('over')) {
+                    overThresholdRow = row;
+                    console.log('DEBUG: Found over-threshold row:', description);
                 }
             }
             
-            // Fallback to first row
+            // Now determine which row to use based on user quantity
+            if (underThresholdRow && overThresholdRow) {
+                const threshold = parseFloat(underThresholdRow.thresholdNumeric) || 0;
+                if (userQuantityMg <= threshold) {
+                    console.log('DEBUG: Using under-threshold row (', userQuantityMg, '<=', threshold, ')');
+                    return underThresholdRow;
+                } else {
+                    console.log('DEBUG: Using over-threshold row (', userQuantityMg, '>', threshold, ')');
+                    return overThresholdRow;
+                }
+            }
+            
+            console.log('DEBUG: Falling back to first row');
             return medicationRows[0];
         }
 
