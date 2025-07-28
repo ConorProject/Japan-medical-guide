@@ -1170,9 +1170,9 @@ const enhancedCSS = `
     }
     
     .declaration-status-required {
-        background: rgba(0, 123, 255, 0.1);
+        background: transparent;
         color: #007bff;
-        border: 1px solid rgba(0, 123, 255, 0.2);
+        border: 1px solid #007bff;
     }
     
     .declaration-status-prohibited {
