@@ -477,6 +477,11 @@ function detectThresholdType(medication) {
 
 // Generate appropriate tool section based on threshold type
 function generateToolSection(medication, thresholdType, uniqueId) {
+    // Prohibited medications don't need calculators - the answer is always "cannot enter"
+    if (medication.status === 'prohibited') {
+        return '';
+    }
+    
     switch(thresholdType) {
         case 'quantity':
             return `
