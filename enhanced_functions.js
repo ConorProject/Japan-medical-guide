@@ -840,7 +840,7 @@ function generateCalculatorResultsHTML(results) {
     
     const declarationBackgrounds = {
         exempt: 'rgba(40, 167, 69, 0.1)',
-        declaration_required: 'rgba(253, 126, 20, 0.1)',
+        declaration_required: 'transparent',
         prohibited: 'rgba(220, 53, 69, 0.1)'
     };
     
