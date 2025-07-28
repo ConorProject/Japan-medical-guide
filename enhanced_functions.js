@@ -834,7 +834,7 @@ function generateCalculatorResultsHTML(results) {
     // Muted professional colors for declaration status
     const declarationColors = {
         exempt: '#28a745',
-        declaration_required: '#fd7e14', 
+        declaration_required: '#ffeaa7', 
         prohibited: '#dc3545'
     };
     
@@ -851,7 +851,7 @@ function generateCalculatorResultsHTML(results) {
     // Drug classification colors (primary status)
     const drugColors = {
         prohibited: '#dc3545',
-        controlled: '#fd7e14',
+        controlled: '#ffeaa7',
         permitted: '#28a745'
     };
     
@@ -1154,8 +1154,8 @@ const enhancedCSS = `
     }
     
     .status-badge.declaration-required {
-        background: #fd7e14;
-        color: white;
+        background: #ffeaa7;
+        color: #6f4e08;
         padding: 4px 8px;
         border-radius: 12px;
         font-size: 11px;
@@ -1170,9 +1170,9 @@ const enhancedCSS = `
     }
     
     .declaration-status-required {
-        background: rgba(253, 126, 20, 0.1);
-        color: #fd7e14;
-        border: 1px solid rgba(253, 126, 20, 0.2);
+        background: rgba(255, 234, 167, 0.1);
+        color: #6f4e08;
+        border: 1px solid rgba(255, 234, 167, 0.2);
     }
     
     .declaration-status-prohibited {
