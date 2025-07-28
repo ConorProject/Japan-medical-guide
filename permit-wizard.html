@@ -497,9 +497,12 @@
                             <div>
                                 <p><strong>Generic Name:</strong> ${medication.genericName}</p>
                                 <p><strong>Category:</strong> ${medication.category}</p>
+                                <p><strong>Status:</strong> <span class="status-badge ${medication.status}">${medication.status.toUpperCase()}</span></p>
                             </div>
                             <div>
-                                <p><strong>Status:</strong> <span class="status-badge ${medication.status}">${medication.status.toUpperCase()}</span></p>
+                                <p><strong>Threshold:</strong> ${parseFloat(medication.thresholdNumeric) / 1000}g</p>
+                                <p><strong>Processing Time:</strong> ${medication.processingDaysMin > 0 ? 
+                                    `${medication.processingDaysMin}-${medication.processingDaysMax} days` : 'No permit needed'}</p>
                                 ${medication.officialSource ? `<p><strong>Source:</strong> <a href="${medication.officialSource}" target="_blank">Official Documentation</a></p>` : ''}
                             </div>
                         </div>
