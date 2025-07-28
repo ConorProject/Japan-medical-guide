@@ -926,13 +926,14 @@ function generateCalculatorResultsHTML(results) {
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
                 <div style="padding: 15px; background: #f8f9fa; border-radius: 6px;">
                     <strong>Total Quantity:</strong> ${results.totalQuantity}mg<br><br>
-                    <strong>Threshold:</strong> ${results.thresholdDescription}<br><br>
+                    <strong>Threshold:</strong> ${results.threshold > 0 ? (results.threshold / 1000) + 'g' : 'No exemption'}<br><br>
                     ${results.dailyDose ? `<strong>Daily Dose:</strong> ${results.dailyDose} tablets<br>` : ''}
                 </div>
                 <div style="padding: 15px; background: #f8f9fa; border-radius: 6px;">
                     <strong>Within Limit:</strong> ${results.withinLimit ? '✅ Yes' : '❌ No'}<br><br>
                     <strong>Digital Declaration:</strong> Via Visit Japan Web QR code<br><br>
-                    <strong>Permit Required:</strong> ${results.permitRequired ? '✅ Yes' : '❌ No'}
+                    <strong>Permit Required:</strong> ${results.permitRequired ? '✅ Yes' : '❌ No'}<br><br>
+                    <strong>Your Scenario:</strong> ${results.thresholdDescription}
                 </div>
             </div>
             
