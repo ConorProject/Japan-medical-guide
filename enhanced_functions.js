@@ -224,7 +224,7 @@ function getVJWDeclarationGuidance(medications_list) {
             'All medications can use standard processing',
         details: declarations,
         prohibited_count: declarations.filter(d => d.status === 'prohibited').length,
-        restricted_count: declarations.filter(d => d.status === 'restricted').length,
+        controlled_count: declarations.filter(d => d.status === 'controlled').length,
         permitted_count: declarations.filter(d => d.status === 'permitted').length
     };
 }
@@ -280,7 +280,7 @@ function planMedicationTrip(medications_list, tripDurationDays = null) {
         warnings: [],
         summary: {
             prohibited: 0,
-            restricted: 0,
+            controlled: 0,
             permitted: 0
         }
     };
@@ -308,8 +308,8 @@ function planMedicationTrip(medications_list, tripDurationDays = null) {
         if (guidance.status === 'prohibited') {
             plan.warnings.push(`${med.name}: PROHIBITED - Cannot import to Japan`);
             plan.summary.prohibited++;
-        } else if (guidance.status === 'restricted') {
-            plan.summary.restricted++;
+        } else if (guidance.status === 'controlled') {
+            plan.summary.controlled++;
         } else if (guidance.status === 'permitted') {
             plan.summary.permitted++;
         }
@@ -349,11 +349,11 @@ function generateCategoryCards() {
             </div>
         </div>
 
-        <div class="category-card category-restricted">
-            <h3>Restricted (${uniqueMeds.restricted.length})</h3>
+        <div class="category-card category-controlled">
+            <h3>Controlled (${uniqueMeds.controlled.length})</h3>
             <p>Requires permits or customs declaration</p>
             <div class="med-buttons">
-                ${uniqueMeds.restricted.map(med => 
+                ${uniqueMeds.controlled.map(med => 
                     `<button class="med-button" style="color: #856404;" onclick="searchSpecific('${med.name}')">${getDisplayName(med.name)}</button>`
                 ).join('')}
             </div>
@@ -375,7 +375,7 @@ function getUniqueMedicationsByStatus() {
     const uniqueMedications = {};
     const statusGroups = {
         prohibited: [],
-        restricted: [],
+        controlled: [],
         permitted: []
     };
     
@@ -846,7 +846,7 @@ function generateCalculatorResultsHTML(results) {
     // Drug classification colors (primary status)
     const drugColors = {
         prohibited: '#dc3545',
-        restricted: '#fd7e14',
+        controlled: '#fd7e14',
         permitted: '#28a745'
     };
     
