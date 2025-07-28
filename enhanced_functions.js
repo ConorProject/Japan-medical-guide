@@ -31,6 +31,8 @@ function findMedicationGuidance(medicationName, userQuantityMg = null) {
         const threshold = parseFloat(row.thresholdNumeric) || 0;
         const description = row.thresholdDescription.toLowerCase();
         
+        console.log('DEBUG: Comparing', userQuantityMg, 'vs threshold', threshold, 'for', description);
+        
         if (userQuantityMg <= threshold) {
             // User is at or below threshold - look for "up to" or "below" row
             if (description.includes('up to') || description.includes('below') || description.includes('under')) {
@@ -39,6 +41,7 @@ function findMedicationGuidance(medicationName, userQuantityMg = null) {
         } else {
             // User exceeds threshold - look for "more than" or "above" row  
             if (description.includes('more than') || description.includes('above') || description.includes('exceeds') || description.includes('over')) {
+                console.log('DEBUG: MATCHED above threshold row:', description);
                 return row;
             }
         }
