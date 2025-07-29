@@ -2109,25 +2109,25 @@ function generateCleanActionSteps(med) {
         steps.push(`<li class="step-item"><div class="step-marker">1</div><div class="step-text">Determine your quantity: ${threshold}</div></li>`);
         
         // Step 2: Conditional path based on quantity
-        if (med.thresholdNumeric && parseFloat(med.thresholdNumeric) > 0 && med.processingDaysMin > 0) {
-            // Find the "above threshold" description from the data
-            const higherThresholdMed = window.medications?.find(m => 
-                m.name === med.name && 
-                m.thresholdNumeric === med.thresholdNumeric && 
-                (m.thresholdDescription.toLowerCase().includes('more than') || 
-                 m.thresholdDescription.toLowerCase().includes('or more') ||
-                 m.thresholdDescription.toLowerCase().includes('above'))
-            );
-            const aboveThresholdText = higherThresholdMed ? higherThresholdMed.thresholdDescription : `More than ${med.thresholdNumeric}`;
-            
-            steps.push(`<li class="step-item"><div class="step-marker">2</div><div class="step-text">If ${aboveThresholdText.toLowerCase()}: Apply for Import Confirmation Certificate (${med.processingDaysMin}-${med.processingDaysMax} days)</div></li>`);
+        // Find the "above threshold" entry for this medication (if it exists)
+        const higherThresholdMed = window.medications?.find(m => 
+            m.name === med.name && 
+            m.thresholdNumeric === med.thresholdNumeric && 
+            (m.thresholdDescription.toLowerCase().includes('more than') || 
+             m.thresholdDescription.toLowerCase().includes('or more') ||
+             m.thresholdDescription.toLowerCase().includes('above')) &&
+            parseFloat(m.processingDaysMin) > 0
+        );
+        
+        if (higherThresholdMed) {
+            steps.push(`<li class="step-item"><div class="step-marker">2</div><div class="step-text">If ${higherThresholdMed.thresholdDescription.toLowerCase()}: Apply for Import Confirmation Certificate (${higherThresholdMed.processingDaysMin}-${higherThresholdMed.processingDaysMax} days)</div></li>`);
             steps.push(`<li class="step-item"><div class="step-marker">3</div><div class="step-text">Bring valid prescription and any permit documentation</div></li>`);
         } else {
             steps.push(`<li class="step-item"><div class="step-marker">2</div><div class="step-text">Bring valid prescription from your doctor</div></li>`);
         }
         
         // Final steps: Digital customs process (consolidated)
-        const nextStep = med.processingDaysMin > 0 ? 4 : 3;
+        const nextStep = higherThresholdMed ? 4 : 3;
         steps.push(`<li class="step-item"><div class="step-marker">${nextStep}</div><div class="step-text">Answer "Yes" to controlled substances on Visit Japan Web customs form</div></li>`);
         steps.push(`<li class="step-item"><div class="step-marker">${nextStep + 1}</div><div class="step-text">Be prepared for customs inspection</div></li>`);
     }
@@ -3402,7 +3402,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <!-- Enhanced Search and Calculator Functions -->
-<script src="enhanced_functions.js?v=20250729-csv-text"></script>
+<script src="enhanced_functions.js?v=20250729-threshold-fix"></script>
 
 </body>
 </html>
