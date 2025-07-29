@@ -1006,12 +1006,12 @@ function generateCalculatorResultsHTML(results) {
         primaryColor = "#dc3545";
         primaryMessage = "Cannot import to Japan";
     } else if (needsPermit) {
-        primaryStatus = "PERMIT REQUIRED";
+        primaryStatus = "IMPORT CONFIRMATION CERTIFICATE REQUIRED";
         primaryColor = "#dc3545";
-        primaryMessage = `Processing time: ${results.processingTime}`;
+        primaryMessage = "Apply 2-4 weeks before travel";
     } else {
         // For sub-threshold amounts, prioritize "No permit required" over declaration status
-        primaryStatus = "NO PERMIT REQUIRED";
+        primaryStatus = "NO IMPORT CONFIRMATION CERTIFICATE REQUIRED";
         primaryColor = "#28a745";
         primaryMessage = "Personal use exemption - declaration still required";
     }
@@ -1024,7 +1024,7 @@ function generateCalculatorResultsHTML(results) {
                     ${primaryStatus}
                 </h3>
                 <p style="margin: 0; color: #6c757d; font-size: 14px;">
-                    ${results.medication} - ${results.totalQuantity}mg total
+                    Your calculation: ${results.totalQuantity}mg total for ${results.tripDays || results.days || 'trip'}-day trip
                 </p>
                 <p style="margin: 8px 0 0 0; color: #5a5a5a; font-size: 14px; font-weight: 500;">
                     ${primaryMessage}
@@ -1062,8 +1062,8 @@ function generateCalculatorResultsHTML(results) {
             </div>
             
             <div style="background: #f8f9fa; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
-                <strong style="font-size: 1.1rem;">Action Required:</strong><br><br>
-                ${results.actionRequired}
+                <strong style="font-size: 1.1rem;">Next Steps:</strong><br><br>
+                ${generateNextSteps(results)}
             </div>
             
             ${results.permitRequired ? `
@@ -1075,10 +1075,32 @@ function generateCalculatorResultsHTML(results) {
             ` : ''}
             
             <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 6px; font-size: 14px; color: #6c757d;">
-                <strong>Reasoning:</strong> ${results.reasoning}
+                <strong>Reason:</strong> ${results.reasoning}
             </div>
         </div>
     `;
+}
+
+function generateNextSteps(results) {
+    if (results.status === 'prohibited') {
+        return "Do not bring to Japan - possession is illegal";
+    }
+    
+    let steps = [];
+    
+    if (results.permitRequired) {
+        steps.push("1. Apply for Import Confirmation Certificate (apply 2-4 weeks before travel)");
+        steps.push("2. Answer \"Yes\" to controlled substances questions on Visit Japan Web - system will route you for inspection");
+        steps.push("3. Be prepared for customs inspection with Import Confirmation Certificate and prescription");
+    } else if (results.status === 'controlled' || results.declarationStatus === 'declaration_required') {
+        steps.push("1. Answer \"Yes\" to controlled substances questions on Visit Japan Web - system will route you for inspection");
+        steps.push("2. Be prepared for customs inspection with prescription");
+    } else {
+        steps.push("1. Bring medication in original packaging with labels");
+        steps.push("2. Proceed through standard customs - no special declaration needed");
+    }
+    
+    return steps.join("<br>");
 }
 
 function generatePermitOptionsHTML(results) {
@@ -1088,7 +1110,7 @@ function generatePermitOptionsHTML(results) {
                 ${results.permitRequired ? 
                     `<button onclick="openPermitWizard('${results.medication}', null, ${JSON.stringify(results).replace(/"/g, '&quot;')})" 
                             style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 14px;">
-                        Permit Application
+                        Import Confirmation Certificate Application
                     </button>` 
                     : ''}
                 ${results.declarationStatus !== 'prohibited' ?
