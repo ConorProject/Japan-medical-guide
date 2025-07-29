@@ -487,7 +487,7 @@ function displayMedicationCard(medication) {
                             <strong>Action Required:</strong> ${medication.actionRequired}
                         </div>
                         <div class="info-item">
-                            <strong>Customs Declaration:</strong> ${medication.customsDeclaration}
+                            <strong>Digital Customs Process:</strong> ${medication.customsDeclaration}
                         </div>
                         ${medication.processingDaysMin > 0 ? 
                             `<div class="info-item">
