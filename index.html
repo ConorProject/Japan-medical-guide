@@ -2110,9 +2110,17 @@ function generateCleanActionSteps(med) {
         
         // Step 2: Conditional path based on quantity
         if (med.thresholdNumeric && parseFloat(med.thresholdNumeric) > 0 && med.processingDaysMin > 0) {
-            // Extract the actual number from threshold description
-            const thresholdValue = parseFloat(med.thresholdNumeric);
-            steps.push(`<li class="step-item"><div class="step-marker">2</div><div class="step-text">If bringing more than ${thresholdValue} units: Apply for Import Confirmation Certificate (${med.processingDaysMin}-${med.processingDaysMax} days)</div></li>`);
+            // Find the "above threshold" description from the data
+            const higherThresholdMed = window.medications?.find(m => 
+                m.name === med.name && 
+                m.thresholdNumeric === med.thresholdNumeric && 
+                (m.thresholdDescription.toLowerCase().includes('more than') || 
+                 m.thresholdDescription.toLowerCase().includes('or more') ||
+                 m.thresholdDescription.toLowerCase().includes('above'))
+            );
+            const aboveThresholdText = higherThresholdMed ? higherThresholdMed.thresholdDescription : `More than ${med.thresholdNumeric}`;
+            
+            steps.push(`<li class="step-item"><div class="step-marker">2</div><div class="step-text">If ${aboveThresholdText.toLowerCase()}: Apply for Import Confirmation Certificate (${med.processingDaysMin}-${med.processingDaysMax} days)</div></li>`);
             steps.push(`<li class="step-item"><div class="step-marker">3</div><div class="step-text">Bring valid prescription and any permit documentation</div></li>`);
         } else {
             steps.push(`<li class="step-item"><div class="step-marker">2</div><div class="step-text">Bring valid prescription from your doctor</div></li>`);
@@ -3394,7 +3402,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <!-- Enhanced Search and Calculator Functions -->
-<script src="enhanced_functions.js?v=20250729-cleaner-steps"></script>
+<script src="enhanced_functions.js?v=20250729-csv-text"></script>
 
 </body>
 </html>
