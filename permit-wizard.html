@@ -403,24 +403,55 @@
                 return wizardData.medication; // fallback to original
             }
             
-            // Find appropriate threshold entries
-            let underThresholdRow = null;
-            let overThresholdRow = null;
+            // Find the correct threshold row based on quantity and description matching
+            // Special case: if threshold is 0, always requires permit regardless of quantity
+            const zeroThresholdRow = medicationRows.find(row => parseFloat(row.thresholdNumeric) === 0);
+            if (zeroThresholdRow) {
+                return zeroThresholdRow;
+            }
             
+            // Find the appropriate threshold row based on user quantity
             for (const row of medicationRows) {
+                const threshold = parseFloat(row.thresholdNumeric) || 0;
                 const description = row.thresholdDescription.toLowerCase();
                 
-                if (description.includes('up to') || description.includes('below') || description.includes('under')) {
-                    underThresholdRow = row;
+                // Check if this row's description matches the user's quantity situation
+                if (description.includes('up to') || description.includes('below') || description.includes('under') || description.includes('within')) {
+                    // This is the "under/at threshold" row
+                    if (userQuantityMg <= threshold) {
+                        return row;
+                    }
                 } else if (description.includes('more than') || description.includes('above') || description.includes('exceeds') || description.includes('over')) {
-                    overThresholdRow = row;
+                    // This is the "over threshold" row  
+                    if (userQuantityMg > threshold) {
+                        return row;
+                    }
+                } else if (description.includes('exactly') || description.includes('equal')) {
+                    // Handle exact match cases
+                    if (userQuantityMg === threshold) {
+                        return row;
+                    }
                 }
             }
             
-            // Select appropriate row based on user quantity
-            if (underThresholdRow && overThresholdRow) {
-                const threshold = parseFloat(underThresholdRow.thresholdNumeric) || 0;
-                return userQuantityMg <= threshold ? underThresholdRow : overThresholdRow;
+            // Fallback: find the most appropriate row based on quantity range
+            const thresholds = [...new Set(medicationRows.map(row => parseFloat(row.thresholdNumeric) || 0))];
+            const maxThreshold = Math.max(...thresholds);
+            
+            if (userQuantityMg <= maxThreshold) {
+                // Look for an "up to" row
+                const upToRow = medicationRows.find(row => {
+                    const desc = row.thresholdDescription.toLowerCase();
+                    return desc.includes('up to') || desc.includes('below') || desc.includes('under');
+                });
+                if (upToRow) return upToRow;
+            } else {
+                // Look for a "more than" row
+                const moreThanRow = medicationRows.find(row => {
+                    const desc = row.thresholdDescription.toLowerCase();
+                    return desc.includes('more than') || desc.includes('above') || desc.includes('over');
+                });
+                if (moreThanRow) return moreThanRow;
             }
             
             return medicationRows[0];

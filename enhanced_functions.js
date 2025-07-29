@@ -25,26 +25,64 @@ function findMedicationGuidance(medicationName, userQuantityMg = null) {
         return medicationRows[0];
     }
     
-    // Find the right threshold scenario based on quantity comparison
-    // Look for the appropriate row based on whether user quantity is above or below threshold
+    // Find the correct threshold row based on quantity and description matching
+    // We need to find which row's description actually applies to the user's quantity
+    
+    // First, identify all unique thresholds and sort them
+    const thresholds = [...new Set(medicationRows.map(row => parseFloat(row.thresholdNumeric) || 0))].sort((a, b) => a - b);
+    
+    // Special case: if threshold is 0, it means always requires permit regardless of quantity
+    const zeroThresholdRow = medicationRows.find(row => parseFloat(row.thresholdNumeric) === 0);
+    if (zeroThresholdRow) {
+        return zeroThresholdRow;
+    }
+    
+    // Find the appropriate threshold row based on user quantity
     for (const row of medicationRows) {
         const threshold = parseFloat(row.thresholdNumeric) || 0;
         const description = row.thresholdDescription.toLowerCase();
         
-        if (userQuantityMg <= threshold) {
-            // User is at or below threshold - look for "up to" or "below" row
-            if (description.includes('up to') || description.includes('below') || description.includes('under')) {
+        // Check if this row's description matches the user's quantity situation
+        if (description.includes('up to') || description.includes('below') || description.includes('under') || description.includes('within')) {
+            // This is the "under/at threshold" row
+            if (userQuantityMg <= threshold) {
                 return row;
             }
-        } else {
-            // User exceeds threshold - look for "more than" or "above" row  
-            if (description.includes('more than') || description.includes('above') || description.includes('exceeds') || description.includes('over')) {
+        } else if (description.includes('more than') || description.includes('above') || description.includes('exceeds') || description.includes('over')) {
+            // This is the "over threshold" row  
+            if (userQuantityMg > threshold) {
+                return row;
+            }
+        } else if (description.includes('exactly') || description.includes('equal')) {
+            // Handle exact match cases
+            if (userQuantityMg === threshold) {
                 return row;
             }
         }
     }
     
-    // Fallback to first row if no specific match
+    // If no specific match found, find the most appropriate row
+    // For quantities at or below any threshold, prefer "up to" rows
+    // For quantities above all thresholds, prefer "more than" rows
+    const maxThreshold = Math.max(...thresholds);
+    
+    if (userQuantityMg <= maxThreshold) {
+        // Look for an "up to" row with the closest threshold
+        const upToRow = medicationRows.find(row => {
+            const desc = row.thresholdDescription.toLowerCase();
+            return desc.includes('up to') || desc.includes('below') || desc.includes('under');
+        });
+        if (upToRow) return upToRow;
+    } else {
+        // Look for a "more than" row
+        const moreThanRow = medicationRows.find(row => {
+            const desc = row.thresholdDescription.toLowerCase();
+            return desc.includes('more than') || desc.includes('above') || desc.includes('over');
+        });
+        if (moreThanRow) return moreThanRow;
+    }
+    
+    // Final fallback
     return medicationRows[0];
 }
 
