@@ -1476,8 +1476,17 @@
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                 }
                 const text = await response.text();
-                medications = JSON.parse(text);
-                console.log('Medications loaded:', medications.length, 'entries');
+                const rawMedications = JSON.parse(text);
+                
+                // Normalize data types for consistent processing
+                medications = rawMedications.map(med => ({
+                    ...med,
+                    thresholdNumeric: parseFloat(med.thresholdNumeric) || 0,
+                    processingDaysMin: parseInt(med.processingDaysMin) || 0,
+                    processingDaysMax: parseInt(med.processingDaysMax) || 0
+                }));
+                
+                console.log('Medications loaded and normalized:', medications.length, 'entries');
                 
                 // Trigger any initialization that depends on medications being loaded
                 if (typeof initializeAfterMedicationsLoad === 'function') {

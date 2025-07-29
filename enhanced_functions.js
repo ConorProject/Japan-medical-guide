@@ -29,17 +29,17 @@ function findMedicationGuidance(medicationName, userQuantityMg = null) {
     // We need to find which row's description actually applies to the user's quantity
     
     // First, identify all unique thresholds and sort them
-    const thresholds = [...new Set(medicationRows.map(row => parseFloat(row.thresholdNumeric) || 0))].sort((a, b) => a - b);
+    const thresholds = [...new Set(medicationRows.map(row => row.thresholdNumeric))].sort((a, b) => a - b);
     
     // Special case: if threshold is 0, it means always requires permit regardless of quantity
-    const zeroThresholdRow = medicationRows.find(row => parseFloat(row.thresholdNumeric) === 0);
+    const zeroThresholdRow = medicationRows.find(row => row.thresholdNumeric === 0);
     if (zeroThresholdRow) {
         return zeroThresholdRow;
     }
     
     // Find the appropriate threshold row based on user quantity
     for (const row of medicationRows) {
-        const threshold = parseFloat(row.thresholdNumeric) || 0;
+        const threshold = row.thresholdNumeric;
         const description = row.thresholdDescription.toLowerCase();
         
         // Check if this row's description matches the user's quantity situation
