@@ -94,8 +94,18 @@ function getInitialBadgeText(medication) {
         // All controlled substances are quantity-dependent
         return 'QUANTITY CHECK NEEDED';
     } else {
-        // Only truly 'permitted' medications with no thresholds
-        return 'DECLARATION ONLY';
+        // Permitted medications require no declaration
+        return 'NO DECLARATION NEEDED';
+    }
+}
+
+function getInitialBadgeClass(medication) {
+    if (medication.status === 'prohibited') {
+        return 'prohibited';
+    } else if (medication.status === 'controlled') {
+        return 'info';
+    } else {
+        return 'no-declaration';
     }
 }
 
@@ -476,7 +486,7 @@ function displayMedicationCard(medication) {
                         <h3 class="medication-name">${medication.name}</h3>
                         <div class="medication-generic">${medication.genericName}</div>
                     </div>
-                    <span class="status-badge ${medication.status === 'prohibited' ? 'prohibited' : 'info'}">${getInitialBadgeText(medication)}</span>
+                    <span class="status-badge ${getInitialBadgeClass(medication)}">${getInitialBadgeText(medication)}</span>
                 </div>
                 
                 <!-- Primary Information Section -->
@@ -717,9 +727,12 @@ function calculateForCard(medicationName, calculatorId) {
     } else if (results.permitRequired) {
         badge.textContent = 'PERMIT REQUIRED';
         badge.className = 'status-badge permit-required';
-    } else {
+    } else if (results.status === 'controlled' || results.declarationStatus === 'declaration_required') {
         badge.textContent = 'DECLARATION ONLY';
         badge.className = 'status-badge declaration-only';
+    } else {
+        badge.textContent = 'NO DECLARATION NEEDED';
+        badge.className = 'status-badge no-declaration';
     }
     
     // Display enhanced results
@@ -1242,6 +1255,15 @@ const enhancedCSS = `
     
     .status-badge.declaration-only {
         background: #28a745;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: bold;
+    }
+    
+    .status-badge.no-declaration {
+        background: #6f42c1;
         color: white;
         padding: 4px 8px;
         border-radius: 12px;
