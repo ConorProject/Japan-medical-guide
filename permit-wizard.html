@@ -393,19 +393,26 @@
 
         // Function to find the correct threshold entry based on quantity
         function findCorrectThresholdEntry(medicationName, userQuantityMg) {
-            const allMedications = JSON.parse(sessionStorage.getItem('allMedicationsData') || '[]');
-            const medicationRows = allMedications.filter(med => 
-                med.name.toLowerCase().includes(medicationName.toLowerCase()) ||
-                med.genericName.toLowerCase().includes(medicationName.toLowerCase())
-            );
-            
-            if (medicationRows.length === 0) {
-                return wizardData.medication; // fallback to original
-            }
-            
-            // Find the correct threshold row based on quantity and description matching
-            // Special case: if threshold is 0, always requires permit regardless of quantity
-            const zeroThresholdRow = medicationRows.find(row => row.thresholdNumeric === 0);
+            try {
+                const allMedicationsData = sessionStorage.getItem('allMedicationsData');
+                if (!allMedicationsData) {
+                    // Data not ready yet, return current medication as fallback
+                    return wizardData.medication;
+                }
+                
+                const allMedications = JSON.parse(allMedicationsData);
+                const medicationRows = allMedications.filter(med => 
+                    med.name.toLowerCase().includes(medicationName.toLowerCase()) ||
+                    med.genericName.toLowerCase().includes(medicationName.toLowerCase())
+                );
+                
+                if (medicationRows.length === 0) {
+                    return wizardData.medication; // fallback to original
+                }
+                
+                // Find the correct threshold row based on quantity and description matching
+                // Special case: if threshold is 0, always requires permit regardless of quantity
+                const zeroThresholdRow = medicationRows.find(row => row.thresholdNumeric === 0);
             if (zeroThresholdRow) {
                 return zeroThresholdRow;
             }
@@ -454,7 +461,12 @@
                 if (moreThanRow) return moreThanRow;
             }
             
-            return medicationRows[0];
+                return medicationRows[0];
+                
+            } catch (error) {
+                console.error('Error in findCorrectThresholdEntry:', error);
+                return wizardData.medication; // fallback on any error
+            }
         }
 
         // Load medication from sessionStorage (enhanced with CSV data)
