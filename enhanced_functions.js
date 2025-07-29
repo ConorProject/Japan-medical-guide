@@ -763,34 +763,33 @@ function calculateForCard(medicationName, calculatorId) {
     if (!strength || !tablets || !days) {
         calculator.querySelector('.calculation-result').style.display = 'none';
         calculator.querySelector('.permit-options').style.display = 'none';
-        // Reset status badge
+        // Reset status display
         const card = calculator.closest('.medication-card');
-        const badge = card.querySelector('.status-badge');
-        badge.textContent = 'CALCULATE NEEDED';
-        badge.className = 'status-badge info';
+        const statusElement = card.querySelector('.medication-status');
+        const medName = card.querySelector('.medication-name').textContent;
+        const medication = window.medications?.find(m => m.name === medName);
+        if (statusElement && medication) {
+            statusElement.textContent = getCleanStatusText(medication.status);
+        }
         return;
     }
 
     // Use comprehensive calculator
     const results = calculateMedicationStatus(medicationName, strength, tablets, days);
     
-    // Update status badge to show user's situation (permit requirement)
+    // Update status display to show user's situation
     const card = calculator.closest('.medication-card');
-    const badge = card.querySelector('.status-badge');
+    const statusElement = card.querySelector('.medication-status');
     
     // Show what the user actually needs to do
     if (results.status === 'prohibited') {
-        badge.textContent = 'PROHIBITED';
-        badge.className = 'status-badge prohibited';
+        statusElement.textContent = 'Import Prohibited';
     } else if (results.permitRequired) {
-        badge.textContent = 'PERMIT REQUIRED';
-        badge.className = 'status-badge permit-required';
+        statusElement.textContent = 'Import Permit Required';
     } else if (results.status === 'controlled' || results.declarationStatus === 'declaration_required') {
-        badge.textContent = 'DECLARATION ONLY';
-        badge.className = 'status-badge declaration-only';
+        statusElement.textContent = 'Declaration Required';
     } else {
-        badge.textContent = 'NO DECLARATION NEEDED';
-        badge.className = 'status-badge no-declaration';
+        statusElement.textContent = 'No Declaration Needed';
     }
     
     // Display enhanced results
