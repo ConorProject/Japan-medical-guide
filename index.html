@@ -2110,17 +2110,18 @@ function generateCleanActionSteps(med) {
         
         // Step 2: Conditional path based on quantity
         if (med.thresholdNumeric && parseFloat(med.thresholdNumeric) > 0 && med.processingDaysMin > 0) {
-            steps.push(`<li class="step-item"><div class="step-marker">2</div><div class="step-text">If above ${threshold}: Apply for Import Confirmation Certificate (${med.processingDaysMin}-${med.processingDaysMax} days)</div></li>`);
+            // Extract the actual number from threshold description
+            const thresholdValue = parseFloat(med.thresholdNumeric);
+            steps.push(`<li class="step-item"><div class="step-marker">2</div><div class="step-text">If bringing more than ${thresholdValue} units: Apply for Import Confirmation Certificate (${med.processingDaysMin}-${med.processingDaysMax} days)</div></li>`);
             steps.push(`<li class="step-item"><div class="step-marker">3</div><div class="step-text">Bring valid prescription and any permit documentation</div></li>`);
         } else {
             steps.push(`<li class="step-item"><div class="step-marker">2</div><div class="step-text">Bring valid prescription from your doctor</div></li>`);
         }
         
-        // Final steps: Digital customs process (same for all quantities)
+        // Final steps: Digital customs process (consolidated)
         const nextStep = med.processingDaysMin > 0 ? 4 : 3;
-        steps.push(`<li class="step-item"><div class="step-marker">${nextStep}</div><div class="step-text">Complete Visit Japan Web customs form accurately</div></li>`);
-        steps.push(`<li class="step-item"><div class="step-marker">${nextStep + 1}</div><div class="step-text">Answer "Yes" to controlled substances question</div></li>`);
-        steps.push(`<li class="step-item"><div class="step-marker">${nextStep + 2}</div><div class="step-text">Be prepared for customs inspection</div></li>`);
+        steps.push(`<li class="step-item"><div class="step-marker">${nextStep}</div><div class="step-text">Answer "Yes" to controlled substances on Visit Japan Web customs form</div></li>`);
+        steps.push(`<li class="step-item"><div class="step-marker">${nextStep + 1}</div><div class="step-text">Be prepared for customs inspection</div></li>`);
     }
     
     if (med.status === 'permitted') {
@@ -3393,7 +3394,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <!-- Enhanced Search and Calculator Functions -->
-<script src="enhanced_functions.js?v=20250729-quantity-first"></script>
+<script src="enhanced_functions.js?v=20250729-cleaner-steps"></script>
 
 </body>
 </html>
