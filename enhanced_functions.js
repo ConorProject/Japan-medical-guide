@@ -90,9 +90,11 @@ function findMedicationGuidance(medicationName, userQuantityMg = null) {
 function getInitialBadgeText(medication) {
     if (medication.status === 'prohibited') {
         return 'PROHIBITED';
-    } else if (medication.processingDaysMin > 0) {
+    } else if (medication.status === 'controlled') {
+        // All controlled substances are quantity-dependent
         return 'QUANTITY CHECK NEEDED';
     } else {
+        // Only truly 'permitted' medications with no thresholds
         return 'DECLARATION ONLY';
     }
 }
