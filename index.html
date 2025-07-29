@@ -59,113 +59,153 @@
             opacity: 0.9;
         }
 
-        /* Clean Medical Grade CSS */
+        /* Commercial Grade Medication Cards */
         .medication-card {
             background: white;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            border: 1px solid #e1e5e9;
+            border-radius: 12px;
+            margin-bottom: 24px;
             overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .medication-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         .handy-guide {
-            padding: 20px;
-            font-size: 17px;
+            padding: 32px;
+            font-size: 16px;
             line-height: 1.6;
         }
 
         .guide-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 15px;
+            margin-bottom: 28px;
         }
 
         .medication-title {
-            flex: 1;
-            min-width: 200px;
+            margin-bottom: 20px;
         }
 
         .medication-name {
             font-family: 'Source Sans Pro', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #343a40;
-            margin: 0 0 5px 0;
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: #2c3e50;
+            margin: 0 0 8px 0;
             line-height: 1.2;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.02em;
         }
 
         .medication-generic {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #6c757d;
-            margin-bottom: 3px;
-            font-style: italic;
+            font-weight: 300;
+            margin-bottom: 0;
         }
 
-        /* Status Badges - Clean Colors */
-        .status-badge {
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: 600;
+        .medication-status {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #495057;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-size: 12px;
-            text-align: center;
-            min-width: 120px;
+            letter-spacing: 0.05em;
+            margin-top: 12px;
+            padding: 0;
+            border: none;
+            background: none;
         }
 
-        .status-badge.prohibited {
-            background: #fdf2f2;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+        /* Elegant Information Sections */
+        .medication-info {
+            margin-bottom: 24px;
         }
 
-        .status-badge.controlled {
-            background: #fffdf5;
-            color: #6f4e08;
-            border: 1px solid #ffeaa7;
+        .info-section {
+            margin-bottom: 20px;
         }
 
-        .status-badge.permitted {
-            background: #f8fbf8;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+        .info-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #495057;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
         }
-        
-        .status-badge.info {
-            background: #17a2b8;
+
+        .info-content {
+            font-size: 1rem;
+            color: #2c3e50;
+            line-height: 1.5;
+        }
+
+        .info-content.emphasis {
+            font-weight: 500;
+        }
+
+        .info-content.muted {
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+
+        /* Action Steps - Clean Design */
+        .action-steps {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+
+        .action-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 16px;
+        }
+
+        .step-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .step-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .step-marker {
+            width: 20px;
+            height: 20px;
+            background: #007bff;
             color: white;
-        }
-        
-        .status-badge.permit-required {
-            background: #dc3545;
-            color: white;
-        }
-        
-        .status-badge.declaration-only {
-            background: #28a745;
-            color: white;
-        }
-        
-        .status-badge.no-declaration {
-            background: #6f42c1;
-            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 500;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
 
-        /* Card Border Colors */
-        .medication-card.status-prohibited {
-            border-left: 4px solid #dc3545;
-        }
-
-        .medication-card.status-controlled {
-            border-left: 4px solid #ffeaa7;
-        }
-
-        .medication-card.status-permitted {
-            border-left: 4px solid #28a745;
+        .step-text {
+            font-size: 0.95rem;
+            color: #495057;
+            line-height: 1.4;
         }
 
         /* Story Hook */
@@ -2045,288 +2085,112 @@ function clearTripPlanner() {
 }
 
 // --- ENHANCED RESTRICTION RESULTS DISPLAY ---
+// Helper functions for clean design
+function getCleanStatusText(status) {
+    switch(status) {
+        case 'prohibited': return 'Import Prohibited';
+        case 'controlled': return 'Controlled Substance';
+        case 'permitted': return 'Standard Medication';
+        default: return 'Status Unknown';
+    }
+}
+
+function generateCleanActionSteps(med) {
+    let steps = [];
+    
+    if (med.status === 'prohibited') {
+        steps.push(`<li class="step-item"><div class="step-marker">!</div><div class="step-text">Do not bring to Japan - possession is illegal</div></li>`);
+        return steps.join('');
+    }
+    
+    if (med.status === 'controlled') {
+        steps.push(`<li class="step-item"><div class="step-marker">1</div><div class="step-text">Bring valid prescription from your doctor</div></li>`);
+        steps.push(`<li class="step-item"><div class="step-marker">2</div><div class="step-text">Complete Visit Japan Web customs form accurately</div></li>`);
+        steps.push(`<li class="step-item"><div class="step-marker">3</div><div class="step-text">Answer "Yes" to controlled substances question</div></li>`);
+        steps.push(`<li class="step-item"><div class="step-marker">4</div><div class="step-text">Be prepared for customs inspection</div></li>`);
+        
+        if (med.thresholdNumeric && parseFloat(med.thresholdNumeric) > 0) {
+            const threshold = med.thresholdDescription || `${med.thresholdNumeric} units`;
+            if (med.processingDaysMin > 0) {
+                steps.push(`<li class="step-item"><div class="step-marker">+</div><div class="step-text">For quantities above ${threshold}: obtain advance permit (${med.processingDaysMin}-${med.processingDaysMax} days)</div></li>`);
+            }
+        }
+    }
+    
+    if (med.status === 'permitted') {
+        steps.push(`<li class="step-item"><div class="step-marker">1</div><div class="step-text">Bring in original packaging with labels</div></li>`);
+        steps.push(`<li class="step-item"><div class="step-marker">2</div><div class="step-text">Limit to personal use (typically 1-month supply)</div></li>`);
+        steps.push(`<li class="step-item"><div class="step-marker">3</div><div class="step-text">Proceed through standard customs - no special declaration needed</div></li>`);
+    }
+    
+    return steps.join('');
+}
+
+function generateCleanKeyInfo(med) {
+    let info = [];
+    
+    if (med.thresholdDescription && med.status !== 'prohibited') {
+        info.push(`
+            <div class="info-section">
+                <div class="info-label">Quantity Guidelines</div>
+                <div class="info-content emphasis">${med.thresholdDescription}</div>
+            </div>
+        `);
+    }
+    
+    if (med.customsDeclaration && med.customsDeclaration !== 'not_required') {
+        info.push(`
+            <div class="info-section">
+                <div class="info-label">Digital Customs Process</div>
+                <div class="info-content muted">${med.customsDeclaration}</div>
+            </div>
+        `);
+    }
+    
+    if (med.reasonForClassification) {
+        info.push(`
+            <div class="info-section">
+                <div class="info-label">Background</div>
+                <div class="info-content muted">${med.reasonForClassification}</div>
+            </div>
+        `);
+    }
+    
+    return info.join('');
+}
+
 function displayRestrictionResults(results) {
     const resultsGrid = document.getElementById('searchResults');
     resultsGrid.innerHTML = results.map(med => {
-        // Determine primary status and styling
-        let statusIcon, statusClass, statusText, statusBadges = null;
-        
-        // Handle threshold-based medications with dual badges
-        if (med.regulatoryThresholds) {
-            // Create dual badge display
-            statusBadges = `
-                <div class="status-badge restricted">
-                    ⚠️ CONTROLLED (${med.regulatoryThresholds.restrictedPermitted.limit})
-                </div>
-                <div class="status-badge prohibited" style="margin-left: 8px;">
-                    🚫 PROHIBITED (${med.regulatoryThresholds.prohibited.trigger})
-                </div>
-            `;
-        } else {
-            switch(med.status) {
-                case 'prohibited':
-                    statusIcon = '';
-                    statusClass = 'prohibited';
-                    statusText = 'PROHIBITED';
-                    break;
-                case 'restricted':
-                    statusIcon = '';
-                    statusClass = 'restricted';
-                    statusText = 'CONTROLLED';
-                    break;
-                case 'permitted':
-                    statusIcon = '';
-                    statusClass = 'permitted';
-                    statusText = 'PERMITTED';
-                    break;
-                default:
-                    statusIcon = '';
-                    statusClass = 'unknown';
-                    statusText = 'UNKNOWN';
-            }
-        }
 
         const cardId = `med-${med.name.replace(/\s+/g, '-').toLowerCase()}`;
 
         return `
-        <div class="medication-card status-${med.status}">
-            <!-- HANDY GUIDE LAYER -->
+        <div class="medication-card">
             <div class="handy-guide">
                 <div class="guide-header">
                     <div class="medication-title">
                         <h2 class="medication-name">${med.name}</h2>
                         <div class="medication-generic">${med.genericName || ''}</div>
-                    </div>
-                    ${statusBadges || `
-                    <div class="sourced-fact status-fact">
-                        <div class="status-badge ${statusClass}">
-                            ${statusIcon} ${statusText}
-                        </div>
-                        ${generateCitationLine(med)}
-                    </div>
-                    `}
-                </div>
-
-                <!-- ESSENTIAL TRAVEL INFO - Prime real estate -->
-                <div class="essential-info">
-                    ${generateEssentialTravelInfo(med)}
-                </div>
-
-                <!-- Threshold Information for Dual-Status Medications -->
-                ${med.regulatoryThresholds ? `
-                    <div class="threshold-info">
-                        <div class="threshold-title">📊 Quantity-Based Requirements</div>
-                        <div class="threshold-grid">
-                            <div class="threshold-item restricted">
-                                <div class="threshold-status">⚠️ CONTROLLED</div>
-                                <div class="threshold-limit">${med.regulatoryThresholds.restrictedPermitted.limit}</div>
-                                <div class="threshold-note">${med.regulatoryThresholds.restrictedPermitted.typical_duration}</div>
-                            </div>
-                            <div class="threshold-item prohibited">
-                                <div class="threshold-status">🚫 PROHIBITED</div>
-                                <div class="threshold-trigger">${med.regulatoryThresholds.prohibited.trigger}</div>
-                                <div class="threshold-note">No permits available</div>
-                            </div>
-                        </div>
-                    </div>
-                ` : ''}
-
-                <!-- Story Hook -->
-                ${med.uniqueStory ? `
-                    <div class="story-hook">
-                        <div class="hook-text">${med.uniqueStory}</div>
-                    </div>
-                ` : ''}
-
-                <!-- Critical Action Box -->
-                <div class="critical-action">
-                    <div class="action-title">🎯 What You Need to Do</div>
-                    <div class="action-steps">
-                        ${generateActionSteps(med)}
+                        <div class="medication-status">${getCleanStatusText(med.status)}</div>
                     </div>
                 </div>
-
-                <!-- Customs Requirements Section -->
-                ${med.customsDeclaration ? `
-                    <div class="customs-requirements">
-                        <div class="customs-title">🛂 Customs Declaration Requirements</div>
-                        <div class="customs-content">
-                            ${generateCustomsRequirements(med)}
-                        </div>
-                    </div>
-                ` : ''}
-
-                <!-- Quick Facts Grid -->
-                <div class="quick-facts">
-                    ${generateQuickFacts(med)}
+                
+                <!-- What You Need to Do -->
+                <div class="action-steps">
+                    <div class="action-title">What You Need to Do</div>
+                    <ul class="step-list">
+                        ${generateCleanActionSteps(med)}
+                    </ul>
                 </div>
-
-                ${med.consequences && med.status === 'prohibited' ? `
-                    <div style="background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 6px; padding: 15px; margin-bottom: 15px;">
-                        <div style="font-weight: 600; color: #721c24; margin-bottom: 8px;">🚨 Critical Warning</div>
-                        <div style="color: #721c24;">${med.consequences}</div>
-                    </div>
-                ` : ''}
-
-                <!-- Toggle to Encyclopedia -->
-                <button class="encyclopedia-toggle" onclick="toggleEncyclopedia('${cardId}')">
-                    View Complete Details
-                </button>
+                
+                <!-- Key Information -->
+                <div class="medication-info">
+                    ${generateCleanKeyInfo(med)}
+                </div>
             </div>
+        </div>`;
 
-            <!-- ENCYCLOPEDIA LAYER -->
-            <div class="encyclopedia" id="${cardId}-encyclopedia">
-                <div class="encyclopedia-header">
-                    📚 Complete ${med.name} Import Guide
-                </div>
-                ${med.uniqueStory || med.culturalContext || med.commonMisconception ? `
-                    <div class="chart-section">
-                        <h4>🎯 Key Insights</h4>
-                        ${med.uniqueStory ? `
-                            <div class="insight-box insight-key">
-                                <strong>Key Insight</strong>
-                                ${med.uniqueStory}
-                            </div>
-                        ` : ''}
-                        ${med.culturalContext ? `
-                            <div class="insight-box insight-cultural">
-                                <strong>Cultural Context</strong>
-                                ${med.culturalContext}
-                            </div>
-                        ` : ''}
-                        ${med.commonMisconception ? `
-                            <div class="insight-box insight-misconception">
-                                <strong>Common Misconception</strong>
-                                ${med.commonMisconception}
-                            </div>
-                        ` : ''}
-                    </div>
-                ` : ''}
-                <div class="chart-section">
-                    <h4>📋 Import Requirements</h4>
-                    <div class="chart-grid">
-                        ${generateCompleteChart(med)}
-                    </div>
-                </div>
-                ${med.japanAvailability ? `
-                    <div class="chart-section">
-                        <h4>🏥 Availability in Japan</h4>
-                        <div class="chart-grid">
-                            ${med.japanAvailability.prescriptionRequired !== undefined ? `
-                                <div class="chart-item"><div class="chart-label">Prescription Required</div>
-                                <div class="chart-value">${med.japanAvailability.prescriptionRequired ? 'Yes' : 'No'}</div></div>
-                            ` : ''}
-                            ${med.japanAvailability.costRange ? `
-                                <div class="chart-item"><div class="chart-label">Cost Range</div>
-                                <div class="chart-value">${med.japanAvailability.costRange}</div></div>
-                            ` : ''}
-                            ${med.japanAvailability.insuranceCoverage ? `
-                                <div class="chart-item"><div class="chart-label">Insurance Coverage</div>
-                                <div class="chart-value">${med.japanAvailability.insuranceCoverage}</div></div>
-                            ` : ''}
-                            ${med.japanAvailability.availableBrands && med.japanAvailability.availableBrands.length > 0 ? `
-                                <div class="chart-item"><div class="chart-label">Available Brands</div>
-                                <div class="chart-value">${med.japanAvailability.availableBrands.join(', ')}</div></div>
-                            ` : ''}
-                            ${med.japanAvailability.restrictions ? `
-                                <div class="chart-item"><div class="chart-label">Local Restrictions</div>
-                                <div class="chart-value">${med.japanAvailability.restrictions}</div></div>
-                            ` : ''}
-                        </div>
-                    </div>
-                ` : ''}
-                ${med.commentary ? `
-                    <div class="commentary-section">
-                        <div class="commentary-header">
-                            💡 Commentary & Practical Insights
-                        </div>
-                        <div class="commentary-grid">
-                            ${med.commentary.practicalTips && med.commentary.practicalTips.length > 0 ? `
-                                <div class="commentary-item">
-                                    <h5>🎯 Practical Tips</h5>
-                                    <div>
-                                        ${Array.isArray(med.commentary.practicalTips) 
-                                            ? med.commentary.practicalTips.map(tip => `<p>${tip}</p>`).join('') 
-                                            : `<p>${med.commentary.practicalTips}</p>`
-                                        }
-                                    </div>
-                                </div>
-                            ` : ''}
-                            ${med.commentary.commonMistakes && med.commentary.commonMistakes.length > 0 ? `
-                                <div class="commentary-item">
-                                    <h5>❌ Common Mistakes</h5>
-                                    <div>
-                                        ${Array.isArray(med.commentary.commonMistakes) 
-                                            ? med.commentary.commonMistakes.map(mistake => `<p>${mistake}</p>`).join('') 
-                                            : `<p>${med.commentary.commonMistakes}</p>`
-                                        }
-                                    </div>
-                                </div>
-                            ` : ''}
-                            ${med.commentary.realWorldInsights && med.commentary.realWorldInsights.length > 0 ? `
-                                <div class="commentary-item">
-                                    <h5>🌍 Real-World Insights</h5>
-                                    <div>
-                                        ${Array.isArray(med.commentary.realWorldInsights) 
-                                            ? med.commentary.realWorldInsights.map(insight => `<p>${insight}</p>`).join('') 
-                                            : `<p>${med.commentary.realWorldInsights}</p>`
-                                        }
-                                    </div>
-                                </div>
-                            ` : ''}
-                            ${med.commentary.proTips && med.commentary.proTips.length > 0 ? `
-                                <div class="commentary-item">
-                                    <h5>✨ Pro Tips</h5>
-                                    <div>
-                                        ${Array.isArray(med.commentary.proTips) 
-                                            ? med.commentary.proTips.map(tip => `<p>${tip}</p>`).join('') 
-                                            : `<p>${med.commentary.proTips}</p>`
-                                        }
-                                    </div>
-                                </div>
-                            ` : ''}
-                        </div>
-                    </div>
-                ` : ''}
-                ${med.alternatives && med.alternatives.length > 0 ? `
-                    <div class="chart-section">
-                        <h4>🔄 Alternatives</h4>
-                        <div class="alternatives-section">
-                            ${med.alternatives.map(alt => `<p>${alt}</p>`).join('')}
-                        </div>
-                    </div>
-                ` : ''}
-                ${med.researchQuality ? `
-                    <div class="chart-section research-quality-section">
-                        <h4>📊 Research Quality</h4>
-                        <div class="chart-grid">
-                            ${med.researchQuality.primarySources && med.researchQuality.primarySources.length > 0 ? `
-                                <div class="chart-item">
-                                    <div class="chart-label">Primary Sources</div>
-                                    <div class="chart-value">${med.researchQuality.primarySources.length} official sources</div>
-                                </div>
-                            ` : ''}
-                            ${med.researchQuality.confidenceLevel ? `
-                                <div class="chart-item">
-                                    <div class="chart-label">Confidence Level</div>
-                                    <div class="chart-value">${med.researchQuality.confidenceLevel}</div>
-                                </div>
-                            ` : ''}
-                            ${med.researchQuality.lastUpdated ? `
-                                <div class="chart-item">
-                                    <div class="chart-label">Last Updated</div>
-                                    <div class="chart-value">${med.researchQuality.lastUpdated}</div>
-                                </div>
-                            ` : ''}
-                        </div>
-                    </div>
-                ` : ''}
-                <button class="encyclopedia-toggle" onclick="toggleEncyclopedia('${cardId}')" style="margin-top: 30px;">
-                    ↑ Hide Complete Details
-                </button>
-            </div>
-        </div>
-        `;
     }).join('');
 }
 
@@ -3532,7 +3396,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <!-- Enhanced Search and Calculator Functions -->
-<script src="enhanced_functions.js?v=20250729-badges"></script>
+<script src="enhanced_functions.js?v=20250729-elegant"></script>
 
 </body>
 </html>

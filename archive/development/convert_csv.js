@@ -61,15 +61,17 @@ function extractCustomsDeclaration(action) {
     const actionLower = action.toLowerCase();
     if (actionLower.includes("check 'yes'")) return 'Answer "Yes" to controlled substances and prohibited item questions on the Visit Japan Web customs form. This ensures proper routing and prevents delays at the airport.';
     if (actionLower.includes("check 'no'")) return 'not_required';
-    return 'see_action';
+    if (actionLower.includes("do not bring")) return 'Do not bring to Japan. This substance is prohibited and attempting to import it may result in arrest and prosecution.';
+    return 'Complete Visit Japan Web customs declaration accurately based on your specific situation.';
 }
 
 function extractChannel(action) {
     if (!action) return 'unknown';
     const actionLower = action.toLowerCase();
-    if (actionLower.includes("check 'yes'")) return 'Red Channel';
-    if (actionLower.includes("check 'no'")) return 'Green Channel';
-    return 'See Action Required';
+    if (actionLower.includes("check 'yes'")) return 'Digital declaration required - system will route automatically';
+    if (actionLower.includes("check 'no'")) return 'Standard digital customs process';
+    if (actionLower.includes("do not bring")) return 'Import prohibited';
+    return 'Complete digital customs declaration accurately';
 }
 
 function generateSearchTerms(medicationName, genericName) {
