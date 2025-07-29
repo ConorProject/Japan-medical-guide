@@ -86,6 +86,17 @@ function findMedicationGuidance(medicationName, userQuantityMg = null) {
     return medicationRows[0];
 }
 
+// ===== HELPER FUNCTIONS =====
+function getInitialBadgeText(medication) {
+    if (medication.status === 'prohibited') {
+        return 'PROHIBITED';
+    } else if (medication.processingDaysMin > 0) {
+        return 'QUANTITY CHECK NEEDED';
+    } else {
+        return 'DECLARATION ONLY';
+    }
+}
+
 // ===== ENHANCED SEARCH WITH SMART RANKING =====
 function searchMedications(query) {
     if (!query || query.length < 1) return [];
@@ -463,7 +474,7 @@ function displayMedicationCard(medication) {
                         <h3 class="medication-name">${medication.name}</h3>
                         <div class="medication-generic">${medication.genericName}</div>
                     </div>
-                    <span class="status-badge ${medication.status}">${medication.status.toUpperCase()}</span>
+                    <span class="status-badge ${medication.status === 'prohibited' ? 'prohibited' : 'info'}">${getInitialBadgeText(medication)}</span>
                 </div>
                 
                 <!-- Primary Information Section -->
@@ -693,11 +704,21 @@ function calculateForCard(medicationName, calculatorId) {
     // Use comprehensive calculator
     const results = calculateMedicationStatus(medicationName, strength, tablets, days);
     
-    // Update status badge to show drug classification (not declaration status)
+    // Update status badge to show user's situation (permit requirement)
     const card = calculator.closest('.medication-card');
     const badge = card.querySelector('.status-badge');
-    badge.textContent = results.status.toUpperCase();
-    badge.className = `status-badge ${results.status}`;
+    
+    // Show what the user actually needs to do
+    if (results.status === 'prohibited') {
+        badge.textContent = 'PROHIBITED';
+        badge.className = 'status-badge prohibited';
+    } else if (results.permitRequired) {
+        badge.textContent = 'PERMIT REQUIRED';
+        badge.className = 'status-badge permit-required';
+    } else {
+        badge.textContent = 'DECLARATION ONLY';
+        badge.className = 'status-badge declaration-only';
+    }
     
     // Display enhanced results
     const resultDiv = calculator.querySelector('.calculation-result');
@@ -1201,6 +1222,24 @@ const enhancedCSS = `
     
     .status-badge.declaration-required {
         background: #007bff;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: bold;
+    }
+    
+    .status-badge.permit-required {
+        background: #dc3545;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: bold;
+    }
+    
+    .status-badge.declaration-only {
+        background: #28a745;
         color: white;
         padding: 4px 8px;
         border-radius: 12px;

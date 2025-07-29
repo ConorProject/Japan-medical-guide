@@ -197,6 +197,21 @@
             background: #d4edda;
             color: #155724;
         }
+        
+        .status-badge.info {
+            background: #17a2b8;
+            color: white;
+        }
+        
+        .status-badge.permit-required {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .status-badge.declaration-only {
+            background: #28a745;
+            color: white;
+        }
 
         .permit-status {
             margin-top: 20px;
@@ -517,7 +532,7 @@
                             <div>
                                 <p><strong>Generic Name:</strong> ${medication.genericName}</p>
                                 <p><strong>Category:</strong> ${medication.category}</p>
-                                <p><strong>Status:</strong> <span class="status-badge ${medication.status}">${medication.status.toUpperCase()}</span></p>
+                                <p><strong>Status:</strong> <span class="status-badge info">QUANTITY DEPENDENT</span></p>
                             </div>
                             <div>
                                 <p><strong>Threshold:</strong> ${medication.thresholdNumeric / 1000}g</p>
