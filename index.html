@@ -2104,17 +2104,23 @@ function generateCleanActionSteps(med) {
     }
     
     if (med.status === 'controlled') {
-        steps.push(`<li class="step-item"><div class="step-marker">1</div><div class="step-text">Bring valid prescription from your doctor</div></li>`);
-        steps.push(`<li class="step-item"><div class="step-marker">2</div><div class="step-text">Complete Visit Japan Web customs form accurately</div></li>`);
-        steps.push(`<li class="step-item"><div class="step-marker">3</div><div class="step-text">Answer "Yes" to controlled substances question</div></li>`);
-        steps.push(`<li class="step-item"><div class="step-marker">4</div><div class="step-text">Be prepared for customs inspection</div></li>`);
+        // Step 1: Always determine quantity first
+        const threshold = med.thresholdDescription || `${med.thresholdNumeric} units`;
+        steps.push(`<li class="step-item"><div class="step-marker">1</div><div class="step-text">Determine your quantity: ${threshold}</div></li>`);
         
-        if (med.thresholdNumeric && parseFloat(med.thresholdNumeric) > 0) {
-            const threshold = med.thresholdDescription || `${med.thresholdNumeric} units`;
-            if (med.processingDaysMin > 0) {
-                steps.push(`<li class="step-item"><div class="step-marker">+</div><div class="step-text">For quantities above ${threshold}: obtain advance permit (${med.processingDaysMin}-${med.processingDaysMax} days)</div></li>`);
-            }
+        // Step 2: Conditional path based on quantity
+        if (med.thresholdNumeric && parseFloat(med.thresholdNumeric) > 0 && med.processingDaysMin > 0) {
+            steps.push(`<li class="step-item"><div class="step-marker">2</div><div class="step-text">If above ${threshold}: Apply for Import Confirmation Certificate (${med.processingDaysMin}-${med.processingDaysMax} days)</div></li>`);
+            steps.push(`<li class="step-item"><div class="step-marker">3</div><div class="step-text">Bring valid prescription and any permit documentation</div></li>`);
+        } else {
+            steps.push(`<li class="step-item"><div class="step-marker">2</div><div class="step-text">Bring valid prescription from your doctor</div></li>`);
         }
+        
+        // Final steps: Digital customs process (same for all quantities)
+        const nextStep = med.processingDaysMin > 0 ? 4 : 3;
+        steps.push(`<li class="step-item"><div class="step-marker">${nextStep}</div><div class="step-text">Complete Visit Japan Web customs form accurately</div></li>`);
+        steps.push(`<li class="step-item"><div class="step-marker">${nextStep + 1}</div><div class="step-text">Answer "Yes" to controlled substances question</div></li>`);
+        steps.push(`<li class="step-item"><div class="step-marker">${nextStep + 2}</div><div class="step-text">Be prepared for customs inspection</div></li>`);
     }
     
     if (med.status === 'permitted') {
@@ -2128,15 +2134,6 @@ function generateCleanActionSteps(med) {
 
 function generateCleanKeyInfo(med) {
     let info = [];
-    
-    if (med.thresholdDescription && med.status !== 'prohibited') {
-        info.push(`
-            <div class="info-section">
-                <div class="info-label">Quantity Guidelines</div>
-                <div class="info-content emphasis">${med.thresholdDescription}</div>
-            </div>
-        `);
-    }
     
     if (med.customsDeclaration && med.customsDeclaration !== 'not_required') {
         info.push(`
@@ -3396,7 +3393,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <!-- Enhanced Search and Calculator Functions -->
-<script src="enhanced_functions.js?v=20250729-elegant-fixed"></script>
+<script src="enhanced_functions.js?v=20250729-quantity-first"></script>
 
 </body>
 </html>
