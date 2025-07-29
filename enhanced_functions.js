@@ -983,7 +983,7 @@ function generateCalculatorResultsHTML(results) {
                 </div>
                 <div style="padding: 15px; background: #f8f9fa; border-radius: 6px;">
                     <strong>Within Limit:</strong> ${results.withinLimit ? '✅ Yes' : '❌ No'}<br><br>
-                    <strong>Digital Declaration:</strong> Via Visit Japan Web QR code<br><br>
+                    <strong>Customs Declaration:</strong> Via Visit Japan Web QR code<br><br>
                     <strong>Permit Required:</strong> ${results.permitRequired ? '✅ Yes' : '❌ No'}<br><br>
                     <strong>Your Scenario:</strong> ${results.thresholdDescription}
                 </div>
