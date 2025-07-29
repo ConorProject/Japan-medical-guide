@@ -31,8 +31,6 @@ function findMedicationGuidance(medicationName, userQuantityMg = null) {
         const threshold = parseFloat(row.thresholdNumeric) || 0;
         const description = row.thresholdDescription.toLowerCase();
         
-        console.log('DEBUG: Comparing', userQuantityMg, 'vs threshold', threshold, 'for', description);
-        
         if (userQuantityMg <= threshold) {
             // User is at or below threshold - look for "up to" or "below" row
             if (description.includes('up to') || description.includes('below') || description.includes('under')) {
@@ -41,7 +39,6 @@ function findMedicationGuidance(medicationName, userQuantityMg = null) {
         } else {
             // User exceeds threshold - look for "more than" or "above" row  
             if (description.includes('more than') || description.includes('above') || description.includes('exceeds') || description.includes('over')) {
-                console.log('DEBUG: MATCHED above threshold row:', description);
                 return row;
             }
         }
@@ -561,7 +558,6 @@ function openQuantityCalculator(medicationName) {
         calculator.scrollIntoView({ behavior: 'smooth' });
     }
     
-    console.log(`Opening calculator for: ${medicationName}`);
 }
 
 function openPermitWizard(medicationName, itemId = null, calculatedResults = null) {
@@ -627,8 +623,6 @@ function openPermitWizard(medicationName, itemId = null, calculatedResults = nul
         // Launch permit wizard
         window.open('permit-wizard.html', '_blank');
         
-        console.log(`Permit wizard launched for: ${medicationName} (${guidance.itemId}) with complete CSV data`);
-        console.log('Threshold:', guidance.thresholdDescription, '- Processing days:', guidance.processingDaysMin);
     } catch (error) {
         console.error('Failed to pass medication data to permit wizard:', error);
         alert('Unable to launch permit wizard. Please try again.');
@@ -637,7 +631,6 @@ function openPermitWizard(medicationName, itemId = null, calculatedResults = nul
 
 function addToTripPlanner(medicationName) {
     // Add medication to trip planner
-    console.log(`Adding ${medicationName} to trip planner`);
     // This will be implemented when we build the trip planner UI
 }
 
@@ -1396,12 +1389,8 @@ document.addEventListener('DOMContentLoaded', function() {
     style.textContent = enhancedCSS;
     document.head.appendChild(style);
     
-    console.log('✅ Comprehensive medication tools loaded');
-    console.log('🔍 Enhanced search with autocomplete ready');
-    console.log('📊 Advanced calculator with comprehensive results ready');
-    console.log('✈️ Trip planner and VJW helper ready');
-    
+    // System ready - all medication tools loaded
     if (window.medications) {
-        console.log(`📋 Database: ${window.medications.length} medication scenarios loaded`);
+        // Database loaded successfully
     }
 });

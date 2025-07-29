@@ -403,41 +403,26 @@
                 return wizardData.medication; // fallback to original
             }
             
-            console.log('DEBUG: Found', medicationRows.length, 'medication entries for', medicationName);
-            console.log('DEBUG: User quantity:', userQuantityMg, 'mg');
-            
-            // First pass: Look for exact match based on quantity comparison
+            // Find appropriate threshold entries
             let underThresholdRow = null;
             let overThresholdRow = null;
             
             for (const row of medicationRows) {
-                const threshold = parseFloat(row.thresholdNumeric) || 0;
                 const description = row.thresholdDescription.toLowerCase();
-                
-                console.log('DEBUG: Row -', description, '| threshold:', threshold, 'mg');
                 
                 if (description.includes('up to') || description.includes('below') || description.includes('under')) {
                     underThresholdRow = row;
-                    console.log('DEBUG: Found under-threshold row:', description);
                 } else if (description.includes('more than') || description.includes('above') || description.includes('exceeds') || description.includes('over')) {
                     overThresholdRow = row;
-                    console.log('DEBUG: Found over-threshold row:', description);
                 }
             }
             
-            // Now determine which row to use based on user quantity
+            // Select appropriate row based on user quantity
             if (underThresholdRow && overThresholdRow) {
                 const threshold = parseFloat(underThresholdRow.thresholdNumeric) || 0;
-                if (userQuantityMg <= threshold) {
-                    console.log('DEBUG: Using under-threshold row (', userQuantityMg, '<=', threshold, ')');
-                    return underThresholdRow;
-                } else {
-                    console.log('DEBUG: Using over-threshold row (', userQuantityMg, '>', threshold, ')');
-                    return overThresholdRow;
-                }
+                return userQuantityMg <= threshold ? underThresholdRow : overThresholdRow;
             }
             
-            console.log('DEBUG: Falling back to first row');
             return medicationRows[0];
         }
 
@@ -449,41 +434,23 @@
                     const medication = JSON.parse(storedMedication);
                     wizardData.medication = medication;
                     
-                    // Check if we have pre-calculated quantity data
+                    // Auto-populate form with pre-calculated data
                     if (medication.preCalculated) {
-                        console.log('DEBUG: Pre-calculated data found:', medication.preCalculated);
-                        console.log('DEBUG: Available fields:', Object.keys(medication.preCalculated));
-                        
-                        // Check what the main calculator actually passes
                         const calc = medication.preCalculated;
-                        console.log('DEBUG: totalQuantity:', calc.totalQuantity, 'strengthMg:', calc.strengthMg, 'tablets:', calc.tablets, 'days:', calc.days);
                         
-                        // Pre-populate the quantity form if we have calculated results
                         setTimeout(() => {
                             const strengthInput = document.getElementById('strength');
                             const tabletsInput = document.getElementById('tabletCount');
                             const daysInput = document.getElementById('tripDays');
                             
-                            console.log('DEBUG: Found inputs:', !!strengthInput, !!tabletsInput, !!daysInput);
+                            // Pre-populate form fields
+                            if (strengthInput && calc.strengthMg) strengthInput.value = calc.strengthMg;
+                            if (tabletsInput && calc.tablets) tabletsInput.value = calc.tablets;
+                            if (daysInput && calc.days) daysInput.value = calc.days;
                             
-                            // Use actual calculated values for auto-population
-                            if (strengthInput && calc.strengthMg) {
-                                strengthInput.value = calc.strengthMg;
-                                console.log('DEBUG: Set strength to:', calc.strengthMg);
-                            }
-                            if (tabletsInput && calc.tablets) {
-                                tabletsInput.value = calc.tablets;
-                                console.log('DEBUG: Set tablets to:', calc.tablets);
-                            }
-                            if (daysInput && calc.days) {
-                                daysInput.value = calc.days;
-                                console.log('DEBUG: Set days to:', calc.days);
-                            }
-                            
-                            // Auto-calculate with the pre-filled values
+                            // Auto-calculate with pre-filled values
                             setTimeout(() => {
                                 if (strengthInput?.value && tabletsInput?.value && daysInput?.value) {
-                                    console.log('DEBUG: Auto-triggering calculation with:', strengthInput.value, tabletsInput.value, daysInput.value);
                                     calculateQuantity();
                                 }
                             }, 200);
@@ -517,7 +484,6 @@
                         </div>
                     `;
                     
-                    console.log('Loaded medication data from CSV:', medication);
                 } catch (error) {
                     console.error('Error parsing medication data:', error);
                     showNoMedicationError();
@@ -566,9 +532,7 @@
             };
 
             // Find the correct threshold entry based on calculated quantity
-            console.log('DEBUG: Looking for correct threshold for', wizardData.medication.name, 'with quantity', totalMg);
             const correctMedication = findCorrectThresholdEntry(wizardData.medication.name, totalMg);
-            console.log('DEBUG: Found medication entry:', correctMedication?.thresholdDescription, 'with processing days:', correctMedication?.processingDaysMin);
             const thresholdNumeric = correctMedication ? parseFloat(correctMedication.thresholdNumeric) : null;
             const medicationStatus = correctMedication ? correctMedication.status : null;
             const percentageOfLimit = thresholdNumeric && thresholdNumeric > 0 ? (totalMg / thresholdNumeric * 100) : 0;
@@ -699,10 +663,8 @@
         function updateMedicationCard(correctMedication) {
             // Update wizardData.medication so other functions use the correct threshold data
             if (correctMedication) {
-                console.log('DEBUG: Updating wizardData with correct medication entry:', correctMedication.thresholdDescription);
                 wizardData.medication = correctMedication;
             }
-            // Note: Blue card stays simple with static info, dynamic results go in calculator section
         }
 
         function getProgressColor(percentage) {
