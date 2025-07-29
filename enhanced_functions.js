@@ -99,6 +99,80 @@ function getInitialBadgeText(medication) {
     }
 }
 
+// Helper functions for clean design
+function getCleanStatusText(status) {
+    switch(status) {
+        case 'prohibited': return 'Import Prohibited';
+        case 'controlled': return 'Controlled Substance';
+        case 'permitted': return 'Standard Medication';
+        default: return 'Status Unknown';
+    }
+}
+
+function generateCleanActionSteps(med) {
+    let steps = [];
+    
+    if (med.status === 'prohibited') {
+        steps.push(`<li class="step-item"><div class="step-marker">!</div><div class="step-text">Do not bring to Japan - possession is illegal</div></li>`);
+        return steps.join('');
+    }
+    
+    if (med.status === 'controlled') {
+        steps.push(`<li class="step-item"><div class="step-marker">1</div><div class="step-text">Bring valid prescription from your doctor</div></li>`);
+        steps.push(`<li class="step-item"><div class="step-marker">2</div><div class="step-text">Complete Visit Japan Web customs form accurately</div></li>`);
+        steps.push(`<li class="step-item"><div class="step-marker">3</div><div class="step-text">Answer "Yes" to controlled substances question</div></li>`);
+        steps.push(`<li class="step-item"><div class="step-marker">4</div><div class="step-text">Be prepared for customs inspection</div></li>`);
+        
+        if (med.thresholdNumeric && parseFloat(med.thresholdNumeric) > 0) {
+            const threshold = med.thresholdDescription || `${med.thresholdNumeric} units`;
+            if (med.processingDaysMin > 0) {
+                steps.push(`<li class="step-item"><div class="step-marker">+</div><div class="step-text">For quantities above ${threshold}: obtain advance permit (${med.processingDaysMin}-${med.processingDaysMax} days)</div></li>`);
+            }
+        }
+    }
+    
+    if (med.status === 'permitted') {
+        steps.push(`<li class="step-item"><div class="step-marker">1</div><div class="step-text">Bring in original packaging with labels</div></li>`);
+        steps.push(`<li class="step-item"><div class="step-marker">2</div><div class="step-text">Limit to personal use (typically 1-month supply)</div></li>`);
+        steps.push(`<li class="step-item"><div class="step-marker">3</div><div class="step-text">Proceed through standard customs - no special declaration needed</div></li>`);
+    }
+    
+    return steps.join('');
+}
+
+function generateCleanKeyInfo(med) {
+    let info = [];
+    
+    if (med.thresholdDescription && med.status !== 'prohibited') {
+        info.push(`
+            <div class="info-section">
+                <div class="info-label">Quantity Guidelines</div>
+                <div class="info-content emphasis">${med.thresholdDescription}</div>
+            </div>
+        `);
+    }
+    
+    if (med.customsDeclaration && med.customsDeclaration !== 'not_required') {
+        info.push(`
+            <div class="info-section">
+                <div class="info-label">Digital Customs Process</div>
+                <div class="info-content muted">${med.customsDeclaration}</div>
+            </div>
+        `);
+    }
+    
+    if (med.reasonForClassification) {
+        info.push(`
+            <div class="info-section">
+                <div class="info-label">Background</div>
+                <div class="info-content muted">${med.reasonForClassification}</div>
+            </div>
+        `);
+    }
+    
+    return info.join('');
+}
+
 function getInitialBadgeClass(medication) {
     if (medication.status === 'prohibited') {
         return 'prohibited';
@@ -474,54 +548,32 @@ function getDisplayName(fullName) {
 function displayMedicationCard(medication) {
     const uniqueId = `calc-${medication.name.replace(/[^a-zA-Z0-9]/g, '')}`;
     
-    // Detect threshold type from description
-    const thresholdType = detectThresholdType(medication);
-    
     return `
-        <div class="medication-card unified-card">
+        <div class="medication-card">
             <div class="handy-guide">
-                <!-- Header -->
                 <div class="guide-header">
                     <div class="medication-title">
-                        <h3 class="medication-name">${medication.name}</h3>
-                        <div class="medication-generic">${medication.genericName}</div>
+                        <h2 class="medication-name">${medication.name}</h2>
+                        <div class="medication-generic">${medication.genericName || ''}</div>
+                        <div class="medication-status">${getCleanStatusText(medication.status)}</div>
                     </div>
-                    <span class="status-badge ${getInitialBadgeClass(medication)}">${getInitialBadgeText(medication)}</span>
                 </div>
                 
-                <!-- Primary Information Section -->
+                <!-- What You Need to Do -->
+                <div class="action-steps">
+                    <div class="action-title">What You Need to Do</div>
+                    <ul class="step-list">
+                        ${generateCleanActionSteps(medication)}
+                    </ul>
+                </div>
+                
+                <!-- Key Information -->
                 <div class="medication-info">
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <strong>Threshold:</strong> ${medication.thresholdDescription}
-                        </div>
-                        <div class="info-item">
-                            <strong>Action Required:</strong> ${medication.actionRequired}
-                        </div>
-                        <div class="info-item">
-                            <strong>Digital Customs Process:</strong> ${medication.customsDeclaration}
-                        </div>
-                        ${medication.processingDaysMin > 0 ? 
-                            `<div class="info-item">
-                                <strong>Permit Processing:</strong> ${medication.processingDaysMin}-${medication.processingDaysMax} days
-                            </div>` 
-                            : ''}
-                    </div>
-                    
-                    <div class="reasoning-section">
-                        <p><strong>Reasoning:</strong> ${medication.reasonForClassification}</p>
-                    </div>
+                    ${generateCleanKeyInfo(medication)}
                 </div>
                 
                 <!-- Interactive Tool Section -->
-                ${generateToolSection(medication, thresholdType, uniqueId)}
-                
-                <!-- Source Citation -->
-                ${medication.officialSource ? `
-                    <div class="source-citation">
-                        <strong>Source:</strong> <a href="${medication.officialSource}" target="_blank">${medication.officialSource.includes('mhlw.go.jp') ? 'MHLW Official Documentation' : 'Official Source'}</a>
-                    </div>
-                ` : ''}
+                ${generateToolSection(medication, detectThresholdType(medication), uniqueId)}
             </div>
         </div>
     `;
