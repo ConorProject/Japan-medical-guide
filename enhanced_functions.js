@@ -176,6 +176,21 @@ function generateCleanKeyInfo(med) {
         `);
     }
     
+    // Add source citation for E-E-A-T credibility
+    if (med.officialSource) {
+        info.push(`
+            <div class="info-section source-citation">
+                <div class="info-label">Official Source</div>
+                <div class="info-content muted">
+                    <a href="${med.officialSource}" target="_blank" style="color: #007bff; text-decoration: none; font-size: 12px;">
+                        ${getSourceDisplayName(med.officialSource)}
+                    </a>
+                    <span style="color: #9ca3af; font-size: 11px; margin-left: 6px;">• MHLW</span>
+                </div>
+            </div>
+        `);
+    }
+    
     return info.join('');
 }
 
