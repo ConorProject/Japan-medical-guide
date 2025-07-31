@@ -1191,7 +1191,7 @@ function generatePartialProgressBar(partialQuantityMg, medicationName) {
         return `<div style="text-align: center; color: #9ca3af; font-size: 12px; font-style: italic; margin-top: 8px;">Enter trip duration to see import limit comparison</div>`;
     }
     
-    const percentage = Math.min((partialQuantityMg / medication.thresholdNumeric) * 100, 100);
+    const percentage = (partialQuantityMg / medication.thresholdNumeric) * 100;
     
     // Muted gray color for incomplete calculation
     const progressColor = '#9ca3af';
@@ -1199,7 +1199,7 @@ function generatePartialProgressBar(partialQuantityMg, medicationName) {
     
     return `
         <div style="background: ${backgroundColor}; border: 1px solid rgba(156, 163, 175, 0.2); border-radius: 8px; height: 8px; overflow: hidden; margin-top: 8px;">
-            <div style="background: ${progressColor}; height: 100%; width: ${percentage}%; border-radius: 8px; transition: width 0.4s ease; opacity: 0.7;"></div>
+            <div style="background: ${progressColor}; height: 100%; width: ${Math.min(percentage, 100)}%; border-radius: 8px; transition: width 0.4s ease; opacity: 0.7;"></div>
         </div>
         <div style="text-align: right; margin-top: 4px;">
             <span style="font-size: 11px; color: #9ca3af;">~${percentage.toFixed(0)}% of ${medication.thresholdNumeric >= 1000 ? (medication.thresholdNumeric/1000) + 'g' : medication.thresholdNumeric + 'mg'} limit</span>
@@ -1255,9 +1255,9 @@ function generateElegantProgressBar(results) {
         displayUnit = '';
     }
     
-    // Calculate percentage of threshold limit
+    // Calculate percentage of threshold limit (don't cap at 100% - show true percentage)
     const thresholdNumeric = results.threshold;
-    const percentage = Math.min((userQuantityNumeric / thresholdNumeric) * 100, 100);
+    const percentage = (userQuantityNumeric / thresholdNumeric) * 100;
     
     // Elegant muted color scheme based on risk level
     let progressColor, backgroundColor, textColor, statusText;
@@ -1274,12 +1274,18 @@ function generateElegantProgressBar(results) {
         backgroundColor = 'rgba(255, 193, 7, 0.1)';
         textColor = '#856404';
         statusText = 'Approaching limit';
-    } else {
+    } else if (percentage <= 100) {
         // Warning zone - muted red
         progressColor = '#dc3545';
         backgroundColor = 'rgba(220, 53, 69, 0.1)';
         textColor = '#dc3545';
         statusText = 'Near threshold';
+    } else {
+        // Over limit - strong red
+        progressColor = '#dc3545';
+        backgroundColor = 'rgba(220, 53, 69, 0.2)';
+        textColor = '#dc3545';
+        statusText = 'Exceeds limit - permit required';
     }
     
     // Format threshold display to match user's input units (avoid forcing metric conversions)
@@ -1305,7 +1311,7 @@ function generateElegantProgressBar(results) {
                 <span style="font-size: 12px; color: ${textColor}; font-weight: 500;">${statusText}</span>
             </div>
             <div style="background: ${backgroundColor}; border: 1px solid rgba(${hexToRgb(progressColor)}, 0.2); border-radius: 8px; height: 8px; overflow: hidden;">
-                <div style="background: ${progressColor}; height: 100%; width: ${percentage}%; border-radius: 8px; transition: width 0.4s ease;"></div>
+                <div style="background: ${progressColor}; height: 100%; width: ${Math.min(percentage, 100)}%; border-radius: 8px; transition: width 0.4s ease;"></div>
             </div>
             <div style="text-align: right; margin-top: 4px;">
                 <span style="font-size: 11px; color: #9ca3af;">${percentage.toFixed(0)}% of ${thresholdDisplay} limit</span>
