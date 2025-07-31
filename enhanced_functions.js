@@ -968,33 +968,6 @@ function generateCalculatorResultsHTML(results) {
         `;
     }
     
-    // Muted professional colors for declaration status
-    const declarationColors = {
-        exempt: '#28a745',
-        declaration_required: '#007bff', 
-        prohibited: '#dc3545'
-    };
-    
-    const declarationBackgrounds = {
-        exempt: 'rgba(40, 167, 69, 0.1)',
-        declaration_required: 'transparent',
-        prohibited: 'rgba(220, 53, 69, 0.1)'
-    };
-    
-    const borderColor = declarationColors[results.declarationStatus];
-    const backgroundColor = declarationBackgrounds[results.declarationStatus];
-    const statusText = results.declarationStatus.toUpperCase().replace('_', ' ');
-    
-    // Drug classification colors (primary status)
-    const drugColors = {
-        prohibited: '#dc3545',
-        controlled: '#ffeaa7',
-        permitted: '#28a745'
-    };
-    
-    const drugColor = drugColors[results.status];
-    const drugStatusText = results.status.toUpperCase();
-    
     // Determine most important status to highlight
     const isPermanentlyProhibited = results.status === 'prohibited';
     const needsPermit = results.permitRequired;
@@ -1010,16 +983,15 @@ function generateCalculatorResultsHTML(results) {
         primaryColor = "#dc3545";
         primaryMessage = "Apply 2-4 weeks before travel";
     } else {
-        // For sub-threshold amounts, prioritize "No permit required" over declaration status
         primaryStatus = "NO IMPORT CONFIRMATION CERTIFICATE REQUIRED";
         primaryColor = "#28a745";
-        primaryMessage = "Personal use exemption - declaration still required";
+        primaryMessage = "Personal use exemption applies";
     }
     
     return `
         <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid ${primaryColor}; margin: 20px 0;">
-            <!-- Primary Action Status -->
-            <div style="text-align: center; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 2px solid #f0f0f0;">
+            <!-- 1. Status Summary -->
+            <div style="text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #e9ecef;">
                 <h3 style="margin: 0 0 10px 0; font-size: 1.4rem; color: ${primaryColor}; font-weight: 600;">
                     ${primaryStatus}
                 </h3>
@@ -1031,53 +1003,81 @@ function generateCalculatorResultsHTML(results) {
                 </p>
             </div>
             
-            <!-- Declaration Guidance -->
-            <div style="background: ${backgroundColor}; padding: 18px; border-radius: 6px; margin-bottom: 20px; border: 1px solid rgba(${borderColor.slice(1).match(/.{2}/g).map(hex => parseInt(hex, 16)).join(', ')}, 0.2);">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                    <h4 style="margin: 0; font-size: 1.1rem; color: ${borderColor};">${statusText}</h4>
-                    <span style="background: ${borderColor}; color: white; padding: 4px 10px; border-radius: 10px; font-size: 10px; font-weight: 600;">
-                        VISIT JAPAN WEB
-                    </span>
+            <!-- 2. Your Action Plan -->
+            <div style="margin-bottom: 25px;">
+                <h4 style="margin: 0 0 15px 0; font-size: 1.1rem; color: #2c3e50; font-weight: 600;">Your Action Plan</h4>
+                <div style="color: #5a5a5a; font-size: 14px; line-height: 1.6;">
+                    ${generateStreamlinedActionPlan(results)}
                 </div>
-                <p style="margin: 0; color: #5a5a5a; font-size: 14px; line-height: 1.4;">
-                    ${results.declarationGuidance}
+            </div>
+            
+            <!-- 3. Key Information -->
+            <div style="margin-bottom: 25px;">
+                <h4 style="margin: 0 0 15px 0; font-size: 1.1rem; color: #2c3e50; font-weight: 600;">Key Information</h4>
+                <div style="background: #f8f9fa; padding: 18px; border-radius: 6px; color: #5a5a5a; font-size: 14px; line-height: 1.6;">
+                    ${generateKeyInformation(results)}
+                </div>
+            </div>
+            
+            <!-- 4. Classification Logic -->
+            <div style="border-top: 1px solid #e9ecef; padding-top: 20px;">
+                <h4 style="margin: 0 0 10px 0; font-size: 1.0rem; color: #6c757d; font-weight: 500;">Classification Logic</h4>
+                <p style="margin: 0; color: #6c757d; font-size: 13px; line-height: 1.5;">
+                    <strong>Matched Rule:</strong> "${results.thresholdDescription}" → ${results.permitRequired ? 'Import Certificate required' : 'Personal use exemption'}<br>
+                    <strong>Source:</strong> ${results.reasoning}
                 </p>
             </div>
-            
-            <!-- Quantity Details -->
-            <h4 style="margin: 0 0 15px 0; font-size: 1.0rem; color: #6c757d;">Calculation Details</h4>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-                <div style="padding: 15px; background: #f8f9fa; border-radius: 6px;">
-                    <strong>Total Quantity:</strong> ${results.totalQuantity}mg<br><br>
-                    <strong>Threshold:</strong> ${results.threshold > 0 ? (results.threshold / 1000) + 'g' : 'No exemption'}<br><br>
-                    ${results.dailyDose ? `<strong>Daily Dose:</strong> ${results.dailyDose} tablets<br>` : ''}
-                </div>
-                <div style="padding: 15px; background: #f8f9fa; border-radius: 6px;">
-                    <strong>Within Limit:</strong> ${results.withinLimit ? '✅ Yes' : '❌ No'}<br><br>
-                    <strong>Customs Declaration:</strong> Via Visit Japan Web QR code<br><br>
-                    <strong>Permit Required:</strong> ${results.permitRequired ? '✅ Yes' : '❌ No'}<br><br>
-                    <strong>Your Scenario:</strong> ${results.thresholdDescription}
-                </div>
-            </div>
-            
-            <div style="background: #f8f9fa; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
-                <strong style="font-size: 1.1rem;">Next Steps:</strong><br><br>
-                ${generateNextSteps(results)}
-            </div>
-            
-            ${results.permitRequired ? `
-                <div style="background: #fff3cd; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
-                    <strong style="font-size: 1.1rem;">📋 Permit Information:</strong><br><br>
-                    <strong>Processing Time:</strong> ${results.processingTime}<br><br>
-                    <strong>Documentation:</strong> ${results.documentationNeeded}
-                </div>
-            ` : ''}
-            
-            <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 6px; font-size: 14px; color: #6c757d;">
-                <strong>Reason:</strong> ${results.reasoning}
-            </div>
         </div>
+    `;
+}
+
+// Helper function for streamlined action plan
+function generateStreamlinedActionPlan(results) {
+    if (results.status === 'prohibited') {
+        return `
+            <div style="color: #dc3545; font-weight: 500;">
+                ⚠️ Do not bring to Japan - possession is illegal
+            </div>
+        `;
+    }
+    
+    let steps = [];
+    
+    if (results.permitRequired) {
+        steps.push("1. <strong>Apply for Import Confirmation Certificate</strong> (2-4 weeks before travel)");
+        steps.push("2. <strong>Answer \"Yes\"</strong> to controlled substances questions on Visit Japan Web");
+        steps.push("3. <strong>Bring Certificate and prescription</strong> to customs inspection");
+        steps.push("4. <strong>Keep medication</strong> in original packaging with labels");
+    } else if (results.status === 'controlled' || results.declarationStatus === 'declaration_required') {
+        steps.push("1. <strong>Answer \"Yes\"</strong> to controlled substances questions on Visit Japan Web");
+        steps.push("2. <strong>Bring prescription</strong> to customs inspection");
+        steps.push("3. <strong>Keep medication</strong> in original packaging with labels");
+    } else {
+        steps.push("1. <strong>Keep medication</strong> in original packaging with labels");
+        steps.push("2. <strong>Proceed through standard customs</strong> - no special declaration needed");
+    }
+    
+    return steps.join("<br>");
+}
+
+// Helper function for key information section
+function generateKeyInformation(results) {
+    const threshold = results.threshold > 0 ? 
+        `${results.threshold >= 1000 ? (results.threshold / 1000) + 'g' : results.threshold + 'mg'}` : 
+        'No exemption limit';
+    
+    const processingTime = results.permitRequired ? 
+        '2-4 weeks for certificate' : 
+        'No permit needed';
+    
+    const importStatus = results.permitRequired ? 
+        'Import Certificate required' : 
+        results.status === 'controlled' ? 'Declaration required' : 'Standard import';
+    
+    return `
+        <strong>Personal Use Limit:</strong> ${threshold} (you're bringing ${results.totalQuantity}mg)<br>
+        <strong>Processing Timeline:</strong> ${processingTime}<br>
+        <strong>Import Status:</strong> ${importStatus}
     `;
 }
 
