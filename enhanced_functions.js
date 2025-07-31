@@ -297,7 +297,7 @@ function calculateMedicationStatus(medicationName, strengthMg, tablets, days = n
             status: 'not_found',
             message: 'Medication not found in database',
             medication: medicationName,
-            totalQuantity: totalMg
+            totalQuantity: `${totalMg}mg`
         };
     }
     
@@ -325,7 +325,7 @@ function calculateMedicationStatus(medicationName, strengthMg, tablets, days = n
         declarationStatus: declarationStatus, // VJW declaration category
         declarationGuidance: declarationGuidance, // User guidance text
         medication: medicationName,
-        totalQuantity: totalMg,
+        totalQuantity: `${totalMg}mg`,
         // Individual calculation inputs for permit wizard auto-population
         strengthMg: strengthMg,
         tablets: tablets,
