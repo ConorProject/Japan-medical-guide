@@ -1020,13 +1020,26 @@ function generateCalculatorResultsHTML(results) {
             </div>
             
             <!-- 4. Classification Logic -->
-            <div style="border-top: 1px solid #e9ecef; padding-top: 20px;">
+            <div style="border-top: 1px solid #e9ecef; padding-top: 20px; margin-bottom: 20px;">
                 <h4 style="margin: 0 0 10px 0; font-size: 1.0rem; color: #6c757d; font-weight: 500;">Classification Logic</h4>
                 <p style="margin: 0; color: #6c757d; font-size: 13px; line-height: 1.5;">
                     <strong>Matched Rule:</strong> "${results.thresholdDescription}" → ${results.permitRequired ? 'Import Certificate required' : 'Personal use exemption'}<br>
-                    <strong>Source:</strong> ${results.reasoning}
+                    <strong>Reasoning:</strong> ${results.reasoning}
                 </p>
             </div>
+            
+            <!-- 5. Official Source Citation -->
+            ${results.officialSource ? `
+                <div style="border-top: 1px solid #e9ecef; padding-top: 15px;">
+                    <h4 style="margin: 0 0 8px 0; font-size: 0.9rem; color: #6c757d; font-weight: 500;">Official Source</h4>
+                    <p style="margin: 0; color: #6c757d; font-size: 12px; line-height: 1.4;">
+                        <a href="${results.officialSource}" target="_blank" style="color: #007bff; text-decoration: none;">
+                            ${getSourceDisplayName(results.officialSource)}
+                        </a>
+                        <span style="color: #9ca3af; margin-left: 8px;">• Japanese Ministry of Health, Labour and Welfare</span>
+                    </p>
+                </div>
+            ` : ''}
         </div>
     `;
 }
@@ -1058,6 +1071,31 @@ function generateStreamlinedActionPlan(results) {
     }
     
     return steps.join("<br>");
+}
+
+// Helper function for displaying source names
+function getSourceDisplayName(url) {
+    if (!url) return 'Official Source';
+    
+    if (url.includes('mhlw.go.jp')) {
+        if (url.includes('pharmaceuticals/dl/qa')) {
+            return 'MHLW Import Guidelines (PDF)';
+        } else if (url.includes('pharmaceuticals/01.html')) {
+            return 'MHLW Pharmaceutical Import Regulations';
+        } else if (url.includes('ncd.mhlw.go.jp') && url.includes('total.pdf')) {
+            return 'MHLW Controlled Substances List (PDF)';
+        } else {
+            return 'MHLW Official Documentation';
+        }
+    }
+    
+    // For other sources, try to extract a readable name
+    try {
+        const domain = new URL(url).hostname;
+        return domain.replace('www.', '').toUpperCase();
+    } catch {
+        return 'Official Source';
+    }
 }
 
 // Helper function for key information section
