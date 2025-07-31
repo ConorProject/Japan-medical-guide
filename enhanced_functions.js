@@ -763,7 +763,10 @@ function calculateForCard(medicationName, calculatorId) {
     const tablets = parseInt(calculator.querySelector('.calc-tablets').value);
     const days = parseInt(calculator.querySelector('.calc-days').value);
 
-    if (!strength || !tablets || !days) {
+    // Show progressive feedback even with partial input
+    const hasAnyInput = strength > 0 || tablets > 0 || days > 0;
+    
+    if (!hasAnyInput) {
         calculator.querySelector('.immediate-result').style.display = 'none';
         calculator.querySelector('.calculation-result').style.display = 'none';
         calculator.querySelector('.permit-options').style.display = 'none';
@@ -775,6 +778,20 @@ function calculateForCard(medicationName, calculatorId) {
         if (statusElement && medication) {
             statusElement.textContent = getCleanStatusText(medication.status);
         }
+        return;
+    }
+    
+    // Handle partial input with progressive feedback
+    if (!strength || !tablets || !days) {
+        const immediateResultDiv = calculator.querySelector('.immediate-result');
+        if (immediateResultDiv) {
+            immediateResultDiv.innerHTML = generateProgressiveProgressFeedback(medicationName, strength, tablets, days);
+            immediateResultDiv.style.display = 'block';
+        }
+        
+        // Hide full results until complete
+        calculator.querySelector('.calculation-result').style.display = 'none';
+        calculator.querySelector('.permit-options').style.display = 'none';
         return;
     }
 
@@ -1115,6 +1132,79 @@ function getSourceDisplayName(url) {
     } catch {
         return 'Official Source';
     }
+}
+
+// Helper function for progressive feedback during partial input
+function generateProgressiveProgressFeedback(medicationName, strength, tablets, days) {
+    // Determine what information we have and what's missing
+    const hasStrength = strength > 0;
+    const hasTablets = tablets > 0;
+    const hasDays = days > 0;
+    
+    let feedbackText = '';
+    let showPartialBar = false;
+    let partialQuantity = 0;
+    
+    if (hasStrength && hasTablets && hasDays) {
+        // This shouldn't happen as complete input is handled elsewhere
+        feedbackText = 'Calculating...';
+    } else if (hasStrength && hasTablets) {
+        // Can show total medication amount
+        partialQuantity = strength * tablets;
+        feedbackText = `${partialQuantity}mg total medication`;
+        showPartialBar = true;
+    } else if (hasStrength && hasDays) {
+        // Can't calculate without tablet count
+        feedbackText = `${strength}mg per dose • ${days} days - enter tablet count`;
+    } else if (hasTablets && hasDays) {
+        // Can't calculate without strength
+        feedbackText = `${tablets} tablets for ${days} days - enter strength per tablet`;
+    } else if (hasStrength) {
+        feedbackText = `${strength}mg per tablet - enter quantity and trip days`;
+    } else if (hasTablets) {
+        feedbackText = `${tablets} tablets - enter strength and trip days`;
+    } else if (hasDays) {
+        feedbackText = `${days}-day trip - enter medication strength and quantity`;
+    }
+    
+    return `
+        <div style="background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 16px; margin: 15px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            <div style="margin: 12px 0;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <span style="font-size: 13px; color: #6c757d;">${feedbackText}</span>
+                    <span style="font-size: 12px; color: #9ca3af; font-weight: 500;">In progress...</span>
+                </div>
+                ${showPartialBar ? generatePartialProgressBar(partialQuantity, medicationName) : ''}
+            </div>
+        </div>
+    `;
+}
+
+// Helper function for partial progress bar when we have some quantity info
+function generatePartialProgressBar(partialQuantityMg, medicationName) {
+    // Try to find medication threshold for context
+    const medication = window.medications?.find(m => 
+        m.name.toLowerCase().includes(medicationName.toLowerCase())
+    );
+    
+    if (!medication || medication.thresholdNumeric <= 0) {
+        return `<div style="text-align: center; color: #9ca3af; font-size: 12px; font-style: italic; margin-top: 8px;">Enter trip duration to see import limit comparison</div>`;
+    }
+    
+    const percentage = Math.min((partialQuantityMg / medication.thresholdNumeric) * 100, 100);
+    
+    // Muted gray color for incomplete calculation
+    const progressColor = '#9ca3af';
+    const backgroundColor = 'rgba(156, 163, 175, 0.1)';
+    
+    return `
+        <div style="background: ${backgroundColor}; border: 1px solid rgba(156, 163, 175, 0.2); border-radius: 8px; height: 8px; overflow: hidden; margin-top: 8px;">
+            <div style="background: ${progressColor}; height: 100%; width: ${percentage}%; border-radius: 8px; transition: width 0.4s ease; opacity: 0.7;"></div>
+        </div>
+        <div style="text-align: right; margin-top: 4px;">
+            <span style="font-size: 11px; color: #9ca3af;">~${percentage.toFixed(0)}% of ${medication.thresholdNumeric >= 1000 ? (medication.thresholdNumeric/1000) + 'g' : medication.thresholdNumeric + 'mg'} limit</span>
+        </div>
+    `;
 }
 
 // Helper function for immediate progress feedback (shown right after calculator)
