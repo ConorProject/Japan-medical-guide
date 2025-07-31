@@ -626,6 +626,7 @@ function generateToolSection(medication, thresholdType, uniqueId) {
                             </div>
                         </div>
                     </div>
+                    <div class="immediate-result" style="display: none;"></div>
                     <div class="calculation-result" style="display: none;"></div>
                     <div class="permit-options" style="display: none;"></div>
                 </div>
@@ -638,6 +639,7 @@ function generateToolSection(medication, thresholdType, uniqueId) {
                         <input type="number" class="unit-count" min="1" placeholder="Number of units" oninput="calculateUnitsForCard('${medication.name}', '${uniqueId}')">
                         <span class="unit-label">units</span>
                     </div>
+                    <div class="immediate-result" style="display: none;"></div>
                     <div class="calculation-result" style="display: none;"></div>
                     <div class="permit-options" style="display: none;"></div>
                 </div>
@@ -654,6 +656,7 @@ function generateToolSection(medication, thresholdType, uniqueId) {
                             More than 1-month supply
                         </button>
                     </div>
+                    <div class="immediate-result" style="display: none;"></div>
                     <div class="calculation-result" style="display: none;"></div>
                     <div class="permit-options" style="display: none;"></div>
                 </div>
@@ -761,6 +764,7 @@ function calculateForCard(medicationName, calculatorId) {
     const days = parseInt(calculator.querySelector('.calc-days').value);
 
     if (!strength || !tablets || !days) {
+        calculator.querySelector('.immediate-result').style.display = 'none';
         calculator.querySelector('.calculation-result').style.display = 'none';
         calculator.querySelector('.permit-options').style.display = 'none';
         // Reset status display
@@ -792,6 +796,13 @@ function calculateForCard(medicationName, calculatorId) {
         statusElement.textContent = 'No Declaration Needed';
     }
     
+    // Show immediate progress feedback right after calculator
+    const immediateResultDiv = calculator.querySelector('.immediate-result');
+    if (immediateResultDiv) {
+        immediateResultDiv.innerHTML = generateImmediateProgressFeedback(results);
+        immediateResultDiv.style.display = 'block';
+    }
+    
     // Display enhanced results
     const resultDiv = calculator.querySelector('.calculation-result');
     resultDiv.innerHTML = generateCalculatorResultsHTML(results);
@@ -811,6 +822,7 @@ function calculateUnitsForCard(medicationName, calculatorId) {
     const units = parseInt(calculator.querySelector('.unit-count').value);
 
     if (!units || units < 1) {
+        calculator.querySelector('.immediate-result').style.display = 'none';
         calculator.querySelector('.calculation-result').style.display = 'none';
         calculator.querySelector('.permit-options').style.display = 'none';
         return;
@@ -842,6 +854,13 @@ function calculateUnitsForCard(medicationName, calculatorId) {
         documentationNeeded: guidance.documentationNeeded,
         reasoning: guidance.reasonForClassification
     };
+    
+    // Show immediate progress feedback right after calculator
+    const immediateResultDiv = calculator.querySelector('.immediate-result');
+    if (immediateResultDiv) {
+        immediateResultDiv.innerHTML = generateImmediateProgressFeedback(results);
+        immediateResultDiv.style.display = 'block';
+    }
 
     // Display results
     const resultDiv = calculator.querySelector('.calculation-result');
@@ -1098,6 +1117,26 @@ function getSourceDisplayName(url) {
     }
 }
 
+// Helper function for immediate progress feedback (shown right after calculator)
+function generateImmediateProgressFeedback(results) {
+    // Skip for prohibited medications
+    if (results.status === 'prohibited') {
+        return `
+            <div style="background: rgba(220, 53, 69, 0.1); border: 1px solid rgba(220, 53, 69, 0.3); border-radius: 8px; padding: 16px; margin: 15px 0;">
+                <div style="color: #dc3545; font-weight: 600; text-align: center;">
+                    ⚠️ This medication cannot be imported to Japan
+                </div>
+            </div>
+        `;
+    }
+    
+    return `
+        <div style="background: white; border: 1px solid #e9ecef; border-radius: 8px; padding: 16px; margin: 15px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            ${generateElegantProgressBar(results)}
+        </div>
+    `;
+}
+
 // Helper function for elegant progress bar visualization
 function generateElegantProgressBar(results) {
     // Skip progress bar for prohibited or zero-threshold medications
@@ -1207,12 +1246,8 @@ function generateKeyInformation(results) {
         'Import Certificate required' : 
         results.status === 'controlled' ? 'Declaration required' : 'Standard import';
     
-    // Generate elegant progress bar for quantity visualization
-    const progressBarHTML = generateElegantProgressBar(results);
-    
     return `
         <strong>Personal Use Limit:</strong> ${threshold}<br>
-        ${progressBarHTML}
         <strong>Processing Timeline:</strong> ${processingTime}<br>
         <strong>Import Status:</strong> ${importStatus}
     `;
