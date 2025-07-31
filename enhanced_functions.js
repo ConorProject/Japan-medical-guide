@@ -343,6 +343,7 @@ function calculateMedicationStatus(medicationName, strengthMg, tablets, days = n
         processingDaysMax: guidance.processingDaysMax,
         documentationNeeded: guidance.documentationNeeded,
         reasoning: guidance.reasonForClassification,
+        officialSource: guidance.officialSource,
         dailyDose: days ? tablets.toFixed(1) : null
     };
 }
