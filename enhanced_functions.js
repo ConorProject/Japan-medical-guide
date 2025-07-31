@@ -1098,6 +1098,101 @@ function getSourceDisplayName(url) {
     }
 }
 
+// Helper function for elegant progress bar visualization
+function generateElegantProgressBar(results) {
+    // Skip progress bar for prohibited or zero-threshold medications
+    if (results.status === 'prohibited' || results.threshold <= 0) {
+        return `<div style="margin: 8px 0; color: #6c757d; font-size: 13px;">Your quantity: ${results.totalQuantity}</div>`;
+    }
+    
+    // Parse user quantity - handle mg, units, gm, etc.
+    const totalQuantityStr = results.totalQuantity.toString();
+    let userQuantityNumeric = 0;
+    let displayUnit = '';
+    
+    if (totalQuantityStr.includes('mg')) {
+        userQuantityNumeric = parseFloat(totalQuantityStr.replace('mg', ''));
+        displayUnit = 'mg';
+    } else if (totalQuantityStr.includes('units')) {
+        userQuantityNumeric = parseFloat(totalQuantityStr.replace('units', '').trim());
+        displayUnit = 'units';
+    } else if (totalQuantityStr.includes('gm') || totalQuantityStr.includes('g')) {
+        // Convert grams to mg for comparison with threshold
+        userQuantityNumeric = parseFloat(totalQuantityStr.replace(/gm?/g, '')) * 1000;
+        displayUnit = totalQuantityStr.includes('gm') ? 'gm' : 'g';
+    } else {
+        // Fallback - assume it's a numeric value, try to parse
+        userQuantityNumeric = parseFloat(totalQuantityStr) || 0;
+        displayUnit = '';
+    }
+    
+    // Calculate percentage of threshold limit
+    const thresholdNumeric = results.threshold;
+    const percentage = Math.min((userQuantityNumeric / thresholdNumeric) * 100, 100);
+    
+    // Elegant muted color scheme based on risk level
+    let progressColor, backgroundColor, textColor, statusText;
+    
+    if (percentage <= 50) {
+        // Safe zone - muted green
+        progressColor = '#28a745';
+        backgroundColor = 'rgba(40, 167, 69, 0.1)';
+        textColor = '#28a745';
+        statusText = 'Well within limit';
+    } else if (percentage <= 85) {
+        // Caution zone - muted amber
+        progressColor = '#ffc107';
+        backgroundColor = 'rgba(255, 193, 7, 0.1)';
+        textColor = '#856404';
+        statusText = 'Approaching limit';
+    } else {
+        // Warning zone - muted red
+        progressColor = '#dc3545';
+        backgroundColor = 'rgba(220, 53, 69, 0.1)';
+        textColor = '#dc3545';
+        statusText = 'Near threshold';
+    }
+    
+    // Format threshold display to match user's input units (avoid forcing metric conversions)
+    let thresholdDisplay;
+    if (displayUnit === 'units') {
+        // Devices stay in units
+        thresholdDisplay = `${thresholdNumeric} units`;
+    } else if (displayUnit === 'gm') {
+        // User entered grams, show threshold in grams (no mg conversion needed)
+        thresholdDisplay = `${(thresholdNumeric/1000).toFixed(1)}gm`;
+    } else if (displayUnit === 'g') {
+        // User entered grams, show threshold in grams
+        thresholdDisplay = `${(thresholdNumeric/1000).toFixed(1)}g`;
+    } else {
+        // User entered mg, show in mg (avoid forcing them to think in grams)
+        thresholdDisplay = `${thresholdNumeric}mg`;
+    }
+    
+    return `
+        <div style="margin: 12px 0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <span style="font-size: 13px; color: #6c757d;">Your quantity: ${results.totalQuantity}</span>
+                <span style="font-size: 12px; color: ${textColor}; font-weight: 500;">${statusText}</span>
+            </div>
+            <div style="background: ${backgroundColor}; border: 1px solid rgba(${hexToRgb(progressColor)}, 0.2); border-radius: 8px; height: 8px; overflow: hidden;">
+                <div style="background: ${progressColor}; height: 100%; width: ${percentage}%; border-radius: 8px; transition: width 0.4s ease;"></div>
+            </div>
+            <div style="text-align: right; margin-top: 4px;">
+                <span style="font-size: 11px; color: #9ca3af;">${percentage.toFixed(0)}% of ${thresholdDisplay} limit</span>
+            </div>
+        </div>
+    `;
+}
+
+// Helper function to convert hex to rgb for alpha blending
+function hexToRgb(hex) {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? 
+        `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : 
+        '0, 0, 0';
+}
+
 // Helper function for key information section
 function generateKeyInformation(results) {
     const threshold = results.threshold > 0 ? 
@@ -1112,8 +1207,12 @@ function generateKeyInformation(results) {
         'Import Certificate required' : 
         results.status === 'controlled' ? 'Declaration required' : 'Standard import';
     
+    // Generate elegant progress bar for quantity visualization
+    const progressBarHTML = generateElegantProgressBar(results);
+    
     return `
-        <strong>Personal Use Limit:</strong> ${threshold} (you're bringing ${results.totalQuantity}mg)<br>
+        <strong>Personal Use Limit:</strong> ${threshold}<br>
+        ${progressBarHTML}
         <strong>Processing Timeline:</strong> ${processingTime}<br>
         <strong>Import Status:</strong> ${importStatus}
     `;
